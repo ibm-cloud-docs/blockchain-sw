@@ -6,7 +6,7 @@ lastupdated: "2019-09-24"
 
 keywords: update data, private data, smart contract, CouchDB indexes, cross chaincode transaction
 
-subcollection: blockchain-rhos
+subcollection: blockchain-sw
 
 ---
 
@@ -29,13 +29,13 @@ As an example, imagine that a network of car dealerships, insurance companies, a
 
 The following tutorial will take you through the basic aspects of building chaincode, including:
 
-- [How to get started writing chaincode](/docs/blockchain-sw?topic=blockchain-rhos-develop-smart-contracts#develop-smart-contracts-write)
-- [The relationship between chaincode and data](/docs/blockchain-sw?topic=blockchain-rhos-develop-smart-contracts#develop-smart-contracts-data)
-- [Cross chaincode transactions](/docs/blockchain-sw?topic=blockchain-rhos-develop-smart-contracts#develop-smart-contracts-cross-chaincode)
+- [How to get started writing chaincode](/docs/blockchain-sw?topic=blockchain-sw-develop-smart-contracts#develop-smart-contracts-write)
+- [The relationship between chaincode and data](/docs/blockchain-sw?topic=blockchain-sw-develop-smart-contracts#develop-smart-contracts-data)
+- [Cross chaincode transactions](/docs/blockchain-sw?topic=blockchain-sw-develop-smart-contracts#develop-smart-contracts-cross-chaincode)
 
 The tutorial also introduces important aspects of fabric that are accessible through chaincode:
 
-- [Using indexes with couchDB](/docs/blockchain-sw?topic=blockchain-rhos-develop-smart-contracts#develop-smart-contracts-indexes)
+- [Using indexes with couchDB](/docs/blockchain-sw?topic=blockchain-sw-develop-smart-contracts#develop-smart-contracts-indexes)
 
 ## Writing chaincode
 {: #develop-smart-contracts-write}
@@ -50,12 +50,12 @@ A smart contract is typically able to validate requests, apply the business rule
 ## Installing Chaincode
 {: #develop-smart-contracts-install}
 
-Because chaincode provides the structure of transactions on a channel, a chaincode needs to be installed on all the peers joined to the channel that want use the chaincode to update or query the channel ledger. Then, one member of the channel can then instantiate the chaincode on a channel and set the chaincode's endorsement policy. Installation and instantiation of chaincode can be performed by using the {{site.data.keyword.blockchainfull_notm}} Platform UI, the Fabric Peer command-line interface, or from a client application by using the Fabric SDKs.  <blockchain-rhos>To learn how to deploy a chaincode by using the {{site.data.keyword.blockchainfull_notm}} Platform console, see the [Deploy a smart contract on the network tutorial](/docs/blockchain-rhos?topic=blockchain-rhos-ibp-console-smart-contracts#ibp-console-smart-contracts).</blockchain-rhos>
+Because chaincode provides the structure of transactions on a channel, a chaincode needs to be installed on all the peers joined to the channel that want use the chaincode to update or query the channel ledger. Then, one member of the channel can then instantiate the chaincode on a channel and set the chaincode's endorsement policy. Installation and instantiation of chaincode can be performed by using the {{site.data.keyword.blockchainfull_notm}} Platform UI, the Fabric Peer command-line interface, or from a client application by using the Fabric SDKs.  To learn how to deploy a chaincode by using the {{site.data.keyword.blockchainfull_notm}} Platform console, see the [Deploy a smart contract on the network tutorial](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-smart-contracts#ibp-console-smart-contracts).
 
 ## Chaincode and data
 {: #develop-smart-contracts-data}
 
-Each channel has only one ledger, and the data on that ledger is partitioned by a unique key and the chaincode that added the key value pair to the ledger. Members can only read or update data on the channel ledger by using the correct key and the associated chaincode. The data that can be accessed by a chaincode is referred to as that chaincode's namespace and all data on the ledger is within the namespace of one chaincode. A chaincode can interact with data outside of its namespace only by using a [cross chaincode transaction](/docs/blockchain-sw?topic=blockchain-rhos-develop-smart-contracts#develop-smart-contracts-cross-chaincode) to the chaincode that can access the relevant data.
+Each channel has only one ledger, and the data on that ledger is partitioned by a unique key and the chaincode that added the key value pair to the ledger. Members can only read or update data on the channel ledger by using the correct key and the associated chaincode. The data that can be accessed by a chaincode is referred to as that chaincode's namespace and all data on the ledger is within the namespace of one chaincode. A chaincode can interact with data outside of its namespace only by using a [cross chaincode transaction](/docs/blockchain-sw?topic=blockchain-sw-develop-smart-contracts#develop-smart-contracts-cross-chaincode) to the chaincode that can access the relevant data.
 
 We can use the fabcar chaincode from the Fabric samples repository as an example of how chaincode interacts with data. The namespace is created when the smart contract is instantiated. Some chaincode accepts a set of key value pair arguments when the chaincode is instantiated and use that data to initialize the namespace. The fabcar chaincode from the Fabric samples repository does not accept any arguments when it is instantiated. For fabcar, you need to add data to the namespace by using the initLedger or createCar function. For instance, passing the argument `{"Args":["createCar",'CAR1', 'Honda', 'Accord', 'Black', 'Tom']}` will make the key value pair of `{Key='CAR1', value={'Honda', 'Accord', 'Black', 'Tom'}}` the fabcar namespace.
 
@@ -144,5 +144,5 @@ Because `fabcar` is on the same channel as `newContract`, the `crossChaincodeCha
 
 If you use CouchDB as your state database, you can perform JSON data queries from your chaincode against the channel's state data. It is strongly recommended that you create indexes for your JSON queries and use them in your chaincode. Indexes allow your applications to retrieve data efficiently as your network adds additional blocks of transactions and entries in the world state.
 
-For more information about CouchDB and how to set up indexes, see [CouchDB as the State Database](https://hyperledger-fabric.readthedocs.io/en/release-1.2/couchdb_as_state_database.html){: external} in the Hyperledger Fabric documentation. You can also find an example that uses an index with chaincode in the [Fabric CouchDB tutorial](https://hyperledger-fabric.readthedocs.io/en/release-1.2/couchdb_tutorial.html){: external}. Visit [Best Practices when using CouchDB](/docs/blockchain-sw?topic=blockchain-rhos-best-practices-app#best-practices-app-couchdb-indices) in the Developing applications tutorial for more information on how to query data from your applications.
+For more information about CouchDB and how to set up indexes, see [CouchDB as the State Database](https://hyperledger-fabric.readthedocs.io/en/release-1.2/couchdb_as_state_database.html){: external} in the Hyperledger Fabric documentation. You can also find an example that uses an index with chaincode in the [Fabric CouchDB tutorial](https://hyperledger-fabric.readthedocs.io/en/release-1.2/couchdb_tutorial.html){: external}. Visit [Best Practices when using CouchDB](/docs/blockchain-sw?topic=blockchain-sw-best-practices-app#best-practices-app-couchdb-indices) in the Developing applications tutorial for more information on how to query data from your applications.
 

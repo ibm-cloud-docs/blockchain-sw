@@ -6,7 +6,7 @@ lastupdated: "2020-02-07"
 
 keywords: catalina, chrome, external CA, TLS, orderer, error
 
-subcollection: blockchain-rhos
+subcollection: blockchain-sw
 
 ---
 
@@ -27,8 +27,8 @@ subcollection: blockchain-rhos
 
 The console will not work in the Chrome browser on Mac OS Catalina when the {{site.data.keyword.blockchainfull_notm}} Platform v2.1.0 or v2.1.1 is deployed with the default configuration that uses self-signed certificates. There are three ways to resolve this problem:
 
-1.  Use a different [supported browser](/docs/blockchain-rhos?topic=blockchain-rhos-deploy-ocp#deploy-ocp-browsers) with Catalina.
-2. Use your own [TLS certificates when deploying on OpenShift Container Platform](/docs/blockchain-rhos?topic=blockchain-rhos-deploy-ocp#use-your-own-tls-certificates-optional-) or [TLS certificates when deploying on Kubernetes or {{site.data.keyword.cloud_notm}} Private](/docs/blockchain-rhos?topic=blockchain-rhos-deploy-k8#use-your-own-tls-certificates-optional-).
+1.  Use a different [supported browser](/docs/blockchain-sw?topic=blockchain-sw-deploy-ocp#deploy-ocp-browsers) with Catalina.
+2. Use your own [TLS certificates when deploying on OpenShift Container Platform](/docs/blockchain-sw?topic=blockchain-sw-deploy-ocp#use-your-own-tls-certificates-optional-) or [TLS certificates when deploying on Kubernetes or {{site.data.keyword.cloud_notm}} Private](/docs/blockchain-sw?topic=blockchain-sw-deploy-k8#use-your-own-tls-certificates-optional-).
 3. Run the following commands to generate a new key and certificate pair for the console that will fix the problem.
    1. Run the following command to get the pod that corresponds to the ibp console:
       ```
@@ -62,6 +62,6 @@ You can safely ignore this error, as the certificates the console is trying to p
 ## Unable to create peer or ordering node using external CA certificates
 {: #sw-known-issues-external-CA-cant-create}
 
-Currently, it is not possible to create a peer or ordering nodes using certificates entered into the console as described in [Component governance](/docs/blockchain-rhos?topic=blockchain-rhos-ibp-console-govern-components#ibp-console-govern-third-party-ca).
+Currently, it is not possible to create a peer or ordering nodes using certificates entered into the console as described in [Component governance](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-govern-components#ibp-console-govern-third-party-ca).
 
 It is still possible to create components using the normal register and enroll flows in the console.

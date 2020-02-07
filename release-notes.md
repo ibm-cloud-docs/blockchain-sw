@@ -7,7 +7,7 @@ lastupdated: "2020-02-07"
 
 keywords: release note, latest changes, Hyperledger Fabric
 
-subcollection: blockchain-rhos
+subcollection: blockchain-sw
 
 ---
 
@@ -63,12 +63,12 @@ When a peer is joined to a channel, you can now designate that peer as an anchor
 #### Export/Import all
 {: #12-17-2019-export-import}
 
-Allows for the bulk export and import of nodes, MSPs, and identities, rather than having to export and import these components one at a time. See this topic on [Exporting and importing in bulk](/docs/blockchain-rhos?topic=blockchain-rhos-ibp-console-import-nodes#ibp-console-import-bulk-export-import) for more information.
+Allows for the bulk export and import of nodes, MSPs, and identities, rather than having to export and import these components one at a time. See this topic on [Exporting and importing in bulk](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-import-nodes#ibp-console-import-bulk-export-import) for more information.
 
 #### Support for Fabric Node OU features
 {: #12-17-2019-nodeOU}
 
-In addition to the existing `client` and `peer` Node OU types that are available when you deploy a peer or ordering node, you now have two additional Node OU types to choose from: `admin` and `orderer`. Follow the [Build a network tutorial](/docs/blockchain-rhos?topic=blockchain-rhos-ibp-console-build-network) for examples of which type to use when you deploy your nodes.
+In addition to the existing `client` and `peer` Node OU types that are available when you deploy a peer or ordering node, you now have two additional Node OU types to choose from: `admin` and `orderer`. Follow the [Build a network tutorial](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-build-network) for examples of which type to use when you deploy your nodes.
 
 ## 8 November 2019
 {: #11-08-2019}

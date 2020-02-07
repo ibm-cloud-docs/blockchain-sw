@@ -6,7 +6,7 @@ lastupdated: "2020-02-07"
 
 keywords: import nodes, another console, import a CA, import a peer, import admin identities, import an ordering service node
 
-subcollection: blockchain-rhos
+subcollection: blockchain-sw
 
 ---
 
@@ -106,7 +106,7 @@ If you intend to operate an imported node, you have two options:
        4. This new identity would be sent back to the console where the peer was created and added as an admin of the peer.
        5. Then the peer could be exported to the console where the new identity was created, allowing the new identity to operate the imported peer.
 
-In either case, because this new admin identity would only be an admin of the peer and not the organization that owns the peer, it preserves a separation of roles between the organization admin (the sign cert listed in the MSP, which might also be the peer admin in the console where the peer was created), and the new admin of the peer which was just created and associated. This peer admin would not be an organization admin by default. However, if it fits a use case to make an identity the admin of both the organization and an imported peer, this is achievable, see [Updating an organization MSP definition](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-organizations#ibp-console-govern-update-msp).
+In either case, because this new admin identity would only be an admin of the peer and not the organization that owns the peer, it preserves a separation of roles between the organization admin (the sign cert listed in the MSP, which might also be the peer admin in the console where the peer was created), and the new admin of the peer which was just created and associated. This peer admin would not be an organization admin by default. However, if it fits a use case to make an identity the admin of both the organization and an imported peer, this is achievable, see [Updating an organization MSP definition](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-organizations#ibp-console-govern-update-msp).
 
 Note that this flow would be most practical for a peer, since the admins of ordering nodes do not have many responsibilities in the {{site.data.keyword.blockchainfull_notm}} Platform.
 
@@ -126,14 +126,14 @@ After you complete the **Add identity** panel, you can view the new admin identi
 
 Because MSPs define an organization, they are used when creating channels, creating nodes (to identify which organization the node will belong to), and validating signatures. For the latter reason, your MSP must be known (in other words, exported and then imported) to every member of every channel you belong to unless your organization will not be involved in validation or endorsement.
 
-To act as an administrator for an organization, you must have an identity in your wallet listed in the MSP as an admin of the organization. This means either importing the identity listed in the MSP or by following the process listed in [Updating an organization MSP definition](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-organizations#ibp-console-govern-update-msp). This MSP can then be exported to the console where the added identity was created, making the exported identity able to act as an admin of the organization.
+To act as an administrator for an organization, you must have an identity in your wallet listed in the MSP as an admin of the organization. This means either importing the identity listed in the MSP or by following the process listed in [Updating an organization MSP definition](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-organizations#ibp-console-govern-update-msp). This MSP can then be exported to the console where the added identity was created, making the exported identity able to act as an admin of the organization.
 
 The exports and imports of MSPs are performed in the **Organizations** tab. To export an MSP, click on it, then click on the download button. To import an MSP, click **Import MSP definition**. If you have a certificate of the MSP admin in your wallet, check the checkbox `I have an administrator identity for the MSP definition`. If you do not check this box and subsequently try to create a peer or ordering service, this organization MSP definition will not be listed in the MSP drop-down list, even if you have an admin certificate in your wallet.
 
 ## Importing a peer
 {: #ibp-console-import-peer}
 
-A peer node is the blockchain component that maintains a ledger and runs a smart contract to perform query and update operations on the ledger. Organization members own and maintain peers. Each organization that joins a consortium should deploy at least one peer and minimally two for High Availability (HA) on each channel. You can learn more about peers in the [overview of blockchain components](/docs/blockchain-sw?topic=blockchain-rhos-blockchain-component-overview#blockchain-component-overview-peer).
+A peer node is the blockchain component that maintains a ledger and runs a smart contract to perform query and update operations on the ledger. Organization members own and maintain peers. Each organization that joins a consortium should deploy at least one peer and minimally two for High Availability (HA) on each channel. You can learn more about peers in the [overview of blockchain components](/docs/blockchain-sw?topic=blockchain-sw-blockchain-component-overview#blockchain-component-overview-peer).
 
 After you import a peer into the console, you can install smart contracts on the peer and join the peer to channels.
 
@@ -161,11 +161,11 @@ After you import the peer into the console, you can install smart contracts on t
 ## Importing a CA
 {: #ibp-console-import-ca}
 
-A CA node is the blockchain component that issues certificates to all network entities (peers, ordering services, clients, and so on) so that these entities can communicate, authenticate, and ultimately transact. Each organization has their own CA that acts as their root of trust. You should add your organizations whether you are joining or building a blockchain consortium. You can learn more about CAs in the [overview of blockchain components](/docs/blockchain-sw?topic=blockchain-rhos-blockchain-component-overview#blockchain-component-overview-ca).
+A CA node is the blockchain component that issues certificates to all network entities (peers, ordering services, clients, and so on) so that these entities can communicate, authenticate, and ultimately transact. Each organization has their own CA that acts as their root of trust. You should add your organizations whether you are joining or building a blockchain consortium. You can learn more about CAs in the [overview of blockchain components](/docs/blockchain-sw?topic=blockchain-sw-blockchain-component-overview#blockchain-component-overview-ca).
 
 After you import a CA, you can use it to register and enroll users or create organization definitions exactly as you would with any other CA.
 
-To import a CA to the {{site.data.keyword.blockchainfull_notm}} Platform console and operate it, the network operator must have already exported the CA from the {{site.data.keyword.blockchainfull_notm}} Platform where it was deployed. Importing a CA allows you to register new users and [enroll identities](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-identities#ibp-console-identities-enroll).
+To import a CA to the {{site.data.keyword.blockchainfull_notm}} Platform console and operate it, the network operator must have already exported the CA from the {{site.data.keyword.blockchainfull_notm}} Platform where it was deployed. Importing a CA allows you to register new users and [enroll identities](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-identities#ibp-console-identities-enroll).
 
 ### Before you begin
 {: #ibp-console-import-ca-before-you-begin}
@@ -184,12 +184,12 @@ Navigate to the **Nodes** tab.
 If the CA was exported before October 2nd, 2019, you might have to supply location information specifying where the CA was created. If you see this field, you can choose whether to supply the location or to have the CA re-exported, in which case the console will not ask for this information.
 {: note}
 
-After you have imported the CA into the console, you can use your CA to create new identities and generate the necessary certificates to operate your components and submit transactions to the network. To learn more, see [Managing certificate authorities](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-identities#ibp-console-identities-manage-ca).
+After you have imported the CA into the console, you can use your CA to create new identities and generate the necessary certificates to operate your components and submit transactions to the network. To learn more, see [Managing certificate authorities](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-identities#ibp-console-identities-manage-ca).
 
 ## Importing an ordering service
 {: #ibp-console-import-orderer}
 
-An ordering service is the blockchain component that collects transactions from network members, orders the transactions, and bundles them into blocks. It is the common binding of blockchain consortiums and needs to be deployed if you are founding a consortium that other organizations will join. You can learn more about ordering services in the [overview of blockchain components](/docs/blockchain-sw?topic=blockchain-rhos-blockchain-component-overview#blockchain-component-overview-orderer).
+An ordering service is the blockchain component that collects transactions from network members, orders the transactions, and bundles them into blocks. It is the common binding of blockchain consortiums and needs to be deployed if you are founding a consortium that other organizations will join. You can learn more about ordering services in the [overview of blockchain components](/docs/blockchain-sw?topic=blockchain-sw-blockchain-component-overview#blockchain-component-overview-orderer).
 
 Importing an ordering service into the console allows you to create new channels for peers to transact privately.
 
@@ -198,7 +198,7 @@ Importing an ordering service into the console allows you to create new channels
 
 Even in the world of Hyperledger Fabric, ordering node admins do not have many responsibilities. In the {{site.data.keyword.blockchainfull_notm}} Platform, these responsibilities are reduced even further, and because of the [Limitations](#ibp-console-import-limitations) imposed on imported nodes, these responsibilities are reduced to nothing. As a result, there is not much point in becoming an additional admin of an ordering node. Despite this, the console will ask you to associate an identity. Feel free to associate any identity in your wallet.
 
-Far more useful than becoming the admin of an ordering node is becoming an admin of the ordering organization itself. This role gives you administrative rights over the ordering service (allowing you to add organizations to the consortium or nodes to the ordering service) as well as over the system channel, giving you the permission to modify system channel [capabilities](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-govern#ibp-console-govern-update-channel-available-parameters-advanced).
+Far more useful than becoming the admin of an ordering node is becoming an admin of the ordering organization itself. This role gives you administrative rights over the ordering service (allowing you to add organizations to the consortium or nodes to the ordering service) as well as over the system channel, giving you the permission to modify system channel [capabilities](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-govern#ibp-console-govern-update-channel-available-parameters-advanced).
 
 Note that it is not necessary for your organization to become an ordering service administrator. You will still need to import the ordering service if you want to create or edit a channel (your organization must be added to the consortium by an ordering service administrator first), as your console must know about the ordering service before you can select it from the drop down list.
 

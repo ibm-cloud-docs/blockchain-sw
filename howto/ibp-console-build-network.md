@@ -6,7 +6,7 @@ lastupdated: "2020-02-07"
 
 keywords: getting started tutorials, create a CA, enroll, register, create an MSP, wallet, create a peer, create ordering service, Raft
 
-subcollection: blockchain-rhos
+subcollection: blockchain-sw
 
 ---
 
@@ -22,18 +22,18 @@ subcollection: blockchain-rhos
 # Build a network tutorial
 {: #ibp-console-build-network}
 
-{{site.data.keyword.blockchainfull}} Platform is a blockchain-as-a-service offering that enables you to develop, deploy, and operate blockchain applications and networks. You can learn more about blockchain components and how they work together by visiting the [Blockchain component overview](/docs/blockchain-sw?topic=blockchain-rhos-blockchain-component-overview#blockchain-component-overview). This tutorial is the first part in the [sample network tutorial series](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-build-network#ibp-console-build-network-sample-tutorial) and describes how to use the {{site.data.keyword.blockchainfull_notm}} Platform console to build a fully functional network on Kubernetes cluster deployed into the cloud infrastructure of your choice.
+{{site.data.keyword.blockchainfull}} Platform is a blockchain-as-a-service offering that enables you to develop, deploy, and operate blockchain applications and networks. You can learn more about blockchain components and how they work together by visiting the [Blockchain component overview](/docs/blockchain-sw?topic=blockchain-sw-blockchain-component-overview#blockchain-component-overview). This tutorial is the first part in the [sample network tutorial series](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-build-network#ibp-console-build-network-sample-tutorial) and describes how to use the {{site.data.keyword.blockchainfull_notm}} Platform console to build a fully functional network on Kubernetes cluster deployed into the cloud infrastructure of your choice.
 {:shortdesc}
 
 
 **Target audience:** This topic is designed for network operators who are responsible for creating, monitoring, and managing the blockchain network.
 
 
-<blockchain-rhos>
-If you have not already deployed your {{site.data.keyword.blockchainfull_notm}} Platform console to a Kubernetes cluster, see [Getting started with {{site.data.keyword.blockchainfull_notm}} Platform v2.1.2](/docs/blockchain-rhos?topic=blockchain-rhos-get-started-console-ocp).
 
-You need to pay close attention to the resources at your disposal when you choose to deploy nodes and create channels. It is your responsibility to manage your Kubernetes cluster and deploy additional resources if necessary. For more information about component sizings and how the console interacts with your Kubernetes  cluster, see [Allocating resources](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-govern-components#ibp-console-govern-components-allocate-resources).
-</blockchain-rhos>
+If you have not already deployed your {{site.data.keyword.blockchainfull_notm}} Platform console to a Kubernetes cluster, see [Getting started with {{site.data.keyword.blockchainfull_notm}} Platform v2.1.2](/docs/blockchain-sw?topic=blockchain-sw-get-started-console-ocp).
+
+You need to pay close attention to the resources at your disposal when you choose to deploy nodes and create channels. It is your responsibility to manage your Kubernetes cluster and deploy additional resources if necessary. For more information about component sizings and how the console interacts with your Kubernetes  cluster, see [Allocating resources](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-govern-components#ibp-console-govern-components-allocate-resources).
+
 
 
 
@@ -44,8 +44,8 @@ This three-part tutorial series guides you through the process of creating and i
 
 
 * **Build a network tutorial** This tutorial guides you through the process of hosting a network by creating two organizations, one for your peer and another for your ordering service, and a channel. Use this tutorial if you want to form a blockchain consortium by creating an ordering service and adding organizations.
-* [Join a network tutorial](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-join-network#ibp-console-join-network) guides you through the process of joining an existing network by creating a peer and joining it to an existing channel. Use this tutorial if you either do not intend to host a network by creating an ordering service, or want to learn the process for joining other networks.
-* [Deploy a smart contract on the network](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-smart-contracts#ibp-console-smart-contracts) shows how to write a smart contract and deploy it on a network.
+* [Join a network tutorial](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-join-network#ibp-console-join-network) guides you through the process of joining an existing network by creating a peer and joining it to an existing channel. Use this tutorial if you either do not intend to host a network by creating an ordering service, or want to learn the process for joining other networks.
+* [Deploy a smart contract on the network](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-smart-contracts#ibp-console-smart-contracts) shows how to write a smart contract and deploy it on a network.
 
 ### The structure of this network
 {: #ibp-console-build-network-structure}
@@ -61,7 +61,7 @@ This configuration is sufficient both for testing applications and smart contrac
 * **One ordering service organization**: `Ordering Service`  
   Because we are building a distributed ledger, the peers and ordering service should be part of separate organizations. Therefore, a separate organization is created for the ordering service. Among other things, an ordering service orders the blocks of transactions that are sent to the peers to be written to their ledgers and become the blockchain. We will create the definition of the `Ordering Service` organization.
 * **Three Certificate Authorities (CAs)**: `Org1 CA, Org2 CA, Ordering Service CA`   
-  A CA is the node that issues certificates to both the users and the nodes associated with an organization. Because it’s a best practice to deploy one CA per organization, we will deploy three CAs in total: one for each peer organization and one for the ordering service organization. These CAs will also create the definition of each organization, which is encapsulated by a Membership Service Provider (MSP). A TLS CA is automatically deployed together with each organization CA and provides the TLS certificates that are used for communication between nodes. For more information, see [Using your TLS CA](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-identities#ibp-console-identities-tlsca).
+  A CA is the node that issues certificates to both the users and the nodes associated with an organization. Because it’s a best practice to deploy one CA per organization, we will deploy three CAs in total: one for each peer organization and one for the ordering service organization. These CAs will also create the definition of each organization, which is encapsulated by a Membership Service Provider (MSP). A TLS CA is automatically deployed together with each organization CA and provides the TLS certificates that are used for communication between nodes. For more information, see [Using your TLS CA](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-identities#ibp-console-identities-tlsca).
 * **One ordering service:** `Ordering Service` The crash fault tolerant five node ordering service uses an implementation of the Raft protocol (for more information about Raft, see [The Ordering Service](https://hyperledger-fabric.readthedocs.io/en/release-1.4/orderer/ordering_service.html#raft){: external} . This ordering service will add peer organizations to its "consortium", which is the list of peer organizations that can create channels. Currently, only one ordering service organization per ordering service is supported, regardless of the number of ordering nodes associated with that organization. This ordering service will add peer organizations to its "consortium", which is the list of peer organizations that can create and join channels. If you want to create a channel that has organizations deployed in different clusters, which is how most production networks will be structured, the ordering service admin will need to import a peer organization that has been deployed in another console into their console. This allows the peer organization to join the channel that is hosted on that ordering service.
 * **Two peers:** `Peer Org1` and `Peer Org2`  
   The ledger, `Ledger x` in the illustration above, is maintained by distributed peers. These peers are deployed using [Couch DB](https://hyperledger-fabric.readthedocs.io/en/release-1.4/couchdb_as_state_database.html){: external}) as the state database in a separate container associated with the peer. This database holds the current value of all "state" (as represented by key-value pairs). For example, saying that `Org1` (a value) is the current owner of a bank asset (the key). The blockchain, the list of transactions, is stored locally on the peer.
@@ -73,7 +73,7 @@ This configuration isn't mandatory. The {{site.data.keyword.blockchainfull_notm}
 In this **Build a network** tutorial, we build only a portion of the network above, a simple network that can be used to host an ordering service and a single peer organization and peer on a single channel. The following illustration shows the portion of the network above that we will build:
 ![Simple network structure](../images/ibp2-simple-network.svg "Simple network structure"){: caption="Figure 2. Simple network structure" caption-side="bottom"}
 
-This configuration is useful for quickly getting started and testing a smart contract but is not very meaningful until you add other organizations to transact with, creating a truly distributed network. Therefore, in the subsequent [Join a network](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-join-network#ibp-console-join-network) tutorial, we show you how to create additional peer organizations and peers, and how to add a new organization to the channel.
+This configuration is useful for quickly getting started and testing a smart contract but is not very meaningful until you add other organizations to transact with, creating a truly distributed network. Therefore, in the subsequent [Join a network](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-join-network#ibp-console-join-network) tutorial, we show you how to create additional peer organizations and peers, and how to add a new organization to the channel.
 
 Throughout this tutorial we supply **recommended values** for the fields in the console. This allows the names and identities to be easier to recognize in the tabs and drop-down lists. These values are not mandatory, but you will find them helpful, especially since you will have to remember certain values like IDs and secrets of registered users that you input in previous steps. As these values are not stored in the console, if you forget them, you will have to register additional users and start the process over again. We provide a table of the recommended values after each task and recommend that if you do not use the recommended values that you record your values as you proceed through the tutorial.
 {:tip}
@@ -81,7 +81,7 @@ Throughout this tutorial we supply **recommended values** for the fields in the 
 ## Step one: Create a peer organization and a peer
 {: #ibp-console-build-network-create-peer-org1}
 
-For each organization that you want to create with the console, you should deploy at least one CA. A CA is the node that issues certificates to all network participants (peers, ordering services, clients, admins, and so on). These certificates, which include a signing certificate and private key, allow network participants to communicate, authenticate, and ultimately transact. These CAs will create all of the identities and certificates that belong to your organization, in addition to defining the organization itself. You can then use those identities to deploy nodes, create admin identities, and submit transactions. For more information about your CA and the identities that you will need to create, see [Managing identities](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-identities#ibp-console-identities).
+For each organization that you want to create with the console, you should deploy at least one CA. A CA is the node that issues certificates to all network participants (peers, ordering services, clients, admins, and so on). These certificates, which include a signing certificate and private key, allow network participants to communicate, authenticate, and ultimately transact. These CAs will create all of the identities and certificates that belong to your organization, in addition to defining the organization itself. You can then use those identities to deploy nodes, create admin identities, and submit transactions. For more information about your CA and the identities that you will need to create, see [Managing identities](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-identities#ibp-console-identities).
 
 In this tutorial, we create two organizations, one which will own a peer and another which will own an ordering service. Each organization needs a CA to issue its certificates, therefore we need to create **two CAs**. For the purpose of this tutorial, **we will create only one CA at a time**.
 
@@ -98,10 +98,10 @@ To create the CA that will issue certificates for your first organization, perfo
 1. Navigate to the **Nodes** tab on the left and click **Add Certificate Authority**. The side panels will allow you to customize the CA that you want to create and the organization that this CA will issue keys for.
 2. In this tutorial, we're creating nodes, so make sure the option to **Create a Certificate Authority** is selected. Then click **Next**.
 3. Use the side panel to give your CA a **display name**. Our recommended value for this CA is `Org1 CA`. Then give your CA admin credentials by specifying a **CA administrator enroll ID** of `admin` and a secret of `adminpw`. Again, these are **recommended values**.
-4. The **Advanced deployment options** can be safely ignored for purposes of this tutorial. For more information about these options, see the link<blockchain-rhos ha-ca>s</blockchain-rhos ha-ca> below.<blockchain-rhos ha-ca>
-   * [Database selection](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-build-ha-ca#ibp-console-build-ha-ca-create)
-   * [Kubernetes zone selection](/docs/blockchain-rhos?topic=blockchain-rhos-ibp-console-ha#ibp-console-ha-multi-zone) (Only visible when your cluster is configured for multi-zone support.)</blockchain-rhos ha-ca>
-   * [Resource allocation](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-govern-components#ibp-console-govern-components-allocate-resources)
+4. The **Advanced deployment options** can be safely ignored for purposes of this tutorial. For more information about these options, see the links below.
+   * [Database selection](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-build-ha-ca#ibp-console-build-ha-ca-create)
+   * [Kubernetes zone selection](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-ha#ibp-console-ha-multi-zone) (Only visible when your cluster is configured for multi-zone support.)
+   * [Resource allocation](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-govern-components#ibp-console-govern-components-allocate-resources)
 5. Review the Summary page, then click **Add Certificate Authority**.
 
 **Task: Creating the peer organization CA**
@@ -114,7 +114,7 @@ To create the CA that will issue certificates for your first organization, perfo
 After you deploy the CA, you need to associate an admin identity. This will allow you to operate your CA and use it to create your organization MSP, register users, and your **peer**.
 
 
-Advanced users may already have their own CA, and not want to create a new CA in the console. If your existing CA can issue certificates in `X.509` format, you can use certificates from your own external CA instead of creating a new CA here. The CA should sign using ECDSA and the defaults should be set to use P256 curve. See this topic on [Using certificates from an external CA with your peer or ordering node](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-govern-components#ibp-console-govern-third-party-ca) for more information.
+Advanced users may already have their own CA, and not want to create a new CA in the console. If your existing CA can issue certificates in `X.509` format, you can use certificates from your own external CA instead of creating a new CA here. The CA should sign using ECDSA and the defaults should be set to use P256 curve. See this topic on [Using certificates from an external CA with your peer or ordering node](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-govern-components#ibp-console-govern-third-party-ca) for more information.
 
 ### Associating the CA admin identity
 {: #ibp-console-build-network-ca-admin}
@@ -163,8 +163,8 @@ Each node or application that you want to create needs a certificate and private
 Once you have associated the CA admin, you can use the CA tile to create these identities by completing the following steps:
 
 1. Click the `Org1 CA` tile and ensure the `admin` identity that you created for the CA is visible in the table. Then click the **Register User** button.
-2. First we'll register the organization admin, which we can do by giving an **Enroll ID** of `org1admin` and a **secret** of `org1adminpw`. Then set the `Type` for this identity as `admin`.  You can ignore the **Maximum enrollments** field. If you want to learn more about enrollments, see [Registering identities](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-identities#ibp-console-identities-register). Click **Next**.
-3. This tutorial does not configure attributes on identities, see [Registering identities](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-identities#ibp-console-identities-register) if you want to learn more. Click **Register user**.
+2. First we'll register the organization admin, which we can do by giving an **Enroll ID** of `org1admin` and a **secret** of `org1adminpw`. Then set the `Type` for this identity as `admin`.  You can ignore the **Maximum enrollments** field. If you want to learn more about enrollments, see [Registering identities](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-identities#ibp-console-identities-register). Click **Next**.
+3. This tutorial does not configure attributes on identities, see [Registering identities](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-identities#ibp-console-identities-register) if you want to learn more. Click **Register user**.
 4. After the organization admin has been registered, repeat this same process for the identity of the peer (also using the `Org1 CA`). For the peer identity, give an enroll ID of `peer1` and a secret of `peer1pw`. This is a node identity, so select `peer` as the **Type**. You can ignore the **Maximum enrollments** field and, on the next panel, do not assign any **Attributes**, as before.
 
 Registering these identities with the CA is only the first step in **creating** an identity. You will not be able to use these identities until they have been **enrolled**. For the `org1admin` identity, this will happen during the creation of the MSP, which we will see in the next step. In the case of the peer, it happens during the creation of the peer.
@@ -212,7 +212,7 @@ After you have created the MSP, you should be able to see the peer organization 
   {: caption="Table 6. Check your Wallet" caption-side="bottom"}
 
 
-For more information about MSPs, see [managing organizations](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-organizations#ibp-console-organizations).
+For more information about MSPs, see [managing organizations](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-organizations#ibp-console-organizations).
 
 Exporting your organization admin identity is important because you are responsible for managing and securing these certificates. If you switch browsers, you will need to import this admin identity otherwise you will not be able to operate Org1.
 {:important}
@@ -220,7 +220,7 @@ Exporting your organization admin identity is important because you are responsi
 ### Creating a peer
 {: #ibp-console-build-network-peer-create}
 
-After you have [created the Org1 CA](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-build-network#ibp-console-build-network-create-CA-org1CA), used it to register Org1 identities, and created the [Org1 MSP](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-build-network#ibp-console-build-network-create-peers-org1), you're ready to create a peer for Org1.
+After you have [created the Org1 CA](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-build-network#ibp-console-build-network-create-CA-org1CA), used it to register Org1 identities, and created the [Org1 MSP](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-build-network#ibp-console-build-network-create-peers-org1), you're ready to create a peer for Org1.
 
 #### What role do peers play?
 {: #ibp-console-build-network-peer-role}
@@ -238,10 +238,10 @@ Use your console to perform the following steps:
 2. Make sure the option to **Create a peer** is selected. Then click **Next**.
 3. Give your peer a **Display name** of `Peer Org1`.
 4. The **Advanced deployment options** can be safely ignored for purposes of this tutorial. For more information about these options, see the links below.
-   * [State database selection](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-govern-components#ibp-console-govern-components-level-couch)
-   * [Kubernetes zone selection](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-ha#ibp-console-ha-multi-zone) (Only visible when your cluster is configured for multi-zone support.)
-   * [External Certificate Authority configuration](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-govern-components#ibp-console-govern-third-party-ca)
-   * [Resource allocation](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-govern-components#ibp-console-govern-components-allocate-resources)
+   * [State database selection](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-govern-components#ibp-console-govern-components-level-couch)
+   * [Kubernetes zone selection](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-ha#ibp-console-ha-multi-zone) (Only visible when your cluster is configured for multi-zone support.)
+   * [External Certificate Authority configuration](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-govern-components#ibp-console-govern-third-party-ca)
+   * [Resource allocation](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-govern-components#ibp-console-govern-components-allocate-resources)
 5. Click **Next**.
 6. On the next screen
    * Select `Org1 CA`, as this is the CA you used to register the peer identity.
@@ -280,7 +280,7 @@ The ordering service is a key component in a network because it performs a few e
 
 For more information about ordering services and the role they play in networks based on Hyperledger Fabric, see [The Ordering Service](https://hyperledger-fabric.readthedocs.io/en/release-1.4/orderer/ordering_service.html){: external}.
 
-<blockchain-rhos>You</blockchain-rhos> have the option between creating a one node ordering service (sufficient for testing purposes) and a crash fault tolerant ordering service featuring five nodes tied to a single organization.  In this tutorial, we will show the one  node ordering service.
+You have the option between creating a one node ordering service (sufficient for testing purposes) and a crash fault tolerant ordering service featuring five nodes tied to a single organization.  In this tutorial, we will show the one  node ordering service.
 
 However, just as with the peer, before we can create an ordering service, we need to create a CA to supply the identities and the MSP of our ordering service organization.
 
@@ -295,7 +295,7 @@ The production level ordering service available is a crash fault tolerant (CFT) 
 
 Currently, the only crash fault tolerant configuration of ordering nodes currently available is **five** nodes. While it is possible to create a crash fault tolerant ordering service with as little as three nodes, this configuration incurs risk. If a node goes down, for example during a maintenance cycle, only two nodes would be left. If another node was lost during this cycle **for any reason**, only one node would left. In that state, a one node ordering service when you started with three, you would no longer have a majority of nodes available, also known as a "quorum". Without a quorum, no transactions can be pushed. The channel would cease to function.
 
-With five nodes, you can lose two nodes and still maintain a quorum, meaning that you can undergo a maintenance cycle while maintaining high availability. As a result,  <blockchain-rhos>you </blockchain-rhos> will only have the choice between one node and five nodes. Production networks should choose the five node option, as a one node ordering service is, by definition, not crash fault tolerant.
+With five nodes, you can lose two nodes and still maintain a quorum, meaning that you can undergo a maintenance cycle while maintaining high availability. As a result,  you  will only have the choice between one node and five nodes. Production networks should choose the five node option, as a one node ordering service is, by definition, not crash fault tolerant.
 
 In this tutorial, we will create a one node ordering service.
 
@@ -307,13 +307,13 @@ The process for creating a CA for an ordering service is identical to creating i
 1. Navigate to the **Nodes** tab and click **Add Certificate Authority**.
 2. In this tutorial, we're creating nodes, so make sure the option to **Create a Certificate Authority** is selected. Then click **Next**
 3. Give this CA a unique display name, `Ordering Service CA`. You're free to reuse the **CA administrator enroll ID** of `admin` and a secret of `adminpw`. As this is a different CA, this identity is distinct from the CA admin identity for created for the `Org1 CA`, even though the ID and secret are identical.
-4. The **Advanced deployment options** can be safely ignored for purposes of this tutorial. For more information about these options, see the link<blockchain-rhos ha-ca>s</blockchain-rhos ha-ca> below.<blockchain-rhos ha-ca>
-   * [Database selection](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-build-ha-ca#ibp-console-build-ha-ca-create)
-   * [Kubernetes zone selection](/docs/blockchain-rhos?topic=blockchain-rhos-ibp-console-ha#ibp-console-ha-multi-zone) (Only visible when your cluster is configured for multi-zone support.)</blockchain-rhos ha-ca>
-   * [Resource allocation](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-govern-components#ibp-console-govern-components-allocate-resources)
+4. The **Advanced deployment options** can be safely ignored for purposes of this tutorial. For more information about these options, see the links below.
+   * [Database selection](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-build-ha-ca#ibp-console-build-ha-ca-create)
+   * [Kubernetes zone selection](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-ha#ibp-console-ha-multi-zone) (Only visible when your cluster is configured for multi-zone support.)
+   * [Resource allocation](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-govern-components#ibp-console-govern-components-allocate-resources)
 5. Review the Summary page, then click **Add Certificate Authority**.
 
-As with the peer, advanced users may already have their own CA and not want to create a new CA using the console. If your existing CA can issue certificates in `X.509` format, you can use certificates from your own external CA instead of creating new certificates here. See this topic on [Using certificates from an external CA with your peer or ordering node](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-govern-components#ibp-console-govern-third-party-ca).
+As with the peer, advanced users may already have their own CA and not want to create a new CA using the console. If your existing CA can issue certificates in `X.509` format, you can use certificates from your own external CA instead of creating new certificates here. See this topic on [Using certificates from an external CA with your peer or ordering node](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-govern-components#ibp-console-govern-third-party-ca).
 
 ### Associating the CA admin identity
 {: #ibp-console-build-network-orderer-ca-admin}
@@ -355,8 +355,8 @@ As we did with the peer, we need to register two identities with our ordering se
 Once you have associated the CA admin, you can use the CA tile to create these identities by completing the following steps:
 
 1. Click the `Ordering Service CA` tile in the **Nodes** tab and ensure the `admin` identity that you created for the CA is visible in the table. Then click the **Register User** button.
-2. First we'll register the organization admin, which we can do by giving an **Enroll ID** of `OSadmin` and a **secret** of `OSadminpw`. Then set the `Type` for this identity as `admin`.  You can ignore the **Maximum enrollments** field. If you want to learn more about enrollments, see [Registering identities](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-identities#ibp-console-identities-register). Click **Next**.
-3. This tutorial does not configure attributes on identities, see [Registering identities](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-identities#ibp-console-identities-register) if you want to learn more. Click **Register user**.
+2. First we'll register the organization admin, which we can do by giving an **Enroll ID** of `OSadmin` and a **secret** of `OSadminpw`. Then set the `Type` for this identity as `admin`.  You can ignore the **Maximum enrollments** field. If you want to learn more about enrollments, see [Registering identities](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-identities#ibp-console-identities-register). Click **Next**.
+3. This tutorial does not configure attributes on identities, see [Registering identities](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-identities#ibp-console-identities-register) if you want to learn more. Click **Register user**.
 4. After the organization admin has been registered, repeat this same process for the identity of the ordering service (also using the `Ordering Service CA`). For the ordering service node identities, give an enroll ID of `OS1` and a secret of `OS1pw`. This is a node identity, so select `orderer` as the **Type**. You can ignore the **Maximum enrollments** field and, on the next panel, do not assign any **Attributes**, as before.
 
 **Task: Create a CA and register users**
@@ -406,7 +406,7 @@ After you have created the MSP, you should be able to see the ordering service o
   {: caption="Table 12. Check your wallet" caption-side="bottom"}
 
 
-For more information about MSPs, see [managing organizations](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-organizations#ibp-console-organizations).
+For more information about MSPs, see [managing organizations](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-organizations#ibp-console-organizations).
 
 Exporting your organization admin identity is important because you are responsible for managing and securing these certificates. If you export the ordering service and the ordering service MSP definition, they can be imported into another console where another operator can create new channels on the ordering service or join peers to the channel.
 {:important}
@@ -419,9 +419,9 @@ Perform the following steps from your console:
 1. On the **Nodes** page, click **Add ordering service**.
 2. Make sure the option to **Create an ordering service** is selected. Then click **Next**.
 3. Give your ordering service a **Display name** of `Ordering Service` and choose whether you want your ordering service to have one node (sufficient for testing) or five nodes (good for production). Choose **One ordering node** and click **Next**. For the purpose of this tutorial, do not choose any of the **Advanced deployment options**. Click **Next**. For more information about these options, see the links below.
-   * [Kubernetes zone selection](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-ha#ibp-console-ha-multi-zone) (Only visible when your cluster is configured for multi-zone support.)
-   * [External Certificate Authority configuration](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-govern-components#ibp-console-govern-third-party-ca)
-   * [Resource allocation](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-govern-components#ibp-console-govern-components-allocate-resources)
+   * [Kubernetes zone selection](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-ha#ibp-console-ha-multi-zone) (Only visible when your cluster is configured for multi-zone support.)
+   * [External Certificate Authority configuration](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-govern-components#ibp-console-govern-third-party-ca)
+   * [Resource allocation](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-govern-components#ibp-console-govern-components-allocate-resources)
 4. On the next panel,
    * Select `Ordering Service CA` as your CA.
    * Then, select the **enroll ID** for the node identity that you created for your ordering service from the drop-down list, `OS1`.
@@ -454,9 +454,9 @@ Because only ordering service admins can add peer organizations to the consortiu
 
 Watch the following [video](http://ibm.biz/BlockchainPlatformSeries4){: external} to learn about the process to add the organization to the consortium, create the channel, and join your peer to the channel.
 
-<blockchain-rhos> Before attempting these steps, you may experience an error when you click your ordering service tile. If so, review the troubleshooting topic [Why is my channel creation failing or I am unable to add a new organization to my ordering service with the error "Unable to get system channel"](/docs/blockchain-rhos?topic=blockchain-rhos-ibp-v2-troubleshooting#ibp-v2-troubleshooting-accept-tls).
+ Before attempting these steps, you may experience an error when you click your ordering service tile. If so, review the troubleshooting topic [Why is my channel creation failing or I am unable to add a new organization to my ordering service with the error "Unable to get system channel"](/docs/blockchain-sw?topic=blockchain-sw-ibp-v2-troubleshooting#ibp-v2-troubleshooting-accept-tls).
 {: tip}
-</blockchain-rhos>
+
 
 Because you created the ordering service admin using the console, this process is relatively straightforward:
 1. Navigate to the **Nodes** tab.
@@ -467,12 +467,12 @@ Because you created the ordering service admin using the console, this process i
 
 When this process is complete, it is possible for `Org1` to create or join a channel hosted on your `Ordering Service`.
 
-In this tutorial, we can easily access the `Org1 MSP` because both the peer organization and the ordering service organization were created in the same console. In a production scenario, the MSP definitions of other organization would be created by different network operators in their own cluster using their own {{site.data.keyword.blockchainfull_notm}} console. In those cases, when the organization wants to join your consortium, the organization MSP definition of the organization will need to be sent to your console in an out of band operation. Additionally, you will need to export your ordering service and send it to them so they can import it into their console and join a peer to the channel (if they are added to the consortium, they will also be able to create a new channel). This process is described in the Join a network tutorial under [Exporting your organization information](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-join-network#ibp-console-join-network-add-org2-remote).
+In this tutorial, we can easily access the `Org1 MSP` because both the peer organization and the ordering service organization were created in the same console. In a production scenario, the MSP definitions of other organization would be created by different network operators in their own cluster using their own {{site.data.keyword.blockchainfull_notm}} console. In those cases, when the organization wants to join your consortium, the organization MSP definition of the organization will need to be sent to your console in an out of band operation. Additionally, you will need to export your ordering service and send it to them so they can import it into their console and join a peer to the channel (if they are added to the consortium, they will also be able to create a new channel). This process is described in the Join a network tutorial under [Exporting your organization information](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-join-network#ibp-console-join-network-add-org2-remote).
 
 ## Step four: Create a channel
 {: #ibp-console-build-network-create-channel}
 
-For information on how to update a channel, see [Updating a channel configuration](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-govern#ibp-console-govern-update-channel).
+For information on how to update a channel, see [Updating a channel configuration](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-govern#ibp-console-govern-update-channel).
 
 Although the members of a network are usually related business entities that want to transact with each other, there might be instances when subsets of the members want to transact without the knowledge of the others. This is possible by creating a **channel** on which these transactions will take place. Channels replicate the structure of a blockchain network in that they contain members, peers, an ordering service, a ledger, policies, and smart contracts. But by restricting the membership, and even the knowledge of the channel, to particular subsets of the network membership, channels ensure that network members can leverage the overall structure of the network while maintaining privacy, where needed.
 
@@ -541,7 +541,7 @@ Perform the following steps from your console:
 5. Click **Join channel**.
 
 
-In this tutorial, we are only creating and joining a single peer to the channel. As a result, you don't have to worry about a conflict between the database type used by your peer (which in this tutorial is CouchDB) and any other peers on the channel. However, in a production scenario, a best practice will be to ensure that the peer you are joining to this channel uses the same database type as other peers on the channel. For more information, see [LevelDB vs CouchDB](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-govern-components#ibp-console-govern-components-level-couch).
+In this tutorial, we are only creating and joining a single peer to the channel. As a result, you don't have to worry about a conflict between the database type used by your peer (which in this tutorial is CouchDB) and any other peers on the channel. However, in a production scenario, a best practice will be to ensure that the peer you are joining to this channel uses the same database type as other peers on the channel. For more information, see [LevelDB vs CouchDB](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-govern-components#ibp-console-govern-components-level-couch).
 {:important}
 
 ## Next steps
@@ -549,9 +549,9 @@ In this tutorial, we are only creating and joining a single peer to the channel.
 
 After you have created and joined your peer to a channel, you have a basic, though fully functional, blockchain network. Use the following steps to deploy a smart contract and begin submitting transactions:
 
-- [Deploy a smart contract on your network](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-smart-contracts#ibp-console-smart-contracts) using the console.
-- After you have installed and instantiated your smart contract, you can [submit transactions using your client application](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-smart-contracts#ibp-console-smart-contracts-connect-to-SDK).
-- Use [the commercial paper sample](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-app#ibp-console-app-commercial-paper) to deploy an example smart contract and submit transactions by using sample application code.
+- [Deploy a smart contract on your network](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-smart-contracts#ibp-console-smart-contracts) using the console.
+- After you have installed and instantiated your smart contract, you can [submit transactions using your client application](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-smart-contracts#ibp-console-smart-contracts-connect-to-SDK).
+- Use [the commercial paper sample](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-app#ibp-console-app-commercial-paper) to deploy an example smart contract and submit transactions by using sample application code.
 
-You can also create another peer organization by using the [Join a network tutorial](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-join-network#ibp-console-join-network-structure). You can add the second organization to your channel to simulate a distributed network, with two peers that share a single channel ledger.
+You can also create another peer organization by using the [Join a network tutorial](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-join-network#ibp-console-join-network-structure). You can add the second organization to your channel to simulate a distributed network, with two peers that share a single channel ledger.
 

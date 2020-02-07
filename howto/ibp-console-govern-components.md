@@ -6,7 +6,7 @@ lastupdated: "2020-02-07"
 
 keywords: network components, Kubernetes, OpenShift, allocate resources, batch timeout, reallocate resources, LevelDB, CouchDB, ordering nodes, ordering, add and remove, governance
 
-subcollection: blockchain-rhos
+subcollection: blockchain-sw
 
 ---
 
@@ -62,7 +62,7 @@ Because your instance of the {{site.data.keyword.blockchainfull_notm}} Platform 
 
   For a sense of how much storage and compute you will need in your cluster, refer to the chart after this list, which contains the current defaults for the peer, orderer, and CA.
 
-2. **Check whether you have enough resources in your Kubernetes cluster**.  If you do not have enough space in your cluster to deploy or resize resources, you will need to increase the size of your cluster. <blockchain-rhos>Check the documentation of your cloud provider to learn how to scale clusters.</blockchain-rhos> If you have enough space in your cluster, you can continue with step 3.
+2. **Check whether you have enough resources in your Kubernetes cluster**.  If you do not have enough space in your cluster to deploy or resize resources, you will need to increase the size of your cluster. Check the documentation of your cloud provider to learn how to scale clusters. If you have enough space in your cluster, you can continue with step 3.
 3. **Use the console to deploy or resize your node**. If your Kubernetes pod is large enough to accommodate the new size of the node, the reallocation should proceed smoothly. If the worker node that the pod is running on is running out of resources, you can add a new larger worker node to your cluster and then delete the existing working node.
 
 | **Component** (all containers) | CPU**  | Memory (GB) | Storage (GB) |
@@ -86,13 +86,13 @@ While the figures in this topic endeavor to be precise, be aware that there are 
 
 
 
-<blockchain-rhos>Resources can be set during the creation of a node by clicking on the **Resource allocation** box while the node is being created. If this box is not checked, the default resource allocations, which can be seen below, will be used.</blockchain-rhos>
+Resources can be set during the creation of a node by clicking on the **Resource allocation** box while the node is being created. If this box is not checked, the default resource allocations, which can be seen below, will be used.
 
 The **Resource allocation** panel in the console provides default values for the various fields that are involved in creating a node. These values are chosen because they represent a good way to get started. However, every use case is different. While this topic will provide guidance for ways to think about these values, it ultimately falls to the user to monitor their nodes and find sizings that work for them. Therefore, barring situations in which users are certain that they will need values different from the defaults, a practical strategy is to use these defaults at first and adjust them later. For an overview of performance and scale of Hyperledger Fabric, which the {{site.data.keyword.blockchainfull_notm}} Platform is based on, see [Answering your questions on Hyperledger Fabric performance and scale](https://www.ibm.com/blogs/blockchain/2019/01/answering-your-questions-on-hyperledger-fabric-performance-and-scale/){: external}.
 
-All of the containers that are associated with a node have **CPU** and **memory**, while certain containers that are associated with the peer, ordering node, and CA also have **storage**. For more information about storage, see <blockchain-rhos>[storage](/docs/blockchain-rhos?topic=blockchain-rhos-deploy-ocp#deploy-ocp-storage).</blockchain-rhos> 
+All of the containers that are associated with a node have **CPU** and **memory**, while certain containers that are associated with the peer, ordering node, and CA also have **storage**. For more information about storage, see [storage](/docs/blockchain-sw?topic=blockchain-sw-deploy-ocp#deploy-ocp-storage). 
 
-You are responsible for monitoring your CPU, memory and storage consumption in your cluster. If you do happen to request more resources for a blockchain node than are available, the node will not start. However, existing nodes will not be affected.  <blockchain-rhos>For information about how to increase the CPU, memory, and storage, consult the documentation of your cloud provider.</blockchain-rhos>
+You are responsible for monitoring your CPU, memory and storage consumption in your cluster. If you do happen to request more resources for a blockchain node than are available, the node will not start. However, existing nodes will not be affected.  For information about how to increase the CPU, memory, and storage, consult the documentation of your cloud provider.
 {:note}
 
 Every node has a gRPC web proxy container that bootstraps the communication layer between the console and a node. This container has fixed resource values and is included on the Resource allocation panel to provide an accurate estimate of how much space is required on your Kubernetes cluster in order for the node to deploy. Because the values for this container cannot be changed, we will not discuss the gRPC web proxy in the following sections.
@@ -116,13 +116,13 @@ As we noted in our section on [How the console interacts with your Kubernetes cl
 | **CA container CPU and memory** | When you expect that your CA will be bombarded with registrations and enrollments. |
 | **CA storage** | When you plan to use this CA to register a large number of users and applications. |
 
-<blockchain-rhos>
+
 
 #### Creating highly available CAs
 {: #ibp-console-govern-components-CA-HA}
 
-For information about creating highly available CAs through the use of replica sets, see [how to configure CA replica sets](/docs/blockchain-rhos?topic=blockchain-rhos-ibp-console-ha-ca).
-</blockchain-rhos>
+For information about creating highly available CAs through the use of replica sets, see [how to configure CA replica sets](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-ha-ca).
+
 
 ### Peers
 {: #ibp-console-govern-components-peers}
@@ -179,17 +179,17 @@ Resizing a node requires the containers to be rebuilt, which can cause a delay i
 
 
 
-<blockchain-rhos>Third party tools such as [Sysdig](https://sysdig.com){: external} can be used to help monitor the usage in your cluster. If you determine that a worker node is running out of resources, you can add a new larger worker node to your cluster and then delete the existing working node.
+Third party tools such as [Sysdig](https://sysdig.com){: external} can be used to help monitor the usage in your cluster. If you determine that a worker node is running out of resources, you can add a new larger worker node to your cluster and then delete the existing working node.
 {:note}
-</blockchain-rhos>
+
 
 While it takes less effort to deploy enough resources to your Kubernetes cluster from the start and therefore be able deploy and expand resources without having to increase the resources in your cluster, the bigger the deployment, the more it will cost. Users need to consider their options carefully and recognize the tradeoffs that they are making regardless of the option that they choose.
 
 
 
-<blockchain-rhos>
+
 You can scale your cluster by monitoring your nodes and following the instructions available from your cloud provider to add more nodes, larger nodes, or increasing the size of the nodes, depending on the options available in your cloud provider. The method you will use to increase storage will depend on the storage class you chose for your cluster. Note that if you are about to exhaust the storage on your peer or ordering node, you might need to deploy a new peer or ordering node with more storage and let it sync via your other components on the same channels.
-</blockchain-rhos>
+
 
 
 
@@ -197,10 +197,10 @@ You can scale your cluster by monitoring your nodes and following the instructio
 ## Using certificates from an external CA with your peer or ordering service
 {: #ibp-console-govern-third-party-ca}
 
-<blockchain-rhos external-ca>
-Currently, it is not possible to create a five node Raft ordering service using certificates entered into the console as described in this section. You can still use the normal register and enroll flow described in [Build a network](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-build-network#ibp-console-build-network-use-CA-org1) to create this type of ordering service.
+
+Currently, it is not possible to create a five node Raft ordering service using certificates entered into the console as described in this section. You can still use the normal register and enroll flow described in [Build a network](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-build-network#ibp-console-build-network-use-CA-org1) to create this type of ordering service.
 {:important}
-</blockchain-rhos external-ca>
+
 
 Instead of using an {{site.data.keyword.blockchainfull_notm}} Platform Certificate Authority as your peer or ordering service's CA, you can use certificates from an external CA, one that is not hosted by {{site.data.keyword.IBM_notm}}, as long as the CA issues certificates in [X.509](https://hyperledger-fabric.readthedocs.io/en/release-1.4/identity/identity.html#digital-certificates){: external} format.
 
@@ -211,7 +211,7 @@ Instead of using an {{site.data.keyword.blockchainfull_notm}} Platform Certifica
 **Note:** The certificates inside the files can be in either `PEM` format or `base64 encoded` format.
  * **Peer or ordering service identity certificate** This is the signing certificate from your external CA that the peer or ordering service will use.
  * **Peer or ordering service identity private key**  This is your private key corresponding to the signed certificate from your third-party CA that this peer or ordering service will use.
- * **Peer or ordering service organization MSP definition** You must manually generate this file using instructions provided in [Manually building an MSP JSON file](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-organizations#console-organizations-build-msp).
+ * **Peer or ordering service organization MSP definition** You must manually generate this file using instructions provided in [Manually building an MSP JSON file](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-organizations#console-organizations-build-msp).
  * **TLS CA certificate** This is the public signing certificate created by your external TLS CA that will be used by this peer or ordering service.
   * **TLS CA private key** This is the private key corresponding to the signed certificate from your TLS CA that will be used by this peer or ordering service for secure communications with other members on the network.
  * **TLS CA root certificate** (Optional) This is the root certificate of your external TLS CA. You must provide either a TLS CA root certificate or an intermediate TLS CA certificate, you may also provide both.
@@ -245,7 +245,7 @@ Now that you have gathered all the necessary certificates, you are ready to crea
 ### Option 2: Create a five node ordering service using certificates from an external CA
 {: #ibp-console-govern-create-five-node}
 
- <blockchain-rhos>You </blockchain-rhos> have the additional option of deploying a five node ordering service that uses the Raft consensus protocol.  Before you deploy a five node ordering service, you need to build a JSON file that contains all of the certificates for the five nodes by using the following instructions:
+ You  have the additional option of deploying a five node ordering service that uses the Raft consensus protocol.  Before you deploy a five node ordering service, you need to build a JSON file that contains all of the certificates for the five nodes by using the following instructions:
 
 #### Create the certificates JSON file
 {: #ibp-console-govern-create-certs-file}
@@ -372,15 +372,15 @@ Now that you have created a JSON file with all of the certificates for the order
 4. In **Number of ordering nodes**, select **Five ordering nodes**. Then select **External Certificate Authority configuration** and click **Next**.
 5. Click **Add file** to upload the JSON file that contains all of the certificates.
 6. Select the **Organization MSP** definition that you imported.
-7.  <blockchain-rhos>On</blockchain-rhos> the next panel, you have the opportunity to configure resource allocation for the nodes. The selections you make here are applied to all five ordering nodes.  If you want to learn more about how to allocate resources to your node, see this topic on [Allocating resources](#ibp-console-govern-components-allocate-resources).
+7.  On the next panel, you have the opportunity to configure resource allocation for the nodes. The selections you make here are applied to all five ordering nodes.  If you want to learn more about how to allocate resources to your node, see this topic on [Allocating resources](#ibp-console-govern-components-allocate-resources).
 8. Review the summary and click **Add ordering service**.
 
 ### What's next
 {: #ibp-console-govern-third-party-ca-next}
 
 You have gathered all of your peer or ordering service certificates from your third-party CA, created their corresponding organization MSP definition and created a peer or ordering service. If you are following along in the tutorials, you can return to the next step.
-- If you created the peer node, the next step is to [Create the node that orders transactions](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-build-network#ibp-console-build-network-create-orderer).
-- If you created the node to join an existing network, the next step is to [Add your organization to list of organizations that can transact](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-join-network#ibp-console-join-network-add-org2).
+- If you created the peer node, the next step is to [Create the node that orders transactions](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-build-network#ibp-console-build-network-create-orderer).
+- If you created the node to join an existing network, the next step is to [Add your organization to list of organizations that can transact](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-join-network#ibp-console-join-network-add-org2).
 - If you created an ordering service, the next step is to [Create a channel](/docs/blockchain?topic=blockchain-ibp-console-build-network#ibp-console-build-network-create-channel#ibp-console-build-network-create-channel).
 
 

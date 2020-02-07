@@ -6,7 +6,7 @@ lastupdated: "2020-02-07"
 
 keywords: security, encryption, storage, tls, iam, roles, keys
 
-subcollection: blockchain-rhos
+subcollection: blockchain-sw
 
 ---
 
@@ -30,7 +30,7 @@ subcollection: blockchain-rhos
 
 **Audience:** Tasks in this section are typically performed by **blockchain network operators**.  
 
- <blockchain-rhos>Configuration of an {{site.data.keyword.blockchainfull_notm}} Platform network includes deploying the blockchain console that can then be used to create blockchain nodes which reside in the customer Kubernetes cluster. </blockchain-rhos>
+ Configuration of an {{site.data.keyword.blockchainfull_notm}} Platform network includes deploying the blockchain console that can then be used to create blockchain nodes which reside in the customer Kubernetes cluster. 
 
 Considerations include:
 - [IAM (Identity and Access Management)](#ibp-security-ibp-iam)
@@ -45,19 +45,19 @@ Considerations include:
 
 
 
-<blockchain-rhos>
-Identity and access management allows the owner of a console to control which users have access to the console and their privileges within it. IAM is built into the blockchain console and includes local console authentication and role management. When the console is initially provisioned you need to specify the email address of the user who is designated as the console administrator, also known as the **Manager**. This administrator can then add and grant other users access to the console by using the **Users** tab. It is also possible to change the console administrator. Every user that accesses the console must be assigned an access policy with a user role defined. The policy determines what actions the user can perform within the console. Other users can be assigned with **Manager**, **Writer**, or **Reader** roles when a console manager adds them to the console. The definition of each role is provided in the [Role to permissions mapping table](/docs/blockchain-rhos?topic=blockchain-rhos-console-icp-manage#console-icp-manage--role-mapping). For the steps required to add new users, see [Managing users from the console](/docs/blockchain-rhos?topic=blockchain-rhos-console-icp-manage#console-icp-manage-users).
 
-Note that users can also be managed with [APIs](/docs/blockchain-rhos?topic=blockchain-rhos-ibp-v2-apis#console-icp-manage-users-apis).
-</blockchain-rhos>
+Identity and access management allows the owner of a console to control which users have access to the console and their privileges within it. IAM is built into the blockchain console and includes local console authentication and role management. When the console is initially provisioned you need to specify the email address of the user who is designated as the console administrator, also known as the **Manager**. This administrator can then add and grant other users access to the console by using the **Users** tab. It is also possible to change the console administrator. Every user that accesses the console must be assigned an access policy with a user role defined. The policy determines what actions the user can perform within the console. Other users can be assigned with **Manager**, **Writer**, or **Reader** roles when a console manager adds them to the console. The definition of each role is provided in the [Role to permissions mapping table](/docs/blockchain-sw?topic=blockchain-sw-console-icp-manage#console-icp-manage--role-mapping). For the steps required to add new users, see [Managing users from the console](/docs/blockchain-sw?topic=blockchain-sw-console-icp-manage#console-icp-manage-users).
+
+Note that users can also be managed with [APIs](/docs/blockchain-sw?topic=blockchain-sw-ibp-v2-apis#console-icp-manage-users-apis).
+
 
 ### Ports
 {: #ibp-security-ibp-ports}
 
 
-<blockchain-rhos>
+
 If you are using a client application to send requests to the console, either via the blockchain APIs or the Fabric SDKs, the standard `HTTPS` (443) port needs to be exposed in your firewall.
-</blockchain-rhos>
+
 
 ### Key management
 {: #ibp-security-ibp-keys}
@@ -66,9 +66,9 @@ The {{site.data.keyword.blockchainfull_notm}} Platform network is based on trust
 
 Because these public and private key pairs are essential to how the {{site.data.keyword.blockchainfull_notm}} Platform functions, **key management** is a critical aspect of security. If a private key is compromised or lost, hostile actors might be able to access your data and functionality. Although you can use the {{site.data.keyword.blockchainfull_notm}} Platform console to generate private keys, those keys are not permanently stored by the console or the cloud (public keys, on the other hand, are stored in the browser and added to the member's wallet so that the console can use them to manage blockchain components), making customers ultimately responsible for the storage, backup, and disaster recovery of their keys.
 
-If a private key is lost and cannot be recovered, you will need to generate a new private key by registering and enrolling a new identity with your Certificate Authority. You should also then remove and replace your signCert in any components or organizations where you had used the lost or corrupted identity. See [Updating an organization MSP definition](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-organizations#ibp-console-govern-update-msp) for detailed steps.
+If a private key is lost and cannot be recovered, you will need to generate a new private key by registering and enrolling a new identity with your Certificate Authority. You should also then remove and replace your signCert in any components or organizations where you had used the lost or corrupted identity. See [Updating an organization MSP definition](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-organizations#ibp-console-govern-update-msp) for detailed steps.
 
-You also have the option to bring your own certificates from your own non-{{site.data.keyword.blockchainfull_notm}} Platform CA when you create a peer node or ordering service. If you use your own certificates, you will need to manually build the peer or ordering service MSP definition file that includes those certificates and import the file into the console **Organizations** tab. See  [Using certificates from an external CA with your peer or ordering node](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-govern-components#ibp-console-govern-third-party-ca) for the steps required.
+You also have the option to bring your own certificates from your own non-{{site.data.keyword.blockchainfull_notm}} Platform CA when you create a peer node or ordering service. If you use your own certificates, you will need to manually build the peer or ordering service MSP definition file that includes those certificates and import the file into the console **Organizations** tab. See  [Using certificates from an external CA with your peer or ordering node](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-govern-components#ibp-console-govern-third-party-ca) for the steps required.
 
 ### Membership Service Providers (MSPs)
 {: #ibp-security-ibp-msp}
@@ -97,16 +97,16 @@ Note that organization MSPs are stored in browser storage and must be exported t
 
 Hyperledger Fabric allows for finer grained control over user access to specified resources through the use of access control lists (ACLs). ACLs allow access to a channel resource to be restricted to an organization and a role within that organization. The available set of ACLs are from the underlying Fabric architecture and are selected during channel creation or update. Note that access control lists are restrictive, rather than additive. If access to a resource is specified to an organization, it means that **only that organization** will have access to the resource. For example, if the default access to a particular resource is the Readers of all organizations, and that access is changed to the Admin of Org1, then only the Admin of Org1 will have access to the resource. Because access to certain resources is fundamental to the smooth operation of a channel, it is highly recommended to make access control decisions carefully. If you decide to limit access to a resource, make sure that the access to that resource is added, as needed, for each organization.
 
-You can use the blockchain console to select which ACLs to apply to resources on a channel. See this information under [Creating a channel](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-build-network#ibp-console-build-network-channels-create) for instructions on how to configure access control for a channel.
+You can use the blockchain console to select which ACLs to apply to resources on a channel. See this information under [Creating a channel](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-build-network#ibp-console-build-network-channels-create) for instructions on how to configure access control for a channel.
 
 ### API authentication
 {: #ibp-security-ibp-apis}
 
 In order to use the blockchain [APIs](https://cloud.ibm.com/apidocs/blockchain){: external} to create and manage network components, your application needs to be able to authenticate and connect to your network. 
 
-<blockchain-rhos>
-See this topic on how to [Connect to your console using API keys](/docs/blockchain-rhos?topic=blockchain-rhos-ibp-v2-apis#console-icp-manage-api-key) for more details.
-</blockchain-rhos>
+
+See this topic on how to [Connect to your console using API keys](/docs/blockchain-sw?topic=blockchain-sw-ibp-v2-apis#console-icp-manage-api-key) for more details.
+
 
 ## Best practices for security on the customer Kubernetes cluster
 {: #ibp-security-Kubernetes}
@@ -133,33 +133,33 @@ The best place to start is to learn about the security features of the underlyin
 
 With {{site.data.keyword.cloud_notm}} Private, **Pod Security Policies** provide a way to control the security level of the pods and containers in your cluster. The Pod Security Policy that is applied to the namespace on a cluster is the default security setting for any new pod that is created in that namespace. If you are using {{site.data.keyword.cloud_notm}} Private, review the [Security guide](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.2.0/user_management/admin.html){: external} for best practices.
 
-<blockchain-rhos>
+
 For OpenShift Container Platform security considerations, you should review the [Red Hat Container Security Guide Service](https://access.redhat.com/documentation/en-us/openshift_container_platform/4.2/html-single/container_security_guide/index){: external}. You will need to use [security context constraints](https://access.redhat.com/documentation/en-us/openshift_container_platform/4.2/html-single/architecture/index#security-context-constraints){: external} (SCCs) to define a set of conditions that a pod must run with in order to be accepted into the system. Details are included in the {{site.data.keyword.blockchainfull_notm}} Platform deployment instructions.  
 
 If you are not running the platform on Red Hat OpenShift Container Platform, Red Hat Open Kubernetes Distribution, or {{site.data.keyword.cloud_notm}} Private then you need to setup the nginx ingress controller and it needs to be running in [SSL passthrough mode](https://kubernetes.github.io/ingress-nginx/user-guide/tls/#ssl-passthrough){: external}.
-</blockchain-rhos>
+
 
 ### Network security
 {: #ibp-security-Kubernetes-network}
 
 
 
-<blockchain-rhos>
+
 The Kubernetes Container Platform provides the underlying network, including the networks and routers, over which the customer's VLAN resides. The customer needs to configure their servers and use gateways and firewalls to route traffic between servers to protect workloads from network threats. Protecting your cloud network by using firewalls and intrusion prevention system devices is imperative for protecting your cloud-based workloads.
-</blockchain-rhos>
+
 
 
 
 ### Cluster and Operating System security
 {: #ibp-security-Kubernetes-container-os}
 
-- **Sensitive data:** Cluster configuration data is stored in the `etcd` component of your Kubernetes master. Data in etcd is stored on the local disk of the Kubernetes master and is backed up to {{site.data.keyword.cos_full_notm}}. Data is encrypted during transit to {{site.data.keyword.cos_full_notm}}. <blockchain-rhos>If you are using OpenShift, you can choose to enable encryption for your etcd data on the local disk of your Kubernetes master by [Encrypting Data at the datastore layer](https://docs.openshift.com/container-platform/4.2/admin_guide/encrypting_data.html){: external} for your cluster.</blockchain-rhos>
+- **Sensitive data:** Cluster configuration data is stored in the `etcd` component of your Kubernetes master. Data in etcd is stored on the local disk of the Kubernetes master and is backed up to {{site.data.keyword.cos_full_notm}}. Data is encrypted during transit to {{site.data.keyword.cos_full_notm}}. If you are using OpenShift, you can choose to enable encryption for your etcd data on the local disk of your Kubernetes master by [Encrypting Data at the datastore layer](https://docs.openshift.com/container-platform/4.2/admin_guide/encrypting_data.html){: external} for your cluster.
 
 
 
-<blockchain-rhos>
+
 - **UBI Linux:** The Fabric Docker images use [Red Hat UBI images](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html-single/building_running_and_managing_containers/index#how_are_ubi_images_different/){: external}, which is a smaller, lighter, and more secure version of Linux.
-</blockchain-rhos>
+
 
 ### Keys and cluster access information
 {: #ibp-security-Kubernetes-keys}
@@ -174,7 +174,7 @@ The Kubernetes Container Platform provides the underlying network, including the
 ### Membership Service Providers (MSPs)
 {: #ibp-security-kubernetes-msp}
 
-Organizations in a blockchain network are represented by [MSP](/docs/blockchain-sw?topic=blockchain-rhos-glossary#glossary-msp) definitions. You can use the blockchain console to add a new organization to the network by creating a new MSP definition in the **Organizations** tab. If you are the admin of an ordering service, you can use the console to add that organization MSP to a consortium using the **Ordering service** tab. Finally, if you are an administrator of a channel, you can add that organization to an existing channel so the organization can transact on the network using the **Channels** tab (this task might require the signature of other organizations). See the topic on [Join the consortium hosted by the ordering service](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-build-network#ibp-console-build-network-add-org) for detailed steps.
+Organizations in a blockchain network are represented by [MSP](/docs/blockchain-sw?topic=blockchain-sw-glossary#glossary-msp) definitions. You can use the blockchain console to add a new organization to the network by creating a new MSP definition in the **Organizations** tab. If you are the admin of an ordering service, you can use the console to add that organization MSP to a consortium using the **Ordering service** tab. Finally, if you are an administrator of a channel, you can add that organization to an existing channel so the organization can transact on the network using the **Channels** tab (this task might require the signature of other organizations). See the topic on [Join the consortium hosted by the ordering service](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-build-network#ibp-console-build-network-add-org) for detailed steps.
 
 ### Storage
 {: #ibp-security-kubernetes-storage}
@@ -187,14 +187,14 @@ Customers are responsible for encrypting their own storage and the encryption mu
 
 
 - For more information about encryption on {{site.data.keyword.cloud_notm}} Private:
-[Encrypting volumes that are used by IBM Cloud Private](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/installing/fips_encrypt_volumes.html){: external} <blockchain-rhos>
+[Encrypting volumes that are used by IBM Cloud Private](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/installing/fips_encrypt_volumes.html){: external} 
 - For more information on securing your persistent storage on OpenShift, see this topic on [Volume Security](https://docs.openshift.com/container-platform/3.11/install_config/persistent_storage/pod_security_context.html){: external}.
-</blockchain-rhos>
+
 
 ### Data privacy
 {: #ibp-security-kubernetes-privacy}
 
-When you have data privacy requirements, [Private Data collections](https://hyperledger-fabric.readthedocs.io/en/release-1.4/private-data/private-data.html#what-is-private-data){: external} provide a way to further isolate specific data from the rest of the channel members. The combination of the use of channels and private data offer various solutions for achieving <blockchain-rhos>[Data Residency](/docs/blockchain-rhos?topic=blockchain-rhos-console-icp-about-data-residency).</blockchain-rhos>
+When you have data privacy requirements, [Private Data collections](https://hyperledger-fabric.readthedocs.io/en/release-1.4/private-data/private-data.html#what-is-private-data){: external} provide a way to further isolate specific data from the rest of the channel members. The combination of the use of channels and private data offer various solutions for achieving [Data Residency](/docs/blockchain-sw?topic=blockchain-sw-console-icp-about-data-residency).
 
 ### GDPR
 {: #ibp-security-kubernetes-gdpr}
@@ -214,5 +214,5 @@ Because {{site.data.keyword.blockchainfull_notm}} Platform is based on Hyperledg
 
 - **Ledger data:** Implicit in the blockchain permissioned network is the notion that an agreed upon policy of multiple endorsers is required to sign (approve) a transaction before it can be committed to the ledger. Before any information can be added to the ledger, a clear and well established process for defining the ledger information must exist. Data on the ledger is immutable.
 
-- **Smart contracts:** All smart contracts should be reviewed by channel members before they are installed and executed on peers in their organization. Likewise, all updates to smart contract should be reviewed before the updates are applied to a peer. See this topic on [Upgrading a smart contract](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-smart-contracts#ibp-console-smart-contracts-upgrade) for the steps that are required.
+- **Smart contracts:** All smart contracts should be reviewed by channel members before they are installed and executed on peers in their organization. Likewise, all updates to smart contract should be reviewed before the updates are applied to a peer. See this topic on [Upgrading a smart contract](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-smart-contracts#ibp-console-smart-contracts-upgrade) for the steps that are required.
 

@@ -6,7 +6,7 @@ lastupdated: "2020-02-07"
 
 keywords: IBM Blockchain Platform, images
 
-subcollection: blockchain-rhos
+subcollection: blockchain-sw
 
 ---
 
@@ -58,7 +58,7 @@ The images do not include the {{site.data.keyword.blockchainfull_notm}} Platform
 
 {{site.data.keyword.blockchainfull_notm}} Platform images can be purchased through an entitlement to the {{site.data.keyword.blockchainfull_notm}} Platform v2.1.2. After you purchase the platform, you can access the [My IBM dashboard](https://myibm.ibm.com/dashboard/){: external} to obtain your entitlement key. You can then use the entitlement key to download the images from the {{site.data.keyword.IBM_notm}} Entitlement Registry.
 
-For more information on the pricing of the images, to the [Pricing](/docs/blockchain-rhos?topic=blockchain-rhos-ibp-rhos-pricing) topic.
+For more information on the pricing of the images, to the [Pricing](/docs/blockchain-sw?topic=blockchain-sw-ibp-sw-pricing) topic.
 
 ## Get your entitlement key
 
@@ -580,4 +580,4 @@ If you encounter issues that are related to Hyperledger Fabric or the underlying
 
 {{site.data.keyword.IBM_notm}} provides support for issues that are related to the Hyperledger Fabric code or the steps to download and deploy the images that you can find in this documentation. {{site.data.keyword.IBM_notm}} does not provide support for issues that relate to the operation of the images or your underlying infrastructure. Deployment issues due to the specific circumstances of the customer environment will be the customer's responsibility to investigate. If you need assistance with the deployment and management of a Fabric network, use the [{{site.data.keyword.blockchainfull_notm}} Platform v2.1.2](/docs/blockchain?topic=blockchain-console-ocp-about#console-ocp-about) offering.
 
-You can take advantage of free blockchain developer resources and support forums to troubleshoot problems and get help from {{site.data.keyword.IBM_notm}} and the Fabric community. For more information, see [Resources and support forums](/docs/blockchain-rhos?topic=blockchain-rhos-blockchain-support#blockchain-support-resources).
+You can take advantage of free blockchain developer resources and support forums to troubleshoot problems and get help from {{site.data.keyword.IBM_notm}} and the Fabric community. For more information, see [Resources and support forums](/docs/blockchain-sw?topic=blockchain-sw-blockchain-support#blockchain-support-resources).

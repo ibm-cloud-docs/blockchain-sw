@@ -6,7 +6,7 @@ lastupdated: "2020-02-07"
 
 keywords: smart contract, private data, private data collection, anchor peer
 
-subcollection: blockchain-rhos
+subcollection: blockchain-sw
 
 ---
 
@@ -33,8 +33,8 @@ A smart contract is the code, sometimes referred to as chaincode, that applicati
 You are currently on the third part of our three-part tutorial series. This tutorial guides you through the process of
 using the console to deploy a smart contract onto a channel in your {{site.data.keyword.blockchainfull_notm}} Platform network.
 
-* [Build a network tutorial](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-build-network#ibp-console-build-network) guides you through the process of hosting a network by creating an orderer and peer.
-* [Join a network tutorial](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-join-network#ibp-console-join-network) guides you through the process of joining an existing network by creating a peer and joining it to a channel.
+* [Build a network tutorial](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-build-network#ibp-console-build-network) guides you through the process of hosting a network by creating an orderer and peer.
+* [Join a network tutorial](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-join-network#ibp-console-join-network) guides you through the process of joining an existing network by creating a peer and joining it to a channel.
 * **Deploy a smart contract on the network** (Current tutorial) Provides information on how to write a smart contract and deploy it on your network.
 
 You can use the steps in these tutorials to build a network with multiple organizations in one cluster for the purposes of development and testing. Use the **Build a network** tutorial if you want to form a blockchain consortium by creating an orderer node and adding organizations. Use the **Join a network** tutorial to connect a peer to the network. Following the tutorials with different consortium  members helps you create a truly **distributed** blockchain network.  
@@ -49,19 +49,19 @@ After a smart contract is installed on the peers, a single network member instan
 
 In this tutorial, we go through the steps to use the {{site.data.keyword.blockchainfull_notm}} Platform console to manage the deployment of smart contracts on your network:
 
-- [Install smart contracts on your peers](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-smart-contracts#ibp-console-smart-contracts-install).
-- [Instantiate them on channels](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-smart-contracts#ibp-console-smart-contracts-instantiate).
-- [Specify endorsement policies](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-smart-contracts#ibp-console-smart-contracts-endorse).
-- [Upgrade the smart contract policies and code](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-smart-contracts#ibp-console-smart-contracts-upgrade).
+- [Install smart contracts on your peers](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-smart-contracts#ibp-console-smart-contracts-install).
+- [Instantiate them on channels](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-smart-contracts#ibp-console-smart-contracts-instantiate).
+- [Specify endorsement policies](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-smart-contracts#ibp-console-smart-contracts-endorse).
+- [Upgrade the smart contract policies and code](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-smart-contracts#ibp-console-smart-contracts-upgrade).
 
 
 ## Before you begin
 
 Before you can install a smart contract, ensure that you have the following things ready.
 
-- You must either [build a network](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-build-network#ibp-console-build-network) or [join a network](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-join-network#ibp-console-join-network) by using your {{site.data.keyword.blockchainfull_notm}} Platform console.
-- Because smart contracts are installed onto peers, ensure that you [add peers](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-build-network#ibp-console-build-network-create-peer-org1) to your console.  
-- Smart contracts are instantiated on a channel. Therefore, you must [create a channel](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-build-network#ibp-console-build-network-create-channel) or [join a channel](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-join-network#ibp-console-join-network-join-peer-org2) by using your console.
+- You must either [build a network](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-build-network#ibp-console-build-network) or [join a network](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-join-network#ibp-console-join-network) by using your {{site.data.keyword.blockchainfull_notm}} Platform console.
+- Because smart contracts are installed onto peers, ensure that you [add peers](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-build-network#ibp-console-build-network-create-peer-org1) to your console.  
+- Smart contracts are instantiated on a channel. Therefore, you must [create a channel](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-build-network#ibp-console-build-network-create-channel) or [join a channel](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-join-network#ibp-console-join-network-join-peer-org2) by using your console.
 - The {{site.data.keyword.blockchainfull_notm}} Platform supports smart contracts written in JavaScript, TypeScript, and Go. When you are allocating resources to your peer node, it is important to note that JavaScript and TypeScript smart contracts require more resources than contracts written in Go. Smart contracts that are written in Java are not supported on the {{site.data.keyword.blockchainfull_notm}} Platform.
 
 ## Step one: Write a smart contract
@@ -69,11 +69,11 @@ Before you can install a smart contract, ensure that you have the following thin
 The {{site.data.keyword.blockchainfull_notm}} console manages the *deployment* of smart contracts rather than development. If you are interested in developing smart contracts, you can get started using tutorials provided by the Hyperledger Fabric community and tooling provided by {{site.data.keyword.IBM_notm}}.
 
 - To learn how smart contracts can be used to conduct transactions among multiple parties, see the [Developing applications topic](https://hyperledger-fabric.readthedocs.io/en/release-1.4/developapps/developing_applications.html){: external} in the Hyperledger Fabric documentation.
-- When you are ready to start building smart contracts, you can use the [{{site.data.keyword.blockchainfull_notm}} Visual Studio code extension](https://marketplace.visualstudio.com/items?itemName=IBMBlockchain.ibm-blockchain-platform){: external} to start building your own smart contract project. You can also use that extension to <blockchain-rhos>[connect directly to your network from Visual Studio Code](/docs/blockchain-rhos/topic=blockchain-rhos-ibp-console-app#ibp-console-app-vscode)</blockchain-rhos> and explore the inline tutorials.
+- When you are ready to start building smart contracts, you can use the [{{site.data.keyword.blockchainfull_notm}} Visual Studio code extension](https://marketplace.visualstudio.com/items?itemName=IBMBlockchain.ibm-blockchain-platform){: external} to start building your own smart contract project. You can also use that extension to [connect directly to your network from Visual Studio Code](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-app#ibp-console-app-vscode) and explore the inline tutorials.
 - For a quick tutorial on developing smart contracts, see [Develop a smart contract with the IBM Blockchain Platform VS Code extension](https://developer.ibm.com/tutorials/ibm-blockchain-platform-vscode-smart-contract/){: external}.
 - For a more in-depth end-to-end tutorial about using an application to interact with smart contracts, see [Hyperledger Fabric Commercial Paper tutorial](https://hyperledger-fabric.readthedocs.io/en/release-1.4/tutorial/commercial_paper.html){: external}.
 - To learn about how to incorporate access control mechanisms into your smart contract, see [Chaincode for Developers](https://hyperledger-fabric.readthedocs.io/en/release-1.4/chaincode4ade.html#chaincode-access-control){: external}.
-- When you are ready to install, the smart contract must be packaged into [.cds format](https://hyperledger-fabric.readthedocs.io/en/release-1.4/chaincode4noah.html#packaging){: external} so that it can be installed onto the peers. For more information, see [Packaging smart contracts](/docs/blockchain-sw?topic=blockchain-rhos-develop-vscode#packaging-a-smart-contract). Alternatively, you can use the [peer cli commands](https://hyperledger-fabric.readthedocs.io/en/release-1.4/commands/peerchaincode.html#peer-chaincode-package){: external} to build the package.
+- When you are ready to install, the smart contract must be packaged into [.cds format](https://hyperledger-fabric.readthedocs.io/en/release-1.4/chaincode4noah.html#packaging){: external} so that it can be installed onto the peers. For more information, see [Packaging smart contracts](/docs/blockchain-sw?topic=blockchain-sw-develop-vscode#packaging-a-smart-contract). Alternatively, you can use the [peer cli commands](https://hyperledger-fabric.readthedocs.io/en/release-1.4/commands/peerchaincode.html#peer-chaincode-package){: external} to build the package.
 
 
 
@@ -83,7 +83,7 @@ The {{site.data.keyword.blockchainfull_notm}} console manages the *deployment* o
 Use your console to perform these steps:
 
 1. Click the **Smart contracts** tab to install one or more smart contracts.
-2. Click **Install smart contract** to upload the smart contract package file in [.cds format](https://hyperledger-fabric.readthedocs.io/en/release-1.4/chaincode4noah.html#packaging){: external}. _The smart contract package file must be less than 4MB in size._ You can use the {{site.data.keyword.blockchainfull_notm}} Visual Studio Code extension to [create a smart contract package](/docs/blockchain-sw?topic=blockchain-rhos-develop-vscode#packaging-a-smart-contract). When you install the package from the **Smart contracts** tab, you can select one or more peer nodes to install the smart contracts on.
+2. Click **Install smart contract** to upload the smart contract package file in [.cds format](https://hyperledger-fabric.readthedocs.io/en/release-1.4/chaincode4noah.html#packaging){: external}. _The smart contract package file must be less than 4MB in size._ You can use the {{site.data.keyword.blockchainfull_notm}} Visual Studio Code extension to [create a smart contract package](/docs/blockchain-sw?topic=blockchain-sw-develop-vscode#packaging-a-smart-contract). When you install the package from the **Smart contracts** tab, you can select one or more peer nodes to install the smart contracts on.
 
 If only one peer exists in the console, the smart contract will be installed on it. You are not prompted to select a peer to install the smart contract on. You can navigate to the nodes tab and click a peer that is managed by your console to view the list of smart contracts installed on an individual peer.
 
@@ -97,16 +97,16 @@ You can return to the **Smart contracts** tab later to install the smart contrac
 ## Step three: Instantiate a smart contract
 {: #ibp-console-smart-contracts-instantiate}
 
-Smart contracts are instantiated on a channel. Any console member with peers joined to a channel can instantiate a smart contract and specify the associated [endorsement policy](/docs/blockchain-sw?topic=blockchain-rhos-glossary#glossary-endorsement-policy).
+Smart contracts are instantiated on a channel. Any console member with peers joined to a channel can instantiate a smart contract and specify the associated [endorsement policy](/docs/blockchain-sw?topic=blockchain-sw-glossary#glossary-endorsement-policy).
 
 Use your console to perform these steps:
 
 1. On the smart contracts tab, find the smart contract from the list of smart contracts that are installed on your peers and click **Instantiate** from the overflow menu on the right side of the row.
 2. On the side panel that opens, select a channel to instantiate the smart contract on. You can select the channel, named `channel1`, which you created. Then, click **Next**.
-3. Specify the [endorsement policy for the smart contract](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-smart-contracts#ibp-console-smart-contracts-endorse), described in the following section. When multiple organizations are members of the channel, you have the opportunity choose how many organizations are required to endorse the smart contract transactions.
+3. Specify the [endorsement policy for the smart contract](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-smart-contracts#ibp-console-smart-contracts-endorse), described in the following section. When multiple organizations are members of the channel, you have the opportunity choose how many organizations are required to endorse the smart contract transactions.
 4. You also need to select the organization members to be included in the endorsement policy. If you are following along in the tutorial, that would be `org1msp` and possibly `org2msp` if you completed both the **Build a network** and **Join a network** tutorials.
 5. On the Select peer panel, select a peer from the drop-down list that is from an organization that is a member of the channel.
-6. If your smart contract includes Fabric private data collections, you need to upload the associated collection configuration JSON file, otherwise you can skip this step. For more information, see [private data](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-smart-contracts#ibp-console-smart-contracts-private-data).
+6. If your smart contract includes Fabric private data collections, you need to upload the associated collection configuration JSON file, otherwise you can skip this step. For more information, see [private data](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-smart-contracts#ibp-console-smart-contracts-private-data).
 7. On the last panel, you are prompted to specify the name of the smart contract initialization function, along with the associated arguments to pass to that function.
 
 You can view all of the smart contracts that are instantiated on a channel by clicking the channel icon in the left navigation, selecting a channel from the table, and then clicking the **Channel details** tab.
@@ -122,20 +122,20 @@ After a smart contract has been instantiated on a channel, you can use a client 
 
 ### Connect with SDK
 {: #ibp-console-smart-contracts-connect-to-SDK-panel}
-The **Smart Contracts** tab contains the information that you need to connect to an instantiated smart contract from a client app. Next to each instantiated smart contract, navigate to the overflow menu. Click the **Connect with your SDK** button. This opens a side panel that provides the information that you need to connect to this smart contract: the contract name, the channel name, and your connection profile. For more information, see [Creating applications](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-app#ibp-console-app).
+The **Smart Contracts** tab contains the information that you need to connect to an instantiated smart contract from a client app. Next to each instantiated smart contract, navigate to the overflow menu. Click the **Connect with your SDK** button. This opens a side panel that provides the information that you need to connect to this smart contract: the contract name, the channel name, and your connection profile. For more information, see [Creating applications](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-app#ibp-console-app).
 
 ## Specifying an endorsement policy
 {: #ibp-console-smart-contracts-endorse}
 
-Every smart contract must have an endorsement policy, which is specified during instantiation. The endorsement policy specifies the set of organizations, the peers, on a channel that can execute the smart contract and independently validate the transaction output. For example, an endorsement policy can specify that a transaction is added to the ledger only if a majority of the members on the channel endorse the transaction. The organization that instantiates the smart contract can select from among the members who have installed the smart contract to become validators, and sets the endorsement policy for all channel members. You can update your endorsement policy by following the steps for [updating your smart contract](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-smart-contracts#ibp-console-smart-contracts-upgrade).
+Every smart contract must have an endorsement policy, which is specified during instantiation. The endorsement policy specifies the set of organizations, the peers, on a channel that can execute the smart contract and independently validate the transaction output. For example, an endorsement policy can specify that a transaction is added to the ledger only if a majority of the members on the channel endorse the transaction. The organization that instantiates the smart contract can select from among the members who have installed the smart contract to become validators, and sets the endorsement policy for all channel members. You can update your endorsement policy by following the steps for [updating your smart contract](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-smart-contracts#ibp-console-smart-contracts-upgrade).
 
-When you follow the steps to [instantiate a smart contract](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-smart-contracts#ibp-console-smart-contracts-instantiate), you can use the side panel to set a contract's endorsement policy after selecting the channel. Use this panel to specify a simple policy by selecting the peers that need to endorse the transaction from the list of peers that have installed the smart contract on the channel. You can use this method to specify an endorsement policy of all channel members, a majority of them, a single member, or a simple +1 preventing members from self-signing. The default endorsement policy is set to `1 of x`, meaning that only a single member of the channel is required to endorse a smart contract transaction.
+When you follow the steps to [instantiate a smart contract](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-smart-contracts#ibp-console-smart-contracts-instantiate), you can use the side panel to set a contract's endorsement policy after selecting the channel. Use this panel to specify a simple policy by selecting the peers that need to endorse the transaction from the list of peers that have installed the smart contract on the channel. You can use this method to specify an endorsement policy of all channel members, a majority of them, a single member, or a simple +1 preventing members from self-signing. The default endorsement policy is set to `1 of x`, meaning that only a single member of the channel is required to endorse a smart contract transaction.
 
 Click the **Advanced** button if you want to specify a policy in JSON format. You can use this method to specify more complicated endorsement policies, such as requiring that a certain member of the channel must validate a transaction, along with a majority of other members. You can find additional [examples of advanced endorsement policies](https://hyperledger-fabric.readthedocs.io/en/release-1.4/arch-deep-dive.html#example-endorsement-policies){: external} in the Hyperledger Fabric documentation. For more information about writing endorsement policies in JSON, see [Hyperledger Fabric Node SDK documentation](https://hyperledger.github.io/fabric-sdk-node/release-1.4/global.html#ChaincodeInstantiateUpgradeRequest){: external}.
 
 Endorsement policies are not updated automatically when new organizations join the channel and install a chaincode. For example, if the endorsement policy requires two of five organizations to endorse a transaction, the policy will not be updated to require two out of six organizations when a new organization joins the channel. Instead, the new organization will not be listed on the policy, and they will not be able to endorse transactions. You can add another organization to an endorsement policy by upgrading the relevant chaincode and updating the policy.
 
-<blockchain-rhos nodeOU>
+
 ### What does the user type have to do with the smart contract endorsement policy?
 {: #ibp-console-smart-contracts-endorse-user-type}
 
@@ -173,7 +173,7 @@ You should review the roles specified in the policy and ensure that any peers th
 ```  
 {: codeblock}
 
-Unsure which `type` was selected when a peer identity was registered? From the console, you can open the CA where the peer identity was registered and view the list of registered users and their associated type.</blockchain-rhos nodeOU>
+Unsure which `type` was selected when a peer identity was registered? From the console, you can open the CA where the peer identity was registered and view the list of registered users and their associated type.
 
 ## Upgrading a smart contract
 {: #ibp-console-smart-contracts-upgrade}
@@ -240,9 +240,9 @@ In order to use private data with {{site.data.keyword.blockchainfull_notm}} Plat
 
   Instead of using the console to install and instantiate your smart contract with a collection config file, you can also use the Fabric SDK. Those instructions are also available under [How to use private data](https://hyperledger.github.io/fabric-sdk-node/release-1.4/tutorial-private-data.html){: external} in the Node SDK documentation.  
 
-  **Note:** A client needs to be an admin of your peer in order to install or instantiate a smart contract by using the SDK. Therefore, you need to download the certificates of the peer admin identity from your console wallet and pass the peer admin's signing certificate and private key to directly to the SDK instead of creating an application identity. For an example of how to pass a key pair to the SDK, see [Connecting to your network by using low-level Fabric SDK APIs](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-app#ibp-console-app-low-level).  
+  **Note:** A client needs to be an admin of your peer in order to install or instantiate a smart contract by using the SDK. Therefore, you need to download the certificates of the peer admin identity from your console wallet and pass the peer admin's signing certificate and private key to directly to the SDK instead of creating an application identity. For an example of how to pass a key pair to the SDK, see [Connecting to your network by using low-level Fabric SDK APIs](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-app#ibp-console-app-low-level).  
 
-3. **Configure anchor peers.** Because cross organizational [gossip](https://hyperledger-fabric.readthedocs.io/en/release-1.4/gossip.html){: external} must be enabled for private data to work, an anchor peer must exist for each organization in the collection definition. Refer to this information for [how to configure anchor peers](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-govern#ibp-console-govern-channels-anchor-peers) on your network.
+3. **Configure anchor peers.** Because cross organizational [gossip](https://hyperledger-fabric.readthedocs.io/en/release-1.4/gossip.html){: external} must be enabled for private data to work, an anchor peer must exist for each organization in the collection definition. Refer to this information for [how to configure anchor peers](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-govern#ibp-console-govern-channels-anchor-peers) on your network.
 
 Your channel is now configured to use private data.
 

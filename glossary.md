@@ -6,7 +6,7 @@ lastupdated: "2020-02-07"
 
 keywords: IBM Blockchain, IBM Blockchain Platform, terms, Fabric, Raft, CouchDB, consortium
 
-subcollection: blockchain-rhos
+subcollection: blockchain-sw
 
 ---
 
@@ -155,7 +155,7 @@ The node that collects transactions from network members, orders the transaction
 
 ## Organization
 {: #glossary-organization}
-See [Member](/docs/blockchain-sw?topic=blockchain-rhos-glossary#glossary-member).
+See [Member](/docs/blockchain-sw?topic=blockchain-sw-glossary#glossary-member).
 
 ## Participant
 {: #glossary-participant}
@@ -187,7 +187,7 @@ The certificate that any entities, whether organizations or admins, attach to th
 
 ## Smart contracts
 {: #glossary-smart-contracts}
-See [Chaincode](/docs/blockchain-sw?topic=blockchain-rhos-glossary#glossary-chaincode).
+See [Chaincode](/docs/blockchain-sw?topic=blockchain-sw-glossary#glossary-chaincode).
 
 ## Solo
 {: #glossary-solo}
@@ -207,5 +207,5 @@ A user is a participant in a blockchain network that has indirect access to the 
 
 ## World state
 {: #glossary-world-state}
-See [Current state](/docs/blockchain-sw?topic=blockchain-rhos-glossary#glossary-current-state).
+See [Current state](/docs/blockchain-sw?topic=blockchain-sw-glossary#glossary-current-state).
 

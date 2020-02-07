@@ -6,7 +6,7 @@ lastupdated: "2020-02-07"
 
 keywords: best practices, develop applications, connectivity, availability, mutual TLS, CouchDB
 
-subcollection: blockchain-rhos
+subcollection: blockchain-sw
 
 ---
 
@@ -37,7 +37,7 @@ The Hyperledger Fabric [Transaction Flow](https://hyperledger-fabric.readthedocs
 ### Managing transactions
 {: #best-practices-app-managing-transactions}
 
-Application clients must ensure that their transaction proposals are validated and that the proposals complete successfully. A proposal can be delayed or lost for multiple reasons, such as a network outage or a component failure. You should code your application for [high availability](/docs/blockchain-sw?topic=blockchain-rhos-best-practices-app#best-practices-app-ha-app) to handle component failure. You can also [increase the timeout values](/docs/blockchain-sw?topic=blockchain-rhos-best-practices-app#best-practices-app-set-timeout-in-sdk) in your application to prevent proposals from timing out before the network can respond.
+Application clients must ensure that their transaction proposals are validated and that the proposals complete successfully. A proposal can be delayed or lost for multiple reasons, such as a network outage or a component failure. You should code your application for [high availability](/docs/blockchain-sw?topic=blockchain-sw-best-practices-app#best-practices-app-ha-app) to handle component failure. You can also [increase the timeout values](/docs/blockchain-sw?topic=blockchain-sw-best-practices-app#best-practices-app-set-timeout-in-sdk) in your application to prevent proposals from timing out before the network can respond.
 
 If a chaincode is not running, the first transaction proposal that is sent to this chaincode starts the chaincode. While the chaincode is starting, all other proposals are rejected with an error that indicates that the chaincode is starting. This is different from transaction invalidation. If any proposal is rejected while the chaincode is starting, application clients need to resend the rejected proposals after the chaincode starts. Application clients can use a message queue to avoid losing transaction proposals.
 

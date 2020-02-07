@@ -1,14 +1,14 @@
 {:navgroup: .navgroup}
 {:topicgroup: .topicgroup}
 
-{: .toc subcollection="blockchain-rhos" category="app_services,databases" audience="service" href="/docs/blockchain-rhos/index.html" path="blockchain-rhos"}
+{: .toc subcollection="blockchain-sw" category="app_services,databases" audience="service" href="/docs/blockchain-sw/index.html" path="blockchain-sw"}
 IBM Blockchain Platform v2.1.2
 
 	{: .navgroup id="learn"}
 	index.md
 	console-ocp-about.md
 	whats_new.md
-	howto/pricing-rhos.md
+	howto/pricing-sw.md
 	blockchain_component_overview.md
 	security.md
 	ibp-console-ha.md

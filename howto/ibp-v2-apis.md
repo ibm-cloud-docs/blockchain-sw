@@ -6,7 +6,7 @@ lastupdated: "2020-02-07"
 
 keywords: APIs, build a network, authentication, service credentials, API key, API endpoint, IAM access token, Fabric CA client, import a network, generate certificates
 
-subcollection: blockchain-rhos
+subcollection: blockchain-sw
 
 ---
 
@@ -32,19 +32,19 @@ This tutorial introduces the generic flow to build a blockchain network with {{s
 ## Prerequisites
 {: #ibp-v2-apis-prereq}
 
-The APIs target your {{site.data.keyword.blockchainfull_notm}} Platform console to authenticate calls and communicate with your nodes. Therefore you must deploy the {{site.data.keyword.blockchainfull_notm}} Platform console before you can start using the {{site.data.keyword.blockchainfull_notm}} Platform console APIs. If you have not yet deployed the console on your cluster, see [Deploying {{site.data.keyword.blockchainfull_notm}} Platform v2.1.2](/docs/blockchain-rhos/reference?topic=blockchain-rhos-deploy-ocp#deploy-ocp).
+The APIs target your {{site.data.keyword.blockchainfull_notm}} Platform console to authenticate calls and communicate with your nodes. Therefore you must deploy the {{site.data.keyword.blockchainfull_notm}} Platform console before you can start using the {{site.data.keyword.blockchainfull_notm}} Platform console APIs. If you have not yet deployed the console on your cluster, see [Deploying {{site.data.keyword.blockchainfull_notm}} Platform v2.1.2](/docs/blockchain-sw/reference?topic=blockchain-sw-deploy-ocp#deploy-ocp).
 
 To use the APIs, you will need to gather the following information:
 
 - The console **API Endpoint**. This is the URL that you use to access the console using your browser.
-- A username and password that you can use to access the console. To create an API key, you must have an account with a [manager role](/docs/blockchain-rhos?topic=blockchain-rhos-console-icp-manage#console-icp-manage-users).
+- A username and password that you can use to access the console. To create an API key, you must have an account with a [manager role](/docs/blockchain-sw?topic=blockchain-sw-console-icp-manage#console-icp-manage-users).
 
 ## Connect to your console using API keys
 {: #console-icp-manage-api-key}
 
 Each console provides its own identity and access management. You can use your console username and password to generate an API key and secret that can authorize your API calls.
 
-Each API key is associated with a role that governs the user's permissions. The API keys use the same access policy roles as exist for users who login to the console using a username and password. Refer to the table in the [Managing users](/docs/blockchain-rhos?topic=blockchain-rhos-console-icp-manage#console-icp-manage-users) section for the list of actions each role is allowed to perform. Because only manager roles can create API keys, a console administrator needs to create API keys for reader and writer users. The API keys never expire. As a result, the console administrator should delete API keys that are not being used.
+Each API key is associated with a role that governs the user's permissions. The API keys use the same access policy roles as exist for users who login to the console using a username and password. Refer to the table in the [Managing users](/docs/blockchain-sw?topic=blockchain-sw-console-icp-manage#console-icp-manage-users) section for the list of actions each role is allowed to perform. Because only manager roles can create API keys, a console administrator needs to create API keys for reader and writer users. The API keys never expire. As a result, the console administrator should delete API keys that are not being used.
 
 There are three APIs available to manage your API keys:
 - [Create an API key](#console-icp-manage-create-api-key)
@@ -262,9 +262,9 @@ https://openshiftcluster.us-south.containers.appdomain.cloud:443/ak/api/v1/compo
   -k
 ```
 
-In order to create nodes using the {{site.data.keyword.blockchainfull_notm}} APIs, you need to use the APIs in a certain sequence in conjunction with Fabric CA client. To learn how to create nodes, see [Build a network by using APIs](/docs/blockchain-rhos?topic=blockchain-rhos-ibp-v2-apis#ibp-v2-apis-build-with-apis).
+In order to create nodes using the {{site.data.keyword.blockchainfull_notm}} APIs, you need to use the APIs in a certain sequence in conjunction with Fabric CA client. To learn how to create nodes, see [Build a network by using APIs](/docs/blockchain-sw?topic=blockchain-sw-ibp-v2-apis#ibp-v2-apis-build-with-apis).
 
-You can also use the APIs to import and then operate nodes that reside in other clusters. For more information, see [Import a network by using APIs](/docs/blockchain-rhos?topic=blockchain-rhos-ibp-v2-apis#ibp-v2-apis-import-with-apis).
+You can also use the APIs to import and then operate nodes that reside in other clusters. For more information, see [Import a network by using APIs](/docs/blockchain-sw?topic=blockchain-sw-ibp-v2-apis#ibp-v2-apis-import-with-apis).
 
 ## Limitations
 {: #ibp-v2-apis-limitations}
@@ -291,7 +291,7 @@ You can use APIs to create blockchain components in your instance of the {{site.
   - You also need to [register an organization administrator](#ibp-v2-apis-config-register-admin) and then [generate certificates for the admin](#ibp-v2-apis-config-enroll-admin) inside an MSP folder. You do not have to complete this step if you have already registered your admin identity.
   - [Register the new component with your TLS CA](#ibp-v2-apis-config-register-component-tls).
 
-  You can also complete these steps by using your {{site.data.keyword.blockchainfull_notm}} Platform console. For more information,  <blockchain-rhos>see [Creating and managing identities](/docs/blockchain-rhos/?topic=blockchain-rhos-ibp-console-identities).</blockchain-rhos>
+  You can also complete these steps by using your {{site.data.keyword.blockchainfull_notm}} Platform console. For more information,  see [Creating and managing identities](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-identities).
 
 3. [Create an MSP definition for your organization](#ibp-v2-apis-msp) by calling [`POST /ak/api/v1/components/msp`](/apidocs/blockchain?#import-a-membership-service-provide-msp).
 
@@ -307,11 +307,11 @@ You can use APIs to create blockchain components in your instance of the {{site.
 
 
 
-<blockchain-rhos>
-The service credential that is used for API authentication must have the `Manager` role in IAM to be able to create components. See the table in this topic on [user roles](/docs/blockchain-rhos?topic=blockchain-rhos-console-icp-manage#console-icp-manage-role-mapping)
+
+The service credential that is used for API authentication must have the `Manager` role in IAM to be able to create components. See the table in this topic on [user roles](/docs/blockchain-sw?topic=blockchain-sw-console-icp-manage#console-icp-manage-role-mapping)
 for more information.
 {: note}
-</blockchain-rhos>
+
 
 ### Creating a node within a specific zone
 {: #ibp-v2-apis-zone}
@@ -320,9 +320,9 @@ If you are using a multizone cluster, you can use the APIs to deploy a blockchai
 
 
 
-<blockchain-rhos>
+
 1. Find the zones where your worker nodes are located on using your Kubernetes cluster CLI. If you are using OpenShift Container Platform, after you have connected to your cluster using the CLI, use the command `oc get nodes --show-labels` to get the full list of nodes and zones of your cluster. You will be to find the zone that each worker node is located after `failure-domain.beta.kubernetes.io/zone` field under the `LABELS` column.
-</blockchain-rhos>
+
 
 2. To create a node within a specific zone, provide the zone name to the [Create an ordering service](/apidocs/blockchain#create-an-ordering-service) or [Create a peer](/apidocs/blockchain#create-a-peer) API calls using the zone field of the request body. The anti-affinity policy of the {{site.data.keyword.blockchainfull_notm}} Platform console will automatically deploy your component to different worker nodes within each zone based on the resources available.
 
@@ -350,11 +350,11 @@ You can also use the APIs to import {{site.data.keyword.blockchainfull_notm}} co
 
 
 
-<blockchain-rhos>
-The service credential that is used for API authentication must have the `Manager` role in IAM to be able to create components. See the table in this topic on [user roles](/docs/blockchain-rhos?topic=blockchain-rhos-console-icp-manage#console-icp-manage-role-mapping)
+
+The service credential that is used for API authentication must have the `Manager` role in IAM to be able to create components. See the table in this topic on [user roles](/docs/blockchain-sw?topic=blockchain-sw-console-icp-manage#console-icp-manage-role-mapping)
 for more information.
 {: note}
-</blockchain-rhos>
+
 
 ## Operating your CA using the Fabric CA client
 {: #ibp-v2-apis-config-fabric-ca-client}

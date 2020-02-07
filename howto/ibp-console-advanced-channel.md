@@ -6,7 +6,7 @@ lastupdated: "2020-02-07"
 
 keywords: network components, Kubernetes, batch timeout, channel update, channels, governance, channel configuration, access control
 
-subcollection: blockchain-rhos
+subcollection: blockchain-sw
 
 ---
 
@@ -32,7 +32,7 @@ To ensure channel security, the channel update policy is configured to define th
 ## Updating a channel configuration
 {: #ibp-console-govern-update-channel}
 
-While creating a channel and updating a channel have the same goal, giving users the ability to ensure that the configuration of their channel is as well suited as possible to their use case, the two processes are in fact very different **as tasks** in the console. Recall from our documentation on [Creating a channel](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-build-network#ibp-console-build-network-create-channel) that this is a process undertaken by a **single organization**. As long as an organization is a member of the consortium of the ordering service that will become the ordering service of a channel, they can create the channel in any way they want. They can give it any name, add any organizations (as long as they are a member of the consortium), assign those organizations permissions, set access control lists, and so on.
+While creating a channel and updating a channel have the same goal, giving users the ability to ensure that the configuration of their channel is as well suited as possible to their use case, the two processes are in fact very different **as tasks** in the console. Recall from our documentation on [Creating a channel](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-build-network#ibp-console-build-network-create-channel) that this is a process undertaken by a **single organization**. As long as an organization is a member of the consortium of the ordering service that will become the ordering service of a channel, they can create the channel in any way they want. They can give it any name, add any organizations (as long as they are a member of the consortium), assign those organizations permissions, set access control lists, and so on.
 
 The other organizations have the choice of whether to participate in this channel (for example, whether to join peers to it), but it is assumed that the collaborative process of choosing channel parameters will happen out of band, before an organization creates the channel.
 
@@ -43,7 +43,7 @@ With the exception of [Anchor peers](#ibp-console-govern-channels-anchor-peers) 
 ### Channel configuration parameters you can update
 {: #ibp-console-govern-update-channel-available-parameters}
 
-For a look at the channel creation process, see [Creating the channel](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-build-network#ibp-console-build-network-channels-create) from the "Build a network" tutorial.
+For a look at the channel creation process, see [Creating the channel](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-build-network#ibp-console-build-network-channels-create) from the "Build a network" tutorial.
 
 It's possible to change some, but not all, of the configuration parameters of a channel after the channel has been created. You will see that the **Channel name** is greyed out and cannot be edited, for examples. This reflects the fact that a channel name cannot be changed after it has been created. Also, observe that the ordering service display name is not present, as the ordering service of a channel also cannot be changed after the channel has been created.
 
@@ -56,7 +56,7 @@ Note that if you are attempting to change any parameter that requires the signat
 
 The options visible when you navigate to this screen are more likely to be updated by all users:
 
-* **Organizations**. This section of the panel is how organizations are added or removed from a channel. Organizations that can be added can be seen in the drop-down list. Note that an organization must be a member of the consortium of the ordering service before it can be added to a channel. For more information about how to add an organization to the consortium, see [Add your organization to list of organizations that can transact](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-build-network#ibp-console-build-network-add-org).
+* **Organizations**. This section of the panel is how organizations are added or removed from a channel. Organizations that can be added can be seen in the drop-down list. Note that an organization must be a member of the consortium of the ordering service before it can be added to a channel. For more information about how to add an organization to the consortium, see [Add your organization to list of organizations that can transact](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-build-network#ibp-console-build-network-add-org).
 
   You can also update an organization's level of permission on the channel:
 
@@ -80,7 +80,7 @@ By clicking the box under advanced options, users can access parameters that use
 
 
 
-* **Block cutting parameters**. Because a change to the default block cutting parameters must be signed by an admin of the ordering service organization, these fields are not present in the channel creation panel. However, because this channel configuration will be sent to all of the relevant organizations in the channel, it is possible to send a channel configuration update request with changes to the block cutting parameters. These fields determine the conditions under which the ordering service cuts a new block. For information on how these fields affect when blocks are cut, see the [Block cutting parameters](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-govern#ibp-console-govern-orderer-tuning-batch-size) section below.
+* **Block cutting parameters**. Because a change to the default block cutting parameters must be signed by an admin of the ordering service organization, these fields are not present in the channel creation panel. However, because this channel configuration will be sent to all of the relevant organizations in the channel, it is possible to send a channel configuration update request with changes to the block cutting parameters. These fields determine the conditions under which the ordering service cuts a new block. For information on how these fields affect when blocks are cut, see the [Block cutting parameters](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-govern#ibp-console-govern-orderer-tuning-batch-size) section below.
 
 
 
@@ -101,7 +101,7 @@ To configure a peer to be an anchor peer, click the **Channels** tab and open th
 
 The ordering service and the peers known to this console that are joined to this channel are listed in the **Nodes** field at the top of the channel page. It is possible to add peers to this channel by clicking the **Join peer** button. On the panel that opens, you can specify the peers you want to join this channel, as well as whether you want this peer to bootstrap gossip communication between your organization and other organizations by making this peer an anchor peer. If you already have specified an anchor peer for this channel, you do not need to make this peer an anchor peer (only one anchor peer is needed to bootstrap communication between organizations), though it is sensible to make anchor peers HA by making sure you have at least two anchor peers in each channel.
 
-As with the process for joining any peer to any channel, make sure that the [database type](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-govern-components#ibp-console-govern-components-level-couch) of this peer is compatible with the database type of the channel. Similarly, ensure that the Fabric level of this peer is at the [application and channel capability](#ibp-console-govern-update-channel-available-parameters-advanced) levels of the channel.
+As with the process for joining any peer to any channel, make sure that the [database type](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-govern-components#ibp-console-govern-components-level-couch) of this peer is compatible with the database type of the channel. Similarly, ensure that the Fabric level of this peer is at the [application and channel capability](#ibp-console-govern-update-channel-available-parameters-advanced) levels of the channel.
 
 Note that after a peer is removed from a channel, it might still show as being joined to the channel. This is because the ledger information of the channel up to the point the peer was removed is still available on the peer. Removing the peer from the channel means that the peer will receive no new channel updates, including the update that indicates that it is no longer a part of the channel. If you have any other peers joined to the channel, you can check the ledger height of those peers as compared to the peer that was removed to confirm that the removed peer is not receiving new blocks.
 
@@ -134,8 +134,8 @@ As noted in the [Channel capabilities](https://hyperledger-fabric.readthedocs.io
 
 While all capabilities can be edited as part of a channel configuration update (there are restrictions on which capability levels you can change to, which we'll discuss) you have the opportunity to edit these capabilities in several places:
 
-  * **Channel and orderer**: in the [system channel](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-govern#ibp-console-govern-capabilities-system-channel).
-  * **Application**: during [channel creation](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-govern#ibp-console-govern-capabilities-application-channels).
+  * **Channel and orderer**: in the [system channel](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-govern#ibp-console-govern-capabilities-system-channel).
+  * **Application**: during [channel creation](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-govern#ibp-console-govern-capabilities-application-channels).
 
 Note that what you see in this section will depend on the configuration of your channel and the Fabric level of your peers and ordering nodes, as **only valid and possible capability upgrades will appear**. For example, if your channel, orderer, and application capabilities are already at the most recent level, the capabilities section in the channel update will be hidden. Similarly, you will not see potential capability updates if your nodes in the channel are not at a sufficient Fabric level to process the capability.
 

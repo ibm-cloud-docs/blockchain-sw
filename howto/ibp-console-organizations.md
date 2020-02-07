@@ -6,7 +6,7 @@ lastupdated: "2020-02-07"
 
 keywords: organizations, MSPs, create an MSP, MSP JSON file, consortium, system channel
 
-subcollection: blockchain-rhos
+subcollection: blockchain-sw
 
 ---
 
@@ -25,7 +25,7 @@ subcollection: blockchain-rhos
 
 You can use the {{site.data.keyword.blockchainfull}} Platform console to create a formal organization definition known as a Membership Services Provider (MSP). Your organization's MSP definition allows other members of the blockchain consortium to verify the identity of your nodes and applications. Your MSP definition also contains your organization's admin certificates.
 
-You can also use the console to manage which organizations are members of your network. The administrator of the ordering service can use the organizations tab to add members to the blockchain [consortium](/docs/blockchain-sw?topic=blockchain-rhos-glossary#glossary-consortium). Members of the consortium can then use the console to add members to new or existing channels.
+You can also use the console to manage which organizations are members of your network. The administrator of the ordering service can use the organizations tab to add members to the blockchain [consortium](/docs/blockchain-sw?topic=blockchain-sw-glossary#glossary-consortium). Members of the consortium can then use the console to add members to new or existing channels.
 
 ![{{site.data.keyword.blockchainfull_notm}} Platform console organizations tab](../images/console_organizations_tab.png "{{site.data.keyword.blockchainfull_notm}} Platform console organizations tab"){: caption="Figure 1. You can use the organizations panel to create, import, and manage organization MSP definitions" caption-side="bottom"}
 
@@ -48,11 +48,11 @@ Before your organization can join a consortium, it needs to create an organizati
 ## Managing MSPs in the console
 {: #ibp-console-organizations-manage}
 
-Navigate to the **Organizations** tab. You can use this tab to [create an MSP definition](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-organizations#console-organizations-create-msp) by using a Certificate Authority that exists in your console. You can also use this tab to [import an MSP](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-organizations#console-organizations-import-msp) that was created by another organization.
+Navigate to the **Organizations** tab. You can use this tab to [create an MSP definition](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-organizations#console-organizations-create-msp) by using a Certificate Authority that exists in your console. You can also use this tab to [import an MSP](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-organizations#console-organizations-import-msp) that was created by another organization.
 
 You can view all of the MSPs that you have created or imported under **Available Organizations**. You can use the MSP definitions in the organizations tab for important functions within your console:
 - If you are creating peer or orderer nodes, the MSP of your organization is used to provide admin certificates to the new node.
-- If you are the admin of an ordering node, you can use the MSPs to [add new organizations to the consortium](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-organizations#console-organizations-add-consortium).
+- If you are the admin of an ordering node, you can use the MSPs to [add new organizations to the consortium](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-organizations#console-organizations-add-consortium).
 - If you are a member of the consortium, you can import the MSPs of other consortium members into your console and then add the members to new or existing channels.
 
 You can click on an MSP definition in the organizations tab to view all of the nodes in the console that belong to each organization. Because each node was deployed with the administrator certificate from the MSP definition inside, this panel allows you to keep track of which nodes are managed by which organization administrator.
@@ -113,8 +113,8 @@ When you update an MSP organization definition with a new admin cert, the associ
 
 In order to complete this process, you need to register and enroll the new peer admin identity with the same CA that the existing peer admin was registered with.
 
-1. Follow the steps to [register a new peer admin identity](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-identities#ibp-console-identities-register).
-2. Follow the steps to [enroll the new admin identity](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-identities#ibp-console-identities-enroll) which generates the Certificate and private key for the new admin identity.  Be sure to download the generated Certificate and private key PEM files to your file system and add the identity to your console wallet.
+1. Follow the steps to [register a new peer admin identity](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-identities#ibp-console-identities-register).
+2. Follow the steps to [enroll the new admin identity](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-identities#ibp-console-identities-enroll) which generates the Certificate and private key for the new admin identity.  Be sure to download the generated Certificate and private key PEM files to your file system and add the identity to your console wallet.
 3. You need to convert the Certificate string from PEM format to base64 format by running the following command:
 
 ```
@@ -144,7 +144,7 @@ Replace `<certificate.pem>` with the name of the Certificate PEM file that you d
 
 Follow these instructions when you need to add a new admin certificate of another member from the same organization who can instantiate a smart contract on an existing channel and can submit and approve channel updates.  This task requires you to download and edit the existing MSP definition and add the new admin certificate and then update the MSP for the channel member.
 
-If you need to add a new organization as a channel admin, see this topic on [Updating a channel configuration](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-govern#ibp-console-govern-update-channel).
+If you need to add a new organization as a channel admin, see this topic on [Updating a channel configuration](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-govern#ibp-console-govern-update-channel).
 {: note}
 
 As with all channel updates, this update needs to be performed by a channel operator and the change will follow the channel update approval process according to the policy that was configured when the channel was created.  
@@ -245,21 +245,21 @@ For example, your JSON file would look similar to:
 Save this definition as your MSP definition `JSON` file.  
 
 
-You have constructed an MSP definition, which defines the organization for your peer or ordering service nodes, and uses certificates from an external CA. You can now return to the instructions that describe [How to use certificates from an external CA with your peer or ordering node](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-govern-components#ibp-console-govern-third-party-ca).
+You have constructed an MSP definition, which defines the organization for your peer or ordering service nodes, and uses certificates from an external CA. You can now return to the instructions that describe [How to use certificates from an external CA with your peer or ordering node](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-govern-components#ibp-console-govern-third-party-ca).
 
 ## Importing an MSP
 {: #console-organizations-import-msp}
 
 Only the orderer admin can add new organizations to the consortium. If you are the orderer admin, you will need to collect the MSP definitions of all the organizations who have been invited to the consortium and import the MSPs into the console. You can then add the MSPs to the ordering service, by using the orderer node.
 
-After an administrator creates an MSP definition, they can use the Organizations tab to download the MSP in JSON format to their local file system. They can then send you the MSP JSON file in an out of band operation. Navigate to the **Organizations** tab and use **Import MSP Definition** to import the MSP file into your console. Once an MSP definition is visible in the **Available organizations** section, you can then navigate to your orderer node to [add the organization to the consortium](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-organizations#console-organizations-add-consortium).
+After an administrator creates an MSP definition, they can use the Organizations tab to download the MSP in JSON format to their local file system. They can then send you the MSP JSON file in an out of band operation. Navigate to the **Organizations** tab and use **Import MSP Definition** to import the MSP file into your console. Once an MSP definition is visible in the **Available organizations** section, you can then navigate to your orderer node to [add the organization to the consortium](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-organizations#console-organizations-add-consortium).
 
 ## Adding an organization to a consortium
 {: #console-organizations-add-consortium}
 
 The consortium of organizations is hosted by the ordering service.
 
-If you are the administrator of the ordering service, you can use the console to add an organization to the consortium. Navigate to the **Nodes** tab and click on the ordering node. On the ordering node panel, under **Consortium members**, click **Add organization**. This opens a side panel that allows you to select from the list of available MSP definitions that you have [imported into your organizations tab](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-organizations#console-organizations-import-msp). You can also use the **Upload JSON** option to import the MSP definition file created by another org directly.
+If you are the administrator of the ordering service, you can use the console to add an organization to the consortium. Navigate to the **Nodes** tab and click on the ordering node. On the ordering node panel, under **Consortium members**, click **Add organization**. This opens a side panel that allows you to select from the list of available MSP definitions that you have [imported into your organizations tab](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-organizations#console-organizations-import-msp). You can also use the **Upload JSON** option to import the MSP definition file created by another org directly.
 
 ## Creating and editing a channel
 {: #console-organizations-create-channel}
@@ -272,7 +272,7 @@ After your organization is added to a consortium, you can create a channel by us
 2. Import the MSPs of organizations that you want to add to the new channel into your console in the **Organizations** tab. **Note** that organizations need to be added to the consortium before they can be added to a channel.
 3. Navigate to the **Channels** tab and click **Create channel**. This opens a side panel that allows you to specify the channel name, membership, and channel policies. You can add any organizations that have been added to the consortium to the new channel.
 
-For more information about these steps, see [creating a channel](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-build-network#ibp-console-build-network-create-channel1) in the **Build a network** tutorial.
+For more information about these steps, see [creating a channel](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-build-network#ibp-console-build-network-create-channel1) in the **Build a network** tutorial.
 
 ### Updating an MSP in a channel definition
 {: #console-organizations-update-channel}

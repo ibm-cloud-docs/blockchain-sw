@@ -6,7 +6,7 @@ lastupdated: "2020-02-07"
 
 keywords: OpenShift, IBM Blockchain Platform console, deploy, resource requirements, storage, parameters
 
-subcollection: blockchain-rhos
+subcollection: blockchain-sw
 
 ---
 
@@ -22,7 +22,7 @@ subcollection: blockchain-rhos
 # Deploying {{site.data.keyword.blockchainfull_notm}} Platform v2.1.2 behind a firewall
 {: #deploy-ocp-firewall}
 
-You can use these instructions to deploy {{site.data.keyword.blockchainfull}} Platform v2.1.2 behind a firewall without internet connectivity. If you are deploying the platform on a cluster with access to the external internet, use the main instructions for [Deploying {{site.data.keyword.blockchainfull_notm}} Platform v2.1.2](/docs/blockchain-rhos/howto?topic=blockchain-rhos-deploy-ocp#deploy-ocp).
+You can use these instructions to deploy {{site.data.keyword.blockchainfull}} Platform v2.1.2 behind a firewall without internet connectivity. If you are deploying the platform on a cluster with access to the external internet, use the main instructions for [Deploying {{site.data.keyword.blockchainfull_notm}} Platform v2.1.2](/docs/blockchain-sw/howto?topic=blockchain-sw-deploy-ocp#deploy-ocp).
 {:shortdesc}
 
 You can deploy the {{site.data.keyword.blockchainfull_notm}} Platform v2.1.2 onto a Kubernetes cluster that is running on Red Hat OpenShift Container Platform 3.11, 4.1, or 4.2. The {{site.data.keyword.blockchainfull_notm}} Platform uses a [Kubernetes Operator](https://www.openshift.com/learn/topics/operators){: external} to install the {{site.data.keyword.blockchainfull_notm}} Platform console on your cluster and manage the deployment and your blockchain nodes. When the {{site.data.keyword.blockchainfull_notm}} Platform console is running on your cluster, you can use the console to create blockchain nodes and operate a multicloud blockchain network.
@@ -31,7 +31,7 @@ You can deploy the {{site.data.keyword.blockchainfull_notm}} Platform v2.1.2 ont
 
 - If you are deploying the {{site.data.keyword.blockchainfull_notm}} Platform behind a firewall, without access to the public internet, your JavaScript or TypeScript chaincode will not be able to download external depenencies when the chaincode is instantiated. You need point to a local NPM registry for your chaincode to access the required dependencies. This problem does not occur if you are using GO chaincode.
 
-- After you deploy your peer and ordering nodes, you need to expose the ports of your nodes for your network to be able to respond to requests from applications or nodes outside your firewall. For more information about the ports that you need to expose, see [Internet Ports](/docs/blockchain-rhos?topic=blockchain-rhos-ibp-security#ibp-security-ibp-ports) in the security guide.
+- After you deploy your peer and ordering nodes, you need to expose the ports of your nodes for your network to be able to respond to requests from applications or nodes outside your firewall. For more information about the ports that you need to expose, see [Internet Ports](/docs/blockchain-sw?topic=blockchain-sw-ibp-security#ibp-security-ibp-ports) in the security guide.
 
 ## Resources required
 {: #deploy-ocp-resources-required-firewall}
@@ -889,11 +889,11 @@ In your browser, you can see the console log in screen:
 Ensure that you are not using the ESR version of Firefox. If you are, switch to another browser such as Chrome and log in.
 {: important}
 
-The administrator who provisions the console can grant access to other users and restrict the actions they can perform. For more information, see [Managing users from the console](/docs/blockchain-rhos?topic=blockchain-rhos-console-icp-manage#console-icp-manage-users).
+The administrator who provisions the console can grant access to other users and restrict the actions they can perform. For more information, see [Managing users from the console](/docs/blockchain-sw?topic=blockchain-sw-console-icp-manage#console-icp-manage-users).
 
 ## Next steps
 {: #console-deploy-ocp-next-steps}
 
-When you access your console, you can view the **nodes** tab of your console UI. You can use this screen to deploy components on the cluster where you deployed the console. See the [Build a network tutorial](/docs/blockchain-rhos?topic=blockchain-rhos-ibp-console-build-network#ibp-console-build-network) to get started with the console. You can also use this tab to operate nodes that are created on other clouds. For more information, see [Importing nodes](/docs/blockchain-rhos?topic=blockchain-rhos-ibp-console-import-nodes#ibp-console-import-nodes).
+When you access your console, you can view the **nodes** tab of your console UI. You can use this screen to deploy components on the cluster where you deployed the console. See the [Build a network tutorial](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-build-network#ibp-console-build-network) to get started with the console. You can also use this tab to operate nodes that are created on other clouds. For more information, see [Importing nodes](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-import-nodes#ibp-console-import-nodes).
 
-To learn how to manage the users that can access the console, view the logs of your console and your blockchain components, see [Administering your console](/docs/blockchain-rhos?topic=blockchain-rhos-console-icp-manage#console-icp-manage).
+To learn how to manage the users that can access the console, view the logs of your console and your blockchain components, see [Administering your console](/docs/blockchain-sw?topic=blockchain-sw-console-icp-manage#console-icp-manage).

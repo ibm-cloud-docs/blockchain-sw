@@ -6,7 +6,7 @@ lastupdated: "2020-02-07"
 
 keywords: IBM Blockchain Platform, administrate, add user, remove user, password, APIs, authentication, view logs
 
-subcollection: blockchain-rhos
+subcollection: blockchain-sw
 
 ---
 
@@ -26,15 +26,15 @@ subcollection: blockchain-rhos
 
 
 
-<blockchain-rhos>
+
 After you install the console on your cluster, you can use the console to add or remove console users and access APIs that allow you to operate your network and govern your console. You can also access and customize the logs of your console.
 {:shortdesc}
-</blockchain-rhos>
+
 
 ## Managing users from the console
 {: #console-icp-manage-users}
 
-The user who provisions the {{site.data.keyword.blockchainfull_notm}} Platform console is considered the console administrator. The administrator can then add and grant other users access to the console from the **Users** tab. Every user that accesses the console must be assigned an access policy with a user role defined. The policy determines what actions the user can perform within the console. By default, the console administrator is given the **Manager** role for the console. Other users can be assigned with **Manager**, **Writer**, or **Reader** roles when a console manager adds them to the console. Note that the users can also be managed with  <blockchain-rhos>[APIs](/docs/blockchain-rhos?topic=blockchain-rhos-ibp-v2-apis#console-icp-manage-users-apis).</blockchain-rhos>
+The user who provisions the {{site.data.keyword.blockchainfull_notm}} Platform console is considered the console administrator. The administrator can then add and grant other users access to the console from the **Users** tab. Every user that accesses the console must be assigned an access policy with a user role defined. The policy determines what actions the user can perform within the console. By default, the console administrator is given the **Manager** role for the console. Other users can be assigned with **Manager**, **Writer**, or **Reader** roles when a console manager adds them to the console. Note that the users can also be managed with  [APIs](/docs/blockchain-sw?topic=blockchain-sw-ibp-v2-apis#console-icp-manage-users-apis).
 
 ### Role to permission mapping
 {: #console-icp-manage-role-mapping}
@@ -53,16 +53,16 @@ Permissions are cumulative. If you select a **Manager** role, the user will also
 
 
 
-<blockchain-rhos>
-The password that you provided to the [console custom resource definition](/docs/blockchain-rhos?topic=blockchain-rhos-deploy-ocp#deploy-ocp-console) becomes the default password for the console. All users need to use this password when they log in to the console for the first time. The console manager can also specify a new default password. In the **Users** tab of the console, click the **Update configuration** link under your authentication service tile name. In the right panel, you can view or update the default password for new users of the console.
-</blockchain-rhos>
+
+The password that you provided to the [console custom resource definition](/docs/blockchain-sw?topic=blockchain-sw-deploy-ocp#deploy-ocp-console) becomes the default password for the console. All users need to use this password when they log in to the console for the first time. The console manager can also specify a new default password. In the **Users** tab of the console, click the **Update configuration** link under your authentication service tile name. In the right panel, you can view or update the default password for new users of the console.
+
 
 You need to share the default password, or the default password that you reset, with the users so that they can log in to the console. They will be required to change the password upon their first login.
 {:note}
 
 Users with the manager role can reset passwords for other users. In the **Users** tab of the console, click the three vertical dots at the end of the row for a specific user, and then click **Reset password**. The console resets that user's password to the default password, which you can check and confirm in the right panel. Users with any role can change their own password at any time. Click the avatar icon in the upper right corner, and then click **Change password**.
 
-After you add new users to the console, the users might not be able to view all the nodes, channels, or chaincode, which other users deploy. To work with these components, each user needs to import the associated identities into their own console wallet. For more information, see [Storing identities in your console wallet](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-identities#ibp-console-identities-wallet).
+After you add new users to the console, the users might not be able to view all the nodes, channels, or chaincode, which other users deploy. To work with these components, each user needs to import the associated identities into their own console wallet. For more information, see [Storing identities in your console wallet](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-identities#ibp-console-identities-wallet).
 {:important}
 
 ### Modifying a user's role
@@ -85,7 +85,7 @@ When you use the {{site.data.keyword.blockchainfull_notm}} Platform console, you
 ### Viewing your console logs
 {: #console-icp-manage-console-logs}
 
-You can easily access the console logs if you need to debug problems that you encounter when you use the console or operate your nodes. You can also set the logging level to increase or decrease the amount of logs that the console collects. The console logs are collected separately from the [node logs](#console-icp-manage-node-logs), which are collected by <blockchain-rhos>your Kubernetes cluster.</blockchain-rhos>  
+You can easily access the console logs if you need to debug problems that you encounter when you use the console or operate your nodes. You can also set the logging level to increase or decrease the amount of logs that the console collects. The console logs are collected separately from the [node logs](#console-icp-manage-node-logs), which are collected by your Kubernetes cluster.  
 
 Navigate to the **Settings** tab in the console browser to change the logging settings. The console logs are collected from two separate sources:
 
@@ -101,9 +101,9 @@ You can view only the console logs if you are logged in as a console administrat
 
 
 
-<blockchain-rhos>
+
 Component logs can be viewed from the command line by using the [kubectl CLI commands](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.2.0/manage_cluster/install_kubectl.html){: external} or through [Kibana](https://www.elastic.co/products/kibana){: external} which is included in the OpenShift Container Platform.
-</blockchain-rhos>
+
 
 - Use the `kubectl logs` command to view the container logs inside the pod. Follow the instructions to [Install the kubectl cli](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.2.0/manage_cluster/install_kubectl.html){: external} if you have not already done so. If you are unsure of your pod name, run the following command to view your list of pods.
 
@@ -121,24 +121,24 @@ Component logs can be viewed from the command line by using the [kubectl CLI com
 
   Replace `<pod_name>` with the name of your pod from the command output above.  
   Replace `<node>` with `ca`, `peer`, or `orderer` to view the logs for your node.  
-  Replace `<node>` with  <blockchain-rhos>`chaincode-logs`</blockchain-rhos> to view the logs for your smart contracts.
+  Replace `<node>` with  `chaincode-logs` to view the logs for your smart contracts.
 
-  <blockchain-rhos>
+  
   You can also run the command `kubectl logs -f <pod_name>` to get a list of all of the containers that are running inside a pod. The response to the command is an error message similar to the following:
   ```
   Error from server (BadRequest): a container name must be specified for pod peer1org1-7b4b6687dc-7n4fz, choose one of: [dind peer proxy chaincode-logs couchdb] or one of the init containers: [init]
   ```
-  </blockchain-rhos>
+  
 
   For more information about the `kubectl logs` command, see [Kubernetes documentation](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs){: external}.
 
 
 
-<blockchain-rhos>
+
 - Alternatively, if you are running on OpenShift Container Platform, you can access the logs from the OpenShift Web Browser.
 
   **Note:** When you view your logs in Kibana, you might receive the response `No results found`. This condition can occur if your cluster uses your worker node IP address as its hostname. To resolve this problem, remove the filter that begins with `node.hostname.keyword` at the top of the panel and the logs will become visible.
-</blockchain-rhos>
+
 
 ### Viewing your smart contract container logs
 {: #console-icp-manage-container-logs}
@@ -147,12 +147,12 @@ If you encounter issues with your smart contract, you can view the smart contrac
 
 
 
-<blockchain-rhos>
+
 ```
 kubectl  logs -f <peer_ped> -c chaincode-logs
 ```
 {:codeblock}
-</blockchain-rhos>
+
 
 Replace `<peer_pod>` with the name of the peer pod where the chaincode is running. Use the command `kubectl get po` to get the list of running pods.
 

@@ -6,7 +6,7 @@ lastupdated: "2020-02-07"
 
 keywords: IBM Blockchain Platform, Data residency, world state, channels
 
-subcollection: blockchain-rhos
+subcollection: blockchain-sw
 
 ---
 
@@ -37,7 +37,7 @@ Each approach provides an increased level of isolation and protection for your d
 
 The architecture of Hyperledger Fabric that underlies the {{site.data.keyword.blockchainfull_notm}} Platform is centered around three key components: an ordering service (made up of ordering nodes), Certificate Authorities (CA), and peers. Additionally, organizations send transactions to these nodes from client applications using the [Fabric SDKs](https://hyperledger-fabric.readthedocs.io/en/release-1.4/getting_started.html){: external}. When considering data residency, it is important to understand how these components interact with and store data.
 
-**Peers** are used by members of the consortium to store the blockchain [ledger](https://hyperledger-fabric.readthedocs.io/en/release-1.4/ledger/ledger.html){: external}. The blockchain ledger consists of two parts. The first is the world state, which stores the latest value for all data in the ledger in key-value pairs. The second is the blockchain record of every transaction. Peers receive state updates in the form of new blocks from the ordering service. They then use the blocks and the world state to confirm (or commit) transactions, update the world state and add the log of transactions on the blockchain. The ordering service establishes the order of transactions for all the peers on the [consortium](/docs/blockchain-sw?topic=blockchain-rhos-glossary#glossary-consortium) and stores a copy of the blockchain portion of the ledger.
+**Peers** are used by members of the consortium to store the blockchain [ledger](https://hyperledger-fabric.readthedocs.io/en/release-1.4/ledger/ledger.html){: external}. The blockchain ledger consists of two parts. The first is the world state, which stores the latest value for all data in the ledger in key-value pairs. The second is the blockchain record of every transaction. Peers receive state updates in the form of new blocks from the ordering service. They then use the blocks and the world state to confirm (or commit) transactions, update the world state and add the log of transactions on the blockchain. The ordering service establishes the order of transactions for all the peers on the [consortium](/docs/blockchain-sw?topic=blockchain-sw-glossary#glossary-consortium) and stores a copy of the blockchain portion of the ledger.
 
 **Channels** are a mechanism for transmitting data within a network. You cannot participate in a blockchain network without joining a channel. Channels can be used members of the network to create logical separation between business applications and even to boost performance by limiting traffic. They can also be used by subsets of organizations in the consortium to transact privately and segregate data.
 
@@ -45,8 +45,8 @@ Peers maintain a separate ledger for each channel that they join. Only organizat
 
 If in-country data residency is a requirement, you need to consider the location of your peers, the ordering service, as well as your client applications. You also need to know the location of the peers that belong to other organizations on your channels.
 
-<blockchain-rhos>If you are using an OpenShift cluster that was deployed with the {{site.data.keyword.IBM_notm}} Kubernetes Service, you can find the list of [OpenShift regions and locations on {{site.data.keyword.cloud_notm}}](/docs/openshift?topic=openshift-regions-and-zones) where you and the members of your consortium can deploy your components.
-</blockchain-rhos>
+If you are using an OpenShift cluster that was deployed with the {{site.data.keyword.IBM_notm}} Kubernetes Service, you can find the list of [OpenShift regions and locations on {{site.data.keyword.cloud_notm}}](/docs/openshift?topic=openshift-regions-and-zones) where you and the members of your consortium can deploy your components.
+
 ## A use case for data residency
 {: #console-icp-about-data-residency-use-case}
 
@@ -106,9 +106,9 @@ Creating a channel with all of the components in one country ensures that all of
 {: #console-icp-about-data-residency-considerations}
 
 
-<blockchain-rhos>
+
 When you deploy the {{site.data.keyword.blockchainfull_notm}} Platform, an instance of the {{site.data.keyword.blockchainfull_notm}} Platform console is installed on your OpenShift cluster.
-</blockchain-rhos>
+
 When you use your console to view the channel details, ledger data is visible in your browser. The ledger data is transmitted directly from the Kubernetes cluster to your browser.
 
 Therefore, to preserve data residency, the end user's browser and the Kubernetes cluster must reside in the same country.
