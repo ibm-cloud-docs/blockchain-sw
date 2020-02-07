@@ -17,6 +17,7 @@ subcollection: blockchain-sw
 {:note: .note}
 {:important: .important}
 {:tip: .tip}
+{:term: .term}
 {:pre: .pre}
 
 # Security
@@ -67,6 +68,8 @@ The {{site.data.keyword.blockchainfull_notm}} Platform network is based on trust
 Because these public and private key pairs are essential to how the {{site.data.keyword.blockchainfull_notm}} Platform functions, **key management** is a critical aspect of security. If a private key is compromised or lost, hostile actors might be able to access your data and functionality. Although you can use the {{site.data.keyword.blockchainfull_notm}} Platform console to generate private keys, those keys are not permanently stored by the console or the cloud (public keys, on the other hand, are stored in the browser and added to the member's wallet so that the console can use them to manage blockchain components), making customers ultimately responsible for the storage, backup, and disaster recovery of their keys.
 
 If a private key is lost and cannot be recovered, you will need to generate a new private key by registering and enrolling a new identity with your Certificate Authority. You should also then remove and replace your signCert in any components or organizations where you had used the lost or corrupted identity. See [Updating an organization MSP definition](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-organizations#ibp-console-govern-update-msp) for detailed steps.
+
+
 
 You also have the option to bring your own certificates from your own non-{{site.data.keyword.blockchainfull_notm}} Platform CA when you create a peer node or ordering service. If you use your own certificates, you will need to manually build the peer or ordering service MSP definition file that includes those certificates and import the file into the console **Organizations** tab. See  [Using certificates from an external CA with your peer or ordering node](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-govern-components#ibp-console-govern-third-party-ca) for the steps required.
 
