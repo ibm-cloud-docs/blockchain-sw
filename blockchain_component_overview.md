@@ -6,7 +6,7 @@ lastupdated: "2020-02-07"
 
 keywords: blockchain components, ca, certificate authorities, peer, ordering service, orderer, channel, smart contract, applications
 
-subcollection: blockchain
+subcollection: blockchain-sw
 
 ---
 
@@ -26,7 +26,7 @@ The components and structure of the {{site.data.keyword.blockchainfull}} Platfor
 
 For a more comprehensive overview of Fabric networks and the interrelation of the components that comprise it, see [this document on the structure of a blockchain network](https://hyperledger-fabric.readthedocs.io/en/release-1.4/network/network.html) from the Fabric community documentation, which shows how a network can be started and matured.
 
-For the purposes of this overview, we focus just on certificate authorities (CAs), orderers, peers, smart contracts, and applications. As you can see from the [Build a network tutorial](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-build-network#ibp-console-build-network), this sequence is not arbitrary; it reflects the proper order in which components in a network based on Fabric are deployed.
+For the purposes of this overview, we focus just on certificate authorities (CAs), orderers, peers, smart contracts, and applications. As you can see from the [Build a network tutorial](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-build-network#ibp-console-build-network), this sequence is not arbitrary; it reflects the proper order in which components in a network based on Fabric are deployed.
 
 ## Peers
 {: #blockchain-component-overview-peer}
@@ -94,7 +94,7 @@ For more information about smart contracts, see [Smart contracts](https://hyperl
 
 Client applications in a Fabric-based network like {{site.data.keyword.blockchainfull_notm}} Platform leverage underlying infrastructures such as APIs, SDKs, and smart contracts to allow client interactions (invokes and queries) at a higher level of abstraction.
 
-For a look at how applications interact with a network based on Fabric, check out the [Developing Applications](https://hyperledger-fabric.readthedocs.io/en/release-1.4/developapps/developing_applications.html){: external} topic in the Hyperledger Fabric documentation. You can also go to the [creating applications](/docs/blockchain-sw?topic=blockchain-rhos-ibp-console-app#ibp-console-app) topic to learn how to connect your applications to {{site.data.keyword.blockchainfull_notm}} Platform.
+For a look at how applications interact with a network based on Fabric, check out the [Developing Applications](https://hyperledger-fabric.readthedocs.io/en/release-1.4/developapps/developing_applications.html){: external} topic in the Hyperledger Fabric documentation. You can also go to the [creating applications](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-app#ibp-console-app) topic to learn how to connect your applications to {{site.data.keyword.blockchainfull_notm}} Platform.
 
 ## An example network
 {: #blockchain-component-overview-example-network}
