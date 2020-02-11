@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2020
-lastupdated: "2020-02-07"
+lastupdated: "2020-02-11"
 
 keywords: OpenShift, IBM Blockchain Platform console, deploy, resource requirements, storage, parameters
 
@@ -100,35 +100,35 @@ docker login --username cp --password <KEY> cp.icr.io
 
 After you log in, use the following command to pull all of the component images of the {{site.data.keyword.blockchainfull_notm}} Platform:
 ```
-docker pull cp.icr.io/cp/ibp-operator:2.1.2-20191217-amd64
-docker pull cp.icr.io/cp/ibp-init:2.1.2-20191217-amd64
+docker pull cp.icr.io/cp/ibp-operator:2.1.2-20200213-amd64
+docker pull cp.icr.io/cp/ibp-init:2.1.2-20200213-amd64
 docker pull cp.icr.io/cp/ibp-peer:1.4.4-20191217-amd64
 docker pull cp.icr.io/cp/ibp-orderer:1.4.4-20191217-amd64
 docker pull cp.icr.io/cp/ibp-ca:1.4.4-20191217-amd64
 docker pull cp.icr.io/cp/ibp-dind:1.4.4-20191217-amd64
-docker pull cp.icr.io/cp/ibp-console:2.1.2-20191217-amd64
-docker pull cp.icr.io/cp/ibp-grpcweb:2.1.2-20191217-amd64
+docker pull cp.icr.io/cp/ibp-console:2.1.2-20200213-amd64
+docker pull cp.icr.io/cp/ibp-grpcweb:2.1.2-20200213-amd64
 docker pull cp.icr.io/cp/ibp-utilities:1.4.4-20191217-amd64
 docker pull cp.icr.io/cp/ibp-couchdb:2.3.1-20191217-amd64
-docker pull cp.icr.io/cp/ibp-deployer:2.1.2-20191217-amd64
-docker pull cp.icr.io/cp/ibp-fluentd:2.1.2-20191217-amd64
+docker pull cp.icr.io/cp/ibp-deployer:2.1.2-20200213-amd64
+docker pull cp.icr.io/cp/ibp-fluentd:2.1.2-20200213-amd64
 ```
 {:codeblock}
 
 After you download the images, you must change the image tags to refer to your docker registry. Replace `<LOCAL_REGISTRY>` with the url of your local registry and run the following commands:
 ```
-docker tag cp.icr.io/cp/ibp-operator:2.1.2-20191217-amd64 <LOCAL_REGISTRY>/ibp-operator:2.1.2-20191217-amd64
-docker tag cp.icr.io/cp/ibp-init:2.1.2-20191217-amd64 <LOCAL_REGISTRY>/ibp-init:2.1.2-20191217-amd64
+docker tag cp.icr.io/cp/ibp-operator:2.1.2-20200213-amd64 <LOCAL_REGISTRY>/ibp-operator:2.1.2-20200213-amd64
+docker tag cp.icr.io/cp/ibp-init:2.1.2-20200213-amd64 <LOCAL_REGISTRY>/ibp-init:2.1.2-20200213-amd64
 docker tag cp.icr.io/cp/ibp-peer:1.4.4-20191217-amd64 <LOCAL_REGISTRY>/ibp-peer:1.4.4-20191217-amd64
 docker tag cp.icr.io/cp/ibp-orderer:1.4.4-20191217-amd64 <LOCAL_REGISTRY>/ibp-orderer:1.4.4-20191217-amd64
 docker tag cp.icr.io/cp/ibp-ca:1.4.4-20191217-amd64 <LOCAL_REGISTRY>/ibp-ca:1.4.4-20191217-amd64
 docker tag cp.icr.io/cp/ibp-dind:1.4.4-20191217-amd64 <LOCAL_REGISTRY>/ibp-dind:1.4.4-20191217-amd64
-docker tag cp.icr.io/cp/ibp-console:2.1.2-20191217-amd64 <LOCAL_REGISTRY>/ibp-console:2.1.2-20191217-amd64
-docker tag cp.icr.io/cp/ibp-grpcweb:2.1.2-20191217-amd64 <LOCAL_REGISTRY>/ibp-grpcweb:2.1.2-20191217-amd64
+docker tag cp.icr.io/cp/ibp-console:2.1.2-20200213-amd64 <LOCAL_REGISTRY>/ibp-console:2.1.2-20200213-amd64
+docker tag cp.icr.io/cp/ibp-grpcweb:2.1.2-20200213-amd64 <LOCAL_REGISTRY>/ibp-grpcweb:2.1.2-20200213-amd64
 docker tag cp.icr.io/cp/ibp-utilities:1.4.4-20191217-amd64 <LOCAL_REGISTRY>/ibp-utilities:1.4.4-20191217-amd64
 docker tag cp.icr.io/cp/ibp-couchdb:2.3.1-20191217-amd64 <LOCAL_REGISTRY>/ibp-couchdb:2.3.1-20191217-amd64
-docker tag cp.icr.io/cp/ibp-deployer:2.1.2-20191217-amd64 <LOCAL_REGISTRY>/ibp-deployer:2.1.2-20191217-amd64
-docker tag cp.icr.io/cp/ibp-fluentd:2.1.2-20191217-amd64 <LOCAL_REGISTRY>/ibp-fluentd:2.1.2-20191217-amd64
+docker tag cp.icr.io/cp/ibp-deployer:2.1.2-20200213-amd64 <LOCAL_REGISTRY>/ibp-deployer:2.1.2-20200213-amd64
+docker tag cp.icr.io/cp/ibp-fluentd:2.1.2-20200213-amd64 <LOCAL_REGISTRY>/ibp-fluentd:2.1.2-20200213-amd64
 ```
 {:codeblock}
 
@@ -144,18 +144,18 @@ docker login --username <USER> --password <LOCAL_REGISTRY_PASSWORD> <LOCAL_REGIS
 
 Then, run the following command to push the images. Replace `<LOCAL_REGISTRY>` with the url of your local registry.
 ```
-docker push <LOCAL_REGISTRY>/ibp-operator:2.1.2-20191217-amd64
-docker push <LOCAL_REGISTRY>/ibp-init:2.1.2-20191217-amd64
+docker push <LOCAL_REGISTRY>/ibp-operator:2.1.2-20200213-amd64
+docker push <LOCAL_REGISTRY>/ibp-init:2.1.2-20200213-amd64
 docker push <LOCAL_REGISTRY>/ibp-peer:1.4.4-20191217-amd64
 docker push <LOCAL_REGISTRY>/ibp-orderer:1.4.4-20191217-amd64
 docker push <LOCAL_REGISTRY>/ibp-ca:1.4.4-20191217-amd64
 docker push <LOCAL_REGISTRY>/ibp-dind:1.4.4-20191217-amd64
-docker push <LOCAL_REGISTRY>/ibp-console:2.1.2-20191217-amd64
-docker push <LOCAL_REGISTRY>/ibp-grpcweb:2.1.2-20191217-amd64
+docker push <LOCAL_REGISTRY>/ibp-console:2.1.2-20200213-amd64
+docker push <LOCAL_REGISTRY>/ibp-grpcweb:2.1.2-20200213-amd64
 docker push <LOCAL_REGISTRY>/ibp-utilities:1.4.4-20191217-amd64
 docker push <LOCAL_REGISTRY>/ibp-couchdb:2.3.1-20191217-amd64
-docker push <LOCAL_REGISTRY>/ibp-deployer:2.1.2-20191217-amd64
-docker push <LOCAL_REGISTRY>/ibp-fluentd:2.1.2-20191217-amd64
+docker push <LOCAL_REGISTRY>/ibp-deployer:2.1.2-20200213-amd64
+docker push <LOCAL_REGISTRY>/ibp-fluentd:2.1.2-20200213-amd64
 ```
 {:codeblock}
 
@@ -500,7 +500,7 @@ spec:
         - name: docker-key-secret
       containers:
         - name: ibp-operator
-          image: <LOCAL_REGISTRY>/ibp-operator:2.1.2-20191217-amd64
+          image: <LOCAL_REGISTRY>/ibp-operator:2.1.2-20200213-amd64
           command:
           - ibp-operator
           imagePullPolicy: Always
@@ -585,15 +585,15 @@ spec:
   imagePullSecret: docker-key-secret
   images:
       consoleInitImage: ibp-init
-      consoleInitTag: 2.1.2-20191217-amd64
+      consoleInitTag: 2.1.2-20200213-amd64
       consoleImage: ibp-console
-      consoleTag: 2.1.2-20191217-amd64
+      consoleTag: 2.1.2-20200213-amd64
       configtxlatorImage: ibp-utilities
       configtxlatorTag: 1.4.4-20191217-amd64
       couchdbImage: ibp-couchdb
       couchdbTag: 2.3.1-20191217-amd64
       deployerImage: ibp-deployer
-      deployerTag: 2.1.2-20191217-amd64
+      deployerTag: 2.1.2-20200213-amd64
   versions:
       ca:
         1.4.4-0:
@@ -601,7 +601,7 @@ spec:
           version: 1.4.4-0
           image:
             caInitImage: ibp-init
-            caInitTag: 2.1.2-20191217-amd64
+            caInitTag: 2.1.2-20200213-amd64
             caImage: ibp-ca
             caTag: 1.4.4-20191217-amd64
       peer:
@@ -610,15 +610,15 @@ spec:
           version: 1.4.4-0
           image:
             peerInitImage: ibp-init
-            peerInitTag: 2.1.2-20191217-amd64
+            peerInitTag: 2.1.2-20200213-amd64
             peerImage: ibp-peer
             peerTag: 1.4.4-20191217-amd64
             dindImage: ibp-dind
             dindTag: 1.4.4-20191217-amd64
             fluentdImage: ibp-fluentd
-            fluentdTag: 2.1.2-20191217-amd64
+            fluentdTag: 2.1.2-20200213-amd64
             grpcwebImage: ibp-grpcweb
-            grpcwebTag: 2.1.2-20191217-amd64
+            grpcwebTag: 2.1.2-20200213-amd64
             couchdbImage: ibp-couchdb
             couchdbTag: 2.3.1-20191217-amd64
       orderer:
@@ -627,11 +627,11 @@ spec:
           version: 1.4.4-0
           image:
             ordererInitImage: ibp-init
-            ordererInitTag: 2.1.2-20191217-amd64
+            ordererInitTag: 2.1.2-20200213-amd64
             ordererImage: ibp-orderer
             ordererTag: 1.4.4-20191217-amd64
             grpcwebImage: ibp-grpcweb
-            grpcwebTag: 2.1.2-20191217-amd64
+            grpcwebTag: 2.1.2-20200213-amd64
   networkinfo:
     domain: <DOMAIN>
   storage:
@@ -685,15 +685,15 @@ metadata:
     imagePullSecret: docker-key-secret
     images:
         consoleInitImage: ibp-init
-        consoleInitTag: 2.1.2-20191217-amd64
+        consoleInitTag: 2.1.2-20200213-amd64
         consoleImage: ibp-console
-        consoleTag: 2.1.2-20191217-amd64
+        consoleTag: 2.1.2-20200213-amd64
         configtxlatorImage: ibp-utilities
         configtxlatorTag: 1.4.4-20191217-amd64
         couchdbImage: ibp-couchdb
         couchdbTag: 2.3.1-20191217-amd64
         deployerImage: ibp-deployer
-        deployerTag: 2.1.2-20191217-amd64
+        deployerTag: 2.1.2-20200213-amd64
     versions:
         ca:
           1.4.4-0:
@@ -701,7 +701,7 @@ metadata:
             version: 1.4.4-0
             image:
               caInitImage: ibp-init
-              caInitTag: 2.1.2-20191217-amd64
+              caInitTag: 2.1.2-20200213-amd64
               caImage: ibp-ca
               caTag: 1.4.4-20191217-amd64
         peer:
@@ -710,15 +710,15 @@ metadata:
             version: 1.4.4-0
             image:
               peerInitImage: <LOCAL_REGISTRY>/ibp-init
-              peerInitTag: 2.1.2-20191217-amd64
+              peerInitTag: 2.1.2-20200213-amd64
               peerImage: ibp-peer
               peerTag: 1.4.4-20191217-amd64
               dindImage: ibp-dind
               dindTag: 1.4.4-20191217-amd64
               fluentdImage: ibp-fluentd
-              fluentdTag: 2.1.2-20191217-amd64
+              fluentdTag: 2.1.2-20200213-amd64
               grpcwebImage: ibp-grpcweb
-              grpcwebTag: 2.1.2-20191217-amd64
+              grpcwebTag: 2.1.2-20200213-amd64
               couchdbImage: ibp-couchdb
               couchdbTag: 2.3.1-20191217-amd64
         orderer:
@@ -727,11 +727,11 @@ metadata:
             version: 1.4.4-0
             image:
               ordererInitImage: ibp-init
-              ordererInitTag: 2.1.2-20191217-amd64
+              ordererInitTag: 2.1.2-20200213-amd64
               ordererImage: ibp-orderer
               ordererTag: 1.4.4-20191217-amd64
               grpcwebImage: ibp-grpcweb
-              grpcwebTag: 2.1.2-20191217-amd64
+              grpcwebTag: 2.1.2-20200213-amd64
     networkinfo:
         domain: <DOMAIN>
     storage:
