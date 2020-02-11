@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2020
-lastupdated: "2020-02-07"
+lastupdated: "2020-02-11"
 
 keywords: network components, Kubernetes, OpenShift, allocate resources, batch timeout, reallocate resources, LevelDB, CouchDB, ordering nodes, ordering, add and remove, governance
 
@@ -374,6 +374,32 @@ Now that you have created a JSON file with all of the certificates for the order
 6. Select the **Organization MSP** definition that you imported.
 7.  On the next panel, you have the opportunity to configure resource allocation for the nodes. The selections you make here are applied to all five ordering nodes.  If you want to learn more about how to allocate resources to your node, see this topic on [Allocating resources](#ibp-console-govern-components-allocate-resources).
 8. Review the summary and click **Add ordering service**.
+
+### Consideration when using openSSL to generate certificates
+{: #ibp-console-govern-third-party-openssl}
+
+When using openssl to generate ECDSA 256 SHA-2 certificates, the string `EC` is inserted into the `BEGIN PRIVATE KEY` and `END PRIVATE KEY` header and footer. The `EC` causes a failure in the console if you later try to create an identity using the certificate pem file.
+
+For example:
+```
+-----BEGIN EC PRIVATE KEY-----
+MHcCAQEEINLMBxWNS+KfENOAZDbvwJxib+1FXaWIa9xuvyJjQNoAoGCCqGSM49
+AwEHoUQDQgAEB49vPZw7Chp7xMLOg0n/L5D235rFhH+tu8CIGdj4Rwg3d6B1CW
+NGggmidf1wrdYcHphq1LrT2ft4RkwR0w==
+-----END EC PRIVATE KEY-----
+```
+
+Removing the `EC` from the header and footer resolves the problem:
+
+```
+-----BEGIN EC PRIVATE KEY-----
+MHcCAQEEINLMBxWNS+KfENOAZDbvwJxib+1FXaWIa9xuvyJjQNoAoGCCqGSM49
+AwEHoUQDQgAEB49vPZw7Chp7xMLOg0n/L5D235rFhH+tu8CIGdj4Rwg3d6B1CW
+NGggmidf1wrdYcHphq1LrT2ft4RkwR0w==
+-----END EC PRIVATE KEY-----
+```
+
+Now, you can import the `.PEM` file when you create an identity.
 
 ### What's next
 {: #ibp-console-govern-third-party-ca-next}
