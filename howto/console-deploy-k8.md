@@ -122,7 +122,7 @@ If you are running **Kubernetes v1.16**, you will need to change the line `apiVe
 {: important}
 
 ```yaml
-apiVersion: policy/v1beta1
+apiVersion: extensions/v1beta1
 kind: PodSecurityPolicy
 metadata:
   name: ibm-blockchain-platform-psp
