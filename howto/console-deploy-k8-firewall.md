@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2020
-lastupdated: "2020-02-11"
+lastupdated: "2020-02-19"
 
 keywords: IBM Blockchain Platform console, deploy, resource requirements, storage, parameters, firewall, on-premises
 
@@ -221,7 +221,7 @@ The {{site.data.keyword.blockchainfull_notm}} Platform requires specific securit
 Copy the PodSecurityPolicy object below and save it to your local system as `ibp-psp.yaml`.
 
 ```yaml
-apiVersion: extensions/v1beta1
+apiVersion: policy/v1beta1
 kind: PodSecurityPolicy
 metadata:
   name: ibm-blockchain-platform-psp
