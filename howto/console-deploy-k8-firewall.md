@@ -220,6 +220,9 @@ The {{site.data.keyword.blockchainfull_notm}} Platform requires specific securit
 
 Copy the PodSecurityPolicy object below and save it to your local system as `ibp-psp.yaml`.
 
+If you are running **Kubernetes v1.16**, you will need to change the line `apiVersion: extensions/v1beta1` in the following PodSecurityPolicy object to `apiVersion: policy/v1beta1`.
+{: important}
+
 ```yaml
 apiVersion: extensions/v1beta1
 kind: PodSecurityPolicy
