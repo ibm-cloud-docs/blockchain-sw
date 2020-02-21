@@ -572,7 +572,7 @@ You also need to make additional edits to the file depending on your choices in 
 - If you changed the name of your Docker key secret, change corresponding value of the `imagePullSecret:` field.
 - If you created a new storage class for your network, provide the storage class that you created to the `class:` field.
 
-If you are deploying your console on a multizone cluster, go to the [advanced deployment options](#console-deploy-k8-advanced-firewall) before you deploy the console.
+Because you can only run the following command once, you should review the [Advanced deployment options](#console-deploy-k8-advanced-firewall) in case any of the options are relevant to your configuration, before you install the console.  For example, if you are deploying your console on a multizone cluster, you need to configure that before you run the following step to install the console.
 {: important}
 
 After you update the file, you can use the CLI to install the console.

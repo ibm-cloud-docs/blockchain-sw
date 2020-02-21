@@ -464,7 +464,7 @@ If you are deploying the platform on {{site.data.keyword.cloud_notm}} Private, y
 - Replace: `<CONSOLE_PORT>` with a number between 30000 and 32767.
 - Replace: `<PROXY_PORT>` the proxy port of your cluster.
 
-If you are deploying your console on a multizone cluster, go to the [advanced deployment options](#console-deploy-k8-advanced) before you deploy the console.
+Because you can only run the following command once, you should review the [Advanced deployment options](#console-deploy-k8-advanced) in case any of the options are relevant to your configuration, before you install the console.  For example, if you are deploying your console on a multizone cluster, you need to configure that before you run the following step to install the console.
 {: important}
 
 After you update the file, you can use the CLI to install the console.
