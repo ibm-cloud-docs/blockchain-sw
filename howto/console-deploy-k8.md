@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2020
-lastupdated: "2020-02-07"
+lastupdated: "2020-02-21"
 
 keywords: IBM Blockchain Platform console, deploy, resource requirements, storage, parameters
 
@@ -107,7 +107,6 @@ You can also use the CLI to find the available storage classes for your namespac
 kubectl get storageclasses
 ```
 {:codeblock}
-
 
 ## Add security and access policies
 {: #deploy-k8-scc}
@@ -293,6 +292,28 @@ kubectl create secret docker-registry docker-key-secret --docker-server=cp.icr.i
 The name of the secret that you are creating is `docker-key-secret`. This value is used by the operator to deploy the offering in future steps. If you change the name of any of secrets that you create, you need to change the corresponding name in future steps.
 {: note}
 
+## ({{site.data.keyword.cloud_notm}} Private only) Create an image policy
+{: #deploy-k8-docker-icp-img-policy}
+
+If you are deploying on {{site.data.keyword.cloud_notm}} Private, you must also create an image policy. Copy the following text to a file on your local system and save the file as `image-policy.yaml`.
+  ```
+  apiVersion: securityenforcement.admission.cloud.ibm.com/v1beta1
+  kind: ImagePolicy
+  metadata:
+    name: image-policy
+  spec:
+    repositories:
+    - name: cp.icr.io/cp/*
+      policy: null
+  ```
+  {: codeblock}
+
+Then, use the kubectl CLI to add the image policy to your namespace.
+```
+kubectl apply -f image-policy.yaml -n <NAMESPACE>
+```
+{: codeblock}
+
 ## Deploy the {{site.data.keyword.blockchainfull_notm}} Platform operator
 {: #deploy-k8-operator}
 
@@ -349,7 +370,7 @@ spec:
         - name: docker-key-secret
       containers:
         - name: ibp-operator
-          image: cp.icr.io/cp/ibp-operator:2.1.2-20191217-amd64
+          image: cp.icr.io/cp/ibp-operator:2.1.2-20200213-amd64
           command:
           - ibp-operator
           imagePullPolicy: Always
@@ -462,9 +483,9 @@ You also need to make additional edits to the file depending on your choices in 
 If you are deploying the platform on {{site.data.keyword.cloud_notm}} Private, you need to provide the following values:
 -  If you are using {{site.data.keyword.cloud_notm}} Private, you need replace `<DOMAIN>` with the Proxy IP address your cluster. You  can retrieve the value your Proxy IP address from the {{site.data.keyword.cloud_notm}} Private console. **Note:** You need to be a [Cluster administrator](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.2.0/user_management/assign_role.html){: external} to access your proxy IP. Log in to the {{site.data.keyword.cloud_notm}} Private cluster. In the left navigation panel, click **Platform** and then **Nodes** to view the nodes that are defined in the cluster. Click the node with the role `proxy` and then copy the value of the `Host IP` from the table.
 - Replace: `<CONSOLE_PORT>` with a number between 30000 and 32767.
-- Replace: `<PROXY_PORT>` the proxy port of your cluster.
+- Replace: `<PROXY_PORT>` with a number between 30000 and 32767.
 
-If you are deploying your console on a multizone cluster, go to the [advanced deployment options](#console-deploy-k8-advanced) before you deploy the console.
+Because you can only run the following command once, you should review the [Advanced deployment options](#console-deploy-k8-advanced) in case any of the options are relevant to your configuration, before you install the console.  For example, if you are deploying your console on a multizone cluster, you need to configure that before you run the following step to install the console.
 {: important}
 
 After you update the file, you can use the CLI to install the console.
@@ -478,7 +499,7 @@ Replace `<NAMESPACE>` with the name of your namespace. Before you install the co
 ### Advanced deployment options
 {: #console-deploy-k8-advanced}
 
-You can edit the `ibp-console.yaml` file to allocate more resources to your console or use zones for high availability in a multizone cluster. To take advantage of these deployment options, you can use the console resource definition with the `resources:` and `clusterdata:` sections added:
+Before you deploy the console, you can edit the `ibp-console.yaml` file to allocate more resources to your console or use zones for high availability in a multizone cluster. To take advantage of these deployment options, you can use the console resource definition with the `resources:` and `clusterdata:` sections added:
 
 ```yaml
 apiVersion: ibp.com/v1alpha1

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2020
-lastupdated: "2020-02-07"
+lastupdated: "2020-02-21"
 
 keywords: IBM Blockchain Platform, images
 
@@ -80,21 +80,21 @@ docker login --username cp --password <KEY> cp.icr.io
 
 After you log in, use the following command to pull the {{site.data.keyword.blockchainfull_notm}} images:
 ```
-docker pull cp.icr.io/cp/ibp-peer:1.4.4-20191217-amd64
-docker pull cp.icr.io/cp/ibp-orderer:1.4.4-20191217-amd64
-docker pull cp.icr.io/cp/ibp-ca:1.4.4-20191217-amd64
-docker pull cp.icr.io/cp/ibp-couchdb:2.3.1-20191217-amd64
-docker pull cp.icr.io/cp/ibp-utilities:1.4.4-20191217-amd64
-docker pull cp.icr.io/cp/ibp-ccenv:1.4.4-20191217-amd64
-docker pull cp.icr.io/cp/ibp-goenv:1.4.4-20191217-amd64
-docker pull cp.icr.io/cp/ibp-nodeenv:1.4.4-20191217-amd64
+docker pull cp.icr.io/cp/ibp-peer:1.4.4-20200213-amd64
+docker pull cp.icr.io/cp/ibp-orderer:1.4.4-20200213-amd64
+docker pull cp.icr.io/cp/ibp-ca:1.4.4-20200213-amd64
+docker pull cp.icr.io/cp/ibp-couchdb:2.3.1-20200213-amd64
+docker pull cp.icr.io/cp/ibp-utilities:1.4.4-20200213-amd64
+docker pull cp.icr.io/cp/ibp-ccenv:1.4.4-20200213-amd64
+docker pull cp.icr.io/cp/ibp-goenv:1.4.4-20200213-amd64
+docker pull cp.icr.io/cp/ibp-nodeenv:1.4.4-20200213-amd64
 ```
 {:codeblock}
 
 If you want to import a node that you deploy into an {{site.data.keyword.blockchainfull_notm}} Platform console, you can pull the image of the gRPC web proxy.
 
 ```
-docker pull cp.icr.io/cp/ibp-grpcweb:2.1.2-20191217-amd64
+docker pull cp.icr.io/cp/ibp-grpcweb:2.1.2-20200213-amd64
 ```
 
 ## Getting started
@@ -115,7 +115,7 @@ If you are using the open source configuration files, you need to make the follo
 
 3. If you are deploying a peer node, you need to use the core chaincode variables to instruct the peer to build chaincode using the {{site.data.keyword.blockchainfull_notm}} certified images. For example, if you are using Go chaincode, you need to set the following variables:
   ```
-  CORE_CHAINCODE_NODE_RUNTIME=cp.icr.io/cp/ibp-nodeenv:1.4.4-20191217-amd64
+  CORE_CHAINCODE_NODE_RUNTIME=cp.icr.io/cp/ibp-nodeenv:1.4.4-20200213-amd64
   CORE_CHAINCODE_GOLANG_DYNAMICLINK=true
   ```
 
@@ -211,11 +211,11 @@ orderer-base:
 ```
 {:codeblock}
 
-To deploy an ordering node by using the {{site.data.keyword.blockchainfull_notm}} image, change the `image` field to the tag of the {{site.data.keyword.blockchainfull_notm}} image, `cp.icr.io/cp/ibp-orderer:1.4.4-20191217-amd64`. Accept the license by adding the field of `LICENSE=accept`. You then need to add the `FABRIC_CFG_PATH` environment variable and set the path to the folder where you mount the configuration files. Set the `working_dir` variable to the same path. After your changes, the orderer section would look like the example below:
+To deploy an ordering node by using the {{site.data.keyword.blockchainfull_notm}} image, change the `image` field to the tag of the {{site.data.keyword.blockchainfull_notm}} image, `cp.icr.io/cp/ibp-orderer:1.4.4-20200213-amd64`. Accept the license by adding the field of `LICENSE=accept`. You then need to add the `FABRIC_CFG_PATH` environment variable and set the path to the folder where you mount the configuration files. Set the `working_dir` variable to the same path. After your changes, the orderer section would look like the example below:
 
 ```yaml
 orderer-base:
-  image: cp.icr.io/cp/ibp-orderer:1.4.4-20191217-amd64
+  image: cp.icr.io/cp/ibp-orderer:1.4.4-20200213-amd64
   environment:
     - LICENSE=accept
     - FABRIC_CFG_PATH=/etc/hyperledger/fabric
@@ -245,13 +245,13 @@ If you are deploying a peer, you can make the same changes to the peer section o
 ```yaml
 services:
   peer-base:
-    image: cp.icr.io/cp/ibp-peer:1.4.4-20191217-amd64
+    image: cp.icr.io/cp/ibp-peer:1.4.4-20200213-amd64
     environment:
       - LICENSE=accept
       - FABRIC_CFG_PATH=/etc/hyperledger/fabric
-      - CORE_CHAINCODE_BUILDER=cp.icr.io/cp/ibp-ccenv:1.4.4-20191217-amd64
-      - CORE_CHAINCODE_GOLANG_RUNTIME=cp.icr.io/cp/ibp-goenv:1.4.4-20191217-amd64
-      - CORE_CHAINCODE_NODE_RUNTIME=cp.icr.io/cp/ibp-nodeenv:1.4.4-20191217-amd64
+      - CORE_CHAINCODE_BUILDER=cp.icr.io/cp/ibp-ccenv:1.4.4-20200213-amd64
+      - CORE_CHAINCODE_GOLANG_RUNTIME=cp.icr.io/cp/ibp-goenv:1.4.4-20200213-amd64
+      - CORE_CHAINCODE_NODE_RUNTIME=cp.icr.io/cp/ibp-nodeenv:1.4.4-20200213-amd64
       - CORE_CHAINCODE_GOLANG_DYNAMICLINK=true
       - CORE_CHAINCODE_NODE_DYNAMICLINK=true
       - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
@@ -346,7 +346,7 @@ networks:
 services:
 
   ca-org1:
-    image: cp.icr.io/cp/ibp-ca:1.4.4-20191217-amd64
+    image: cp.icr.io/cp/ibp-ca:1.4.4-20200213-amd64
     environment:
       - LICENSE=accept
       - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
@@ -483,7 +483,7 @@ After we deploy a network, we can use the gRPC web proxy to import a peer or ord
   services:
     web_proxy.peer0.org1.example.com:
       container_name: web_proxy.peer0.org1.example.com
-      image: cp.icr.io/cp/ibp-grpcweb:2.1.2-20191217-amd64
+      image: cp.icr.io/cp/ibp-grpcweb:2.1.2-20200213-amd64
       environment:
         - LICENSE=accept
         - BACKEND_ADDRESS=peer0.org1.example.com:7051

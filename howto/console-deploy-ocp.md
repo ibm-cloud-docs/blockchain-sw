@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2020
-lastupdated: "2020-02-07"
+lastupdated: "2020-02-21"
 
 keywords: OpenShift, IBM Blockchain Platform console, deploy, resource requirements, storage, parameters
 
@@ -142,7 +142,7 @@ blockchain-project                  Active    2m
 
 You can also use the CLI to find the available storage classes for your namespace. If you created a new storage class for your deployment, that storage class must be visible in the output in the following command:
 ```
-oc get storageclasses
+kubectl get storageclasses
 ```
 {:codeblock}
 
@@ -420,7 +420,7 @@ spec:
         - name: docker-key-secret
       containers:
         - name: ibp-operator
-          image: cp.icr.io/cp/ibp-operator:2.1.2-20191217-amd64
+          image: cp.icr.io/cp/ibp-operator:2.1.2-20200213-amd64
           command:
           - ibp-operator
           imagePullPolicy: Always
@@ -526,7 +526,7 @@ You also need to make additional edits to the file depending on your choices in 
 If you are running OpenShift on Azure, you also need to change the storage class from `default` to `azure-standard`, unless you created your own storage class.
 {: tip}
 
-If you are deploying your console on a multizone cluster, go to the [advanced deployment options](#console-deploy-ocp-advanced) before you deploy the console.
+Because you can only run the following command once, you should review the [Advanced deployment options](#console-deploy-ocp-advanced) in case any of the options are relevant to your configuration, before you install the console.  For example, if you are deploying your console on a multizone cluster, you need to configure that before you run the following step to install the console.
 {: important}
 
 After you update the file, you can use the CLI to install the console.
@@ -540,7 +540,7 @@ Replace `<PROJECT_NAME>` with the name of your project. Before you install the c
 ### Advanced deployment options
 {: #console-deploy-ocp-advanced}
 
-You can edit the `ibp-console.yaml` file to allocate more resources to your console or use zones for high availability in a multizone cluster. To take advantage of these deployment options, you can use the console resource definition with the `resources:` and `clusterdata:` sections added:
+Before you deploy the console, you can edit the `ibp-console.yaml` file to allocate more resources to your console or use zones for high availability in a multizone cluster. To take advantage of these deployment options, you can use the console resource definition with the `resources:` and `clusterdata:` sections added:
 
 ```yaml
 apiVersion: ibp.com/v1alpha1

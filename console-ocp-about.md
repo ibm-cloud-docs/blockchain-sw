@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2020
-lastupdated: "2020-02-07"
+lastupdated: "2020-02-18"
 
 keywords: IBM Blockchain Platform, system requirements, Kubernetes, behind a firewall
 
@@ -78,11 +78,13 @@ The {{site.data.keyword.blockchainfull_notm}} Platform v2.1.2 can be deployed us
 |----|----|----|
 | **Red Hat OpenShift Container Platform (OCP) 3.11, 4.1, and 4.2 and OpenShift Kubernetes Distribution (OKD) 3.11:** |Any x86_64 hardware running:  <ul><li>OCP 3.11 that meet the [system and environment requirements](https://docs.openshift.com/container-platform/3.11/install/prerequisites.html){: external}. </li> <li> [OCP 4.1 available platforms](https://docs.openshift.com/container-platform/4.1/architecture/architecture-installation.html#available-platforms_architecture-installation){: external} </li> <li>[OCP 4.2 available platforms](https://docs.openshift.com/container-platform/4.2/architecture/architecture-installation.html#available-platforms_architecture-installation){: external} </li></ul> | <ul> <li> Red Hat OpenShift 3.11 Cluster on {{site.data.keyword.cloud_notm}} </li> <li> Red Hat OpenShift 3.11 Cluster on Microsoft Azure <li> Red Hat OpenShift 4.1  <br><br> See these articles on [OpenShift Container Platform 3.x Tested Integrations](https://access.redhat.com/articles/2176281){: external} or [OpenShift Container Platform 4.x Tested Integrations](https://access.redhat.com/articles/4128421){: external} (Red Hat subscription required to view content). Scroll down to the bottom of the article to the section titled 'Tested Platforms' to view the list of cloud providers tested on OpenShift Container Platform 3.11, 4.1, or 4.2. </li></ul>
 | **{{site.data.keyword.cloud_notm}} Private 3.2.1** | <ul><li>x86_64</li><li>LinuxONE on s390x</li></ul>| <ul><li>Intel (x86)</li><li>LinuxONE (s390x)</ul>|
-| **Kubernetes v1.14 - v1.16** | <ul><li>x86_64 </li></ul> | <ul><li>Kubernetes</li> <br>The platform has also been tested on Rancher v2.3.2 and Azure Kubernetes Service (AKS).</ul>|
+| **Kubernetes v1.14 - v1.16** | <ul><li>x86_64 </li></ul> | <ul><li>Kubernetes</li> <br>The platform has also been tested on Rancher v2.3.2 and Azure Kubernetes Service (AKS).<br><br>**Note:** This offering is not supported on the {{site.data.keyword.cloud_notm}} Kubernetes Service. If you want to run the {{site.data.keyword.blockchainfull_notm}} Platform on the {{site.data.keyword.cloud_notm}} Kubernetes Service, use the [IBM Blockchain Platform for IBM Cloud offering](https://cloud.ibm.com/docs/blockchain?topic=blockchain-ibp-v2-deploy-iks). </ul>|
 {: caption="Table 1. Supported Platforms" caption-side="bottom"}
 
 If you are not running the platform on Red Hat OpenShift Container Platform, Red Hat Open Kubernetes Distribution, or {{site.data.keyword.cloud_notm}} Private then you need to setup the nginx ingress controller and it needs to be running in [SSL passthrough mode](https://kubernetes.github.io/ingress-nginx/user-guide/tls/#ssl-passthrough){: external}.
 {: note}
+
+
 
 ## License and pricing
 {: #console-ocp-about-license}
