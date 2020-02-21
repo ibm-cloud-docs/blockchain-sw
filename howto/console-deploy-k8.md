@@ -108,7 +108,6 @@ kubectl get storageclasses
 ```
 {:codeblock}
 
-
 ## Add security and access policies
 {: #deploy-k8-scc}
 
@@ -292,6 +291,28 @@ kubectl create secret docker-registry docker-key-secret --docker-server=cp.icr.i
 
 The name of the secret that you are creating is `docker-key-secret`. This value is used by the operator to deploy the offering in future steps. If you change the name of any of secrets that you create, you need to change the corresponding name in future steps.
 {: note}
+
+## ({{site.data.keyword.cloud_notm}} Private only) Create an image policy
+{: #deploy-k8-docker-icp-img-policy}
+
+If you are deploying on {{site.data.keyword.cloud_notm}} Private, you must also create an image policy. Copy the following text to a file on your local system and save the file as `image-policy.yaml`.
+  ```
+  apiVersion: securityenforcement.admission.cloud.ibm.com/v1beta1
+  kind: ImagePolicy
+  metadata:
+    name: image-policy
+  spec:
+    repositories:
+    - name: cp.icr.io/cp/*
+      policy: null
+  ```
+  {: codeblock}
+
+Then, use the kubectl CLI to add the image policy to your namespace.
+```
+kubectl apply -f image-policy.yaml -n <NAMESPACE>
+```
+{: codeblock}
 
 ## Deploy the {{site.data.keyword.blockchainfull_notm}} Platform operator
 {: #deploy-k8-operator}
