@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2020
-lastupdated: "2020-02-11"
+lastupdated: "2020-02-23"
 
 keywords: network components, Kubernetes, OpenShift, allocate resources, batch timeout, reallocate resources, LevelDB, CouchDB, ordering nodes, ordering, add and remove, governance
 
@@ -392,11 +392,11 @@ NGggmidf1wrdYcHphq1LrT2ft4RkwR0w==
 Removing the `EC` from the header and footer resolves the problem:
 
 ```
------BEGIN EC PRIVATE KEY-----
+-----BEGIN PRIVATE KEY-----
 MHcCAQEEINLMBxWNS+KfENOAZDbvwJxib+1FXaWIa9xuvyJjQNoAoGCCqGSM49
 AwEHoUQDQgAEB49vPZw7Chp7xMLOg0n/L5D235rFhH+tu8CIGdj4Rwg3d6B1CW
 NGggmidf1wrdYcHphq1LrT2ft4RkwR0w==
------END EC PRIVATE KEY-----
+-----END PRIVATE KEY-----
 ```
 
 Now, you can import the `.PEM` file when you create an identity.
