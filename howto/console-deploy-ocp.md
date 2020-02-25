@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2020
-lastupdated: "2020-02-21"
+lastupdated: "2020-02-25"
 
 keywords: OpenShift, IBM Blockchain Platform console, deploy, resource requirements, storage, parameters
 
@@ -370,7 +370,7 @@ The name of the secret that you are creating is `docker-key-secret`. This value 
 
 The {{site.data.keyword.blockchainfull_notm}} Platform uses an operator to install the {{site.data.keyword.blockchainfull_notm}} Platform console. You can deploy the operator on your cluster by adding a custom resource to your project by using the OpenShift CLI. The custom resource pulls the operator image from the Docker registry and starts it on your cluster.
 
-Copy the following text to a file on your local system and save the file as `ibp-operator.yaml`. If you changed the name of the Docker key secret, then you need to edit the field of `name: docker-key-secret`.
+Copy the following text to a file on your local system and save the file as `ibp-operator.yaml`.
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
@@ -470,6 +470,10 @@ spec:
               memory: 200Mi
 ```
 {:codeblock}
+- If you changed the name of the Docker key secret, then you need to edit the field of `name: docker-key-secret`.
+- If you are using OpenShift Container Platform v4.2 on LinuxONE, you need to make the following additional customizations:
+   1. In the `spec.affinity` section, change `amd64` to `s390x`.
+   2. In the `spec.containers` section, replace `amd64` in the operator `images` tag with `s390x`.
 
 Then, use the `kubectl` CLI to add the custom resource to your project.
 
@@ -522,6 +526,8 @@ You need to provide the user name and password that is used to access the consol
 You also need to make additional edits to the file depending on your choices in the deployment process:
 - If you changed the name of your Docker key secret, change corresponding value of the `imagePullSecret:` field.
 - If you created a new storage class for your network, provide the storage class that you created to the `class:` field.
+
+If you are deploying on OpenShift Container Platform v4.2 on LinuxONE, you need to insert `arch: - s390x` in the `spec:` section.
 
 If you are running OpenShift on Azure, you also need to change the storage class from `default` to `azure-standard`, unless you created your own storage class.
 {: tip}
