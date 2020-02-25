@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2020
-lastupdated: "2020-02-21"
+lastupdated: "2020-02-25"
 
 keywords: OpenShift, IBM Blockchain Platform console, deploy, resource requirements, storage, parameters
 
@@ -550,6 +550,10 @@ spec:
               memory: 200Mi
 ```
 {:codeblock}
+- If you changed the name of the Docker key secret, then you need to edit the field of `name: docker-key-secret`.
+- If you are using OpenShift Container Platform v4.2 on LinuxONE, you need to make the following additional customizations:
+   1. In the `spec.affinity` section, change `amd64` to `s390x`.
+   2. In the `spec.containers` section, replace `amd64` in the operator `images` tag with `s390x`.
 
 Then, use the `kubectl` CLI to add the custom resource to your project.
 
@@ -603,6 +607,8 @@ You need to provide the user name and password that is used to access the consol
 You also need to make additional edits to the file depending on your choices in the deployment process:
 - If you changed the name of your Docker key secret, change corresponding value of the `imagePullSecret:` field.
 - If you created a new storage class for your network, provide the storage class that you created to the `class:` field.
+
+If you are deploying on OpenShift Container Platform v4.2 on LinuxONE, you need to insert `arch: - s390x` in the `spec:` section.
 
 Because you can only run the following command once, you should review the [Advanced deployment options](#console-deploy-ocp-advanced-firewall) in case any of the options are relevant to your configuration, before you install the console.  For example, if you are deploying your console on a multizone cluster, you need to configure that before you run the following step to install the console.
 {: important}
