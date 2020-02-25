@@ -532,10 +532,6 @@ spec:
 - Replace `<CLUSTER_TYPE>` with `ICP` if you are deploying the platform on {{site.data.keyword.cloud_notm}} Private.
 - If you are deploying the platform on LinuxONE on s390x, replace `amd64` in the operator image tag with `s390x`.
 - If you changed the name of the Docker key secret, then you need to edit the field of `name: docker-key-secret`.
-- If you are using {{site.data.keyword.cloud_notm}} Private on LinuxONE (s390x), you need to make the following additional customizations:
-   1. In the `spec.affinity` section, change `amd64` to `s390x`.
-   2. In the `spec.containers` section, replace `amd64` in the operator `images` tag with `s390x`.
-
 - If you changed the name of the Docker key secret, then you need to edit the field of `name: docker-key-secret`.
 
 Then, use the kubectl CLI to add the custom resource to your namespace.
