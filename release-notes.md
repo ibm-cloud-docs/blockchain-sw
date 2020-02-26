@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2020
-lastupdated: "2020-02-07"
+lastupdated: "2020-02-26"
 
 
 keywords: release note, latest changes, Hyperledger Fabric
@@ -23,6 +23,8 @@ subcollection: blockchain-sw
 
 Use these release notes that are grouped by date to learn about the latest changes to {{site.data.keyword.blockchainfull}} Platform v2.1
 {:shortdesc}
+
+
 
 ## 17 December 2019
 {: #12-17-2019}
