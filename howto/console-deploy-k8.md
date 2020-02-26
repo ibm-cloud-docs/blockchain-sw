@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2020
-lastupdated: "2020-02-21"
+lastupdated: "2020-02-26"
 
 keywords: IBM Blockchain Platform console, deploy, resource requirements, storage, parameters
 
@@ -234,6 +234,8 @@ rules:
 ```
 {:codeblock}
 
+
+
 After you save and edit the file, run the following commands.
 ```
 kubectl apply -f ibp-clusterrole.yaml
@@ -423,7 +425,6 @@ spec:
 
 - Replace `<CLUSTER_TYPE>` with `IKS` if you are deploying the platform on open source Kubernetes or Rancher.
 - Replace `<CLUSTER_TYPE>` with `ICP` if you are deploying the platform on {{site.data.keyword.cloud_notm}} Private.
-- If you are deploying the platform on LinuxONE on s390x, replace `amd64` in the operator image tag with `s390x`.
 - If you changed the name of the Docker key secret, then you need to edit the field of `name: docker-key-secret`.
 
 Then, use the kubectl CLI to add the custom resource to your namespace.
@@ -445,6 +446,7 @@ ibp-operator   1         1         1            1           1m
 When the operator is running on your namespace, you can apply a custom resource to start the {{site.data.keyword.blockchainfull_notm}} Platform console on your cluster. You can then access the console from your browser. Note that you can deploy only one console per namespace.
 
 Save the custom resource definition below as `ibp-console.yaml` on your local system. If you changed the name of the entitlement key secret, then you need to edit the field of `name: docker-key-secret`.
+
 
 ```yaml
 apiVersion: ibp.com/v1alpha1
@@ -469,6 +471,8 @@ spec:
 ```
 {:codeblock}
 
+
+
 You need to specify the external endpoint information of the console in the `ibp-console.yaml` file:
 - Replace `<DOMAIN>` with the name of your cluster domain. You need to make sure that this domain is pointed to the load balancer of your cluster.
 
@@ -484,6 +488,8 @@ If you are deploying the platform on {{site.data.keyword.cloud_notm}} Private, y
 -  If you are using {{site.data.keyword.cloud_notm}} Private, you need replace `<DOMAIN>` with the Proxy IP address your cluster. You  can retrieve the value your Proxy IP address from the {{site.data.keyword.cloud_notm}} Private console. **Note:** You need to be a [Cluster administrator](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.2.0/user_management/assign_role.html){: external} to access your proxy IP. Log in to the {{site.data.keyword.cloud_notm}} Private cluster. In the left navigation panel, click **Platform** and then **Nodes** to view the nodes that are defined in the cluster. Click the node with the role `proxy` and then copy the value of the `Host IP` from the table.
 - Replace: `<CONSOLE_PORT>` with a number between 30000 and 32767.
 - Replace: `<PROXY_PORT>` with a number between 30000 and 32767.
+
+
 
 Because you can only run the following command once, you should review the [Advanced deployment options](#console-deploy-k8-advanced) in case any of the options are relevant to your configuration, before you install the console.  For example, if you are deploying your console on a multizone cluster, you need to configure that before you run the following step to install the console.
 {: important}
@@ -507,6 +513,7 @@ kind: IBPConsole
 metadata:
   name: ibpconsole
   spec:
+    arch: - amd64
     license: accept
     serviceAccountName: default
     proxyIP:
@@ -555,6 +562,8 @@ metadata:
           memory: 200Mi
 ```
 {:codeblock}
+
+
 
 - You can use the `resources:` section to allocate more resources to your console. The values in the example file are the default values allocated to each container. Allocating more resources to your console allows you to operate a larger number of nodes or channels. You can allocate more resources to a currently running console by editing the resource file and applying it to your cluster. The console will restart and return to its previous state, allowing you to operate all of your exiting nodes and channels.
   ```

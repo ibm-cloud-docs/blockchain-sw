@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2020
-lastupdated: "2020-02-07"
+lastupdated: "2020-02-26"
 
 keywords: blockchain components, ca, certificate authorities, peer, ordering service, orderer, channel, smart contract, applications
 
@@ -48,7 +48,7 @@ In Hyperledger Fabric, as well as the {{site.data.keyword.blockchainfull_notm}} 
 
 An organization MSP, for example, has an MSP subfolder called **admins**. Any user whose certificate is inside that admin folder is an admin of the organization. Because this MSP defines the organization, it is listed in the configuration on every channel of which the organization is a member. As a result, whenever an admin of the organization tries to perform an action, the signing certificate of the admin (which is attached to all of its interactions) is checked against the certificates listed in the MSP. Does the certificate match the one listed in the channel configuration? If it does, the other organizations will validate it and the action can be performed. If not, the request to do the action is rejected.
 
-{{site.data.keyword.blockchainfull_notm}} Platform CAs are based on the [Hyperledger Fabric CA](https://hyperledger-fabric-ca.readthedocs.io/en/release-1.4/){: external}, though it is possible to use another CA if it uses a PKI based on x.509 certificates. Because non-Fabric CAs are not configured to create properly formatted MSPs, users who want to use this kind of CA must to create the MSP for themselves.
+{{site.data.keyword.blockchainfull_notm}} Platform CAs are based on the [Hyperledger Fabric CA](https://hyperledger-fabric-ca.readthedocs.io/en/release-1.4/){: external}, though it is possible to use another CA if it uses a PKI based on x.509 certificates. Because non-Fabric CAs are not configured to create properly formatted MSPs, users who want to use this kind of CA must create the MSP for themselves.
 
 For more information about how certificate authorities are used to establish identity and membership, see [Hyperledger Fabric documentation on identity](https://hyperledger-fabric.readthedocs.io/en/release-1.4/identity/identity.html){: external} and on [membership](https://hyperledger-fabric.readthedocs.io/en/release-1.4/membership/membership.html){: external}.
 

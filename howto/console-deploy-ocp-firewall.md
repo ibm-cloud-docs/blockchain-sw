@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2020
-lastupdated: "2020-02-21"
+lastupdated: "2020-02-26"
 
 keywords: OpenShift, IBM Blockchain Platform console, deploy, resource requirements, storage, parameters
 
@@ -114,6 +114,8 @@ docker pull cp.icr.io/cp/ibp-deployer:2.1.2-20200213-amd64
 docker pull cp.icr.io/cp/ibp-fluentd:2.1.2-20200213-amd64
 ```
 {:codeblock}
+
+
 
 After you download the images, you must change the image tags to refer to your docker registry. Replace `<LOCAL_REGISTRY>` with the url of your local registry and run the following commands:
 ```
@@ -550,6 +552,7 @@ spec:
               memory: 200Mi
 ```
 {:codeblock}
+- If you changed the name of the Docker key secret, then you need to edit the field of `name: docker-key-secret`.
 
 Then, use the `kubectl` CLI to add the custom resource to your project.
 
@@ -571,6 +574,7 @@ When the operator is running on your namespace, you can apply a custom resource 
 
 Save the custom resource definition below as `ibp-console.yaml` on your local system. If you changed the name of the entitlement key secret, then you need to edit the field of `name: docker-key-secret`.
 
+
 ```yaml
 apiVersion: ibp.com/v1alpha1
 kind: IBPConsole
@@ -582,7 +586,7 @@ spec:
   email: "<EMAIL>"
   password: "<PASSWORD>"
   registryURL: <LOCAL_REGISTRY>
-  imagePullSecret: docker-key-secret
+  imagePullSecret: "docker-key-secret"
   networkinfo:
     domain: <DOMAIN>
   storage:
@@ -591,6 +595,8 @@ spec:
       size: 10Gi
 ```
 {:codeblock}
+
+
 
 You need to specify the external endpoint information of the console in the `ibp-console.yaml` file:
 - Replace `<LOCAL_REGISTRY>` with the url of your local registry.
@@ -603,6 +609,8 @@ You need to provide the user name and password that is used to access the consol
 You also need to make additional edits to the file depending on your choices in the deployment process:
 - If you changed the name of your Docker key secret, change corresponding value of the `imagePullSecret:` field.
 - If you created a new storage class for your network, provide the storage class that you created to the `class:` field.
+
+
 
 Because you can only run the following command once, you should review the [Advanced deployment options](#console-deploy-ocp-advanced-firewall) in case any of the options are relevant to your configuration, before you install the console.  For example, if you are deploying your console on a multizone cluster, you need to configure that before you run the following step to install the console.
 {: important}
@@ -620,6 +628,7 @@ Replace `<PROJECT_NAME>` with the name of your project. Before you install the c
 {: #console-deploy-ocp-advanced-firewall}
 
 You can edit the `ibp-console.yaml` file to allocate more resources to your console or use zones for high availability in a multizone cluster. To take advantage of these deployment options, you can use the console resource definition with the `resources:` and `clusterdata:` sections added:
+
 
 ```yaml
 apiVersion: ibp.com/v1alpha1
@@ -673,6 +682,8 @@ metadata:
           memory: 200Mi
 ```
 {:codeblock}
+
+
 
 - You can use the `resources:` section to allocate more resources to your console. The values in the example file are the default values allocated to each container. Allocating more resources to your console allows you to operate a larger number of nodes or channels. You can allocate more resources to a currently running console by editing the resource file and applying it to your cluster. The console will restart and return to its previous state, allowing you to operate all of your exiting nodes and channels.
   ```

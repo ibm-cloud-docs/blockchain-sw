@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2020
-lastupdated: "2020-02-21"
+lastupdated: "2020-02-26"
 
 keywords: OpenShift, IBM Blockchain Platform console, deploy, resource requirements, storage, parameters
 
@@ -370,7 +370,7 @@ The name of the secret that you are creating is `docker-key-secret`. This value 
 
 The {{site.data.keyword.blockchainfull_notm}} Platform uses an operator to install the {{site.data.keyword.blockchainfull_notm}} Platform console. You can deploy the operator on your cluster by adding a custom resource to your project by using the OpenShift CLI. The custom resource pulls the operator image from the Docker registry and starts it on your cluster.
 
-Copy the following text to a file on your local system and save the file as `ibp-operator.yaml`. If you changed the name of the Docker key secret, then you need to edit the field of `name: docker-key-secret`.
+Copy the following text to a file on your local system and save the file as `ibp-operator.yaml`.
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
@@ -470,6 +470,7 @@ spec:
               memory: 200Mi
 ```
 {:codeblock}
+- If you changed the name of the Docker key secret, then you need to edit the field of `name: docker-key-secret`.
 
 Then, use the `kubectl` CLI to add the custom resource to your project.
 
@@ -490,6 +491,7 @@ ibp-operator   1/1       1            1           46s
 When the operator is running on your namespace, you can apply a custom resource to start the {{site.data.keyword.blockchainfull_notm}} Platform console on your cluster. You can then access the console from your browser. Note that you can deploy only one console per OpenShift project.
 
 Save the custom resource definition below as `ibp-console.yaml` on your local system. If you changed the name of the entitlement key secret, then you need to edit the field of `name: docker-key-secret`.
+
 
 ```yaml
 apiVersion: ibp.com/v1alpha1
@@ -512,6 +514,8 @@ spec:
 ```
 {:codeblock}
 
+
+
 You need to specify the external endpoint information of the console in the `ibp-console.yaml` file:
 - Replace `<DOMAIN>` with the name of your cluster domain. You can find this value by using the OpenShift web console. Use the dropdown menu next to **OpenShift Container Platform** at the top of the page to switch from **Service Catalog** to **Cluster Console**. Examine the url for that page. It will be similar to `console.xyz.abc.com/k8s/cluster/projects`. The value of the domain then would be `xyz.abc.com`, after removing `console` and `/k8s/cluster/projects`.
 
@@ -522,6 +526,8 @@ You need to provide the user name and password that is used to access the consol
 You also need to make additional edits to the file depending on your choices in the deployment process:
 - If you changed the name of your Docker key secret, change corresponding value of the `imagePullSecret:` field.
 - If you created a new storage class for your network, provide the storage class that you created to the `class:` field.
+
+
 
 If you are running OpenShift on Azure, you also need to change the storage class from `default` to `azure-standard`, unless you created your own storage class.
 {: tip}
@@ -548,6 +554,7 @@ kind: IBPConsole
 metadata:
   name: ibpconsole
   spec:
+    arch: - amd64
     license: accept
     serviceAccountName: default
     proxyIP:
@@ -594,6 +601,9 @@ metadata:
           memory: 200Mi
 ```
 {:codeblock}
+
+
+
 
 - You can use the `resources:` section to allocate more resources to your console. The values in the example file are the default values allocated to each container. Allocating more resources to your console allows you to operate a larger number of nodes or channels. You can allocate more resources to a currently running console by editing the resource file and applying it to your cluster. The console will restart and return to its previous state, allowing you to operate all of your exiting nodes and channels.
   ```
