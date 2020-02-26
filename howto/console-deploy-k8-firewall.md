@@ -535,7 +535,6 @@ spec:
 - Replace `<CLUSTER_TYPE>` with `ICP` if you are deploying the platform on {{site.data.keyword.cloud_notm}} Private.
 - If you are deploying the platform on LinuxONE on s390x, replace `amd64` in the operator image tag with `s390x`.
 - If you changed the name of the Docker key secret, then you need to edit the field of `name: docker-key-secret`.
-- If you changed the name of the Docker key secret, then you need to edit the field of `name: docker-key-secret`.
 
 Then, use the kubectl CLI to add the custom resource to your namespace.
 
@@ -568,7 +567,7 @@ spec:
   serviceAccountName: default
   email: "<EMAIL>"
   password: "<PASSWORD>"
-  registryURL: cp.icr.io/cp
+  registryURL: <LOCAL_REGISTRY>
   imagePullSecret: "docker-key-secret"
   networkinfo:
     domain: <DOMAIN>
@@ -586,7 +585,7 @@ spec:
 You need to specify the external endpoint information of the console in the `ibp-console.yaml` file:
 - Replace `<DOMAIN>` with the name of your cluster domain. You need to make sure that this domain is pointed to the load balancer of your cluster.
 
-  If you are using {{site.data.keyword.cloud_notm}} Private, you need replace `<DOMAIN>` to Proxy IP address your cluster. You  can retrieve the value your Proxy IP address from the {{site.data.keyword.cloud_notm}} Private console. **Note:** You will need to be a [Cluster administrator](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.2.0/user_management/assign_role.html){: external} to access your proxy IP. Log in to the {{site.data.keyword.cloud_notm}} Private cluster. In the left navigation panel, click **Platform** and then **Nodes** to view the nodes that are defined in the cluster. Click the node with the role `proxy` and then copy the value of the `Host IP` from the table.
+  If you are using {{site.data.keyword.cloud_notm}} Private, you need replace `<DOMAIN>` with the Proxy IP address your cluster. You  can retrieve the value your Proxy IP address from the {{site.data.keyword.cloud_notm}} Private console. **Note:** You will need to be a [Cluster administrator](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.2.0/user_management/assign_role.html){: external} to access your proxy IP. Log in to the {{site.data.keyword.cloud_notm}} Private cluster. In the left navigation panel, click **Platform** and then **Nodes** to view the nodes that are defined in the cluster. Click the node with the role `proxy` and then copy the value of the `Host IP` from the table.
 
 - Replace: `<CONSOLE_PORT>` with a number between 30000 and 32767.
 - Replace: `<PROXY_PORT>` with a number between 30000 and 32767. Select a different port than the <CONSOLE_PORT>.
@@ -795,4 +794,4 @@ The administrator who provisions the console can grant access to other users and
 
 When you access your console, you can view the **nodes** tab of your console UI. You can use this screen to deploy components on the cluster where you deployed the console. See the [Build a network tutorial](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-build-network#ibp-console-build-network) to get started with the console. You can also use this tab to operate nodes that are created on other clouds. For more information, see [Importing nodes](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-import-nodes#ibp-console-import-nodes).
 
-To learn how to manage the users that can access the console, view the logs of your console and your blockchain components, see [administering your console](/docs/blockchain-sw?topic=blockchain-sw-console-icp-manage#console-icp-manage).
+To learn how to manage the users that can access the console, view the logs of your console and your blockchain components, see [Administering your console](/docs/blockchain-sw?topic=blockchain-sw-console-icp-manage#console-icp-manage).
