@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2020
-lastupdated: "2020-02-25"
+lastupdated: "2020-02-26"
 
 keywords: IBM Blockchain Platform console, deploy, resource requirements, storage, parameters, firewall, on-premises
 
@@ -25,11 +25,11 @@ subcollection: blockchain-sw
 You can use these instructions to deploy {{site.data.keyword.blockchainfull_notm}} Platform v2.1.2 behind a firewall without internet connectivity. If you are deploying the platform on a cluster with access to the external internet, use the main instructions for [Deploying {{site.data.keyword.blockchainfull_notm}} Platform v2.1.2](/docs/blockchain-sw?topic=blockchain-sw-deploy-k8).
 {:shortdesc}
 
-You can use the following instructions to deploy the {{site.data.keyword.blockchainfull}} Platform v2.1.2 on any x86_64 Kubernetes cluster running at v1.14 through v1.16. Use these instructions if you are using distributions such as Rancher or {{site.data.keyword.cloud_notm}} Private. The {{site.data.keyword.blockchainfull_notm}} Platform uses a [Kubernetes Operator](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/){: external} to install the {{site.data.keyword.blockchainfull_notm}} Platform console on your cluster and manage the deployment and your blockchain nodes. When the {{site.data.keyword.blockchainfull_notm}} Platform console is running on your cluster, you can use the console to create blockchain nodes and operate a multicloud blockchain network.
+You can use the following instructions to deploy the {{site.data.keyword.blockchainfull}} Platform v2.1.2 on any x86_64 v1.14 through v1.16 Kubernetes cluster. Use these instructions if you are using distributions such as Rancher or {{site.data.keyword.cloud_notm}} Private. The {{site.data.keyword.blockchainfull_notm}} Platform uses a [Kubernetes Operator](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/){: external} to install the {{site.data.keyword.blockchainfull_notm}} Platform console on your cluster and manage the deployment and your blockchain nodes. When the {{site.data.keyword.blockchainfull_notm}} Platform console is running on your cluster, you can use the console to create blockchain nodes and operate a multicloud blockchain network.
 
 ## Need to Know
 
-- If you are deploying the {{site.data.keyword.blockchainfull_notm}} Platform behind a firewall, without access to the public internet, your JavaScript or TypeScript chaincode will not be able to download external depenencies when the chaincode is instantiated. You need point to a local NPM registry for your chaincode to access the required dependencies. This problem does not occur if you are using chaincode written in Go.
+- If you are deploying the {{site.data.keyword.blockchainfull_notm}} Platform behind a firewall, without access to the public internet, your JavaScript, or TypeScript chaincode will not be able to download external dependencies when the chaincode is instantiated. You need point to a local NPM registry for your chaincode to access the required dependencies. This problem does not occur if you are using chaincode that are written in Go.
 
 - After you deploy your peer and ordering nodes, you need to expose the ports of your nodes for your network to be able to respond to requests from applications or nodes outside your firewall. For more information about the ports that you need to expose, see [Internet Ports](/docs/blockchain-sw?topic=blockchain-sw-ibp-security#ibp-security-ibp-ports) in the security guide.
 
@@ -83,7 +83,7 @@ When you purchase the {{site.data.keyword.blockchainfull_notm}} Platform from PP
 
 2. You need to install and connect to your cluster by using the [kubectl CLI](https://kubernetes.io/docs/tasks/tools/install-kubectl){: external} to deploy the platform. If you are using {{site.data.keyword.cloud_notm}} Private, install the [{{site.data.keyword.cloud_notm}} Private CLI 3.2.1](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.2.1/manage_cluster/install_cli.html){: external}. The {{site.data.keyword.cloud_notm}} Private CLI includes the kubectl CLI.
 
-3. If you are not running the platform on Red Hat OpenShift Container Platform, Red Hat Open Kubernetes Distribution, or {{site.data.keyword.cloud_notm}} Private then you need to setup the nginx ingress controller and it needs to be running in [SSL passthrough mode](https://kubernetes.github.io/ingress-nginx/user-guide/tls/#ssl-passthrough){: external}.
+3. If you are not running the platform on Red Hat OpenShift Container Platform, Red Hat Open Kubernetes Distribution, or {{site.data.keyword.cloud_notm}} Private then you need to set up the nginx ingress controller and it needs to be running in [SSL passthrough mode](https://kubernetes.github.io/ingress-nginx/user-guide/tls/#ssl-passthrough){: external}.
 
 ## Pull the {{site.data.keyword.blockchainfull_notm}} Platform images
 
@@ -136,13 +136,13 @@ docker tag cp.icr.io/cp/ibp-fluentd:2.1.2-20200213-amd64 <LOCAL_REGISTRY>/ibp-fl
 ```
 {:codeblock}
 
-You can use the `docker images` command to check if the new tags have been created. You can push the images with the new tags to your Docker registry. Log in to your registry using the following command:
+You can use the `docker images` command to check whether the new tags have been created. You can push the images with the new tags to your Docker registry. Log in to your registry by using the following command:
 ```
 docker login --username <USER> --password <LOCAL_REGISTRY_PASSWORD> <LOCAL_REGISTRY>
 ```
 {:codeblock}
 
-- Replace `<USER>` with your user name
+- Replace `<USER>` with your username
 - Replace `<LOCAL_REGISTRY_PASSWORD>` with the password to your registry.
 - Replace `<LOCAL_REGISTRY>` with the url of your local registry.
 
@@ -168,7 +168,7 @@ After you complete these steps, you can use the following instructions to deploy
 ## Log in to your Kubernetes cluster
 {: #deploy-k8s-login-firewall}
 
-Before you can complete the next steps, you need to log in to your cluster by using the kubectl CLI. Follow the instructions for logging into to your cluster. If you are using {{site.data.keyword.cloud_notm}} Private, you can log in to your cluster by using the following command:
+Before you can complete the next steps, you need to log in to your cluster by using the kubectl CLI. Follow the instructions for logging in to your cluster. If you are using {{site.data.keyword.cloud_notm}} Private, you can log in to your cluster by using the following command:
 ```
 cloudctl login -a https://<cluster_CA_domain>:8443 --skip-ssl-validation
 ```
@@ -220,7 +220,7 @@ The {{site.data.keyword.blockchainfull_notm}} Platform requires specific securit
 
 Copy the PodSecurityPolicy object below and save it to your local system as `ibp-psp.yaml`.
 
-If you are running **Kubernetes v1.16**, you will need to change the line `apiVersion: extensions/v1beta1` in the following PodSecurityPolicy object to `apiVersion: policy/v1beta1`.
+If you are running **Kubernetes v1.16**, you need to change the line `apiVersion: extensions/v1beta1` in the following PodSecurityPolicy object to `apiVersion: policy/v1beta1`.
 {: important}
 
 ```yaml
@@ -266,6 +266,7 @@ kubectl apply -f ibp-psp.yaml
 ### Apply the ClusterRole
 
 Copy the following text to a file on your local system and save the file as `ibp-clusterrole.yaml`. This file defines the required ClusterRole for the PodSecurityPolicy. Edit the file and replace `<NAMESPACE>` with the name of your namespace.
+
 
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
@@ -337,6 +338,8 @@ rules:
 ```
 {:codeblock}
 
+
+
 After you save and edit the file, run the following commands.
 ```
 kubectl apply -f ibp-clusterrole.yaml
@@ -389,7 +392,7 @@ kubectl create secret docker-registry docker-key-secret --docker-server=<LOCAL_R
 ```
 {:codeblock}
 
-- Replace `<USER>` with your user name
+- Replace `<USER>` with your username
 - Replace `<EMAIL>` with your email address.
 - Replace `<LOCAL_REGISTRY_PASSWORD>` with the password to your registry.
 - Replace `<LOCAL_REGISTRY>` with the url of your local registry.
@@ -425,7 +428,7 @@ kubectl apply -f image-policy.yaml -n <NAMESPACE>
 
 The {{site.data.keyword.blockchainfull_notm}} Platform uses an operator to install the {{site.data.keyword.blockchainfull_notm}} Platform console. You can deploy the operator on your cluster by adding a custom resource to your namespace by using the kubectl CLI. The custom resource pulls the operator image from the Docker registry and starts it on your cluster.
 
-Copy the following text to a file on your local system and save the file as `ibp-operator.yaml`. You will need to edit the file depending on whether you are using open source Kubernetes and Rancher or whether you are using {{site.data.keyword.cloud_notm}} Private.
+Copy the following text to a file on your local system and save the file as `ibp-operator.yaml`. You need to make different edits to the file depending on whether you are using open source Kubernetes and Rancher or whether you are using {{site.data.keyword.cloud_notm}} Private.
 
 
 ```yaml
@@ -550,7 +553,7 @@ ibp-operator   1         1         1            1           1m
 ## Deploy the {{site.data.keyword.blockchainfull_notm}} Platform console
 {: #deploy-k8-console}
 
-When the operator is running on your namespace, you can apply a custom resource to start the {{site.data.keyword.blockchainfull_notm}} Platform console on your cluster. You can then access the console from your browser. Note that you can deploy only one console per Kubernetes namespace.
+When the operator is running on your namespace, you can apply a custom resource to start the {{site.data.keyword.blockchainfull_notm}} Platform console on your cluster. You can then access the console from your browser. You can deploy only one console per Kubernetes namespace.
 
 Save the custom resource definition below as `ibp-console.yaml` on your local system. If you changed the name of the entitlement key secret, then you need to edit the field of `name: docker-key-secret`.
 
@@ -569,6 +572,8 @@ spec:
   imagePullSecret: "docker-key-secret"
   networkinfo:
     domain: <DOMAIN>
+    consolePort: <CONSOLE_PORT>
+    proxyPort: <PROXY_PORT>
   storage:
     console:
       class: default
@@ -584,9 +589,7 @@ You need to specify the external endpoint information of the console in the `ibp
   If you are using {{site.data.keyword.cloud_notm}} Private, you need replace `<DOMAIN>` to Proxy IP address your cluster. You  can retrieve the value your Proxy IP address from the {{site.data.keyword.cloud_notm}} Private console. **Note:** You will need to be a [Cluster administrator](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.2.0/user_management/assign_role.html){: external} to access your proxy IP. Log in to the {{site.data.keyword.cloud_notm}} Private cluster. In the left navigation panel, click **Platform** and then **Nodes** to view the nodes that are defined in the cluster. Click the node with the role `proxy` and then copy the value of the `Host IP` from the table.
 
 - Replace: `<CONSOLE_PORT>` with a number between 30000 and 32767.
-- Replace: `<PROXY_PORT>` with a number between 30000 and 32767. Select a different than the port you used for your console port.
-
-  If you are using {{site.data.keyword.cloud_notm}} Private, you need to replace: `<PROXY_PORT>` the proxy port of your cluster.
+- Replace: `<PROXY_PORT>` with a number between 30000 and 32767. Select a different port than the <CONSOLE_PORT>.
 
 You need to provide the user name and password that is used to access the console for the first time:
 - Replace `<EMAIL>` with the email address of the console administrator.
@@ -598,7 +601,7 @@ You also need to make additional edits to the file depending on your choices in 
 
 
 
-Because you can only run the following command once, you should review the [Advanced deployment options](#console-deploy-k8-advanced-firewall) in case any of the options are relevant to your configuration, before you install the console.  For example, if you are deploying your console on a multizone cluster, you need to configure that before you run the following step to install the console.
+Because you can only run the following command once, you should review the [Advanced deployment options](#console-deploy-k8-advanced-firewall) in case any of the options are relevant to your configuration before you install the console.  For example, if you are deploying your console on a multizone cluster, you need to configure that before you run the following step to install the console.
 {: important}
 
 After you update the file, you can use the CLI to install the console.
@@ -613,6 +616,7 @@ Replace `<NAMESPACE>` with the name of your namespace. Before you install the co
 {: #console-deploy-ocp-advanced-firewall}
 
 You can edit the `ibp-console.yaml` file to allocate more resources to your console or use zones for high availability in a multizone cluster. To take advantage of these deployment options, you can use the console resource definition with the `resources:` and `clusterdata:` sections added:
+
 
 ```yaml
 apiVersion: ibp.com/v1alpha1
@@ -667,6 +671,8 @@ spec:
           memory: 200Mi
 ```
 {:codeblock}
+
+
 
 - You can use the `resources:` section to allocate more resources to your console. The values in the example file are the default values allocated to each container. Allocating more resources to your console allows you to operate a larger number of nodes or channels. You can allocate more resources to a currently running console by editing the resource file and applying it to your cluster. The console will restart and return to its previous state, allowing you to operate all of your exiting nodes and channels.
   ```
@@ -789,4 +795,4 @@ The administrator who provisions the console can grant access to other users and
 
 When you access your console, you can view the **nodes** tab of your console UI. You can use this screen to deploy components on the cluster where you deployed the console. See the [Build a network tutorial](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-build-network#ibp-console-build-network) to get started with the console. You can also use this tab to operate nodes that are created on other clouds. For more information, see [Importing nodes](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-import-nodes#ibp-console-import-nodes).
 
-To learn how to manage the users that can access the console, view the logs of your console and your blockchain components, see [Administering your console](/docs/blockchain-sw?topic=blockchain-sw-console-icp-manage#console-icp-manage).
+To learn how to manage the users that can access the console, view the logs of your console and your blockchain components, see [administering your console](/docs/blockchain-sw?topic=blockchain-sw-console-icp-manage#console-icp-manage).

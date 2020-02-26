@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2020
-lastupdated: "2020-02-25"
+lastupdated: "2020-02-26"
 
 keywords: IBM Blockchain Platform console, deploy, resource requirements, storage, parameters
 
@@ -234,6 +234,8 @@ rules:
 ```
 {:codeblock}
 
+
+
 After you save and edit the file, run the following commands.
 ```
 kubectl apply -f ibp-clusterrole.yaml
@@ -460,6 +462,8 @@ spec:
   imagePullSecret: "docker-key-secret"
   networkinfo:
     domain: <DOMAIN>
+    consolePort: <CONSOLE_PORT>
+    proxyPort: <PROXY_PORT>
   storage:
     console:
       class: default
@@ -509,6 +513,7 @@ kind: IBPConsole
 metadata:
   name: ibpconsole
   spec:
+    arch: - amd64
     license: accept
     serviceAccountName: default
     proxyIP:
@@ -557,6 +562,8 @@ metadata:
           memory: 200Mi
 ```
 {:codeblock}
+
+
 
 - You can use the `resources:` section to allocate more resources to your console. The values in the example file are the default values allocated to each container. Allocating more resources to your console allows you to operate a larger number of nodes or channels. You can allocate more resources to a currently running console by editing the resource file and applying it to your cluster. The console will restart and return to its previous state, allowing you to operate all of your exiting nodes and channels.
   ```
