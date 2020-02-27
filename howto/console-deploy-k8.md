@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2020
-lastupdated: "2020-02-26"
+lastupdated: "2020-02-27"
 
 keywords: IBM Blockchain Platform console, deploy, resource requirements, storage, parameters
 
@@ -659,15 +659,14 @@ kubectl logs -f ibpconsole-55cf9db6cc-856nz optools -n blockchain-project
 You can use your browser to access the console by browsing to the console URL:
 
 ```
-https://<NAMESPACE>-ibpconsole-console.<DOMAIN>:443
+https://<DOMAIN>:<CONSOLE_PORT>
 ```
-
-- Replace `<NAMESPACE>` with the name of the namespace that you created.
-- Replace `<DOMAIN>` with the name of your cluster domain. You passed this value to the `DOMAIN:` field of the `ibp-console.yaml` file.
+- Replace `<DOMAIN>` with the value of the `domain:` field in the `ibp-console.yaml` file.
+- Replace `<CONSOLE_PORT>` with the port that you specified in the `consolePort:` in the `ibp-console.yaml` file.
 
 Your console URL looks similar to the following example:
 ```
-https://blockchain-project-ibpconsole-console.xyz.abc.com:443
+https://blockchain-project-ibpconsole-console.xyz.abc.com:32615
 ```
 
 In your browser, you can see the console log in screen:
