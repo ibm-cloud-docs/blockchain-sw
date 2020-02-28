@@ -98,9 +98,7 @@ To create the CA that will issue certificates for your first organization, perfo
 1. Navigate to the **Nodes** tab on the left and click **Add Certificate Authority**. The side panels will allow you to customize the CA that you want to create and the organization that this CA will issue keys for.
 2. In this tutorial, we're creating nodes, so make sure the option to **Create a Certificate Authority** is selected. Then click **Next**.
 3. Use the side panel to give your CA a **display name**. Our recommended value for this CA is `Org1 CA`. Then give your CA admin credentials by specifying a **CA administrator enroll ID** of `admin` and a secret of `adminpw`. Again, these are **recommended values**.
-4. The **Advanced deployment options** can be safely ignored for purposes of this tutorial. For more information about these options, see the links below.
-   * [Database selection](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-build-ha-ca#ibp-console-build-ha-ca-create)
-   * [Kubernetes zone selection](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-ha#ibp-console-ha-multi-zone) (Only visible when your cluster is configured for multi-zone support.)
+4. The **Advanced deployment options** can be safely ignored for purposes of this tutorial. For more information about these options, see the link below.
    * [Resource allocation](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-govern-components#ibp-console-govern-components-allocate-resources)
 5. Review the Summary page, then click **Add Certificate Authority**.
 
@@ -307,9 +305,7 @@ The process for creating a CA for an ordering service is identical to creating i
 1. Navigate to the **Nodes** tab and click **Add Certificate Authority**.
 2. In this tutorial, we're creating nodes, so make sure the option to **Create a Certificate Authority** is selected. Then click **Next**
 3. Give this CA a unique display name, `Ordering Service CA`. You're free to reuse the **CA administrator enroll ID** of `admin` and a secret of `adminpw`. As this is a different CA, this identity is distinct from the CA admin identity for created for the `Org1 CA`, even though the ID and secret are identical.
-4. The **Advanced deployment options** can be safely ignored for purposes of this tutorial. For more information about these options, see the links below.
-   * [Database selection](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-build-ha-ca#ibp-console-build-ha-ca-create)
-   * [Kubernetes zone selection](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-ha#ibp-console-ha-multi-zone) (Only visible when your cluster is configured for multi-zone support.)
+4. The **Advanced deployment options** can be safely ignored for purposes of this tutorial. For more information about these options, see the link below.
    * [Resource allocation](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-govern-components#ibp-console-govern-components-allocate-resources)
 5. Review the Summary page, then click **Add Certificate Authority**.
 
