@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2020
-lastupdated: "2020-02-07"
+lastupdated: "2020-02-28"
 
 keywords: create identities, manage identities, Certificate Authorities, register, enroll, TLS CA, wallet, certificate expiration
 
@@ -62,7 +62,7 @@ You can only use admin identities to register new users. You can create new admi
 ## Registering identities
 {: #ibp-console-identities-register}
 
-The first step in creating an identity is known as **registration**. During registration, an enroll ID and secret is created which can then be used by a node or an org administrator to **enroll** this identity by generating a signing certificate and private key.  
+The first step in creating an identity is known as **registration**. During registration, an enroll ID and secret are created which can be used by a node or an org administrator to **enroll** this identity by generating a signing certificate and private key.  
 
 You need to enter the following information when you register a new identity with your CA.
 
