@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2020
-lastupdated: "2020-02-26"
+lastupdated: "2020-02-28"
 
 keywords: Kubernetes, IBM Blockchain Platform console, deploy, resource requirements, storage, parameters
 
@@ -40,7 +40,6 @@ You can upgrade to the {{site.data.keyword.blockchainfull_notm}} Platform v2.1.2
 
 If you are using {{site.data.keyword.blockchainfull_notm}} Platform v2.1.0 or v2.1.1, you cannot access the console from the Chrome browser on Mac OS Catalina when the console is deployed with the default configuration that uses self-signed certificates. For more information on how you can resolve this problem, see [Chrome browser on Mac OS Catalina](/docs/blockchain-sw?topic=blockchain-sw-sw-known-issues#sw-known-issues-catalina) in Known Issues.
 {:note}
-
 ## Upgrade to the {{site.data.keyword.blockchainfull_notm}} Platform v2.1.2
 {: #upgrade-k8-steps}
 
