@@ -357,6 +357,9 @@ In this tutorial, we are only creating and joining a single peer to the channel.
 ## Creating a channel
 {: #ibp-console-join-network-create-channel}
 
+In this tutorial, we will presume that users will not be attempting to edit any of the advanced options. For information about editing advanced options both before and after a channel has been created, see [Advanced channel deployment and management](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-govern#ibp-console-govern).
+{:important}
+
 Because your organization is now a member of the consortium, you also have the ability create a new channel. First, you will need to import the MSP definition of other channel members. Use the steps below to create a channel with two members: the `Org1` that was created in the [Build a network tutorial](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-build-network#ibp-console-build-network) and the `Org2` that was created in the steps above.
 
 ### Export your organization information
@@ -367,15 +370,16 @@ This step needs to be completed by an administrator of Org1.
 
 `Org1` needs to send you their organization MSP definition before you can add them to the channel. You need to be a member of the consortium hosted by the ordering service before can be added to the channel. In order to follow these steps you need to be the admin of the **peer organization**, meaning you have the peer organization admin identity in your Wallet:
 
-1. Navigate to the **Organizations** tab. You can see the organizations available for export are listed under **Available organizations**. Click the **download** button inside the organization tile to download the JSON configuration file that represents the MSP of the peer organization.
-2. Send this file to the consortium member that will create the channel in an out of band operation.
+First, navigate to the **Organizations** tab. You can see the organizations available for export are listed under **Available organizations**. Click the **download** button inside the organization tile to download the JSON configuration file that represents the MSP of the peer organization.
+
+Then, send this file to the consortium member that will create the channel in an out of band operation.
 
 ### Import the organization definition
 {: #ibp-console-join-network-create-channel-import-msp}
 
-You then need to import the MSP definition of `Org1` into your console:
+You then need to import the MSP definition of `Org1` into your console, which you can do by navigating to the **Organizations** tab, clicking the **Import MSP definition** button, and selecting the JSON file that represents the peer organization MSP definition.
 
-1. Navigate to the **Organizations** tab, click the **Import MSP definition** button, and select the JSON file that represents the peer organization MSP definition.
+
 
 #### Creating the channel
 {: #ibp-console-join-network-channels-create}
@@ -404,6 +408,8 @@ When you are ready, click **Create channel**. You are taken back to the Channels
   | **Channel creator organization** | Org2 MSP |
   | **Identity** | Org2 MSP Admin |
   {: caption="Table 8. Create a channel" caption-side="bottom"}
+
+
 
 ## Next steps
 {: #ibp-console-join-network-next-steps}
