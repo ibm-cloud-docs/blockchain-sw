@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2020
-lastupdated: "2020-02-27"
+lastupdated: "2020-02-29"
 
 keywords: IBM Blockchain Platform console, deploy, resource requirements, storage, parameters, firewall, on-premises
 
@@ -477,7 +477,7 @@ spec:
                 values:
                 - amd64
       imagePullSecrets:
-        - name: docker-key-secret
+        - name: "docker-key-secret"
       containers:
         - name: ibp-operator
           image: <LOCAL_REGISTRY>/ibp-operator:2.1.2-20200213-amd64
@@ -627,7 +627,7 @@ spec:
   serviceAccountName: default
   email: "<EMAIL>"
   password: "<PASSWORD>"
-  imagePullSecret: docker-key-secret
+  imagePullSecret: "docker-key-secret"
   registryURL: <LOCAL_REGISTRY>
   networkinfo:
     domain: <DOMAIN>

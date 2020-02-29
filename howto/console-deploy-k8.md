@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2020
-lastupdated: "2020-02-27"
+lastupdated: "2020-02-29"
 
 keywords: IBM Blockchain Platform console, deploy, resource requirements, storage, parameters
 
@@ -369,7 +369,7 @@ spec:
                 values:
                 - amd64
       imagePullSecrets:
-        - name: docker-key-secret
+        - name: "docker-key-secret"
       containers:
         - name: ibp-operator
           image: cp.icr.io/cp/ibp-operator:2.1.2-20200213-amd64
