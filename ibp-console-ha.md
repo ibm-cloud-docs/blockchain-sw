@@ -98,7 +98,7 @@ The following table contains a list of options to consider as you plan for incre
 {: summary="This table has row and column headers. The row headers identify the deployment scenarios. The column headers identify available options in each scenario to increase your HA."}
 
 
-*** The {{site.data.keyword.blockchainfull_notm}} Platform deployer attempts to spread peers, ordering nodes, and CA replica sets across different worker nodes but cannot guarantee that it will happen due to resource limitations.  You can also use the {{site.data.keyword.blockchainfull_notm}} Platform APIs or the blockchain console to deploy peers or ordering nodes to specific zones in order to ensure that they are resilient to a zone failure. For more information see [Multizone HA](#ibp-console-ha-multi-zone).  
+*** The {{site.data.keyword.blockchainfull_notm}} Platform deployer attempts to spread peers, ordering nodes, and CA replica sets across different worker nodes but cannot guarantee that it will happen due to resource limitations. You can also use the {{site.data.keyword.blockchainfull_notm}} Platform APIs or the blockchain console to deploy peers or ordering nodes to specific zones in order to ensure that they are resilient to a zone failure. For more information see [Multizone HA](#ibp-console-ha-multi-zone).  
 
 ## Potential points of failure
 {: #ibp-console-ha-points-of-failure}
@@ -123,9 +123,9 @@ The following table contains a list of options to consider as you plan for incre
 
    **CA** You can configure replica sets, which are represented as shaded CA boxes in the diagram above, for your CA. Replica sets guarantee that if the CA node goes down, the CA replica immediately begins processing requests. You must provision an instance of a PostgreSQL database if you plan to use CA replica sets. See these instructions for more information about [how to configure CA replica sets](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-build-ha-ca).
 
-   This scenario uses redundant peers, ordering nodes, and CAs on a single worker node, which protects against component failure, but cannot protect from node failure.     
+   This scenario uses redundant peers, ordering nodes, and CAs on a single worker node, which protects against component failure, but cannot protect from node failure.    
 
-   Therefore, it is only suitable for development and testing purposes.
+   This scenario uses redundant peersordering nodes on a single worker node, which protects against component failure, but cannot protect from node failure.  
 
 2. **Worker node failure.**  
 
@@ -135,11 +135,13 @@ The following table contains a list of options to consider as you plan for incre
 
    **Peers** The {{site.data.keyword.blockchainfull_notm}} Platform deployer anti-affinity policy distributes redundant peers, that is peers from the same organization, across the worker nodes in their cluster.
 
-   **Ordering service** Whenever you deploy a Raft ordering service, the five ordering nodes are automatically distributed across the worker nodes in your cluster, using the anti-affinity policy and based on resource availability on the nodes.  
+   **Ordering service** Whenever you deploy a Raft ordering service, the five ordering nodes are automatically distributed across the worker nodes in your cluster, using the anti-affinity policy and based on resource availability on the nodes. 
 
    **CAs** Like peers and ordering nodes, if replica sets are chosen for a CA, an anti-affinity policy automatically distributes the CA replica sets across worker nodes in the cluster, based on resource availability.
 
-   This scenario uses redundant peers, ordering nodes, and CA replica sets, across multiple worker nodes in a single cluster or zone, which protects against node failure, but cannot protect from a cluster or zone failure.  Therefore, it is not recommended for Production.
+   This scenario uses redundant peers, ordering nodes, and CA replica sets, across multiple worker nodes in a single cluster or zone, which protects against node failure, but cannot protect from a cluster or zone failure. 
+
+   This scenario uses redundant peersordering nodes across multiple worker nodes in a single cluster or zone, which protects against node failure, but cannot protect from a cluster or zone failure.  Therefore, it is not recommended for Production.
 
 ### Multizone HA 
 {: #ibp-console-ha-multi-zone}
