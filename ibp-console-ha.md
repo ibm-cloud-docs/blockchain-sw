@@ -123,9 +123,8 @@ The following table contains a list of options to consider as you plan for incre
 
    **CA** You can configure replica sets, which are represented as shaded CA boxes in the diagram above, for your CA. Replica sets guarantee that if the CA node goes down, the CA replica immediately begins processing requests. You must provision an instance of a PostgreSQL database if you plan to use CA replica sets. See these instructions for more information about [how to configure CA replica sets](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-build-ha-ca).
 
-   This scenario uses redundant peers, ordering nodes, and CAs on a single worker node, which protects against component failure, but cannot protect from node failure.    
+   This scenario uses redundant peers, ordering nodes, and CAs on a single worker node, which protects against component failure, but cannot protect from node failure. 
 
-   This scenario uses redundant peersordering nodes on a single worker node, which protects against component failure, but cannot protect from node failure.  
 
 2. **Worker node failure.**  
 
@@ -168,9 +167,11 @@ The following table contains a list of options to consider as you plan for incre
 
    If you have multiple zones configured for your Kubernetes cluster, when you create a new CA with a PostgreSQL database and replica sets, an anti-affinity policy ensures that the CA replica sets are automatically configured across the zones. Replica sets are represented as shaded CA boxes in the diagram above. Adequate resources must exist in the other zones in order for the anti-affinity policy to be used.
 
-   This scenario uses redundant peers, and ordering nodes, and CAs across multiple worker nodes and multiple zones, which protect against zone failure, but does not protect from an unlikely entire region failure.   This scenario is recommended for a production network.
+   This scenario uses redundant peers, ordering nodes, and CAs across multiple worker nodes and multiple zones, which protect against zone failure, but does not protect from an unlikely entire region failure.   This scenario is recommended for a production network.
 
-   If you choose to use a multi-zone configuration for CA, peers or ordering nodes then you are responsible for configuring the storage for each zone and set the node affinity to zones.
+   If you choose to use a multi-zone configuration for CA, peers, or ordering nodes, then you are responsible for configuring the storage for each zone and set the node affinity to zones.
+   {: important}
+   
    {: important}
 
 ### Multi-region HA
