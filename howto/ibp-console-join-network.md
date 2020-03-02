@@ -3,7 +3,7 @@
 copyright:
   years: 2019
 
-lastupdated: "2020-02-28"
+lastupdated: "2020-03-02"
 
 keywords: getting started tutorials, create a CA, enroll, register, create an MSP, wallet, create a peer, create ordering service, Raft, join a network, system channel
 
@@ -25,7 +25,6 @@ subcollection: blockchain-sw
 
 {{site.data.keyword.blockchainfull}} Platform is a blockchain-as-a-service offering that enables you to develop, deploy, and operate blockchain applications and networks. You can learn more about blockchain components and how they work together by visiting the [Blockchain component overview](/docs/blockchain-sw?topic=blockchain-sw-blockchain-component-overview#blockchain-component-overview). This tutorial is the second part in the [sample network tutorial series](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-build-network#ibp-console-build-network-sample-tutorial) and describes how to create nodes in the {{site.data.keyword.blockchainfull_notm}} Platform console and connect them a blockchain consortium hosted in another cluster.
 {:shortdesc}
-
 
 **Target audience:** This topic is designed for network operators who are responsible for creating, monitoring, and managing the blockchain network.  
 
@@ -83,8 +82,10 @@ Perform the following steps from your console:
 2. In this tutorial, we're creating nodes, so make sure the option to **Create a Certificate Authority** is selected. Then click **Next**.
 3. Use the side panel to give your CA a **display name**. Our recommended value for this CA is `Org2 CA`. Then give your CA admin credentials by specifying a **CA administrator enroll ID** of `admin` and a secret of `adminpw`.
 4. The **Advanced deployment options** can be safely ignored for purposes of this tutorial. For more information about these options, see the link below.
+   * [Database and replica sets](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-build-ha-ca#ibp-console-build-ha-ca-create) (Creating an HA CA)
+   * [Kubernetes zone selection](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-ha#ibp-console-ha-multi-zone) (Multizone HA) This option is only visible when your cluster is configured with multiple zones.
    * [Resource allocation](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-govern-components#ibp-console-govern-components-allocate-resources)
-5. Review the Summary page, then click **Add Certificate Authority**.
+5. Review the Summary page, then click **Add Certificate Authority**. 
 
 **Task: Creating the peer organization CA**
 
@@ -101,7 +102,7 @@ Advanced users may already have their own CA, and not want to create a new CA in
 ### Associating the CA admin identity
 {: #ibp-console-join-network-ca-admin}
 
-Each CA is created with a CA admin identity. You can use the admin to register new users with your CA and generate certificates. Before you can use the console to operate your CA, you need to generate the CA admin identity and add the identity into your console Wallet.
+Each CA is created with a CA admin identity. You can use the admin to register new users with your CA and generate certificates. Before you can use the console to operate your CA, you need to associate the CA admin identity with the CA node itself.
 
 Depending on your cluster type, deployment of the CA can take up to ten minutes. When the CA is first deployed (or when the CA is otherwise unavailable), the box in the tile for the CA will be grey box. When the CA has successfully deployed and is running, this box will be green, indicating that it is "Running" and can be operated from the console. Before proceeding with the steps below, you must wait until the CA status is "Running". If the grey box stops blinking, you can try reloading the page in your browser to refresh the status.
 {:important}
@@ -141,19 +142,20 @@ Each node or application that you want to create needs certificates and private 
 Once you have associated the CA admin, you can use the CA tile to create these identities by completing the following steps:
 
 1. Click the `Org2 CA` tile and ensure the `admin` identity that you created for the CA is visible in the table. Then click the **Register User** button.
-2. First we'll register the organization admin, which we can do by giving an **Enroll ID** of `org2admin` and a **secret** of `org2adminpw`. Then set the `Type` for this identity as `admin`. The affiliation field is for advanced users and is not a part of the tutorial, so click the box that says **Use root affiliation**. If you want to learn more about how affiliations are used by the Fabric CA, see this topic on [Registering a new identity](https://hyperledger-fabric-ca.readthedocs.io/en/release-1.4/users-guide.html#registering-a-new-identity){: external}. For now, select any affiliation from the list (for example, `Org2`). Also, ignore the **Maximum enrollments** field. If you want to learn more about enrollments, see [Registering identities](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-identities#ibp-console-identities-register). Click **Next**.
+2. First we'll register the organization admin, which we can do by giving an **Enroll ID** of `org2admin` and a **secret** of `org2adminpw`. Then set the `Type` for this identity as `admin`.  You can ignore the **Maximum enrollments** field. If you want to learn more about enrollments, see [Registering identities](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-identities#ibp-console-identities-register). Click **Next**.
 3. This tutorial does not configure attributes on identities, see [Registering identities](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-identities#ibp-console-identities-register) if you want to learn more. Click **Register user**.
-4. After the organization admin has been registered, repeat this same process for the identity of the peer (also using the `Org2 CA`). For the peer identity, give an enroll ID of `peer2` and a secret of `peer2pw`. This is a node identity, so select `peer` as the **Type**. Click the box that says **Use root affiliation** and ignore **Maximum enrollments**. Then, on the next panel, do not assign any **Attributes**, as before.
+4. After the organization admin has been registered, repeat this same process for the identity of the peer (also using the `Org2 CA`). For the peer identity, give an enroll ID of `peer2` and a secret of `peer2pw`. This is a node identity, so select `peer` as the **Type**. You can ignore the **Maximum enrollments** field and, on the next panel, do not assign any **Attributes**, as before.
 
 Registering these identities with the CA is only the first step in **creating** an identity. You will not be able to use these identities until they have been **enrolled**. For the `org2admin` identity, this will happen during the creation of the MSP, which we will see in the next step. In the case of the peer, it happens during the creation of the peer.
 {:note}
 
 **Task: Register users**
 
-  |  **Field** | **Description** | **Enroll ID** | **Secret** |
+  |  **Field** | **Description** | **Enroll ID** | **Secret** | **Type**
   | ------------------------- |-----------|-----------|-----------|-----------|
-  | **Register users** |  Org2 MSP Admin  | org2admin | org2adminpw |
-  | | Peer identity |  peer2 | peer2pw |
+  | **Create CA**  | CA admin | admin | adminpw | client |
+  | **Register users** |  Org2 MSP Admin  | org2admin | org2adminpw | admin |
+  | | Peer identity |  peer2 | peer2pw | peer|
   {: caption="Table 4. Using your CA to register user" caption-side="bottom"}
 
 ### Creating the peer organization MSP
@@ -168,6 +170,9 @@ Now that we have created the peer's CA and used it to **register** our organizat
 5. Click the **Generate** button to enroll this identity as the admin of your organization and export the identity to the Wallet, where it will be used when creating the peer and creating channels.
 6. Click **Export** to export the admin certificates to your file system. As we said above, this identity is not stored in your cluster or managed by {{site.data.keyword.IBM_notm}}. It is only stored in local browser storage. If you change browsers, you will need to import this identity into your Wallet to be able to administer the peer.
 7. Click **Create MSP definition**.
+
+Exporting your organization admin identity is important because you are responsible for managing and securing these certificates. If you switch browsers, you will need to import this admin identity otherwise you will not be able to operate Org2.
+{:important}
 
 **Task: Create the peer organization MSP definition**
 
@@ -189,9 +194,6 @@ After you have created the MSP, you should be able to see the peer organization 
   {: caption="Table 6. Check your Wallet" caption-side="bottom"}
 
 For more information about MSPs, see [managing organizations](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-organizations#ibp-console-organizations).
-
-Exporting your organization admin identity is important because you are responsible for managing and securing these certificates.
-{:important}
 
 ### Creating a peer
 {: #ibp-console-join-network-peer-create}
@@ -215,8 +217,7 @@ Use your console to perform the following steps:
 3. Give your peer a **Display name** of `Peer Org2`.
 4. The **Advanced deployment options** can be safely ignored for purposes of this tutorial. For more information about these options, see the links below.
    * [State database selection](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-govern-components#ibp-console-govern-components-level-couch)
-   * [Multizone high availability](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-ha#ibp-console-ha-multi-zone)
-   * [Kubernetes zone selection](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-ha#ibp-console-ha-multi-zone) (Only visible when your cluster is configured for multi-zone support.)
+   * [Kubernetes zone selection](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-ha#ibp-console-ha-multi-zone) (Multizone HA) This option is only visible when your cluster is configured for multizone support.
    * [External Certificate Authority configuration](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-govern-components#ibp-console-govern-third-party-ca)
    * [Resource allocation](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-govern-components#ibp-console-govern-components-allocate-resources)
 5. Click **Next**.
@@ -228,6 +229,7 @@ Use your console to perform the following steps:
    * Click **Next**.
 7. The last side panel asks you to **Associate an identity** to make it the admin of your peer. For the purpose of this tutorial, make your organization admin, `Org2 MSP Admin`, the admin of your peer as well. It is possible to register and enroll a different identity with the `Org2 CA` and make that identity the admin of your peer, but this tutorial uses the `Org2 MSP Admin` identity.
 8. Review the summary and click **Add peer**.  
+
 
 **Task: Deploying a peer**
 
@@ -265,7 +267,7 @@ If you followed the Build a network tutorial or if your console already includes
 
 To send your MSP to the console where the ordering service was created:
 
-1. Navigate to the **Organizations** tab. You can see the organizations available for export are listed under **Available organizations**. Click the **download** button inside the organization tile to download the JSON configuration file that represents the MSP of the peer organization. Note: you must be an admin of the **peer organization**, meaning you have the peer organization admin identity in your Wallet.
+1. Navigate to the **Organizations** tab. You can see the organizations available for export are listed under **Available organizations**. Click the **Export** button inside the `Org2 MSP` organization tile to download the JSON configuration file that represents the MSP of the peer organization. Note: you must be an admin of the **peer organization**, meaning you have the peer organization admin identity in your Wallet.
 2. Send this file to the ordering service admin in an out of band operation.
 
 ### Import the organization definition
@@ -276,7 +278,7 @@ This step needs to be completed by an ordering service admin.
 
 Once the MSP representing Org2 has been received, an administrator of the ordering service must import the JSON file:
 
-- Navigate to the **Organizations** tab, click the **Import MSP definition** button, and select the JSON file that represents the peer organization MSP definition. You can leave the `I have an administrator identity for the MSP definition` checkbox unchecked as the admin identity is not required here.
+- Navigate to the **Organizations** tab, click the **Import MSP definition** button, and select the JSON file that represents the `Org2 MSP` peer organization MSP definition. You can leave the `I have an administrator identity for the MSP definition` checkbox unchecked because the admin identity is not required here.
 
 ### Add the peer's organization to the ordering service consortium
 {: #ibp-console-join-network-add-org2-local}
@@ -302,7 +304,7 @@ This step needs to be completed by the ordering service admin.
 
 Complete the following steps to **Export** the ordering service before it can be imported by the peer organization:
 
-1. Navigate to the ordering service inside the **Nodes** tab. Click the **Download** arrow beneath the ordering service name to download a JSON configuration file.
+1. Navigate to the ordering service inside the **Nodes** tab. Click the **Export** button beneath the ordering service name to download a JSON configuration file.
 2. Send this file to the peer organization in an out of band operation. The peer organization administrator can then use the configuration file to add the ordering service to the console.
 
 ### Import the ordering service from another cluster
@@ -370,7 +372,7 @@ This step needs to be completed by an administrator of Org1.
 
 `Org1` needs to send you their organization MSP definition before you can add them to the channel. You need to be a member of the consortium hosted by the ordering service before can be added to the channel. In order to follow these steps you need to be the admin of the **peer organization**, meaning you have the peer organization admin identity in your Wallet:
 
-First, navigate to the **Organizations** tab. You can see the organizations available for export are listed under **Available organizations**. Click the **download** button inside the organization tile to download the JSON configuration file that represents the MSP of the peer organization.
+First, navigate to the **Organizations** tab. You can see the organizations available for export are listed under **Available organizations**. Click the **Export** button inside the organization tile to download the JSON configuration file that represents the MSP of the peer organization.
 
 Then, send this file to the consortium member that will create the channel in an out of band operation.
 
