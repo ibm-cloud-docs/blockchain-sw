@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2020
-lastupdated: "2020-02-29"
+lastupdated: "2020-03-02"
 
 keywords: IBM Blockchain Platform console, deploy, resource requirements, storage, parameters, firewall, on-premises
 
@@ -588,7 +588,7 @@ You need to specify the external endpoint information of the console in the `ibp
   If you are using {{site.data.keyword.cloud_notm}} Private, you need replace `<DOMAIN>` with the Proxy IP address your cluster. You  can retrieve the value your Proxy IP address from the {{site.data.keyword.cloud_notm}} Private console. **Note:** You will need to be a [Cluster administrator](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.2.0/user_management/assign_role.html){: external} to access your proxy IP. Log in to the {{site.data.keyword.cloud_notm}} Private cluster. In the left navigation panel, click **Platform** and then **Nodes** to view the nodes that are defined in the cluster. Click the node with the role `proxy` and then copy the value of the `Host IP` from the table.
 
 - Replace: `<CONSOLE_PORT>` with a number between 30000 and 32767.
-- Replace: `<PROXY_PORT>` with a number between 30000 and 32767. Select a different port than the <CONSOLE_PORT>.
+- Replace: `<PROXY_PORT>` with a number between 30000 and 32767. Select a different port than the `<CONSOLE_PORT>`.
 
 You need to provide the user name and password that is used to access the console for the first time:
 - Replace `<EMAIL>` with the email address of the console administrator.
