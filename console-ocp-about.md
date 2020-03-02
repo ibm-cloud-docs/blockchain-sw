@@ -81,6 +81,7 @@ The {{site.data.keyword.blockchainfull_notm}} Platform v2.1.2 can be deployed us
 | **Kubernetes v1.14 - v1.16** | <ul><li>x86_64 </li></ul> | <ul><li>Kubernetes</li> <br>The platform has also been tested on Rancher v2.3.2 and Azure Kubernetes Service (AKS).<br><br>**Note:** This offering is not supported on the {{site.data.keyword.cloud_notm}} Kubernetes Service. If you want to run the {{site.data.keyword.blockchainfull_notm}} Platform on the {{site.data.keyword.cloud_notm}} Kubernetes Service, use the [IBM Blockchain Platform for IBM Cloud offering](https://cloud.ibm.com/docs/blockchain?topic=blockchain-ibp-v2-deploy-iks). </ul>|
 {: caption="Table 1. Supported Platforms" caption-side="bottom"}
 
+
 If you are not running the platform on Red Hat OpenShift Container Platform, Red Hat Open Kubernetes Distribution, or {{site.data.keyword.cloud_notm}} Private then you need to setup the nginx ingress controller and it needs to be running in [SSL passthrough mode](https://kubernetes.github.io/ingress-nginx/user-guide/tls/#ssl-passthrough){: external}.
 {: important}
 
