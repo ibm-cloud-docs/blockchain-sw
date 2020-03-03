@@ -163,7 +163,6 @@ kubectl apply -f ibp-psp.yaml
 ### Apply the ClusterRole
 
 Copy the following text to a file on your local system and save the file as `ibp-clusterrole.yaml`. This file defines the required ClusterRole for the PodSecurityPolicy.
-
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
@@ -233,8 +232,6 @@ rules:
   - '*'
 ```
 {:codeblock}
-
-
 
 After you save and edit the file, run the following commands.
 ```
@@ -446,8 +443,6 @@ ibp-operator   1         1         1            1           1m
 When the operator is running on your namespace, you can apply a custom resource to start the {{site.data.keyword.blockchainfull_notm}} Platform console on your cluster. You can then access the console from your browser. Note that you can deploy only one console per namespace.
 
 Save the custom resource definition below as `ibp-console.yaml` on your local system. If you changed the name of the entitlement key secret, then you need to edit the field of `name: docker-key-secret`.
-
-
 ```yaml
 apiVersion: ibp.com/v1alpha1
 kind: IBPConsole
@@ -469,8 +464,6 @@ spec:
 ```
 {:codeblock}
 
-
-
 You need to specify the external endpoint information of the console in the `ibp-console.yaml` file:
 - Replace `<DOMAIN>` with the name of your cluster domain. You need to make sure that this domain is pointed to the load balancer of your cluster.
 
@@ -482,7 +475,7 @@ You also need to make additional edits to the file depending on your choices in 
 - If you changed the name of your Docker key secret, change corresponding value of the `imagePullSecret:` field.
 - If you created a new storage class for your network, provide the storage class that you created to the `class:` field.
 
-**If you are deploying the platform on {{site.data.keyword.cloud_notm}} Private**, you need to use a different console resource definition. Save the file below as `ibp-console.yaml` on your local system.
+If you are deploying the platform on **{{site.data.keyword.cloud_notm}} Private**, you need to use a different console resource definition. Save the file below as `ibp-console.yaml` on your local system.
 ```yaml
 apiVersion: ibp.com/v1alpha1
 kind: IBPConsole
@@ -528,7 +521,6 @@ Replace `<NAMESPACE>` with the name of your namespace. Before you install the co
 {: #console-deploy-k8-advanced}
 
 Before you deploy the console, you can edit the `ibp-console.yaml` file to allocate more resources to your console or use zones for high availability in a multizone cluster. To take advantage of these deployment options, you can use the console resource definition with the `resources:` and `clusterdata:` sections added:
-
 ```yaml
 apiVersion: ibp.com/v1alpha1
 kind: IBPConsole
@@ -585,8 +577,6 @@ metadata:
 ```
 {:codeblock}
 
-
-
 - You can use the `resources:` section to allocate more resources to your console. The values in the example file are the default values allocated to each container. Allocating more resources to your console allows you to operate a larger number of nodes or channels. You can allocate more resources to a currently running console by editing the resource file and applying it to your cluster. The console will restart and return to its previous state, allowing you to operate all of your exiting nodes and channels.
   ```
   kubectl apply -f ibp-console.yaml -n <NAMESPACE>
@@ -630,7 +620,7 @@ kubectl create secret generic console-tls-secret --from-file=tls.crt=./tlscert.p
 ```
 {:codeblock}
 
-After you create the secret, add the following field to the `spec:` section of `ibp-console.yaml` with one indent added, at the same level as the `resources:` and `clusterdata:` sections of the advanced deployment options. You must provide name of the TLS secret that you created to the field. The following example deploys a console with the TLS certificate and key stored in a secret named `"console-tls-secret"`:
+After you create the secret, add the following field to the `spec:` section of `ibp-console.yaml` with one indent added, at the same level as the `resources:` and `clusterdata:` sections of the advanced deployment options. You must provide the name of the TLS secret that you created to the field. The following example deploys a console with the TLS certificate and key stored in a secret named `"console-tls-secret"`:
 ```yaml
 apiVersion: ibp.com/v1alpha1
 kind: IBPConsole
@@ -717,18 +707,17 @@ Your console URL looks similar to the following example:
 https://blockchain-project-ibpconsole-console.xyz.abc.com:443
 ```
 
-**If you are deploying the platform on {{site.data.keyword.cloud_notm}} Private**, you can access the console by browsing to the following URL:
-```
-https://<DOMAIN>:<CONSOLE_PORT>
-```
+- If you are deploying the platform on **{{site.data.keyword.cloud_notm}} Private**, you can access the console by browsing to  the following URL:
+  ```
+  https://<DOMAIN>:<CONSOLE_PORT>
+  ```
+  - Replace `<DOMAIN>` with the value of the `domain:` field in the `ibp-console.yaml` file.
+  - Replace `<CONSOLE_PORT>` with the port that you specified in the `consolePort:` in the `ibp-console.yaml` file.
 
-- Replace `<DOMAIN>` with the value of the `domain:` field in the `ibp-console.yaml` file.
-- Replace `<CONSOLE_PORT>` with the port that you specified in the `consolePort:` in the `ibp-console.yaml` file.
-
-Your console URL looks similar to the following example:
-```
-https://9.30.252.107:32615
-```
+  Your console URL looks similar to the following example:
+  ```
+  https://9.30.252.107:32615
+  ```
 
 If you navigate to the console URL in your browser, you can see the console log in screen:
 - For the **User ID**, use the value you provided for the `email:` field in the `ibp-console.yaml` file.
