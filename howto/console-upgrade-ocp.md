@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2020
-lastupdated: "2020-02-26"
+lastupdated: "2020-03-03"
 
 keywords: OpenShift, IBM Blockchain Platform console, deploy, resource requirements, storage, parameters
 
@@ -233,13 +233,6 @@ env:
   value: ibp-operator
 - name: CLUSTERTYPE
   value: OPENSHIFT
-```
-{:codeblock}
-
-If you created a new Kubernetes secret to store your entitlement key, you also need to update the image pull secret in your operator spec:
-```
-imagePullSecrets:
-  - name: <NEW_SECRET>
 ```
 {:codeblock}
 
@@ -521,12 +514,6 @@ env:
   value: ibp-operator
 - name: CLUSTERTYPE
   value: OPENSHIFT
-```
-
-If you created a new Kubernetes secret to store your entitlement key, you also need to update the image pull secret in your console spec:
-```
-imagePullSecrets:
-  - name: <NEW_SECRET>
 ```
 {:codeblock}
 

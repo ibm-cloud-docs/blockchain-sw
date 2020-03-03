@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2020
-lastupdated: "2020-02-28"
+lastupdated: "2020-03-03"
 
 keywords: Kubernetes, IBM Blockchain Platform console, deploy, resource requirements, storage, parameters
 
@@ -122,13 +122,6 @@ env:
   value: ibp-operator
 - name: CLUSTERTYPE
   value: IKS
-```
-{:codeblock}
-
-If you created a new Kubernetes secret to store your entitlement key, you also need to update the image pull secret in your console spec:
-```
-imagePullSecrets:
-  - name: <NEW_SECRET>
 ```
 {:codeblock}
 
@@ -310,13 +303,6 @@ env:
   value: ibp-operator
 - name: CLUSTERTYPE
   value: IKS
-```
-{:codeblock}
-
-If you created a new Kubernetes secret to store your entitlement key, you also need to update the image pull secret in your console spec:
-```
-imagePullSecrets:
-  - name: <NEW_SECRET>
 ```
 {:codeblock}
 
