@@ -137,7 +137,7 @@ The following table contains a list of options to consider as you plan for incre
 
    **CAs** Like peers and ordering nodes, if replica sets are chosen for a CA, an anti-affinity policy automatically distributes the CA replica sets across worker nodes in the cluster, based on resource availability.
 
-   This scenario uses redundant peers, ordering nodes, and CA replica sets, across multiple worker nodes in a single cluster or zone, which protects against node failure, but cannot protect from a cluster or zone failure.  Therefore, it is not recommended for Production.
+   This scenario uses redundant peers, ordering nodes, and CA replica sets, across multiple worker nodes in a single cluster or zone, which protects against node failure, but cannot protect from a cluster or zone failure.  Therefore, it is not recommended for production.
 
 ### Multizone HA 
 {: #ibp-console-ha-multi-zone}
