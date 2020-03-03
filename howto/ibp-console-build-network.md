@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2020
-lastupdated: "2020-03-02"
+lastupdated: "2020-03-03"
 
 keywords: getting started tutorials, create a CA, enroll, register, create an MSP, wallet, create a peer, create ordering service, Raft, ordering service, blockchain network
 
@@ -473,7 +473,7 @@ In this tutorial, we can easily access the `Org1 MSP` because both the peer orga
 ## Step four: Create a channel
 {: #ibp-console-build-network-create-channel}
 
-In this tutorial, we will presume that users will not be attempting to edit any of the advanced options available when creating a channel. For information about editing advanced options both before and after a channel has been created, as well as more information about standard options, see [Advanced channel deployment and management](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-govern#ibp-console-govern).
+In this tutorial, we will presume that users will not be attempting to edit any of the advanced options available when creating a channel. 
 {:important}
 
 Although the members of a network are usually related business entities that want to transact with each other, there might be instances when subsets of the members want to transact without the knowledge of the others. This is possible by creating a **channel** on which these transactions will take place. Channels replicate the structure of a blockchain network in that they contain members, peers, an ordering service, a ledger, policies, and smart contracts. But by restricting the membership, and even the knowledge of the channel, to particular subsets of the network membership, channels ensure that network members can leverage the overall structure of the network while maintaining privacy, where needed.

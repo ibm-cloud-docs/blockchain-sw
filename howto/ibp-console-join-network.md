@@ -3,7 +3,7 @@
 copyright:
   years: 2019
 
-lastupdated: "2020-03-02"
+lastupdated: "2020-03-03"
 
 keywords: getting started tutorials, create a CA, enroll, register, create an MSP, wallet, create a peer, create ordering service, Raft, join a network, system channel
 
@@ -359,7 +359,7 @@ In this tutorial, we are only creating and joining a single peer to the channel.
 ## Creating a channel
 {: #ibp-console-join-network-create-channel}
 
-In this tutorial, we will presume that users will not be attempting to edit any of the advanced options. For information about editing advanced options both before and after a channel has been created, see [Advanced channel deployment and management](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-govern#ibp-console-govern).
+In this tutorial, we will presume that users will not be attempting to edit any of the advanced options. 
 {:important}
 
 Because your organization is now a member of the consortium, you also have the ability create a new channel. First, you will need to import the MSP definition of other channel members. Use the steps below to create a channel with two members: the `Org1` that was created in the [Build a network tutorial](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-build-network#ibp-console-build-network) and the `Org2` that was created in the steps above.
