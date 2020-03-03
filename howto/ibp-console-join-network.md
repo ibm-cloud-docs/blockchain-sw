@@ -260,7 +260,7 @@ Then Org1 must complete the following steps in its own console:
 4. In the **Organizations** section, open the `Select a channel member` drop-down list and select the peer organization MSP, `Org2 MSP`.
 5. Click **Add** and then assign permissions for that organization. We recommend you make them an `Operator` so that Org2 can operate the channel (this will allow them to sign channel updates, for example).
 6. Under **Channel update policy**, select `2 out of 2`, meaning only one of the two organizations needs to approve updates to the channel.
-7. Click down to **Review channel information** and submit the update.
+7. Click down to **Review channel information** and click **Submit channel update**.
 
 Org1 must also export its own MSP, `Org1 MSP`, and send it to Org2 in an out of band operation. **All members of a channel should have the MSPs of the other channel members**.
 {:important}
