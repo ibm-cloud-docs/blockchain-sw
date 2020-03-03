@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2020
-lastupdated: "2020-03-02"
+lastupdated: "2020-03-03"
 
 keywords: high availability, HA, failures, zone failure, region failure, component failure, worker node failure
 
@@ -123,8 +123,7 @@ The following table contains a list of options to consider as you plan for incre
 
    **CA** You can configure replica sets, which are represented as shaded CA boxes in the diagram above, for your CA. Replica sets guarantee that if the CA node goes down, the CA replica immediately begins processing requests. You must provision an instance of a PostgreSQL database if you plan to use CA replica sets. See these instructions for more information about [how to configure CA replica sets](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-build-ha-ca).
 
-   This scenario uses redundant peers, ordering nodes, and CAs on a single worker node, which protects against component failure, but cannot protect from node failure. 
-
+   This scenario uses redundant peers, ordering nodes, and CAs on a single worker node, which protects against component failure, but cannot protect from node failure.  Therefore, it is only suitable for development and testing purposes.
 
 2. **Worker node failure.**  
 
@@ -138,9 +137,7 @@ The following table contains a list of options to consider as you plan for incre
 
    **CAs** Like peers and ordering nodes, if replica sets are chosen for a CA, an anti-affinity policy automatically distributes the CA replica sets across worker nodes in the cluster, based on resource availability.
 
-   This scenario uses redundant peers, ordering nodes, and CA replica sets, across multiple worker nodes in a single cluster or zone, which protects against node failure, but cannot protect from a cluster or zone failure. 
-
-   This scenario uses redundant peersordering nodes across multiple worker nodes in a single cluster or zone, which protects against node failure, but cannot protect from a cluster or zone failure.  Therefore, it is not recommended for Production.
+   This scenario uses redundant peers, ordering nodes, and CA replica sets, across multiple worker nodes in a single cluster or zone, which protects against node failure, but cannot protect from a cluster or zone failure.  Therefore, it is not recommended for Production.
 
 ### Multizone HA 
 {: #ibp-console-ha-multi-zone}
@@ -172,8 +169,6 @@ The following table contains a list of options to consider as you plan for incre
    If you choose to use a multi-zone configuration for CA, peers, or ordering nodes, then you are responsible for configuring the storage for each zone and set the node affinity to zones.
    {: important}
    
-   {: important}
-
 ### Multi-region HA
 {: #ibp-console-ha-multi-region}
 
