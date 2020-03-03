@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2020
-lastupdated: "2020-02-21"
+lastupdated: "2020-03-03"
 
 keywords: Kubernetes, IBM Blockchain Platform console, deploy, resource requirements, storage, parameters
 
@@ -33,13 +33,13 @@ You can upgrade to the {{site.data.keyword.blockchainfull_notm}} Platform v2.1.2
 | Version | Release date | Image tags | New features |
 |----|----|----|----|
 | [{{site.data.keyword.blockchainfull_notm}} Platform v2.1.2](/docs/blockchain-sw?topic=blockchain-sw-whats-new#whats-new-12-17-2019) | 17 December 2019 | **Console and tools** <ul><li>2.1.2-20191217-amd64</li><li>2.1.2-20200213-amd64</li></ul> **Fabric nodes** <ul><li>1.4.4-20191217-amd64</li><li>1.4.4-20200213-amd64</li></ul> **CouchDB** <ul><li>2.3.1-20191217-amd64</li><li>2.3.1-20200213-amd64</li></ul> | **Fabric Version Upgrade** <ul><li>Fabric version 1.4.4</ul> **Additional platforms** <ul><li>Platform can be deployed on the OpenShift Container Platform 4.1 and 4.2</ul> **Improvements to the Console UI** <ul><li>Simplified component creation flows</li><li>Zone selection for ordering nodes</li><li>Add peer to a channel from Channels tab</li><li>Anchor peer during join</li><li>Export/Import all</ul> |
-| [{{site.data.keyword.blockchainfull_notm}} Platform v2.1.1](/docs/blockchain-sw?topic=blockchain-sw-whats-new#whats-new-11-08-2019) | 8 November 2019 | **Console and tools** <ul><li>2.1.1-20191108-amd64</ul> **Fabric nodes** <ul><li>1.4.3-20191108-amd64</ul> **CouchDB** <ul><li>2.3.1-20191108-amd64</ul> | **Additional platforms** <ul><li>Platform can be deployed on Kubernetes v1.14 - v1.16</li><li>Platform can be deployed on {{site.data.keyword.cloud_notm}} Private 3.2.1</li></ul> |
+| [{{site.data.keyword.blockchainfull_notm}} Platform v2.1.1](/docs/blockchain-sw?topic=blockchain-sw-whats-new#whats-new-11-08-2019)| 8 November 2019 | **Console and tools** <ul><li>2.1.1-20191108-amd64</ul> **Fabric nodes** <ul><li>1.4.3-20191108-amd64</ul> **CouchDB** <ul><li>2.3.1-20191108-amd64</ul> | **Additional platforms** <ul><li>Platform can be deployed on Kubernetes v1.14 - v1.16</li><li>Platform can be deployed on {{site.data.keyword.cloud_notm}} Private 3.2.1</li></ul> |
 | [{{site.data.keyword.blockchainfull_notm}} Platform v2.1.0](/docs/blockchain-sw?topic=blockchain-sw-whats-new#whats-new-9-24-2019) | 24 September 2019 | **Console and tools** <ul><li>2.1.0-20190918-amd64</ul> **Fabric nodes** <ul><li>1.4.3-20190918-amd64</ul> **CouchDB** <ul><li>2.3.1-20190918-amd64</ul> | **Fabric Version Upgrade** <ul><li>Fabric version 1.4.3</ul> **Additional platforms** <ul><li>Platform can be deployed on the OpenShift Container Platform 3.11</ul> |
 {: caption="Table 1. {{site.data.keyword.blockchainfull_notm}} Platform versions" caption-side="bottom"}
 
+
 If you are using {{site.data.keyword.blockchainfull_notm}} Platform v2.1.0 or v2.1.1, you cannot access the console from the Chrome browser on Mac OS Catalina when the console is deployed with the default configuration that uses self-signed certificates. For more information on how you can resolve this problem, see [Chrome browser on Mac OS Catalina](/docs/blockchain-sw?topic=blockchain-sw-sw-known-issues#sw-known-issues-catalina) in Known Issues.
 {:note}
-
 ## Upgrade to the {{site.data.keyword.blockchainfull_notm}} Platform v2.1.2
 {: #upgrade-k8-steps}
 
@@ -122,13 +122,6 @@ env:
   value: ibp-operator
 - name: CLUSTERTYPE
   value: IKS
-```
-{:codeblock}
-
-If you created a new Kubernetes secret to store your entitlement key, you also need to update the image pull secret in your console spec:
-```
-imagePullSecrets:
-  - name: <NEW_SECRET>
 ```
 {:codeblock}
 
@@ -310,13 +303,6 @@ env:
   value: ibp-operator
 - name: CLUSTERTYPE
   value: IKS
-```
-{:codeblock}
-
-If you created a new Kubernetes secret to store your entitlement key, you also need to update the image pull secret in your console spec:
-```
-imagePullSecrets:
-  - name: <NEW_SECRET>
 ```
 {:codeblock}
 

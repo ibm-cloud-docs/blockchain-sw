@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2020
-lastupdated: "2020-02-26"
+lastupdated: "2020-03-03"
 
 keywords: IBM Blockchain Platform console, deploy, resource requirements, storage, parameters
 
@@ -163,7 +163,6 @@ kubectl apply -f ibp-psp.yaml
 ### Apply the ClusterRole
 
 Copy the following text to a file on your local system and save the file as `ibp-clusterrole.yaml`. This file defines the required ClusterRole for the PodSecurityPolicy.
-
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
@@ -197,6 +196,13 @@ rules:
   - nodes
   verbs:
   - '*'
+- apiGroups:
+  - ""
+  resources:
+  - namespaces
+  - nodes
+  verbs:
+  - 'get'
 - apiGroups:
   - apiextensions.k8s.io
   resources:
@@ -233,8 +239,6 @@ rules:
   - '*'
 ```
 {:codeblock}
-
-
 
 After you save and edit the file, run the following commands.
 ```
@@ -369,7 +373,7 @@ spec:
                 values:
                 - amd64
       imagePullSecrets:
-        - name: docker-key-secret
+        - name: "docker-key-secret"
       containers:
         - name: ibp-operator
           image: cp.icr.io/cp/ibp-operator:2.1.2-20200213-amd64
@@ -445,15 +449,42 @@ ibp-operator   1         1         1            1           1m
 
 When the operator is running on your namespace, you can apply a custom resource to start the {{site.data.keyword.blockchainfull_notm}} Platform console on your cluster. You can then access the console from your browser. Note that you can deploy only one console per namespace.
 
-Save the custom resource definition below as `ibp-console.yaml` on your local system. If you changed the name of the entitlement key secret, then you need to edit the field of `name: docker-key-secret`.
-
-
+Save the custom resource definition below as `ibp-console.yaml` on your local system.
 ```yaml
 apiVersion: ibp.com/v1alpha1
 kind: IBPConsole
 metadata:
   name: ibpconsole
 spec:
+  arch:
+  - amd64
+  license: accept
+  serviceAccountName: default
+  email: "<EMAIL>"
+  password: "<PASSWORD>"
+  registryURL: cp.icr.io/cp
+  imagePullSecret: "docker-key-secret"
+  networkinfo:
+    domain: <DOMAIN>
+  storage:
+    console:
+      class: default
+      size: 10Gi
+```
+{:codeblock}
+
+You need to specify the external endpoint information of the console in the `ibp-console.yaml` file:
+- Replace `<DOMAIN>` with the name of your cluster domain. You need to make sure that this domain is pointed to the load balancer of your cluster.
+
+If you are deploying the platform on **{{site.data.keyword.cloud_notm}} Private**, you need to use a different console resource definition. Save the file below as `ibp-console.yaml` on your local system.
+```yaml
+apiVersion: ibp.com/v1alpha1
+kind: IBPConsole
+metadata:
+  name: ibpconsole
+spec:
+  arch:
+  - amd64
   license: accept
   serviceAccountName: default
   email: "<EMAIL>"
@@ -471,25 +502,20 @@ spec:
 ```
 {:codeblock}
 
+You need to provide the following values to this file:
+- Replace `<DOMAIN>` with the Proxy IP address your cluster. You  can retrieve the value your Proxy IP address from the {{site.data.keyword.cloud_notm}} Private console. **Note:** You need to be a [Cluster administrator](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.2.0/user_management/assign_role.html){: external} to access your proxy IP. Log in to the {{site.data.keyword.cloud_notm}} Private cluster. In the left navigation panel, click **Platform** and then **Nodes** to view the nodes that are defined in the cluster. Click the node with the role `proxy` and then copy the value of the `Host IP` from the table.
+- Replace `<CONSOLE_PORT>` with a number between 30000 and 32767. This port is used to access the Console UI from your browser.
+- Replace `<PROXY_PORT>` with a number between 30000 and 32767. Select a different port than the one you selected for your console port. This port is used by the console to communicate with your blockchain nodes.
 
 
-You need to specify the external endpoint information of the console in the `ibp-console.yaml` file:
-- Replace `<DOMAIN>` with the name of your cluster domain. You need to make sure that this domain is pointed to the load balancer of your cluster.
 
-You need to provide the user name and password that is used to access the console for the first time:
+For all platforms, you need to provide the user name and password that is used to access the console for the first time:
 - Replace `<EMAIL>` with the email address of the console administrator.
 - Replace `<PASSWORD>` with the password of your choice. This password also becomes the default password of the console until it is changed.
 
 You also need to make additional edits to the file depending on your choices in the deployment process:
 - If you changed the name of your Docker key secret, change corresponding value of the `imagePullSecret:` field.
 - If you created a new storage class for your network, provide the storage class that you created to the `class:` field.
-
-If you are deploying the platform on {{site.data.keyword.cloud_notm}} Private, you need to provide the following values:
--  If you are using {{site.data.keyword.cloud_notm}} Private, you need replace `<DOMAIN>` with the Proxy IP address your cluster. You  can retrieve the value your Proxy IP address from the {{site.data.keyword.cloud_notm}} Private console. **Note:** You need to be a [Cluster administrator](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.2.0/user_management/assign_role.html){: external} to access your proxy IP. Log in to the {{site.data.keyword.cloud_notm}} Private cluster. In the left navigation panel, click **Platform** and then **Nodes** to view the nodes that are defined in the cluster. Click the node with the role `proxy` and then copy the value of the `Host IP` from the table.
-- Replace: `<CONSOLE_PORT>` with a number between 30000 and 32767.
-- Replace: `<PROXY_PORT>` with a number between 30000 and 32767.
-
-
 
 Because you can only run the following command once, you should review the [Advanced deployment options](#console-deploy-k8-advanced) in case any of the options are relevant to your configuration, before you install the console.  For example, if you are deploying your console on a multizone cluster, you need to configure that before you run the following step to install the console.
 {: important}
@@ -506,14 +532,14 @@ Replace `<NAMESPACE>` with the name of your namespace. Before you install the co
 {: #console-deploy-k8-advanced}
 
 Before you deploy the console, you can edit the `ibp-console.yaml` file to allocate more resources to your console or use zones for high availability in a multizone cluster. To take advantage of these deployment options, you can use the console resource definition with the `resources:` and `clusterdata:` sections added:
-
 ```yaml
 apiVersion: ibp.com/v1alpha1
 kind: IBPConsole
 metadata:
   name: ibpconsole
   spec:
-    arch: - amd64
+    arch:
+    - amd64
     license: accept
     serviceAccountName: default
     proxyIP:
@@ -523,8 +549,6 @@ metadata:
     imagePullSecret: "docker-key-secret"
     networkinfo:
         domain: <DOMAIN>
-        consolePort: <CONSOLE_PORT>
-        proxyPort: <PROXY_PORT>
     storage:
       console:
         class: default
@@ -562,8 +586,6 @@ metadata:
           memory: 200Mi
 ```
 {:codeblock}
-
-
 
 - You can use the `resources:` section to allocate more resources to your console. The values in the example file are the default values allocated to each container. Allocating more resources to your console allows you to operate a larger number of nodes or channels. You can allocate more resources to a currently running console by editing the resource file and applying it to your cluster. The console will restart and return to its previous state, allowing you to operate all of your exiting nodes and channels.
   ```
@@ -608,9 +630,36 @@ kubectl create secret generic console-tls-secret --from-file=tls.crt=./tlscert.p
 ```
 {:codeblock}
 
-After you create the secret, add the following field to the `spec:` section of `ibp-console.yaml` with one indent added, at the same level as the `resources:` and `clusterdata:` sections of the advanced deployment options. You must provide name of the TLS secret that you created to the field:
-```
-tlsSecretName: console-tls-secret
+After you create the secret, add the `tlsSecretName` field to the `spec:` section of `ibp-console.yaml` with one indent added, at the same level as the `resources:` and `clusterdata:` sections of the advanced deployment options. You must provide the name of the TLS secret that you created to the field. The following example deploys a console with the TLS certificate and key stored in a secret named `"console-tls-secret"`:
+```yaml
+apiVersion: ibp.com/v1alpha1
+kind: IBPConsole
+metadata:
+  name: ibpconsole
+  spec:
+    arch:
+    - amd64
+    license: accept
+    serviceAccountName: default
+    proxyIP:
+    email: "<EMAIL>"
+    password: "<PASSWORD>"
+    registryURL: cp.icr.io/cp
+    imagePullSecret: "docker-key-secret"
+    networkinfo:
+        domain: <DOMAIN>
+        consolePort: <CONSOLE_PORT>
+        proxyPort: <PROXY_PORT>
+    storage:
+      console:
+        class: default
+        size: 10Gi
+    tlsSecretName: "console-tls-secret"
+    clusterdata:
+      zones:
+        - dal10
+        - dal12
+        - dal13
 ```
 {:codeblock}
 
@@ -653,11 +702,11 @@ kubectl logs -f ibpconsole-55cf9db6cc-856nz optools -n blockchain-project
 ```
 {:codeblock}
 
+
 ## Log in to the console
 {: #deploy-k8-log-in}
 
-You can use your browser to access the console by browsing to the console URL:
-
+You can use your browser to access the console by using the console URL:
 ```
 https://<NAMESPACE>-ibpconsole-console.<DOMAIN>:443
 ```
@@ -670,7 +719,19 @@ Your console URL looks similar to the following example:
 https://blockchain-project-ibpconsole-console.xyz.abc.com:443
 ```
 
-In your browser, you can see the console log in screen:
+If you are deploying the platform on **{{site.data.keyword.cloud_notm}} Private**, you can access the console by browsing to  the following URL:
+```
+https://<DOMAIN>:<CONSOLE_PORT>
+```
+- Replace `<DOMAIN>` with the value of the `domain:` field in the `ibp-console.yaml` file.
+- Replace `<CONSOLE_PORT>` with the port that you specified in the `consolePort:` in the `ibp-console.yaml` file.
+
+Your console URL looks similar to the following example:
+```
+https://9.30.252.107:32615
+```
+
+If you navigate to the console URL in your browser, you can see the console log in screen:
 - For the **User ID**, use the value you provided for the `email:` field in the `ibp-console.yaml` file.
 - For the **Password**, use the value you encoded for the `password:` field in the `ibp-console.yaml` file. This password becomes the default password for the console that all new users use to log in to the console. After you log in for the first time, you will be asked to provide a new password that you can use to log in to the console.
 

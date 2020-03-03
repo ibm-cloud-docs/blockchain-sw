@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2020
-lastupdated: "2020-02-25"
+lastupdated: "2020-03-03"
 
 keywords: FAQs, can I, upgrade, what version, peer ledger database, supported languages, why do I, regions
 
@@ -50,14 +50,14 @@ subcollection: blockchain-sw
 Hyperledger Fabric is a powerful, versatile, pluggable, open source, distributed ledger technology capable of addressing a wide variety of use cases across many industries. {{site.data.keyword.blockchainfull_notm}} Platform is built on top of Fabric and includes integrated tools that provide end to end features for developers and network operators to develop, test, operate, monitor, and govern Hyperledger Fabric components by using an intuitive console UI. Quickly deploy an instance and use the streamlined console UI to [build a network](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-build-network), easily [install and instantiate smart contracts](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-smart-contracts), [govern your components](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-govern-components), and [govern your channel](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-govern). Interested in APIs? See the [{{site.data.keyword.blockchainfull_notm}} Platform API reference](https://cloud.ibm.com/apidocs/blockchain){: external}. With the {{site.data.keyword.blockchainfull_notm}} Platform, it is easy to extend a basic network, work with multicloud solutions, and receive {{site.data.keyword.IBM_notm}} worldwide support when needed. Finally, the {{site.data.keyword.blockchainfull_notm}} Platform provides additional security benefits that are essential for running an enterprise-grade production network.
 
 
-## Where can a customer deploy the {{site.data.keyword.blockchainfull_notm}} Platform and how will {{site.data.keyword.IBM_notm}} support those deployment environments?]
+## Where can a customer deploy the {{site.data.keyword.blockchainfull_notm}} Platform and how will {{site.data.keyword.IBM_notm}} support those deployment environments?
 {: #ibp-v2-faq-sw-support}
 
 For an updated list of all the {{site.data.keyword.blockchainfull_notm}} Platform deployment options check out the [Supported Platforms](/docs/blockchain-sw?topic=blockchain-sw-console-ocp-about#console-ocp-about-prerequisites).
 
 It is important to note that the {{site.data.keyword.blockchainfull_notm}} support only spans across Hyperledger Fabric based component issues for customers who have purchased the Blockchain Platform. Some examples include assistance in Fabric upgrades, chaincode instantiation, adding peers to channels, etc.
 
-On the other hand, {{site.data.keyword.blockchainfull_notm}} will not provide deployment support for environments outside of Red Hat OpenShift. This means the customer is free to deploy into an environment of their choice from the list above, and should have the same {{site.data.keyword.blockchainfull_notm}} Platform experience as they would deploying into the {{site.data.keyword.cloud_notm}}. But it will be up to the customer to configure the network and address their own infrastructure related issues. Examples of these types of issues include failed deployment to a Kubernetes service, infrastructure capacity, custom firewall settings, etc.
+On the other hand, {{site.data.keyword.blockchainfull_notm}} will not provide deployment support for environments outside of the supported platform. This means the customer is free to deploy into an environment of their choice from the list above, and should have the same {{site.data.keyword.blockchainfull_notm}} Platform experience as they would deploying into the {{site.data.keyword.cloud_notm}}. But it will be up to the customer to configure the network and address their own infrastructure related issues. Examples of these types of issues include failed deployment to a Kubernetes service, infrastructure capacity, custom firewall settings, etc.
 
 ## Does {{site.data.keyword.blockchainfull_notm}} Platform v2.1.x run on OpenShift on {{site.data.keyword.cloud_notm}}?
 {: #ibp-v2-faq-saas-ocp}
@@ -105,7 +105,7 @@ Yes. The {{site.data.keyword.blockchainfull_notm}} Platform v2.1.x uses Raft con
 {: #ibp-v2-faq-multicloud}
 {: faq}
 
-You can not currently deploy blockchain nodes to multiple hosted cloud providers. However, you can use your console to operate a distributed multicloud network by importing nodes deployed by consoles on other clouds.
+You can not currently deploy blockchain nodes to multiple hosted cloud providers. However, you can use your console to operate a distributed multicloud network by importing nodes deployed by using consoles on other clouds.
 
 ## How can I find the examples and tutorials within the VSCode extension?
 {: #ibp-v2-faq-vscode-tutorials}

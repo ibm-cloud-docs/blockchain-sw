@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2020
-lastupdated: "2020-02-07"
+lastupdated: "2020-03-02"
 
 keywords: network components, Kubernetes, batch timeout, channel update, channels, governance, channel configuration, access control
 
@@ -18,6 +18,10 @@ subcollection: blockchain-sw
 {:important: .important}
 {:tip: .tip}
 {:pre: .pre}
+
+
+
+
 
 # Channel governance
 {: #ibp-console-govern}
@@ -49,7 +53,7 @@ It's possible to change some, but not all, of the configuration parameters of a 
 
 Because the console gives a single user the ability to own and control several organizations, you must specify the organization you are using when you sign a channel update in the **Channel updater organization** section. If you own more than one organization in this channel, you may choose any of the organizations you own in the channel to sign with. Depending on the **channel update policy** you've selected, you may get a notification asking you to sign the request as one or more of the other organizations you own.
 
-Note that if you are attempting to change any parameter that requires the signature of ordering service admins (for example, the **Block cutting parameters** ) and are one of the ordering service admins on this channel, you will see a field for the ordering service organization. Select the MSP of the relevant ordering service organization from the drop-down list. If you are not an admin of the ordering service organization, you can still make a request to change these fields, but the request will need to be signed by an ordering service admin.
+Note that if you are attempting to change any parameter that requires the signature of ordering service admins (for example, the **Block cutting parameters**) and are one of the ordering service admins on this channel, you will see a field for the ordering service organization. Select the MSP of the relevant ordering service organization from the drop-down list. If you are not an admin of the ordering service organization, you can still make a request to change these fields, but the request will need to be signed by an ordering service admin.
 
 #### General options
 {: #ibp-console-govern-update-channel-available-parameters-general}
@@ -78,11 +82,7 @@ By clicking the box under advanced options, users can access parameters that use
 
 * **Channel and orderer capabilities**. As with the block cutting parameters, there are capability fields available during the channel update process that are hidden during channel creation because modifying them would require the signature of an ordering service admin before the channel could be created successfully. If you're unfamiliar with the **channel** and **orderer** capabilities, see [Channel capabilities](https://hyperledger-fabric.readthedocs.io/en/release-1.4/capabilities_concept.html){: external} in the Fabric documentation before attempting to change these capabilities. For information about how to update capabilities, check out the [Capabilities](#ibp-console-govern-capabilities) section below.
 
-
-
 * **Block cutting parameters**. Because a change to the default block cutting parameters must be signed by an admin of the ordering service organization, these fields are not present in the channel creation panel. However, because this channel configuration will be sent to all of the relevant organizations in the channel, it is possible to send a channel configuration update request with changes to the block cutting parameters. These fields determine the conditions under which the ordering service cuts a new block. For information on how these fields affect when blocks are cut, see the [Block cutting parameters](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-govern#ibp-console-govern-orderer-tuning-batch-size) section below.
-
-
 
 #### Anchor peers
 {: #ibp-console-govern-channels-anchor-peers}
@@ -173,12 +173,12 @@ The following parameters are available in the console by clicking the orderer no
 
 The following three parameters work together to control when a block is cut, based on a combination of setting the maximum number of transactions in a block as well as the block size itself.
 
-- **Absolute max bytes**  
-  Set this value to the largest block size in bytes that can be cut by the orderer.  No transaction may be larger than the value of `Absolute max bytes`. Usually, this setting can safely be two to ten times larger than your `Preferred max bytes`.    
+- **Absolute max bytes**
+  Set this value to the largest block size in bytes that can be cut by the orderer.  No transaction may be larger than the value of `Absolute max bytes`. Usually, this setting can safely be two to ten times larger than your `Preferred max bytes`.
   **Note**: The maximum size permitted is 99MB.
-- **Max message count**   
+- **Max message count**
   Set this value to the maximum number of transactions that can be included in a single block.
-- **Preferred max bytes**  
+- **Preferred max bytes**
   Set this value to the ideal block size in bytes, but it must be less than `Absolute max bytes`. A minimum transaction size,  one that contains no endorsements, is around 1KB.  If you add 1KB per required endorsement, a typical transaction size is approximately 3-4KB. Therefore, it is recommended to set the value of `Preferred max bytes` to be around `Max message count * expected averaged tx size`. At run time, whenever possible, blocks will not exceed this size. If a transaction arrives that causes the block to exceed this size, the block is cut and a new block is created for that transaction. But if a transaction arrives that exceeds this value without exceeding the `Absolute max bytes`, the transaction will be included. If a block arrives that is larger than `Preferred max bytes`, then it will only contain a single transaction, and that transaction size can be no larger than `Absolute max bytes`.
 
 Together, these parameters can be configured to optimize throughput of your orderer.
@@ -190,4 +190,6 @@ Set the **Timeout** value to the amount of time, in seconds, to wait after the f
 
 When you modify these parameters, you do not affect the behavior of existing channels on the orderer; rather, any changes you make to the orderer configuration apply only to new channels you create on this orderer.
 {:important}
+
+
 
