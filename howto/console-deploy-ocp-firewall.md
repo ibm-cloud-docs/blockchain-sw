@@ -555,9 +555,6 @@ spec:
 ```
 {:codeblock}
 - If you changed the name of the Docker key secret, then you need to edit the field of `name: docker-key-secret`.
-- If you are using OpenShift Container Platform v4.2 on LinuxONE, you need to make the following additional customizations:
-   1. In the `spec.affinity` section, change `amd64` to `s390x`.
-   2. In the `spec.containers` section, replace `amd64` in the operator `images` tag with `s390x`.
 
 Then, use the `kubectl` CLI to add the custom resource to your project.
 
@@ -592,7 +589,7 @@ spec:
   serviceAccountName: default
   email: "<EMAIL>"
   password: "<PASSWORD>"
-  registryURL: cp.icr.io/cp
+  registryURL: <LOCAL_REGISTRY>
   imagePullSecret: "docker-key-secret"
   networkinfo:
     domain: <DOMAIN>
@@ -616,8 +613,6 @@ You also need to make additional edits to the file depending on your choices in 
 - If you changed the name of your Docker key secret, change corresponding value of the `imagePullSecret:` field.
 - If you created a new storage class for your network, provide the storage class that you created to the `class:` field.
 
-
-If you are deploying on OpenShift Container Platform v4.2 on LinuxONE, you need to replace `arch: - amd64` in the `spec:` section with `arch: - s390x`.
 
 
 Because you can only run the following command once, you should review the [Advanced deployment options](#console-deploy-ocp-advanced-firewall) in case any of the options are relevant to your configuration, before you install the console.  For example, if you are deploying your console on a multizone cluster, you need to configure that before you run the following step to install the console.
@@ -645,7 +640,6 @@ kind: IBPConsole
 metadata:
   name: ibpconsole
   spec:
-    arch: - amd64
     license: accept
     serviceAccountName: default
     proxyIP:
