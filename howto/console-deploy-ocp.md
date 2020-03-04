@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2020
-lastupdated: "2020-02-26"
+lastupdated: "2020-03-04"
 
 keywords: OpenShift, IBM Blockchain Platform console, deploy, resource requirements, storage, parameters
 
@@ -493,6 +493,7 @@ When the operator is running on your namespace, you can apply a custom resource 
 Save the custom resource definition below as `ibp-console.yaml` on your local system. If you changed the name of the entitlement key secret, then you need to edit the field of `name: docker-key-secret`.
 
 
+
 ```yaml
 apiVersion: ibp.com/v1alpha1
 kind: IBPConsole
@@ -513,7 +514,6 @@ spec:
       size: 10Gi
 ```
 {:codeblock}
-
 
 
 You need to specify the external endpoint information of the console in the `ibp-console.yaml` file:
@@ -548,13 +548,13 @@ Replace `<PROJECT_NAME>` with the name of your project. Before you install the c
 
 Before you deploy the console, you can edit the `ibp-console.yaml` file to allocate more resources to your console or use zones for high availability in a multizone cluster. To take advantage of these deployment options, you can use the console resource definition with the `resources:` and `clusterdata:` sections added:
 
+
 ```yaml
 apiVersion: ibp.com/v1alpha1
 kind: IBPConsole
 metadata:
   name: ibpconsole
   spec:
-    arch: - amd64
     license: accept
     serviceAccountName: default
     proxyIP:
@@ -604,7 +604,6 @@ metadata:
 
 
 
-
 - You can use the `resources:` section to allocate more resources to your console. The values in the example file are the default values allocated to each container. Allocating more resources to your console allows you to operate a larger number of nodes or channels. You can allocate more resources to a currently running console by editing the resource file and applying it to your cluster. The console will restart and return to its previous state, allowing you to operate all of your exiting nodes and channels.
   ```
   kubectl apply -f ibp-console.yaml -n <PROJECT_NAME>
@@ -634,6 +633,9 @@ Unlike the resource allocation, you cannot add zones to a running network. If yo
 
 The {{site.data.keyword.blockchainfull_notm}} Platform console uses TLS certificates to secure the communication between the console and your blockchain nodes and between the console and your browser. You have the option of creating your own TLS certificates and providing them to the console by using creating a Kubernetes secret. If you skip this step, the console creates its own self-signed TLS certificates during deployment.
 
+This step needs to be performed before the console is deployed.
+{: important}
+
 You can use a Certificate Authority or tool to create the TLS certificates for the console. The TLS certificate needs to include the hostname of the console and the proxy in the subject name or the alternative domain names. The console and proxy hostname are in the following format:
 
 **Console hostname:** ``<PROJECT_NAME>-ibpconsole-console.<DOMAIN>``  
@@ -654,7 +656,7 @@ tlsSecretName: console-tls-secret
 ```
 {:codeblock}
 
-When you finish editing the file, you can apply it to your cluster to provide new TLS certificates to a deployed console. After the console restarts, the UI returns to its previous state, allowing you to operate all of your exiting nodes and channels.
+When you finish editing the file, you can apply it to your cluster in order to secure communications with your own TLS certificates:
 ```
 kubectl apply -f ibp-console.yaml -n <PROJECT_NAME>
 ```
