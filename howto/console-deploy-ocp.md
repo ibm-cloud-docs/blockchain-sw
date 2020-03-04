@@ -504,7 +504,7 @@ spec:
   serviceAccountName: default
   email: "<EMAIL>"
   password: "<PASSWORD>"
-  registryURL: <LOCAL_REGISTRY>
+  registryURL: cp.icr.io/cp
   imagePullSecret: "docker-key-secret"
   networkinfo:
     domain: <DOMAIN>

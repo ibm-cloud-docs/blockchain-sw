@@ -116,8 +116,6 @@ docker pull cp.icr.io/cp/ibp-fluentd:2.1.2-20200213-amd64
 {:codeblock}
 
 
-If you are deploying the platform on LinuxONE on s390x, replace `amd64` in the image tag with `s390x`
-{: important}
 
 After you download the images, you must change the image tags to refer to your docker registry. Replace `<LOCAL_REGISTRY>` with the url of your local registry and run the following commands:
 ```
@@ -584,7 +582,6 @@ kind: IBPConsole
 metadata:
   name: ibpconsole
 spec:
-  arch: - amd64
   license: accept
   serviceAccountName: default
   email: "<EMAIL>"
