@@ -3,7 +3,7 @@
 copyright:
   years: 2019
 
-lastupdated: "2020-03-03"
+lastupdated: "2020-03-16"
 
 keywords: getting started tutorials, create a CA, enroll, register, create an MSP, wallet, create a peer, create ordering service, Raft, join a network, system channel
 
@@ -38,7 +38,7 @@ You need to pay close attention to the resources at your disposal when you choos
 ## Sample network tutorial series
 {: #ibp-console-join-network-structure}
 
-You are currently on the second part of our three-part tutorial series. This tutorial guides you through the process of using the console to create and join a peer node to an existing {{site.data.keyword.blockchainfull_notm}} Platform network. 
+You are currently on the second part of our three-part tutorial series. This tutorial guides you through the process of using the console to create and join a peer node to an existing {{site.data.keyword.blockchainfull_notm}} Platform network.
 
 * [Build a network tutorial](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-build-network#ibp-console-build-network) guides you through the process of hosting a network by creating an ordering service and a peer.
 * **Join a network tutorial** (Current tutorial) Guides you through the process of joining an existing network by creating a peer and joining it to a channel.
@@ -85,7 +85,7 @@ Perform the following steps from your console:
    * [Database and replica sets](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-build-ha-ca#ibp-console-build-ha-ca-create) (Creating an HA CA)
    * [Kubernetes zone selection](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-ha#ibp-console-ha-multi-zone) (Multizone HA) This option is only visible when your cluster is configured with multiple zones.
    * [Resource allocation](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-govern-components#ibp-console-govern-components-allocate-resources)
-5. Review the Summary page, then click **Add Certificate Authority**. 
+5. Review the Summary page, then click **Add Certificate Authority**.
 
 **Task: Creating the peer organization CA**
 
@@ -256,7 +256,7 @@ Then Org1 must complete the following steps in its own console:
 
 1. Navigate to the **Channels** tab, click `channel1`.
 2. Click the  **Settings** icon to update the channel and add the peer organization to the channel.
-3. In the **Channel updater MSP** drop-down list (under the **Organization updating channel** heading), select `Org1 MSP`. In the **Identity** drop-down list, ensure that `Org1 MSP Admin` is selected.
+3. In the **Channel updater MSP** drop-down list, select `Org1 MSP`. In the **Identity** drop-down list, ensure that `Org1 MSP Admin` is selected.
 4. In the **Organizations** section, open the `Select a channel member` drop-down list and select the peer organization MSP, `Org2 MSP`.
 5. Click **Add** and then assign permissions for that organization. We recommend you make them an `Operator` so that Org2 can operate the channel (this will allow them to sign channel updates, for example).
 6. Under **Channel update policy**, select `2 out of 2`, meaning only one of the two organizations needs to approve updates to the channel.
@@ -288,7 +288,7 @@ Complete the following steps to **import** the ordering service into your consol
 3. Then click the **Add file** button to select the JSON that represents the ordering service.
 4. When you are asked to associate an identity for the ordering service nodes, select the peer organization identity you have locally (note that this "association" step is for administration of the ordering nodes themselves and will not make this identity one of the "ordering service administrators" mentioned in the [Add the peer's organization to the consortium](#ibp-console-join-network-add-org2-local) above. In this tutorial, this local peer organization identity would be `Org2 MSP Admin`. Click **Add ordering service**.
 
-## Step Four: Join your peer to the channel
+## Step Three: Join your peer to the channel
 {: #ibp-console-join-network-join-peer-org2}
 
 Your peer can now be joined to `channel1`.
@@ -303,13 +303,13 @@ Your peer can now be joined to `channel1`.
 In these tutorial, we create all of our peers using default options, which means that every peer uses CouchDB. As a result, you don't have to worry about a conflict between the database type used by your peer and any other peers on the channel. However, in a production scenario, a best practice will be to ensure that the peer you are joining to this channel uses the same database type as other peers on the channel. For more information, see [LevelDB vs CouchDB](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-govern-components#ibp-console-govern-components-level-couch).
 {:important}
 
-## Creating a channel
+## Step Four: Creating a channel
 {: #ibp-console-join-network-create-channel}
 
-In this tutorial, we will presume that users will not be attempting to edit any of the advanced options. 
+In this tutorial, we will presume that users will not be attempting to edit any of the advanced options.
 {:important}
 
-### Step one: Join the consortium hosted by the ordering service
+### Join the consortium hosted by the ordering service
 {: #ibp-console-join-network-add-org2}
 
 A peer organization must be known to the ordering service before it can create a channel (this is also known as joining the "consortium", the list of organizations known to the ordering service). This is because channels are, at a technical level, **messaging paths** between peers through the ordering service. Just as a peer can be joined to multiple channels without information passing from one channel to another, so too can an ordering service have multiple channels running through it without exposing data to organizations on other channels.
@@ -401,4 +401,3 @@ After you have joined your peer to a channel, use the following steps to deploy 
 - [Deploy a smart contract on your network](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-smart-contracts#ibp-console-smart-contracts) using the console.
 - After you have installed and instantiated your smart contract, you can [submit transactions using your client application](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-smart-contracts#ibp-console-smart-contracts-connect-to-SDK).
 - Use [the commercial paper sample](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-app#ibp-console-app-commercial-paper) to deploy an example smart contract and submit transactions from sample application code.
-
