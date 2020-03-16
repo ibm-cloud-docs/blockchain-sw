@@ -256,7 +256,7 @@ Then Org1 must complete the following steps in its own console:
 
 1. Navigate to the **Channels** tab, click `channel1`.
 2. Click the  **Settings** icon to update the channel and add the peer organization to the channel.
-3. In the **Channel updater MSP** drop-down list (under the **Channel updater MSP** heading), select `Org1 MSP`. In the **Identity** drop-down list, ensure that `Org1 MSP Admin` is selected.
+3. In the **Channel updater MSP** drop-down list, select `Org1 MSP`. In the **Identity** drop-down list, ensure that `Org1 MSP Admin` is selected.
 4. In the **Organizations** section, open the `Select a channel member` drop-down list and select the peer organization MSP, `Org2 MSP`.
 5. Click **Add** and then assign permissions for that organization. We recommend you make them an `Operator` so that Org2 can operate the channel (this will allow them to sign channel updates, for example).
 6. Under **Channel update policy**, select `2 out of 2`, meaning only one of the two organizations needs to approve updates to the channel.
