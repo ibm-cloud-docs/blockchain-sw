@@ -3,7 +3,7 @@
 copyright:
   years: 2019
 
-lastupdated: "2020-03-03"
+lastupdated: "2020-03-16"
 
 keywords: getting started tutorials, create a CA, enroll, register, create an MSP, wallet, create a peer, create ordering service, Raft, join a network, system channel
 
