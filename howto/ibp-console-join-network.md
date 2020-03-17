@@ -241,7 +241,7 @@ Use your console to perform the following steps:
 | **Associate identity** | Org2 MSP Admin  |||||
 {: caption="Table 7. Deploying a peer" caption-side="bottom"}
 
-In a production scenario, it is recommended to deploy three peers to each channel. This is to allow one peer to go down (for example, during a maintenance cycle) and still maintain highly available peers. To deploy more than one peer for an organization, use the same CA you used to register your first peer identity. In this tutorial, that would be `Org2 CA`. Then, register a new peer identity using a distinct enroll ID and secret. For example, `org2secondpeer` and `org2secondpeerpw`. Then, when creating the peer, give this enroll ID and secret. As this peer is still associated with Org2, choose `Org2 CA`, `Org2 MSP`, and `Org2 MSP Admin ` from the drop-down lists. You may choose to give this new peer a different admin, which can be registered and enrolled with `Org2 CA`, but this optional. This tutorial series will only show the process for creating a single peer for each peer organization.
+In a production scenario, it is recommended to deploy three peers to each channel. This is to allow one peer to go down (for example, during a maintenance cycle) and still maintain highly available peers. To deploy more than one peer for an organization, use the same CA you used to register your first peer identity. In this tutorial, that would be `Org2 CA`. Then, register a new peer identity using a distinct enroll ID and secret. For example, `org2secondpeer` and `org2secondpeerpw`. Then, when creating the peer, give this enroll ID and secret. As this peer is still associated with Org2, choose `Org2 CA`, `Org2 MSP`, and `Org2 MSP Admin` from the drop-down lists. You may choose to give this new peer a different admin, which can be registered and enrolled with `Org2 CA`, but this optional. This tutorial series will only show the process for creating a single peer for each peer organization.
 {:tip}
 
 ## Step two: Add Org2 to an existing channel
@@ -254,13 +254,15 @@ In the [Build a network tutorial](/docs/blockchain-sw?topic=blockchain-sw-ibp-co
 
 Then Org1 must complete the following steps in its own console:
 
+Now the orderer admin can add the peer organization to the channel:
 1. Navigate to the **Channels** tab, click `channel1`.
 2. Click the  **Settings** icon to update the channel and add the peer organization to the channel.
-3. In the **Channel updater MSP** drop-down list, select `Org1 MSP`. In the **Identity** drop-down list, ensure that `Org1 MSP Admin` is selected.
-4. In the **Organizations** section, open the `Select a channel member` drop-down list and select the peer organization MSP, `Org2 MSP`.
-5. Click **Add** and then assign permissions for that organization. We recommend you make them an `Operator` so that Org2 can operate the channel (this will allow them to sign channel updates, for example).
-6. Under **Channel update policy**, select `2 out of 2`, meaning only one of the two organizations needs to approve updates to the channel.
-7. Click down to **Review channel information** and click **Submit channel update**.
+3. In the **Organizations** section, open the `Select a channel member` drop-down list and select the peer organization MSP, `Org2 MSP`.
+4. Click **Add** and then assign permissions for that organization. We recommend you make them an `Operator` so they can update the channel.
+5. Under **Channel update policy**, select `2 out of 2`, meaning only both organizations needs to approve updates to the channel.
+6. In the **Channel Updater MSP** drop-down list (under the **Channel updater organization** heading) ensure that `Org1 MSP` is selected.
+7. In the **Identity** drop-down list, ensure that `Org1 MSP Admin ` is selected.
+8. When you are ready, click **Send proposal**.
 
 Org1 must also export its own MSP, `Org1 MSP`, and send it to Org2 in an out of band operation. **All members of a channel should have the MSPs of the other channel members**.
 {:important}
@@ -334,7 +336,7 @@ If the ordering service admin does not already have your MSP, export it to them 
 This step needs to be completed by an ordering service admin.
 {:tip}
 
-Once the MSP representing Org2 has been received, an administrator of the ordering service must import the JSON file by navigated to the **Organizations** tab, clicking the **Import MSP definition** button, and selecting the JSON file that represents the `Org2 MSP` peer organization MSP definition. You can leave the `I have an administrator identity for the MSP definition` checkbox unchecked because the admin identity is not required here.
+Once the MSP representing Org2 has been received, an administrator of the ordering service must import the JSON file by navigating to the **Organizations** tab, clicking the **Import MSP definition** button, and selecting the JSON file that represents the `Org2 MSP` peer organization MSP definition. You can leave the `I have an administrator identity for the MSP definition` checkbox unchecked because the admin identity is not required here.
 
 ### Add Org2 MSP to the ordering service consortium
 {: #ibp-console-join-network-add-org2-local}
@@ -372,9 +374,9 @@ Perform the following steps from your console:
 2. Give the channel a **name**, `channel2`. Make a note of this value, as you will need to share it with anyone who wants to join this channel.
 3. Select `Ordering Service` from the drop-down list.
 4. Choose the **Organizations** who will be a part of this channel. Since we have two organizations, select and add `Org1 MSP (org1msp)` and then `Org2 MSP (org2msp)`. Make at least both organizations an **Operator**. Note: do not use the `Ordering Service MSP` here.
-5. Choose a **Channel update policy** for the channel. This is the policy that will dictate how many organizations will have to approve updates to the channel configuration. You can select `1 out of 2`. As you add organizations to the channel, you should change this policy to reflect the needs of your use case. A sensible standard is to use a majority of organizations. For example, `3 of 5`.
+5. Choose a **Channel update policy** for the channel. This is the policy that will dictate how many organizations will have to approve updates to the channel configuration. You can select `2 out of 2`. As you add organizations to the channel, you should change this policy to reflect the needs of your use case. A sensible standard is to use a majority of organizations. For example, `3 of 5`.
 6. Specify any **Access control** limitations you want to make. Note: this is an **advanced option**. If you set the access to a resource to a particular organization, it will restrict access to that resource for every organization. For example, if the default access to a particular resource is the `Readers` of all organizations, and that access is changed to the `Admin` of `Org2`, then **only** the admin of Org2 will have access to that resource. Because access to certain resources is fundamental to the smooth operation of a channel, it is highly recommended to make access control decisions carefully. If you decide to limit access to a resource, make sure that the access to that resource is added, as needed, for each organization.
-7. Select the **Channel creator organization**. Since you are operating the tutorial as `Org2`, and have the `Org2 MSP Admin ` certificates in your console wallet, select `Org2 MSP` from the drop-down list. Likewise, choose `Org2 MSPAdmin ` as the identity creating the channel.
+7. Select the **Channel creator organization**. Since you are operating the tutorial as `Org2`, and have the `Org2 MSP Admin ` certificates in your console wallet, select `Org2 MSP` from the drop-down list. Likewise, choose `Org2 MSP Admin ` as the identity creating the channel.
 
 When you are ready, click **Create channel**. You are taken back to the Channels tab and you can see a pending tile of the channel that you just created.
 
