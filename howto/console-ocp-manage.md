@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2020
-lastupdated: "2020-02-07"
+lastupdated: "2020-03-23"
 
 keywords: IBM Blockchain Platform, administrate, add user, remove user, password, APIs, authentication, view logs
 
@@ -24,8 +24,12 @@ subcollection: blockchain-sw
 # Administering your console
 {: #console-icp-manage}
 
-
-
+<div style="background-color: #f4f4f4; padding-left: 20px; border-bottom: 2px solid #0f62fe; padding-top: 12px; padding-bottom: 4px; margin-bottom: 16px; font-family: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;">
+  <p style="line-height: 10px;">
+    <strong>Running a different version of IBM Blockchain Platform?</strong> Switch to version
+    <a href="https://test.cloud.ibm.com/docs/blockchain-sw-213?topic=blockchain-sw-213-console-icp-manage">2.1.3</a>
+    </p>
+</div>
 
 After you install the console on your cluster, you can use the console to add or remove console users and access APIs that allow you to operate your network and govern your console. You can also access and customize the logs of your console.
 {:shortdesc}
@@ -123,12 +127,12 @@ Component logs can be viewed from the command line by using the [kubectl CLI com
   Replace `<node>` with `ca`, `peer`, or `orderer` to view the logs for your node.  
   Replace `<node>` with  `chaincode-logs` to view the logs for your smart contracts.
 
-  
+
   You can also run the command `kubectl logs -f <pod_name>` to get a list of all of the containers that are running inside a pod. The response to the command is an error message similar to the following:
   ```
   Error from server (BadRequest): a container name must be specified for pod peer1org1-7b4b6687dc-7n4fz, choose one of: [dind peer proxy chaincode-logs couchdb] or one of the init containers: [init]
   ```
-  
+
 
   For more information about the `kubectl logs` command, see [Kubernetes documentation](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs){: external}.
 
@@ -155,6 +159,3 @@ kubectl  logs -f <peer_ped> -c chaincode-logs
 
 
 Replace `<peer_pod>` with the name of the peer pod where the chaincode is running. Use the command `kubectl get po` to get the list of running pods.
-
-
-

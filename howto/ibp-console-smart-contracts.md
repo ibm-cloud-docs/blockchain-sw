@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019
-lastupdated: "2020-02-25"
+lastupdated: "2020-03-23"
 
 keywords: smart contract, private data, private data collection, anchor peer
 
@@ -21,6 +21,13 @@ subcollection: blockchain-sw
 
 # Deploy a smart contract on the network tutorial
 {: #ibp-console-smart-contracts}
+
+<div style="background-color: #f4f4f4; padding-left: 20px; border-bottom: 2px solid #0f62fe; padding-top: 12px; padding-bottom: 4px; margin-bottom: 16px; font-family: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;">
+  <p style="line-height: 10px;">
+    <strong>Running a different version of IBM Blockchain Platform?</strong> Switch to version
+    <a href="https://test.cloud.ibm.com/docs/blockchain-sw-213?topic=blockchain-sw-213-ibp-console-smart-contracts">2.1.3</a>
+    </p>
+</div>
 
 A smart contract is the code, sometimes referred to as chaincode, that applications interact with to read and update data on the blockchain ledger. A smart contract can turn business logic into an executable program that is agreed to and verified by all members of a blockchain network. This tutorial is the third part in the [sample network tutorial series](#ibp-console-smart-contracts-structure) and describes how to deploy smart contracts to start transactions in the blockchain network.
 {:shortdesc}
@@ -245,4 +252,3 @@ In order to use private data with {{site.data.keyword.blockchainfull_notm}} Plat
 3. **Configure anchor peers.** Because cross organizational [gossip](https://hyperledger-fabric.readthedocs.io/en/release-1.4/gossip.html){: external} must be enabled for private data to work, an anchor peer must exist for each organization in the collection definition. Refer to this information for [how to configure anchor peers](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-govern#ibp-console-govern-channels-anchor-peers) on your network.
 
 Your channel is now configured to use private data.
-
