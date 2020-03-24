@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2020
-lastupdated: "2020-02-07"
+lastupdated: "2020-03-23"
 
 keywords: import nodes, another console, import a CA, import a peer, import admin identities, import an ordering service node
 
@@ -21,6 +21,13 @@ subcollection: blockchain-sw
 
 # Importing nodes
 {: #ibp-console-import-nodes}
+
+<div style="background-color: #f4f4f4; padding-left: 20px; border-bottom: 2px solid #0f62fe; padding-top: 12px; padding-bottom: 4px; margin-bottom: 16px; font-family: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;">
+  <p style="line-height: 10px;">
+    <strong>Running a different version of IBM Blockchain Platform?</strong> Switch to version
+    <a href="https://test.cloud.ibm.com/docs/blockchain-sw-213?topic=blockchain-sw-213-ibp-console-import-nodes">2.1.3</a>
+    </p>
+</div>
 
 The console includes the option to import nodes that were created in another {{site.data.keyword.blockchainfull}} Platform console.
 {:shortdesc}
@@ -238,4 +245,3 @@ As an example, you can find the JSON file of a peer below. To communicate with t
 }
 ```
 {: codeblock}
-

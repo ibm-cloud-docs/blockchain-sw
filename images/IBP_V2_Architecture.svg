@@ -1,0 +1,645 @@
+<svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1576.91" height="1567.31">
+  <defs>
+    <clipPath id="a" transform="translate(0 1)">
+      <path fill="none" d="M1 0h1399v1547H1z"/>
+    </clipPath>
+    <clipPath id="b" transform="translate(0 1)">
+      <path fill="none" d="M0 0h1400v1548H0z"/>
+    </clipPath>
+    <clipPath id="c" transform="translate(0 1)">
+      <path fill="none" d="M165 579h757v874H165z"/>
+    </clipPath>
+    <clipPath id="d" transform="translate(0 1)">
+      <path fill="none" d="M165 648h757v805H165z"/>
+    </clipPath>
+    <clipPath id="e" transform="translate(0 1)">
+      <path fill="none" d="M165 579h404v79H165z"/>
+    </clipPath>
+    <clipPath id="f" transform="translate(0 1)">
+      <path fill="none" d="M311 506h757v874H311z"/>
+    </clipPath>
+    <clipPath id="g" transform="translate(0 1)">
+      <path fill="none" d="M311 575h757v805H311z"/>
+    </clipPath>
+    <clipPath id="h" transform="translate(0 1)">
+      <path fill="none" d="M311 506h404v79H311z"/>
+    </clipPath>
+    <clipPath id="i" transform="translate(0 1)">
+      <path fill="none" d="M165 189h757v687H165z"/>
+    </clipPath>
+    <clipPath id="j" transform="translate(0 1)">
+      <path fill="none" d="M165 258h757v128H165z"/>
+    </clipPath>
+    <clipPath id="k" transform="translate(0 1)">
+      <path fill="none" d="M165 189h539v63H165z"/>
+    </clipPath>
+    <clipPath id="l" transform="translate(0 1)">
+      <path fill="none" d="M229 276h309v89H229z"/>
+    </clipPath>
+    <clipPath id="n" transform="translate(0 1)">
+      <path fill="none" d="M308 125h757v659H308z"/>
+    </clipPath>
+    <clipPath id="o" transform="translate(0 1)">
+      <path fill="none" d="M308 194h757v128H308z"/>
+    </clipPath>
+    <clipPath id="p" transform="translate(0 1)">
+      <path fill="none" d="M308 125h539v63H308z"/>
+    </clipPath>
+    <clipPath id="q" transform="translate(0 1)">
+      <path fill="none" d="M372 212h309v89H372z"/>
+    </clipPath>
+    <clipPath id="r" transform="translate(0 1)">
+      <path fill="none" d="M449 507h757v805H449z"/>
+    </clipPath>
+    <clipPath id="s" transform="translate(0 1)">
+      <path fill="none" d="M449 438h404v79H449z"/>
+    </clipPath>
+    <clipPath id="t" transform="translate(0 1)">
+      <path fill="none" d="M513 731h643v105H513z"/>
+    </clipPath>
+    <clipPath id="u" transform="translate(0 1)">
+      <path fill="none" d="M766.34 775h136.32v48H766.34z"/>
+    </clipPath>
+    <clipPath id="v" transform="translate(0 1)">
+      <path fill="none" d="M513 876h643v105H513z"/>
+    </clipPath>
+    <clipPath id="w" transform="translate(0 1)">
+      <path fill="none" d="M766.34 921h136.32v48H766.34z"/>
+    </clipPath>
+    <clipPath id="x" transform="translate(0 1)">
+      <path fill="none" d="M834.5 867.5v-32h1v32h4l-4.5 9-4.5-9h4z"/>
+    </clipPath>
+    <clipPath id="y" transform="translate(0 1)">
+      <path fill="none" d="M895 1061h260v132H895z"/>
+    </clipPath>
+    <clipPath id="z" transform="translate(0 1)">
+      <path fill="none" d="M972 1134h106v48H972z"/>
+    </clipPath>
+    <clipPath id="A" transform="translate(0 1)">
+      <path fill="none" d="M513 1061h106v62H513z"/>
+    </clipPath>
+    <clipPath id="B" transform="translate(0 1)">
+      <path fill="none" d="M753 1061h106v62H753z"/>
+    </clipPath>
+    <clipPath id="C" transform="translate(0 1)">
+      <path fill="none" d="M856 574h271v123H856z"/>
+    </clipPath>
+    <clipPath id="D" transform="translate(0 1)">
+      <path fill="none" d="M870 560h271v123H870z"/>
+    </clipPath>
+    <clipPath id="E" transform="translate(0 1)">
+      <path fill="none" d="M884 546h271v123H884z"/>
+    </clipPath>
+    <clipPath id="F" transform="translate(0 1)">
+      <path fill="none" d="M967 608h106v48H967z"/>
+    </clipPath>
+    <clipPath id="G" transform="translate(0 1)">
+      <path fill="none" d="M514 1131h106v62H514z"/>
+    </clipPath>
+    <clipPath id="H" transform="translate(0 1)">
+      <path fill="none" d="M514 1200h106v62H514z"/>
+    </clipPath>
+    <clipPath id="I" transform="translate(0 1)">
+      <path fill="none" d="M631 1061h106v62H631z"/>
+    </clipPath>
+    <clipPath id="J" transform="translate(0 1)">
+      <path fill="none" d="M632 1131h106v62H632z"/>
+    </clipPath>
+    <clipPath id="K" transform="translate(0 1)">
+      <path fill="none" d="M688.5 1051.5v-53h1v53h4l-4.5 9-4.5-9h4z"/>
+    </clipPath>
+    <clipPath id="L" transform="translate(0 1)">
+      <path fill="none" clip-rule="evenodd" d="M813 1057l-4-8h8l-4 8z"/>
+    </clipPath>
+    <clipPath id="M" transform="translate(0 1)">
+      <path fill="none" clip-rule="evenodd" d="M835 731l-4-8h8l-4 8z"/>
+    </clipPath>
+    <clipPath id="N" transform="translate(0 1)">
+      <path fill="none" clip-rule="evenodd" d="M820 197l8 4v-8l-8 4z"/>
+    </clipPath>
+    <clipPath id="O" transform="translate(0 1)">
+      <path fill="none" clip-rule="evenodd" d="M564 1057l-4-8h8l-4 8z"/>
+    </clipPath>
+    <clipPath id="P" transform="translate(0 1)">
+      <path fill="none" d="M527 740h37v37h-37z"/>
+    </clipPath>
+    <clipPath id="Q" transform="translate(0 1)">
+      <path fill="none" d="M553 1067h26v26h-26z"/>
+    </clipPath>
+    <clipPath id="S" transform="translate(0 1)">
+      <path fill="none" d="M553 1137h26v26h-26z"/>
+    </clipPath>
+    <clipPath id="U" transform="translate(0 1)">
+      <path fill="none" d="M553 1206h26v26h-26z"/>
+    </clipPath>
+    <clipPath id="V" transform="translate(0 1)">
+      <path fill="none" d="M671 1065h26v26h-26z"/>
+    </clipPath>
+    <clipPath id="W" transform="translate(0 1)">
+      <path fill="none" d="M671 1135h26v26h-26z"/>
+    </clipPath>
+    <clipPath id="X" transform="translate(0 1)">
+      <path fill="none" d="M793 1066h26v26h-26z"/>
+    </clipPath>
+    <clipPath id="Y" transform="translate(0 1)">
+      <path fill="none" d="M449 131h757v128H449z"/>
+    </clipPath>
+    <clipPath id="Z" transform="translate(0 1)">
+      <path fill="none" d="M449 62h539v63H449z"/>
+    </clipPath>
+    <clipPath id="aa" transform="translate(0 1)">
+      <path fill="none" d="M513 149h309v89H513z"/>
+    </clipPath>
+    <image id="m" width="25" height="27" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAbCAYAAAH+JhT+AAAAAXNSR0IArs4c6QAAA7ZJREFUSA2dlUlsTlEUgP1VtNrE0IUhaRSNKeapWBARbNCNRIRYSLAikRBbsWFFrFhIdCGmWpgWujCTiIiFqRJDKypqiilVQ7W+7/bdP//QVjjJ986555x733v3nntvr15IR0fHEtFOYZSi220gBQU+U6nUN9EOQtZG2BDbjtERI8HIdJTR2BtSMCrSkXTnXIMMvyFL8FXrL4xeGvuwx8Fj2AF9IfxOH4In4RT0ic7fwch4EGz39z5hrIv+xP7o536NTjXtQvjiB9xOHMVq5DvcdqhWMqahTyRMRX+360h4AJMTtEcQDOOGKcFxHzYkCfpMtm2yMjJ2KKXREBp/eZD3HErDKpL70Hwcq+AyfIRfiba9KhnvkTpOdRuBPbSHwy64B5ZCf5gE64lPQbdBGN3PuweuT7fioEle52LTiFXXZSfiVuf0LvNwuujWsQuvHIPFEH8jf1CCo8BKfgsfYBOMzswMM4czjEpgGzyFuVCV2NuIK7W0wwQcpbEmNHp4kLMWjrseTVDWQ24IkTPYXD/JYn5N4wyMze2Ibwycxt8ccmlo+KZy2A/P4EeCtr5QX+hmE1/APDt1J8R3wyxz/aR+8JTGRdgClWAllMBo2Ex8BrwIuTheY2QJvkESndj3tUMuD2epDibEhFxNrCLJabJW3nBoDUFbAuthIQxIOn1GX4Y6cvzXN3Y4juM8jiNJUp4iZyVOB1wegjhqQTkIi8AfF+0DoHggZAtOZ8XiewfN4F4flZ2V0yKhCvbCQ2iHTGml8RXUmWLeI9gHFm2+EPBrnoByGGZD93snfwiXqRD8wBpQrIfKkIpRBC7h1S76/reL8a7BKyj2C8LRiFZughX332J/uAFKA6QvIM/+c7ATthOoRsf7oAm7Edx01tkv8B6y9oaCJ385KC1wFrbATpgN6aNXu4h6vItebSNTeKk3XgkUQW/wWPAyaqHPT3QQ8q5gPHMcbPdpEAveo7ceWsH9eAFqSMzbm/h7FMYaSIK7bAV4Vzgb4+NLPDPvMPAytOvkVFiKc8AKcdN3XtWEsZUU+BefwP63oJ4xXqId4zxqJlTGhXcfW/vhJSb9q9C3ADy+FsBScDzHTS+881cHl3BuRS8F5/xBQiP6PXhFeiW6Lq5RGVSAV+ZEKATlEDieMxF+q5iBrefrwdHDgxw3XF91bloSa0AfMIZ2n7j/igqYQxd8AQzDodSAOzeugX2CkNsGP9XRl6MtfT/EdRsG88l1RrIleYFnkGfRv5xdnnWeeWFvZI76B6gJzdYIvBf8AAAAAElFTkSuQmCC"/>
+    <image id="T" width="48" height="48" xlink:href="data:image/png;base64,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"/>
+    <image id="R" width="48" height="48" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADEAAAAxCAYAAABznEEcAAAACXBIWXMAABR0AAAUdAG5O1bwAAAJIklEQVRoQ+2ZfWyV1R3Hv79znvvcl75RCm15k5YWKwzR0ToFMi1RQVkw6sQ5X6IJTGfi4nTzj5ktFV8w2R8miy4ZWwaMaBySxan4MnWCYkCxEMRSWmlLi0hpKS9t7+19eZ7z++2PvnB7ueXpLTI08ZPc5PSc7+/X5/s8557zO88lEcF3HeUlGCsE0NLeht/8pKfh517ac+W8mViG9iAbPMbAQ17ac8XyEoyVeIciaLAoOu/zNaMnMX9326z5e5oXeukGYUMQ46U6zc344rqfYu9UL10qGZmAxtMqEHp//u4Ds7ykACAuQVzykgEAborXLbaQ+55x1YNe2lQyMsEGL0L5A0LWk15aAGAmmw3ZXrpFrVsDzGq14zoxFv0vL30qGZnYOW/6v53u8Gby59x21Z5D159Nm9i/P84G7zLTB2fTAUAov/A+K5hfaeLxv7zum7XbS58KZbpPzNv59WW+gO8TScTq4ra/+vO5RRGvmLOxuKtxsrbpM1IgH/l++FpWaYdXTCoZPQkA2P2jKZ+74dganTuxSkfiV3npvVE3+XInTjZx8/RYDABjXGI5wU8kuk/Vqohbmzo2p77ezqP8SSymmNxEtrIoIcQn4aBz8dyyrhqAk/WG5I141/HevE7ZhILUbKMj4+mUjjmb6m3/9PxF2uJbCXINKSnTWQEL7EKcWJiUdJDCIUD2geQTUrJj28yZLV55R8s5mSAiuuzDr2/XtnpMh4KV4ATEjTUphd1KcROTdClCDMRBpamASIqIJCQaXSSohRvfum327ENe/8eLIRNlG7suJl/oUcT6NjbdOWGLRxwufffING3rP+nsrFs4Fo4ojXVQ5qXcqLNnS3VJLF3MotbWQCzslGpbzSWhEhCHNXhnuLd3T21lpZMuJpml3Y23QfO1lug/vJ5zcddg/2kTG45fh2DwPSIGsbsOknjmwM8Km9Mlm/PO0SvIZ72sQ6Eyifb+k8St2XPtlC/TaUfiqrqDRYrM5cpCHnyqJZf5i7fKy+PptDd0Nc0TS56wc0LL3HBvDIoufzunonFwfNh0KnnxxAKl9Sodyr5O4uFTYtw/Bi1+vm75xPCgpuKNo1dYtr1ZaTVeTOzXdUuK/4wxQgDNbz5cBideCEanv/Or1i3V1e7g+NVHmyb6BL9TtnpI+30+ceIbtSSefGv87PrkPMOW2Na7x28/+GXeEhPuuUcYXTq3YHXUlSWD4+WvHZlGYm8UsfKdaOyuczEAAALI9rKpTWB/A7sSOzF+vD95XCWw0p5Q+Ig42OOEo0v/k19+R6oBIM0+ITXglrvyX0xE6Eq3N7zcFf8HAECboCluvwBfdqkTiT3csKz4ldTYsTLOjkUSBnEhsqt27fIN9mvFGxJdJ281MXX1f4svfnuk+FGvTjNePnG7DuVslGj3y013TLjTS382CKArPmstYqXKSVCqlCmGQh4p2FrBEUin1mafKP7044qKXs98ozFRur41AJ37EbQ1A4qrDt4xrtUrZiTmfnwoXwtmK41SUpwjWrmKECMFIXAWLC5WpEpIcRERTiiFN62AenVLSfoVDxjlji2Sv0BcvgzGea7tvoJWL306iECz3mkrtv12mYibBZL9cS2H/eqiE59VYmh5pVVQV95wcKLK0lUQvplFHnH6zDXXNDc/82FZ2Vdpc4/mSUxdc3I1abpL+aylbfdm7/PSp6Nic/sEpcwkTWziSBw+cGN5j1fMovr67JgbuIc03U8kR5TP+tW2mRedsdOPaIJWwQJaraKsoFYh/3oiMUc68++WGrjIkCmb20NBIwV2wHH39+zslOXLMzjvAQvq2m6B8LOk0Ghn0b1bSkpOJY+nrWKzV3cWjfOfmjoub1wgYdsFbMgSo3eMxQCtggp1RyxJBHv2f7K+I1MDALB9zvRXmek5MTQ/3iuPpo4PM0EAjV8dnuPToQpxSZ8KNUcsaL8Y6nHZHEgNHhWTdulY5zGnZXl+r9TUDKtgMyF4snWtMbRVmFYs3Ns8J3lsmIm8p/rmiZEqcVVft8lrk/srHXZIs0tdLP5jGAvvt/DhHYcTklKCZ8qW6mpXoF5gQ3ku63uSx4ZMhH4fncKuWsxsxbrd0N7BqeM6dkKM6mCHo6mJR8Wm21leyXwKpYN52g4xtFdcdWPVrvYQAAKSTBBbN7Ch4oSb+FRqkBjs97MbMQZHFWNMFyKjWf5GSW0lHDa0XQxmkvTNWLR1qwYGTOQ+3lsgrlTDpfboU3kHkwPJDofFRXsi+s1dzLkgTI0iOmBca9rEwkIFDJhwTaBMmMocFw2pQR2Roqhx5QhBMl6ZzgfGpW5mDTaUE26zT08nN6Fms0GugL5ODZIaMPVJh9Pnxvr3jguLOAgKaxBb8ezp5QIMmBAjl4rRROxLW5/05uT0RJWO4HiTTjf+/4SFStkxYJePtkR3JZlwaJ9xkcVxNyddoNQggcixPhxNXPDvBbtYyAk+FiPdvKyy0gADJgzrL8WQLUyXjBj9/EsOsM8Q0eherp4HKja3XyJiLzRGbWusnjT0+qd/jjtoFIu6jKElRFgngjPuuEgNX0gDAEAOPQyfP8hx84/k/v7ptBbHwHgfohbhF7g6fYr+Nf+bXPczYcamzutFZ61wI30fZk8pGnbKO112aPwVQB8YT9MDmJCa5EIyY0PnXAX/OnY4LtCP1iadP4AkE7IGDRA8C6AKBmvpAUw6I9sFoHTdiSXwBd8WWJNNLP7ggVsnnPHWfNh5ggiElaiB4HEA9RA8Bcabsg4jHg3PF9P/Fv6BaH6ILP1LUuhTJvJgy72FG9Jp0x6KaCVWAlgFwmQAuyHYCoUGMCLQAJSh/qJFQ2sDDOweSmOgbaAVhvq1BqA5qT3Qr5JiyRBpCiqNUigsIE0/1lnZCvHwNkH8t1+tKNiJERj5ZPcAymBwP4BbQJgJCwM1IwAFkAJI9184Df5NSe2xfkQAN9KjtPpILF7fXtv4uqw5+ytOzzM2rUAOLMyEwUUAQgAAAWHgjuqBb1X6JzJwtzGgHern/vZgf/9uBWWpGCy0Q7i54+GsUf9W4V0L/R1hrMJeAHU4jjP2idKhlsZQsT4jWZFJpdKEPH85L2vPrOz3fBLfBU7vE99hvjfxbeF7E98W/gcd+CYHB6gz6AAAAABJRU5ErkJggg=="/>
+  </defs>
+  <g clip-path="url(#a)">
+    <g clip-path="url(#b)">
+      <path fill="#fff" d="M1 1h1399v1547H1z"/>
+    </g>
+  </g>
+  <g clip-path="url(#a)">
+    <g clip-path="url(#b)">
+      <path fill="none" stroke="#979797" stroke-miterlimit="10" stroke-width="2" d="M1 1h1399v1547H1z"/>
+    </g>
+  </g>
+  <g clip-path="url(#b)">
+    <g clip-path="url(#c)" opacity=".2">
+      <g clip-path="url(#d)">
+        <g clip-path="url(#c)">
+          <path fill="#dcdcdc" d="M160 644h767v815H160z"/>
+        </g>
+      </g>
+      <g clip-path="url(#e)" font-size="21" fill="#161515" font-family="IBMPlexSans-SemiBold, IBM Plex Sans" font-weight="600">
+        <text transform="translate(165 602)">
+          Kubernetes Cluster -
+        </text>
+        <text transform="translate(165 630)">
+          Service Instance 3
+        </text>
+      </g>
+    </g>
+  </g>
+  <g clip-path="url(#b)">
+    <g clip-path="url(#f)" opacity=".45">
+      <g clip-path="url(#g)">
+        <g clip-path="url(#f)">
+          <path fill="#dcdcdc" d="M306 571h767v815H306z"/>
+        </g>
+      </g>
+      <g clip-path="url(#h)" font-size="21" fill="#161515" font-family="IBMPlexSans-SemiBold, IBM Plex Sans" font-weight="600">
+        <text transform="translate(311 529)">
+          Kubernetes Cluster -
+        </text>
+        <text transform="translate(311 557)">
+          Service Instance 2
+        </text>
+      </g>
+    </g>
+  </g>
+  <g clip-path="url(#b)">
+    <g clip-path="url(#i)" opacity=".2">
+      <g clip-path="url(#j)">
+        <g clip-path="url(#i)">
+          <path fill="#dcdcdc" d="M160 254h767v138H160z"/>
+        </g>
+      </g>
+      <g clip-path="url(#k)" font-size="21" fill="#161515" font-family="IBMPlexSans-SemiBold, IBM Plex Sans" font-weight="600">
+        <text transform="translate(165 212)">
+          IBM Blockchain Platform Kubernetes Cluster -
+        </text>
+        <text transform="translate(165 240)">
+          Operational Tooling
+        </text>
+      </g>
+      <g clip-path="url(#l)">
+        <g clip-path="url(#i)">
+          <path fill="#565656" d="M229 277h309v89H229z"/>
+        </g>
+      </g>
+      <g clip-path="url(#l)">
+        <g clip-path="url(#i)">
+          <path fill="none" stroke="#b4adad" stroke-miterlimit="10" stroke-width="2" d="M229 277h309v89H229z"/>
+        </g>
+      </g>
+      <g clip-path="url(#i)" font-size="19" fill="#fff" font-family="IBMPlexSans-Text, IBM Plex Sans">
+        <text transform="translate(310 316)">
+          Operational Tooling
+        </text>
+        <text transform="translate(310 340)">
+          Instance
+        </text>
+      </g>
+      <g clip-path="url(#i)">
+        <path d="M595 876h-21.52a20 20 0 0 1-20-20V331a20 20 0 0 0-20-20H513" fill="none" stroke="#5a5a5a" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+      <use transform="translate(259.86 307.19)" xlink:href="#m"/>
+    </g>
+  </g>
+  <g clip-path="url(#b)">
+    <g clip-path="url(#n)" opacity=".45">
+      <g clip-path="url(#o)">
+        <g clip-path="url(#n)">
+          <path fill="#dcdcdc" d="M303 190h767v138H303z"/>
+        </g>
+      </g>
+      <g clip-path="url(#p)" font-size="21" fill="#161515" font-family="IBMPlexSans-SemiBold, IBM Plex Sans" font-weight="600">
+        <text transform="translate(308 148)">
+          IBM Blockchain Platform Kubernetes Cluster -
+        </text>
+        <text transform="translate(308 176)">
+          Operational Tooling
+        </text>
+      </g>
+      <g clip-path="url(#q)">
+        <g clip-path="url(#n)">
+          <path fill="#565656" d="M372 213h309v89H372z"/>
+        </g>
+      </g>
+      <g clip-path="url(#q)">
+        <g clip-path="url(#n)">
+          <path fill="none" stroke="#b4adad" stroke-miterlimit="10" stroke-width="2" d="M372 213h309v89H372z"/>
+        </g>
+      </g>
+      <g clip-path="url(#n)" font-size="19" fill="#fff" font-family="IBMPlexSans-Text, IBM Plex Sans">
+        <text transform="translate(453 252)">
+          Operational Tooling
+        </text>
+        <text transform="translate(453 276)">
+          Instance
+        </text>
+      </g>
+      <g clip-path="url(#n)">
+        <path d="M738 784h-21.52a20 20 0 0 1-20-20V239a20 20 0 0 0-20-20H656" fill="none" stroke="#5a5a5a" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+      <use transform="translate(402.02 240.77)" xlink:href="#m"/>
+    </g>
+  </g>
+  <g clip-path="url(#r)" opacity=".85">
+    <g clip-path="url(#b)">
+      <path fill="#dcdcdc" d="M444 503h767v815H444z"/>
+    </g>
+  </g>
+  <g clip-path="url(#s)" font-size="21" fill="#161515" font-family="IBMPlexSans-SemiBold, IBM Plex Sans" font-weight="600">
+    <text transform="translate(449 461)">
+      Kubernetes Cluster -
+    </text>
+    <text transform="translate(449 489)">
+      Service Instance 1
+    </text>
+  </g>
+  <g clip-path="url(#b)">
+    <path d="M689 1050V928a20 20 0 0 1 20-20h138" fill="none" stroke="#565656" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g clip-path="url(#t)">
+    <g clip-path="url(#b)">
+      <path fill="#010f5e" d="M513 732h643v105H513z"/>
+    </g>
+  </g>
+  <g clip-path="url(#t)">
+    <g clip-path="url(#b)">
+      <path fill="none" stroke="#857b7b" stroke-miterlimit="10" stroke-width="2" d="M513 732h643v105H513z"/>
+    </g>
+  </g>
+  <g clip-path="url(#u)">
+    <g clip-path="url(#b)">
+      <path fill="#fff" d="M766.34 776h136.32v48H766.34z"/>
+    </g>
+  </g>
+  <g clip-path="url(#u)">
+    <g clip-path="url(#b)">
+      <path fill="none" stroke="#857b7b" stroke-miterlimit="10" stroke-width="2" d="M766.34 776h136.32v48H766.34z"/>
+    </g>
+  </g>
+  <g clip-path="url(#b)" font-size="19" font-family="IBMPlexSans-Text, IBM Plex Sans">
+    <text transform="translate(802.65 807)" fill="#010f5e">
+      Ingress
+    </text>
+    <text transform="translate(712.93 767)" fill="#fff">
+      Service instance namespace
+    </text>
+  </g>
+  <g clip-path="url(#v)">
+    <g clip-path="url(#b)">
+      <path fill="#0039c8" d="M513 877h643v105H513z"/>
+    </g>
+  </g>
+  <g clip-path="url(#v)">
+    <g clip-path="url(#b)">
+      <path fill="none" stroke="#857b7b" stroke-miterlimit="10" stroke-width="2" d="M513 877h643v105H513z"/>
+    </g>
+  </g>
+  <g clip-path="url(#w)">
+    <g clip-path="url(#b)">
+      <path fill="#fff" d="M766.34 922h136.32v48H766.34z"/>
+    </g>
+  </g>
+  <g clip-path="url(#w)">
+    <g clip-path="url(#b)">
+      <path fill="none" stroke="#857b7b" stroke-miterlimit="10" stroke-width="2" d="M766.34 922h136.32v48H766.34z"/>
+    </g>
+  </g>
+  <g clip-path="url(#b)" font-size="19" font-family="IBMPlexSans-Text, IBM Plex Sans">
+    <text transform="translate(810.66 953)" fill="#010f5e">
+      Proxy
+    </text>
+    <text transform="translate(676.9 912)" fill="#fff">
+      IBM Blockchain Platform namespace
+    </text>
+  </g>
+  <g clip-path="url(#x)">
+    <g clip-path="url(#b)">
+      <path fill="#565656" d="M825.5 831.5h19v51h-19z"/>
+    </g>
+  </g>
+  <g clip-path="url(#y)">
+    <g clip-path="url(#b)">
+      <path fill="#0039c8" d="M895 1062h260v132H895z"/>
+    </g>
+  </g>
+  <g clip-path="url(#y)">
+    <g clip-path="url(#b)">
+      <path fill="none" stroke="#857b7b" stroke-miterlimit="10" stroke-width="2" d="M895 1062h260v132H895z"/>
+    </g>
+  </g>
+  <g clip-path="url(#z)">
+    <g clip-path="url(#b)">
+      <path fill="#fff" d="M972 1135h106v48H972z"/>
+    </g>
+  </g>
+  <g clip-path="url(#z)">
+    <g clip-path="url(#b)">
+      <path fill="none" stroke="#857b7b" stroke-miterlimit="10" stroke-width="2" d="M972 1135h106v48H972z"/>
+    </g>
+  </g>
+  <g clip-path="url(#b)" font-size="19" font-family="IBMPlexSans-Text, IBM Plex Sans">
+    <text transform="translate(1000.49 1166)" fill="#010f5e">
+      RBAC
+    </text>
+    <text transform="translate(958.05 1101)" fill="#fff">
+      IBM Blockchain
+    </text>
+    <text transform="translate(936.3 1125)" fill="#fff">
+      Platform namespace
+    </text>
+  </g>
+  <g clip-path="url(#A)">
+    <g clip-path="url(#b)">
+      <path fill="#010f5e" d="M513 1062h106v62H513z"/>
+    </g>
+  </g>
+  <g clip-path="url(#A)">
+    <g clip-path="url(#b)">
+      <path fill="none" stroke="#857b7b" stroke-miterlimit="10" stroke-width="2" d="M513 1062h106v62H513z"/>
+    </g>
+  </g>
+  <g clip-path="url(#b)">
+    <text transform="translate(536.1 1112)" font-size="19" fill="#fff" font-family="IBMPlexSans-Text, IBM Plex Sans">
+      Peer-1
+    </text>
+  </g>
+  <g clip-path="url(#B)">
+    <g clip-path="url(#b)">
+      <path fill="#010f5e" d="M753 1062h106v62H753z"/>
+    </g>
+  </g>
+  <g clip-path="url(#B)">
+    <g clip-path="url(#b)">
+      <path fill="none" stroke="#857b7b" stroke-miterlimit="10" stroke-width="2" d="M753 1062h106v62H753z"/>
+    </g>
+  </g>
+  <g clip-path="url(#b)">
+    <text transform="translate(763.04 1108)" font-size="19" fill="#fff" font-family="IBMPlexSans-Text, IBM Plex Sans">
+      Orderer-1
+    </text>
+  </g>
+  <g clip-path="url(#C)">
+    <g clip-path="url(#b)">
+      <path fill="#08caeb" d="M856 575h271v123H856z"/>
+    </g>
+  </g>
+  <g clip-path="url(#C)">
+    <g clip-path="url(#b)">
+      <path fill="none" stroke="#857b7b" stroke-miterlimit="10" stroke-width="2" d="M856 575h271v123H856z"/>
+    </g>
+  </g>
+  <g clip-path="url(#D)">
+    <g clip-path="url(#b)">
+      <path fill="#08caeb" d="M870 561h271v123H870z"/>
+    </g>
+  </g>
+  <g clip-path="url(#D)">
+    <g clip-path="url(#b)">
+      <path fill="none" stroke="#857b7b" stroke-miterlimit="10" stroke-width="2" d="M870 561h271v123H870z"/>
+    </g>
+  </g>
+  <g clip-path="url(#E)">
+    <g clip-path="url(#b)">
+      <path fill="#08caeb" d="M884 547h271v123H884z"/>
+    </g>
+  </g>
+  <g clip-path="url(#E)">
+    <g clip-path="url(#b)">
+      <path fill="none" stroke="#857b7b" stroke-miterlimit="10" stroke-width="2" d="M884 547h271v123H884z"/>
+    </g>
+  </g>
+  <g clip-path="url(#F)">
+    <g clip-path="url(#b)">
+      <path fill="#fff" d="M967 609h106v48H967z"/>
+    </g>
+  </g>
+  <g clip-path="url(#F)">
+    <g clip-path="url(#b)">
+      <path fill="none" stroke="#857b7b" stroke-miterlimit="10" stroke-width="2" d="M967 609h106v48H967z"/>
+    </g>
+  </g>
+  <g clip-path="url(#b)" font-size="19" font-family="IBMPlexSans-Text, IBM Plex Sans">
+    <text transform="translate(998.01 640)" fill="#010f5e">
+      Tiller
+    </text>
+    <text transform="translate(963.26 577)" fill="#fff">
+      kube-system
+    </text>
+    <text transform="translate(969.95 601)" fill="#fff">
+      namespace
+    </text>
+  </g>
+  <g clip-path="url(#G)">
+    <g clip-path="url(#b)">
+      <path fill="#010f5e" d="M514 1132h106v62H514z"/>
+    </g>
+  </g>
+  <g clip-path="url(#G)">
+    <g clip-path="url(#b)">
+      <path fill="none" stroke="#857b7b" stroke-miterlimit="10" stroke-width="2" d="M514 1132h106v62H514z"/>
+    </g>
+  </g>
+  <g clip-path="url(#b)">
+    <text transform="translate(537.1 1181)" font-size="19" fill="#fff" font-family="IBMPlexSans-Text, IBM Plex Sans">
+      Peer-2
+    </text>
+  </g>
+  <g clip-path="url(#H)">
+    <g clip-path="url(#b)">
+      <path fill="#010f5e" d="M514 1201h106v62H514z"/>
+    </g>
+  </g>
+  <g clip-path="url(#H)">
+    <g clip-path="url(#b)">
+      <path fill="none" stroke="#857b7b" stroke-miterlimit="10" stroke-width="2" d="M514 1201h106v62H514z"/>
+    </g>
+  </g>
+  <g clip-path="url(#b)">
+    <text transform="translate(537.1 1250)" font-size="19" fill="#fff" font-family="IBMPlexSans-Text, IBM Plex Sans">
+      Peer-3
+    </text>
+  </g>
+  <g clip-path="url(#I)">
+    <g clip-path="url(#b)">
+      <path fill="#010f5e" d="M631 1062h106v62H631z"/>
+    </g>
+  </g>
+  <g clip-path="url(#I)">
+    <g clip-path="url(#b)">
+      <path fill="none" stroke="#857b7b" stroke-miterlimit="10" stroke-width="2" d="M631 1062h106v62H631z"/>
+    </g>
+  </g>
+  <g clip-path="url(#b)">
+    <text transform="translate(662.38 1111)" font-size="19" fill="#fff" font-family="IBMPlexSans-Text, IBM Plex Sans">
+      CA-1
+    </text>
+  </g>
+  <g clip-path="url(#J)">
+    <g clip-path="url(#b)">
+      <path fill="#010f5e" d="M632 1132h106v62H632z"/>
+    </g>
+  </g>
+  <g clip-path="url(#J)">
+    <g clip-path="url(#b)">
+      <path fill="none" stroke="#857b7b" stroke-miterlimit="10" stroke-width="2" d="M632 1132h106v62H632z"/>
+    </g>
+  </g>
+  <g clip-path="url(#b)">
+    <text transform="translate(663.38 1180)" font-size="19" fill="#fff" font-family="IBMPlexSans-Text, IBM Plex Sans">
+      CA-2
+    </text>
+  </g>
+  <g clip-path="url(#K)">
+    <g clip-path="url(#b)">
+      <path fill="#565656" d="M679.5 994.5h19v72h-19z"/>
+    </g>
+  </g>
+  <g clip-path="url(#b)">
+    <path d="M565 1057v-36a20 20 0 0 1 20-20h209a20 20 0 0 1 20 20v36" fill="none" stroke="#565656" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g clip-path="url(#L)">
+    <g clip-path="url(#b)">
+      <path fill="#565656" d="M804 1045h18v18h-18z"/>
+    </g>
+  </g>
+  <g clip-path="url(#M)">
+    <g clip-path="url(#b)">
+      <path fill="#565656" d="M826 719h18v18h-18z"/>
+    </g>
+  </g>
+  <g clip-path="url(#N)">
+    <g clip-path="url(#b)">
+      <path fill="#565656" d="M815 189h18v18h-18z"/>
+    </g>
+  </g>
+  <g clip-path="url(#O)">
+    <g clip-path="url(#b)">
+      <path fill="#565656" d="M555 1045h18v18h-18z"/>
+    </g>
+  </g>
+  <g clip-path="url(#b)">
+    <g clip-path="url(#P)">
+      <image width="48" height="48" transform="matrix(.77 0 0 .77 527 741)" xlink:href="data:image/png;base64,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"/>
+    </g>
+    <g clip-path="url(#Q)">
+      <use transform="matrix(.54 0 0 .54 553 1068)" xlink:href="#R"/>
+    </g>
+    <g clip-path="url(#S)">
+      <use transform="matrix(.54 0 0 .54 553 1138)" xlink:href="#T"/>
+    </g>
+    <g clip-path="url(#U)">
+      <use transform="matrix(.54 0 0 .54 553 1206)" xlink:href="#T"/>
+    </g>
+    <g clip-path="url(#V)">
+      <use transform="matrix(.54 0 0 .54 671 1065)" xlink:href="#T"/>
+    </g>
+    <g clip-path="url(#W)">
+      <use transform="matrix(.54 0 0 .54 671 1135)" xlink:href="#T"/>
+    </g>
+    <g clip-path="url(#X)">
+      <use transform="matrix(.54 0 0 .54 793 1066)" xlink:href="#R"/>
+    </g>
+  </g>
+  <g clip-path="url(#Y)" opacity=".85">
+    <g clip-path="url(#b)">
+      <path fill="#dcdcdc" d="M444 127h767v138H444z"/>
+    </g>
+  </g>
+  <g clip-path="url(#b)">
+    <path d="M876 759h-21.52a20 20 0 0 1-20-20V214a20 20 0 0 0-20-20H794" fill="none" stroke="#5a5a5a" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g clip-path="url(#Z)">
+    <g clip-path="url(#b)" font-size="21" fill="#161515" font-family="IBMPlexSans-SemiBold, IBM Plex Sans" font-weight="600">
+      <text transform="translate(449 85)">
+        IBM Blockchain Platform Kubernetes Cluster -
+      </text>
+      <text transform="translate(449 113)">
+        Operational Tooling
+      </text>
+    </g>
+  </g>
+  <g clip-path="url(#aa)">
+    <g clip-path="url(#b)">
+      <path fill="#565656" d="M513 150h309v89H513z"/>
+    </g>
+  </g>
+  <g clip-path="url(#aa)">
+    <g clip-path="url(#b)">
+      <path fill="none" stroke="#b4adad" stroke-miterlimit="10" stroke-width="2" d="M513 150h309v89H513z"/>
+    </g>
+  </g>
+  <g clip-path="url(#b)" font-size="19" fill="#fff" font-family="IBMPlexSans-Text, IBM Plex Sans">
+    <text transform="translate(594 189)">
+      Operational Tooling
+    </text>
+    <text transform="translate(594 213)">
+      Instance
+    </text>
+  </g>
+  <g clip-path="url(#b)">
+    <text transform="translate(1511.45 1564.31)" font-size="12" font-family="MyriadPro-Regular, Myriad Pro">
+      <tspan letter-spacing="-.01em">L</tspan><tspan x="5.5" y="0">o</tspan><tspan x="12.08" y="0" letter-spacing="-.01em">r</tspan><tspan x="15.89" y="0" letter-spacing="0em">em ipsum</tspan>
+    </text>
+  </g>
+  <g data-name="Group-15">
+    <path data-name="Rectangle" fill="#979797" d="M43.28 1349.88h1308v166h-1308z"/>
+    <text transform="translate(64.39 1393.88)" font-size="24" fill="#fff" font-family="IBMPlexSans-Medium, IBM Plex Sans" font-weight="500" style="isolation:isolate">
+      Se<tspan x="27.7" y="0" letter-spacing=".01em">r</tspan><tspan x="37.1" y="0">vi</tspan><tspan x="55.75" y="0" letter-spacing="-.01em">c</tspan><tspan x="67.85" y="0" letter-spacing="0em">e In</tspan><tspan x="110.76" y="0" letter-spacing="-.01em">s</tspan><tspan x="122.45" y="0">tan</tspan><tspan x="158.3" y="0" letter-spacing="-.01em">c</tspan><tspan x="170.4" y="0">e Clu</tspan><tspan x="225.38" y="0" letter-spacing="-.01em">s</tspan><tspan x="237.07" y="0" letter-spacing="0em">t</tspan><tspan x="245.73" y="0">er Details</tspan>
+    </text>
+    <text transform="translate(73.28 1442.88)" font-size="20" fill="#fff" font-family="IBMPlexSans, IBM Plex Sans" style="isolation:isolate">
+      - Clu<tspan x="41.92" y="0" letter-spacing="-.01em">s</tspan><tspan x="51.52" y="0" letter-spacing="0em">t</tspan><tspan x="58.46" y="0">ers can either be single </tspan><tspan x="270.56" y="0" letter-spacing="-.01em">z</tspan><tspan x="279.64" y="0">one or</tspan>
+    </text>
+    <text transform="translate(409.71 1442.88)" font-size="20" fill="#fff" font-family="IBMPlexSans, IBM Plex Sans" style="isolation:isolate">
+      
+    </text>
+    <text transform="translate(73.28 1469.88)" font-size="20" fill="#fff" font-family="IBMPlexSans, IBM Plex Sans" style="isolation:isolate">
+      mu<tspan x="28.82" y="0" letter-spacing="0em">l</tspan><tspan x="34.16" y="0">ti</tspan><tspan x="46.18" y="0" letter-spacing="-.02em">-</tspan><tspan x="53.86" y="0" letter-spacing="-.01em">z</tspan><tspan x="62.94" y="0" letter-spacing="0em">one</tspan>
+    </text>
+    <text transform="translate(506.28 1442.88)" font-size="20" fill="#fff" font-family="IBMPlexSans, IBM Plex Sans" style="isolation:isolate">
+      - Anti<tspan x="48.9" y="0" letter-spacing="-.02em">-</tspan><tspan x="56.48" y="0">Affinity rules wi</tspan><tspan x="195.14" y="0" letter-spacing="-.01em">l</tspan><tspan x="200.48" y="0">l be used </tspan><tspan x="286.34" y="0" letter-spacing="0em">t</tspan><tspan x="293.28" y="0">o depl</tspan><tspan x="348.81" y="0" letter-spacing="-.01em">o</tspan><tspan x="359.91" y="0">y</tspan>
+    </text>
+    <text transform="translate(506.28 1469.88)" font-size="20" fill="#fff" font-family="IBMPlexSans, IBM Plex Sans" style="isolation:isolate">
+      node ac<tspan x="70.6" y="0" letter-spacing="-.01em">r</tspan><tspan x="77.84" y="0">o</tspan><tspan x="89.04" y="0" letter-spacing="-.01em">s</tspan><tspan x="98.66" y="0" letter-spacing="0em">s Mu</tspan><tspan x="140.72" y="0" letter-spacing="-.01em">l</tspan><tspan x="146.06" y="0">ti </tspan><tspan x="162.8" y="0" letter-spacing="0em">Z</tspan><tspan x="174.3" y="0">one </tspan><tspan x="212.56" y="0" letter-spacing="-.01em">R</tspan><tspan x="225.06" y="0">egion (MZR)</tspan>
+    </text>
+    <text transform="translate(947.71 1443.88)" font-size="20" fill="#fff" font-family="IBMPlexSans, IBM Plex Sans" style="isolation:isolate">
+      - Cu<tspan x="36.48" y="0" letter-spacing="-.01em">s</tspan><tspan x="46.08" y="0" letter-spacing="0em">t</tspan><tspan x="53.02" y="0">omer p</tspan><tspan x="116.32" y="0" letter-spacing="0em">r</tspan><tspan x="123.56" y="0" letter-spacing="-.01em">o</tspan><tspan x="134.6" y="0" letter-spacing="0em">visions </tspan><tspan x="201.2" y="0" letter-spacing="-.01em">c</tspan><tspan x="211.14" y="0">ompu</tspan><tspan x="262.76" y="0" letter-spacing="0em">t</tspan><tspan x="269.7" y="0">e </tspan><tspan x="285.4" y="0" letter-spacing="-.01em">o</tspan><tspan x="296.48" y="0">f choi</tspan><tspan x="345.3" y="0" letter-spacing="-.01em">c</tspan><tspan x="355.24" y="0">e</tspan>
+    </text>
+  </g>
+  <use transform="translate(540.44 178.26)" xlink:href="#m"/>
+</svg>
