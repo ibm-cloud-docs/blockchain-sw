@@ -23,13 +23,6 @@ subcollection: blockchain-sw
 # Writing smart contracts
 {: #develop-smart-contracts}
 
-<div style="background-color: #f4f4f4; padding-left: 20px; border-bottom: 2px solid #0f62fe; padding-top: 12px; padding-bottom: 4px; margin-bottom: 16px; font-family: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;">
-  <p style="line-height: 10px;">
-    <strong>Running a different version of IBM Blockchain Platform?</strong> Switch to version
-    <a href="https://cloud.ibm.com/docs/blockchain-sw-213?topic=blockchain-sw-213-develop-smart-contracts">2.1.3</a>
-    </p>
-</div>
-
 Chaincode, also referred to as smart contracts, is software that you can use to read and update data on the blockchain ledger. Chaincode can turn business logic into an executable program that is agreed to and verified by all members of the blockchain network. Business logic includes the definition of assets that are traded between parties. It also consists of the terms and conditions that are required for a transaction to be executed. Turning these rules into code on a blockchain allow businesses to streamline business processing and auditing and reduce large amounts of manual processing and paperwork.
 
 As an example, imagine that a network of car dealerships, insurance companies, and government regulators decides to use blockchain to track vehicle ownership. The chaincode might require that all vehicles have a valid registration and vehicle identification number in order to be added to the network. When a vehicle is sold, the chaincode requires that the funds are placed in escrow until the vehicle is registered to its new owner by a regulator. After the new registration completes, the new owner is recorded and the funds are transferred automatically.
