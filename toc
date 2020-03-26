@@ -45,7 +45,7 @@ IBM Blockchain Platform v2.1.2
 		howto/ibp-console-organizations.md
 		howto/ibp-console-advanced-channel.md
 		howto/ibp-console-govern-components.md
-		/blockchain/blockchain-operations_service
+		howto/ibp-v2-operations-service.md
 		howto/ibp-console-ic-ha-howto.md
 		howto/ibp-console-ha-ca.md
 
@@ -63,7 +63,6 @@ IBM Blockchain Platform v2.1.2
 	[API reference](https://cloud.ibm.com/apidocs/blockchain)
 	/blockchain/blockchain-hyperledger-fabric
 	/blockchain/blockchain-k8s-overview
-	reference/videos.md
 	glossary.md
 	{: .navgroup-end}
 

@@ -70,7 +70,7 @@ The {{site.data.keyword.blockchainfull_notm}} Platform includes the following ke
 - **Dynamic signature collection** that allows better control over collaborative governance over channel configurations.
 
 **GROW --- Scalability and flexibility**
-- **Choose your compute**. You have the flexibility to decide the amount of CPU, memory, and storage you want to provision in your Kubernetes cluster. For more information, see [How the console interacts with your Kubernetes cluster](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-govern#ibp-console-govern-components-iks-console-interaction).
+- **Choose your compute**. You have the flexibility to decide the amount of CPU, memory, and storage you want to provision in your Kubernetes cluster. For more information, see [How the console interacts with your Kubernetes cluster](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-govern-components#ibp-console-govern-components-iks-console-interaction).
 - **Scale** up and down the resources in your Kubernetes cluster, paying for only what you need. For more information, see [Pricing](/docs/blockchain-sw?topic=blockchain-sw-ibp-sw-pricing).
 - **Disaster recovery and multizone high availability (HA).** This ability duplicates your node deployment across zones, enabling zero down time of your components and disaster recovery (DR).
 - **Run Anywhere**. Thanks to the **unified codebase** of the {{site.data.keyword.blockchainfull_notm}} Platform console, it is possible to run your components on any Kubernetes v1.14 - v1.16 container platform on x86_64.
