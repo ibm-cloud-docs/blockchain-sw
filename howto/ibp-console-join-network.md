@@ -266,7 +266,7 @@ Now the orderer admin can add the peer organization to the channel:
 2. Click the  **Settings** icon to update the channel and add the peer organization to the channel.
 3. In the **Organizations** section, open the `Select a channel member` drop-down list and select the peer organization MSP, `Org2 MSP`.
 4. Click **Add** and then assign permissions for that organization. We recommend you make them an `Operator` so they can update the channel.
-5. Under **Channel update policy**, select `2 out of 2`, meaning only both organizations needs to approve updates to the channel.
+5. Under **Channel update policy**, select `2 out of 2`, which means that both organizations needs to approve updates to the channel.
 6. In the **Channel Updater MSP** drop-down list (under the **Channel updater organization** heading) ensure that `Org1 MSP` is selected.
 7. In the **Identity** drop-down list, ensure that `Org1 MSP Admin ` is selected.
 8. When you are ready, click **Send proposal**.
