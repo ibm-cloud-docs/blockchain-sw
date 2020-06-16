@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2020
-lastupdated: "2020-03-23"
+lastupdated: "2020-06-18"
 
 keywords: catalina, chrome, external CA, TLS, orderer, error
 
@@ -25,7 +25,8 @@ subcollection: blockchain-sw
 <div style="background-color: #f4f4f4; padding-left: 20px; border-bottom: 2px solid #0f62fe; padding-top: 12px; padding-bottom: 4px; margin-bottom: 16px;">
   <p style="line-height: 10px;">
     <strong>Running a different version of IBM Blockchain Platform?</strong> Switch to version
-    <a href="https://cloud.ibm.com/docs/blockchain-sw-213?topic=blockchain-sw-213-sw-known-issues">2.1.3</a>
+    <a href="https://cloud.ibm.com/docs/blockchain-sw-213?topic=blockchain-sw-213-sw-known-issues">2.1.3</a>,
+    <a href="https://cloud.ibm.com/docs/blockchain-sw-25?topic=blockchain-sw-25-sw-known-issues">2.5</a>
     </p>
 </div>
 
@@ -143,7 +144,7 @@ kubectl apply -f <NAME_OF_NODE>.yaml
 Replace
 - `<NAME_OF_NODE>` with the name of the node you are updating from the list above. For example: `ordereranode1`.
 
-Repeat this process for all ordering nodes in the ordering service. Note that you should complete this process before upgrading to v2.1.3.
+Repeat this process for all ordering nodes in the ordering service. Note that you should complete this process before upgrading to v2.1.3 or higher.
 
 ## Chrome browser on Mac OS Catalina
 {: #sw-known-issues-catalina}
