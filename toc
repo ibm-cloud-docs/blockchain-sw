@@ -1,7 +1,7 @@
 {:navgroup: .navgroup}
 {:topicgroup: .topicgroup}
 
-{: .toc subcollection="blockchain-sw" category="app_services,databases" audience="service" href="/docs/blockchain-sw/index.html" path="blockchain-sw"}
+{: .toc subcollection="blockchain-sw" category="blockchain" audience="service" href="/docs/blockchain-sw/index.html" path="blockchain-sw"}
 IBM Blockchain Platform v2.1.2
 
 	{: .navgroup id="learn"}
