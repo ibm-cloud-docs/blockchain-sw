@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-26"
+lastupdated: "2020-06-18"
 
 keywords: update data, private data, smart contract, CouchDB indexes, cross chaincode transaction
 

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2020
-lastupdated: "2020-03-23"
+lastupdated: "2020-06-18"
 
 keywords: high availability, CA, PostgreSQL, replica sets
 
@@ -25,7 +25,8 @@ subcollection: blockchain-sw
 <div style="background-color: #f4f4f4; padding-left: 20px; border-bottom: 2px solid #0f62fe; padding-top: 12px; padding-bottom: 4px; margin-bottom: 16px;">
   <p style="line-height: 10px;">
     <strong>Running a different version of IBM Blockchain Platform?</strong> Switch to version
-    <a href="https://cloud.ibm.com/docs/blockchain-sw-213?topic=blockchain-sw-213-ibp-console-build-ha-ca">2.1.3</a>
+    <a href="https://cloud.ibm.com/docs/blockchain-sw-213?topic=blockchain-sw-213-ibp-console-build-ha-ca">2.1.3</a>,
+    <a href="https://cloud.ibm.com/docs/blockchain-sw-25?topic=blockchain-sw-25-ibp-console-build-ha-ca">2.5</a>
     </p>
 </div>
 
@@ -59,8 +60,8 @@ When a Kubernetes pod becomes unavailable, Kubernetes immediately attempts to re
 {: #ibp-console-build-ha-ca-before}
 
 You need to configure an instance of a PostgreSQL database. There are two options available in {{site.data.keyword.cloud_notm}}:
-  - [Databases for PostgreSQL](https://cloud.ibm.com/catalog/services/databases-for-postgresql){: external}. See the [Getting Started tutorial](/docs/services/databases-for-postgresql?topic=databases-for-postgresql-getting-started){:external} for information on provisioning an instance of the service.
-  - [Hyper Protect DBaaS for PostgreSQL](https://cloud.ibm.com/catalog/services/hyper-protect-dbaas-for-postgresql){: external}. See the tutorial on [Getting started with IBM Cloud Hyper Protect DBaaS for PostgreSQL](/docs/services/hyper-protect-dbaas-for-postgresql?topic=hyper-protect-dbaas-for-postgresql-gettingstarted) for setup instructions.  
+  - [Databases for PostgreSQL](https://cloud.ibm.com/catalog/services/databases-for-postgresql){: external}. See the [Getting Started tutorial](/docs/databases-for-postgresql?topic=databases-for-postgresql-getting-started){:external} for information on provisioning an instance of the service.
+  - [Hyper Protect DBaaS for PostgreSQL](https://cloud.ibm.com/catalog/services/hyper-protect-dbaas-for-postgresql){: external}. See the tutorial on [Getting started with IBM Cloud Hyper Protect DBaaS for PostgreSQL](/docs/hyper-protect-dbaas-for-postgresql?topic=hyper-protect-dbaas-for-postgresql-gettingstarted) for setup instructions.  
 
 Use of a third-party PostgreSQL database is also supported.  If the third-party database is configured to use TLS, you will need to provide at least one server certificate. If SSL client authentication (mutual TLS) is enabled, you also need to provide a client certificate and a client key in .pem format.  More information on how to provide this information is provided in the steps that follow.
 
