@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2020
-lastupdated: "2020-06-18"
+lastupdated: "2020-09-16"
 
 
 keywords: OpenShift, IBM Blockchain Platform console, deploy, resource requirements, storage, parameters
@@ -38,7 +38,7 @@ You can deploy the {{site.data.keyword.blockchainfull_notm}} Platform v2.1.2 ont
 
 ## Need to Know
 
-- If you are deploying the {{site.data.keyword.blockchainfull_notm}} Platform behind a firewall, without access to the public internet, your JavaScript or TypeScript chaincode will not be able to download external depenencies when the chaincode is instantiated. You need point to a local NPM registry for your chaincode to access the required dependencies. This problem does not occur if you are using GO chaincode.
+- If you are deploying the {{site.data.keyword.blockchainfull_notm}} Platform behind a firewall, without access to the public internet, your JavaScript or TypeScript smart contract will not be able to download external dependencies when it is instantiated. You need point to a local NPM registry for your smart contract to access the required dependencies. See [Building Node.js Contracts with limited internet access](https://hyperledgendary.github.io/docs/goodpractise/nodejs_building_limited_access.html){: external}. This problem does not occur if you are using smart contracts that are written in Go.
 
 - After you deploy your peer and ordering nodes, you need to expose the ports of your nodes for your network to be able to respond to requests from applications or nodes outside your firewall. For more information about the ports that you need to expose, see [Internet Ports](/docs/blockchain-sw?topic=blockchain-sw-ibp-security#ibp-security-ibp-ports) in the security guide.
 
