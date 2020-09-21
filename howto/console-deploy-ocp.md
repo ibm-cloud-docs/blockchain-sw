@@ -17,7 +17,6 @@ subcollection: blockchain-sw
 {:note: .note}
 {:important: .important}
 {:tip: .tip}
-{:deprecated: .deprecated}
 {:pre: .pre}
 
 # Deploying {{site.data.keyword.blockchainfull_notm}} Platform v2.1.2
@@ -30,9 +29,6 @@ subcollection: blockchain-sw
     <a href="https://cloud.ibm.com/docs/blockchain-sw-25?topic=blockchain-sw-25-deploy-ocp">2.5 (latest)</a>
     </p>
 </div>
-
-Deployment of the {{site.data.keyword.blockchainfull_notm}} Platform v2.1.0, v2.1.1, and v2.1.2 is now deprecated. It is strongly recommended that you deploy or upgrade to [v2.1.3](/docs/blockchain-sw-213?topic=blockchain-sw-213-deploy-ocp) or [2.5](/docs/blockchain-sw-25?topic=blockchain-sw-25-deploy-ocp) instead.
-{:deprecated}
 
 You can use the following instructions to deploy the {{site.data.keyword.blockchainfull}} Platform v2.1.2 onto a Kubernetes cluster that is running on OpenShift Container Platform 3.11, 4.1, or 4.2. The {{site.data.keyword.blockchainfull_notm}} Platform uses a [Kubernetes Operator](https://www.openshift.com/learn/topics/operators){: external} to install the {{site.data.keyword.blockchainfull_notm}} Platform console on your cluster and manage the deployment and your blockchain nodes. When the {{site.data.keyword.blockchainfull_notm}} Platform console is running on your cluster, you can use the console to create blockchain nodes and operate a multicloud blockchain network.
 {:shortdesc}
