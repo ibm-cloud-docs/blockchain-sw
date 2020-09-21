@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2020
-lastupdated: "2020-06-18"
+lastupdated: "2020-09-21"
 
 keywords: Kubernetes, IBM Blockchain Platform console, deploy, resource requirements, storage, parameters
 
@@ -22,11 +22,11 @@ subcollection: blockchain-sw
 # Upgrading your console and components
 {: #upgrade-k8}
 
-<div style="background-color: #f4f4f4; padding-left: 20px; border-bottom: 2px solid #0f62fe; padding-top: 12px; padding-bottom: 4px; margin-bottom: 16px;">
-  <p style="line-height: 10px;">
-    <strong>Running a different version of IBM Blockchain Platform?</strong> Switch to version
+<div style="background-color: #6fdc8c; padding-left: 20px; padding-right: 20px; border-bottom: 4px solid #0f62fe; padding-top: 12px; padding-bottom: 4px; margin-bottom: 16px;">
+  <p style="line-height: 20px;">
+    <strong>Important: You are not looking at the latest product documentation.  Make sure you are reading the documentation that matches the version of the software that you are using. Switch to product version </strong>
     <a href="https://cloud.ibm.com/docs/blockchain-sw-213?topic=blockchain-sw-213-upgrade-k8">2.1.3</a>,
-    <a href="https://cloud.ibm.com/docs/blockchain-sw-25?topic=blockchain-sw-25-upgrade-k8">2.5</a>
+    <a href="https://cloud.ibm.com/docs/blockchain-sw-25?topic=blockchain-sw-25-upgrade-k8">2.5 (latest)</a>
     </p>
 </div>
 
@@ -61,6 +61,25 @@ After you upgrade the {{site.data.keyword.blockchainfull_notm}} Platform operato
 You need to complete these steps for each network that that runs on a separate namespace. If you experience any problems, see the instructions for [rolling back an upgrade](#upgrade-k8-rollback). If you deployed your network behind a firewall, without access to the external internet, see the separate set of instructions for [Upgrading the {{site.data.keyword.blockchainfull_notm}} Platform behind a firewall](#upgrade-k8-nodes).
 
 You can continue to submit transactions to your network while you are upgrading your network. However, you cannot use the console to deploy new nodes, install or instantiate smart contracts, or create new channels during the upgrade process.
+
+### Release history
+{: #upgrade-k8-release-history}
+{: help}
+{: support}
+
+The following table records the {{site.data.keyword.blockchainfull_notm}} Platform version release history. You can use this information for planning purposes, such as to estimate general time frames when a certain release might become unsupported. Plan to keep your cluster master and worker node version up-to-date according to the `n-2` version support policy. When a latest version (`n`) is released, versions up to 2 behind (`n-2`) are supported. Versions more than 2 behind the latest (`n-3`) are first deprecated and then unsupported.
+
+Dates that are marked with a dagger (`†`) are tentative and subject to change.
+{: important}
+
+| Supported? | Version | {{site.data.keyword.blockchainfull_notm}} Platform release date | {{site.data.keyword.blockchainfull_notm}} Platform  unsupported date |
+|-------|---------|---------|---------|
+|![Checkmark icon](../../icons/checkmark-icon.svg) |2.5 | 18 June 2020 | June 2022 † |
+|![Checkmark icon](../../icons/checkmark-icon.svg) |2.1.3 | 24 March 2020 | Septemeber 2021 † |
+| Deprecated |2.1.2 | 17 December 2019 | September 2021 |
+| Deprecated |2.1.1 | 8 November 2019 | September 2021 |
+| Deprecated |2.1.0 | 24 September 2019 | September 2021 |
+{: caption="Table 2. {{site.data.keyword.blockchainfull_notm}} Platform release history" caption-side="bottom"}
 
 ### Roll back an upgrade
 {: #upgrade-k8-rollback}
