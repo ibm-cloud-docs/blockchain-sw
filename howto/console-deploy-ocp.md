@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2020
-lastupdated: "2020-09-21"
+lastupdated: "2020-10-01"
 
 keywords: OpenShift, IBM Blockchain Platform console, deploy, resource requirements, storage, parameters
 
@@ -561,51 +561,51 @@ apiVersion: ibp.com/v1alpha1
 kind: IBPConsole
 metadata:
   name: ibpconsole
-  spec:
-    license: accept
-    serviceAccountName: default
-    proxyIP:
-    email: "<EMAIL>"
-    password: "<PASSWORD>"
-    registryURL: cp.icr.io/cp
-    imagePullSecret: "docker-key-secret"
-    networkinfo:
-        domain: <DOMAIN>
-    storage:
-      console:
-        class: default
-        size: 10Gi
-    clusterdata:
-      zones:
-    resources:
-      console:
-        requests:
-          cpu: 500m
-          memory: 1000Mi
-        limits:
-          cpu: 500m
-          memory: 1000Mi
-      configtxlator:
-        limits:
-          cpu: 25m
-          memory: 50Mi
-        requests:
-          cpu: 25m
-          memory: 50Mi
-      couchdb:
-        limits:
-          cpu: 500m
-          memory: 1000Mi
-        requests:
-          cpu: 500m
-          memory: 1000Mi
-      deployer:
-        limits:
-          cpu: 100m
-          memory: 200Mi
-        requests:
-          cpu: 100m
-          memory: 200Mi
+spec:
+  license: accept
+  serviceAccountName: default
+  proxyIP:
+  email: "<EMAIL>"
+  password: "<PASSWORD>"
+  registryURL: cp.icr.io/cp
+  imagePullSecret: "docker-key-secret"
+  networkinfo:
+      domain: <DOMAIN>
+  storage:
+    console:
+      class: default
+      size: 10Gi
+  clusterdata:
+    zones:
+  resources:
+    console:
+      requests:
+        cpu: 500m
+        memory: 1000Mi
+      limits:
+        cpu: 500m
+        memory: 1000Mi
+    configtxlator:
+      limits:
+        cpu: 25m
+        memory: 50Mi
+      requests:
+        cpu: 25m
+        memory: 50Mi
+    couchdb:
+      limits:
+        cpu: 500m
+        memory: 1000Mi
+      requests:
+        cpu: 500m
+        memory: 1000Mi
+    deployer:
+      limits:
+        cpu: 100m
+        memory: 200Mi
+      requests:
+        cpu: 100m
+        memory: 200Mi
 ```
 {:codeblock}
 
