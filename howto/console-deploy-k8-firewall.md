@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2020
-lastupdated: "2020-09-21"
+lastupdated: "2020-10-01"
 
 
 keywords: IBM Blockchain Platform console, deploy, resource requirements, storage, parameters, firewall, on-premises
@@ -771,30 +771,30 @@ apiVersion: ibp.com/v1alpha1
 kind: IBPConsole
 metadata:
   name: ibpconsole
-  spec:
-    arch:
-    - amd64
-    license: accept
-    serviceAccountName: default
-    proxyIP:
-    email: "<EMAIL>"
-    password: "<PASSWORD>"
-    registryURL: <LOCAL_REGISTRY>
-    imagePullSecret: "docker-key-secret"
-    networkinfo:
-        domain: <DOMAIN>
-        consolePort: <CONSOLE_PORT>
-        proxyPort: <PROXY_PORT>
-    storage:
-      console:
-        class: default
-        size: 10Gi
-    tlsSecretName: "console-tls-secret"
-    clusterdata:
-      zones:
-        - dal10
-        - dal12
-        - dal13
+spec:
+  arch:
+  - amd64
+  license: accept
+  serviceAccountName: default
+  proxyIP:
+  email: "<EMAIL>"
+  password: "<PASSWORD>"
+  registryURL: <LOCAL_REGISTRY>
+  imagePullSecret: "docker-key-secret"
+  networkinfo:
+      domain: <DOMAIN>
+      consolePort: <CONSOLE_PORT>
+      proxyPort: <PROXY_PORT>
+  storage:
+    console:
+      class: default
+      size: 10Gi
+  tlsSecretName: "console-tls-secret"
+  clusterdata:
+    zones:
+      - dal10
+      - dal12
+      - dal13
 ```
 {:codeblock}
 
