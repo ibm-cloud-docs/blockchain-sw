@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2020
-lastupdated: "2020-10-01"
+lastupdated: "2020-10-04"
 
 
 keywords: IBM Blockchain Platform console, deploy, resource requirements, storage, parameters, firewall, on-premises
@@ -39,7 +39,7 @@ You can use the following instructions to deploy the {{site.data.keyword.blockch
 
 ## Need to Know
 
-- If you are deploying the {{site.data.keyword.blockchainfull_notm}} Platform behind a firewall, without access to the public internet, your JavaScript or TypeScript smart contract will not be able to download external dependencies when it is instantiated. You need point to a local NPM registry for your smart contract to access the required dependencies. See [Building Node.js Contracts with limited internet access](https://hyperledgendary.github.io/docs/goodpractise/nodejs_building_limited_access.html){: external}. This problem does not occur if you are using smart contracts that are written in Go.
+- If you are deploying the {{site.data.keyword.blockchainfull_notm}} Platform behind a firewall, without access to the public internet, your JavaScript or TypeScript smart contract will not be able to download external dependencies when it is instantiated. You need point to a local NPM registry for your smart contract to access the required dependencies. See [Building Node.js Contracts with limited internet access](https://hyperledgendary.github.io/docs/goodpractice/nodejs_building_limited_access.html){: external}. This problem does not occur if you are using smart contracts that are written in Go.
 
 - After you deploy your peer and ordering nodes, you need to expose the ports of your nodes for your network to be able to respond to requests from applications or nodes outside your firewall. For more information about the ports that you need to expose, see [Internet Ports](/docs/blockchain-sw?topic=blockchain-sw-ibp-security#ibp-security-ibp-ports) in the security guide.
 
