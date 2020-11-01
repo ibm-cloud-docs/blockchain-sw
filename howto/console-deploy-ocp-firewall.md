@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2020
-lastupdated: "2020-10-04"
+lastupdated: "2020-11-02"
 
 
 keywords: OpenShift, IBM Blockchain Platform console, deploy, resource requirements, storage, parameters
@@ -27,8 +27,9 @@ subcollection: blockchain-sw
 <div style="background-color: #6fdc8c; padding-left: 20px; padding-right: 20px; border-bottom: 4px solid #0f62fe; padding-top: 12px; padding-bottom: 4px; margin-bottom: 16px;">
   <p style="line-height: 20px;">
     <strong>Important: You are not looking at the latest product documentation.  Make sure you are reading the documentation that matches the version of the software that you are using. Switch to product version </strong>
-    <a href="https://cloud.ibm.com/docs/blockchain-sw-213?topic=blockchain-sw-213-deploy-ocp-firewall">2.1.3</a>,
-    <a href="https://cloud.ibm.com/docs/blockchain-sw-25?topic=blockchain-sw-25-deploy-ocp-firewall">2.5 (latest)</a>
+    <a href="/docs/blockchain-sw-213?topic=blockchain-sw-213-deploy-ocp-firewall">2.1.3</a>,
+    <a href="/docs/blockchain-sw-25?topic=blockchain-sw-25-deploy-ocp-firewall">2.5 </a>,
+    <a href="/docs/blockchain-sw-251?topic=blockchain-sw-251-deploy-ocp-firewall">2.5.1 (latest)</a>
     </p>
 </div>
 
