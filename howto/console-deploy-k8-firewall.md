@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2020
-lastupdated: "2020-10-04"
+lastupdated: "2020-11-02"
 
 
 keywords: IBM Blockchain Platform console, deploy, resource requirements, storage, parameters, firewall, on-premises
@@ -18,6 +18,7 @@ subcollection: blockchain-sw
 {:note: .note}
 {:important: .important}
 {:tip: .tip}
+{:deprecated: .deprecated}
 {:pre: .pre}
 
 # Deploying {{site.data.keyword.blockchainfull_notm}} Platform v2.1.2 behind a firewall
@@ -26,11 +27,14 @@ subcollection: blockchain-sw
 <div style="background-color: #6fdc8c; padding-left: 20px; padding-right: 20px; border-bottom: 4px solid #0f62fe; padding-top: 12px; padding-bottom: 4px; margin-bottom: 16px;">
   <p style="line-height: 20px;">
     <strong>Important: You are not looking at the latest product documentation.  Make sure you are reading the documentation that matches the version of the software that you are using. Switch to product version </strong>
-    <a href="https://cloud.ibm.com/docs/blockchain-sw-213?topic=blockchain-sw-213-deploy-k8-firewall">2.1.3</a>,
-    <a href="https://cloud.ibm.com/docs/blockchain-sw-25?topic=blockchain-sw-25-deploy-k8-firewall">2.5 (latest)</a>
-
+    <a href="/docs/blockchain-sw-213?topic=blockchain-sw-213-deploy-k8-firewall">2.1.3</a>,
+    <a href="/docs/blockchain-sw-25?topic=blockchain-sw-25-deploy-k8-firewall">2.5 </a>,
+    <a href="/docs/blockchain-sw-251?topic=blockchain-sw-251-deploy-k8-firewall">2.5.1 (latest)</a>
     </p>
 </div>
+
+Deployment of the {{site.data.keyword.blockchainfull_notm}} Platform v2.1.0, v2.1.1, and v2.1.2 is now deprecated. It is strongly recommended that you deploy or upgrade to [v2.1.3](/docs/blockchain-sw-213?topic=blockchain-sw-213-deploy-k8-firewall) or [2.5](/docs/blockchain-sw-25?topic=blockchain-sw-25-deploy-k8-firewall) instead.
+{:deprecated}
 
 You can use these instructions to deploy {{site.data.keyword.blockchainfull_notm}} Platform v2.1.2 behind a firewall without internet connectivity. If you are deploying the platform on a cluster with access to the external internet, use the main instructions for [Deploying {{site.data.keyword.blockchainfull_notm}} Platform v2.1.2](/docs/blockchain-sw?topic=blockchain-sw-deploy-k8).
 {:shortdesc}
