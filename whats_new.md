@@ -31,7 +31,7 @@ subcollection: blockchain-sw
     </p>
 </div>
 
-## October 20, 2020
+## October 30, 2020
 {: #whats-new-10-20-2020}
 
 {{site.data.keyword.blockchainfull}} Platform 2.5.1 is now available.
