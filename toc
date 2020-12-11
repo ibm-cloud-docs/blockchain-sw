@@ -1,12 +1,13 @@
 {:navgroup: .navgroup}
 {:topicgroup: .topicgroup}
 
-{: .toc subcollection="blockchain-sw" category="blockchain" audience="service" href="/docs/blockchain-sw/index.html" path="blockchain-sw"}
+{: .toc subcollection="blockchain-sw" category="blockchain" audience="service" href="/docs/blockchain-sw/index.html" product-page="https://www.ibm.com/cloud/blockchain-platform" path="blockchain-sw"}
 IBM Blockchain Platform v2.1.2
 
 	{: .navgroup id="learn"}
 	index.md
 	console-ocp-about.md
+	[What is blockchain?](https://www.ibm.com/blockchain/what-is-blockchain)
 	whats_new.md
 	howto/pricing-sw.md
 	blockchain_component_overview.md
@@ -72,3 +73,4 @@ IBM Blockchain Platform v2.1.2
 	howto/ibp-v2-troubleshooting.md
 	ibmblockchain_support.md
 	{: .navgroup-end}
+	
