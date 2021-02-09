@@ -12,7 +12,6 @@ IBM Blockchain Platform v2.1.2
 	howto/pricing-sw.md
 	blockchain_component_overview.md
 	security.md
-	ibp-console-ha.md
 	data-residency.md
 	howto/ibp-v2-faq.md
 	/blockchain/blockchain-disclaimer
@@ -62,6 +61,7 @@ IBM Blockchain Platform v2.1.2
 
 	{: .navgroup id="reference"}
 	[API reference](https://cloud.ibm.com/apidocs/blockchain)
+	ibp-console-ha.md
 	/blockchain/blockchain-hyperledger-fabric
 	/blockchain/blockchain-k8s-overview
 	glossary.md
