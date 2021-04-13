@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2020
-lastupdated: "2020-03-03"
+lastupdated: "2020-11-02"
 
 keywords: FAQs, can I, upgrade, what version, peer ledger database, supported languages, why do I, regions
 
@@ -24,8 +24,18 @@ subcollection: blockchain-sw
 # FAQs
 {: #ibp-v2-faq}
 
+<div style="background-color: #6fdc8c; padding-left: 20px; padding-right: 20px; border-bottom: 4px solid #0f62fe; padding-top: 12px; padding-bottom: 4px; margin-bottom: 16px;">
+  <p style="line-height: 20px;">
+    <strong>Important: You are not looking at the latest product documentation.  Make sure you are reading the documentation that matches the version of the software that you are using. Switch to product version </strong>
+    <a href="/docs/blockchain-sw-213?topic=blockchain-sw-213-ibp-v2-faq">2.1.3</a>,
+    <a href="/docs/blockchain-sw-25?topic=blockchain-sw-25-ibp-v2-faq">2.5 </a>,
+    <a href="/docs/blockchain-sw-251?topic=blockchain-sw-251-ibp-v2-faq">2.5.1 (latest)</a>
+    </p>
+</div>
+
 **General**   
 
+- [How can I know what version of {{site.data.keyword.blockchainfull_notm}} Platform I am running?](#ibp-v2-faq-v2-sw-version)
 - [What is the value of using {{site.data.keyword.blockchainfull_notm}} Platform over native Hyperledger Fabric?](#ibp-v2-faq-v2-IBP-Overview-1-7)
 - [Where can a customer deploy the {{site.data.keyword.blockchainfull_notm}} Platform and how will {{site.data.keyword.IBM_notm}} support those deployment environments?](#ibp-v2-faq-sw-support)
 - [Does {{site.data.keyword.blockchainfull_notm}} Platform v2.1.x run on OpenShift on {{site.data.keyword.cloud_notm}}?](#ibp-v2-faq-saas-ocp)
@@ -41,7 +51,11 @@ subcollection: blockchain-sw
 - [Do ordering service Raft nodes use Transport Layer Security (TLS) for communication?](#ibp-v2-faq-raft-tls)
 - [Can {{site.data.keyword.blockchainfull_notm}} Platform components interoperate with Hyperledger Fabric components on the same network? And vice versa? And what is the support policy for networks that include both {{site.data.keyword.blockchainfull_notm}} Platform components and open source components?](#ibp-v2-faq-interoperability)
 
+## How can I know what version of {{site.data.keyword.blockchainfull_notm}} Platform I am running?
+{: #ibp-v2-faq-v2-sw-version}
+{: faq}
 
+Click the question mark icon in the upper right corner of the console to open the **Support** page. If the Version number under the {{site.data.keyword.blockchainfull_notm}} Platform release notes begins with `2.1.3` then you are running {{site.data.keyword.blockchainfull_notm}} Platform v2.1.3. In this case you should be using the [{{site.data.keyword.blockchainfull_notm}} Platform v2.1.3 documentation](/docs/blockchain-sw-213?topic=blockchain-sw-213-get-started-console-ocp){: external}. If the version number begins with any other number, then you are running {{site.data.keyword.blockchainfull_notm}} Platform v2.1.0, v2.1.1, or 2.1.2. In that case, you should be using [version 2.1.2](/docs/blockchain-sw?topic=blockchain-sw-get-started-console-ocp){: external} of the documentation.
 
 ## What is the value of using {{site.data.keyword.blockchainfull_notm}} Platform over native Hyperledger Fabric?
 {: #ibp-v2-faq-v2-IBP-Overview-1-7}
@@ -52,6 +66,7 @@ Hyperledger Fabric is a powerful, versatile, pluggable, open source, distributed
 
 ## Where can a customer deploy the {{site.data.keyword.blockchainfull_notm}} Platform and how will {{site.data.keyword.IBM_notm}} support those deployment environments?
 {: #ibp-v2-faq-sw-support}
+{: faq}
 
 For an updated list of all the {{site.data.keyword.blockchainfull_notm}} Platform deployment options check out the [Supported Platforms](/docs/blockchain-sw?topic=blockchain-sw-console-ocp-about#console-ocp-about-prerequisites).
 
@@ -78,14 +93,12 @@ Yes. The {{site.data.keyword.blockchainfull_notm}} Platform can be purchased and
 ## What database do the peers use for their ledger?
 {: #ibp-v2-faq-v2-IBP-Overview-1-3}
 {: faq}
-{: support}
 
 You have the choice of either CouchDB or LevelDB when you configure your peer database. Because data is modeled differently in a Couch database than in a Level database, the peers in a channel must all use the same database type. See [LevelDB versus CouchDB](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-govern-components#ibp-console-govern-components-level-couch) to decide what is best for your business needs.
 
 ## What languages are supported for smart contracts?
 {: #ibp-v2-faq-v2-IBP-Overview-1-4}
 {: faq}
-{: support}
 
 The {{site.data.keyword.blockchainfull_notm}} Platform supports smart contracts that are written in  Node.js, Golang, or JavaScript, with future support for Java. The new Hyperledger Fabric programming model currently supports JavaScript, TypeScript, Java, and Go. If you are interested in preserving your existing application code, or by using Fabric SDKs for *Go*, you can still connect to your {{site.data.keyword.blockchainfull_notm}} Platform network by using the lower-level Fabric SDK APIs.
 
@@ -116,9 +129,8 @@ The {{site.data.keyword.blockchainfull_notm}} Platform extension provides guided
 ## Is there a best practice for monitoring my blockchain resources?
 {: #ibp-v2-faq-mon-res}
 {: faq}
-{: support}
 
-You are responsible for the health monitoring and resource allocation of the blockchain nodes in your Kubernetes cluster. While requests against the nodes are being actively processed, you should be monitoring for spikes in resource consumption to avoid problems.  You can configure a monitoring tool, such as [Sysdig](https://sysdig.com/platform/){: external} with alert notifications for the nodes in your cluster.
+You are responsible for the health monitoring and resource allocation of the blockchain nodes in your Kubernetes cluster. While requests against the nodes are being actively processed, you should be monitoring for spikes in resource consumption to avoid problems.  You can configure a monitoring tool, such as [{{site.data.keyword.mon_full_notm}}](/docs/monitoring?topic=monitoring-service-connection#network_alert_subnets){: external} with alert notifications for the nodes in your cluster.
 
 You should be aware that JavaScript and TypeScript smart contracts require more resources than contracts written in Go. Therefore, when you are allocating resources to your peer node, it is important to allocate sufficient resources and monitor the peer containers to ensure adequate resources are available to the peer when smart contracts are instantiated on a channel and during transaction processing.
 {: tip}
@@ -145,7 +157,4 @@ Yes. Hyperledger Fabric networks consist of many distributed members owning one 
 * {{site.data.keyword.blockchainfull_notm}} Images
 * Open source Hyperledger Fabric images or a non-IBM product
 
-Containers deployed from any of the above sources can be connected on a single channel and transact. You can join IBM Blockchain Platform peers to any network running Hyperledger Fabric components. Similarly, you can invite Fabric peers to join channels hosted on an ordering service deployed on the IBM Blockchain Platform. Note that you will need to use Hyperledger Fabric APIs or the CLI. For more information about what is supported, see [Support for IBM Blockchain Platform v2.1.x](https://www.ibm.com/support/pages/support-ibm-blockchain-platform-v21x){: external}.
-
-
-
+Containers deployed from any of the above sources can be connected on a single channel and transact. You can join IBM Blockchain Platform peers to any network running Hyperledger Fabric components. Similarly, you can invite Fabric peers to join channels hosted on an ordering service deployed on the IBM Blockchain Platform. Note that you will need to use Hyperledger Fabric APIs or the CLI. For more information about what is supported, see [Support for IBM Blockchain Platform v2.1.x](https://www.ibm.com/support/pages/node/1072956){: external}.
