@@ -191,7 +191,7 @@ Resizing a node requires the containers to be rebuilt, which can cause a delay i
 
 
 
-Third party tools such as [Sysdig](https://sysdig.com){: external} can be used to help monitor the usage in your cluster. If you determine that a worker node is running out of resources, you can add a new larger worker node to your cluster and then delete the existing working node.
+[{{site.data.keyword.mon_full_notm}}](https://www.ibm.com/cloud/cloud-monitoring){: external} can be used to help monitor the usage in your cluster. If you determine that a worker node is running out of resources, you can add a new larger worker node to your cluster and then delete the existing working node.
 {:note}
 
 
