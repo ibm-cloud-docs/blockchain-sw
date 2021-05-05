@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2019
-lastupdated: "2020-02-25"
+  years: 2019, 2020
+lastupdated: "2020-11-02"
 
 keywords: smart contract, private data, private data collection, anchor peer
 
@@ -21,6 +21,15 @@ subcollection: blockchain-sw
 
 # Deploy a smart contract on the network tutorial
 {: #ibp-console-smart-contracts}
+
+<div style="background-color: #6fdc8c; padding-left: 20px; padding-right: 20px; border-bottom: 4px solid #0f62fe; padding-top: 12px; padding-bottom: 4px; margin-bottom: 16px;">
+  <p style="line-height: 20px;">
+    <strong>Important: You are not looking at the latest product documentation.  Make sure you are reading the documentation that matches the version of the software that you are using. Switch to product version </strong>
+    <a href="/docs/blockchain-sw-213?topic=blockchain-sw-213-ibp-console-smart-contracts">2.1.3</a>,
+    <a href="/docs/blockchain-sw-25?topic=blockchain-sw-25-ibp-console-smart-contracts">2.5 </a>,
+    <a href="/docs/blockchain-sw-251?topic=blockchain-sw-251-ibp-console-smart-contracts">2.5.1 (latest)</a>
+    </p>
+</div>
 
 A smart contract is the code, sometimes referred to as chaincode, that applications interact with to read and update data on the blockchain ledger. A smart contract can turn business logic into an executable program that is agreed to and verified by all members of a blockchain network. This tutorial is the third part in the [sample network tutorial series](#ibp-console-smart-contracts-structure) and describes how to deploy smart contracts to start transactions in the blockchain network.
 {:shortdesc}
@@ -69,7 +78,7 @@ Before you can install a smart contract, ensure that you have the following thin
 The {{site.data.keyword.blockchainfull_notm}} console manages the *deployment* of smart contracts rather than development. If you are interested in developing smart contracts, you can get started using tutorials provided by the Hyperledger Fabric community and tooling provided by {{site.data.keyword.IBM_notm}}.
 
 - To learn how smart contracts can be used to conduct transactions among multiple parties, see the [Developing applications topic](https://hyperledger-fabric.readthedocs.io/en/release-1.4/developapps/developing_applications.html){: external} in the Hyperledger Fabric documentation.
-- When you are ready to start building smart contracts, you can use the [{{site.data.keyword.blockchainfull_notm}} Visual Studio code extension](https://marketplace.visualstudio.com/items?itemName=IBMBlockchain.ibm-blockchain-platform){: external} to start building your own smart contract project. You can also use that extension to [connect directly to your network from Visual Studio Code](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-app#ibp-console-app-vscode) and explore the inline tutorials.
+- When you are ready to start building smart contracts, you can use the [{{site.data.keyword.blockchainfull_notm}} Visual Studio code extension](https://marketplace.visualstudio.com/items?itemName=IBMBlockchain.ibm-blockchain-platform){: external} to start building your own smart contract project. You can also use that extension to [connect directly to your network from Visual Studio Code](/docs/blockchain-sw?topic=blockchain-sw-develop-vscode#develop-vscode-connecting-ibp) and explore the inline tutorials.
 - For a quick tutorial on developing smart contracts, see [Develop a smart contract with the IBM Blockchain Platform VS Code extension](https://developer.ibm.com/tutorials/ibm-blockchain-platform-vscode-smart-contract/){: external}.
 - For a more in-depth end-to-end tutorial about using an application to interact with smart contracts, see [Hyperledger Fabric Commercial Paper tutorial](https://hyperledger-fabric.readthedocs.io/en/release-1.4/tutorial/commercial_paper.html){: external}.
 - To learn about how to incorporate access control mechanisms into your smart contract, see [Chaincode for Developers](https://hyperledger-fabric.readthedocs.io/en/release-1.4/chaincode4ade.html#chaincode-access-control){: external}.
@@ -245,4 +254,3 @@ In order to use private data with {{site.data.keyword.blockchainfull_notm}} Plat
 3. **Configure anchor peers.** Because cross organizational [gossip](https://hyperledger-fabric.readthedocs.io/en/release-1.4/gossip.html){: external} must be enabled for private data to work, an anchor peer must exist for each organization in the collection definition. Refer to this information for [how to configure anchor peers](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-govern#ibp-console-govern-channels-anchor-peers) on your network.
 
 Your channel is now configured to use private data.
-

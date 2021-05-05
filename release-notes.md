@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2020
-lastupdated: "2020-02-26"
+lastupdated: "2020-11-02"
 
 
 keywords: release note, latest changes, Hyperledger Fabric
@@ -20,6 +20,15 @@ subcollection: blockchain-sw
 
 # Release notes
 {: #release-notes-saas-20}
+
+<div style="background-color: #6fdc8c; padding-left: 20px; padding-right: 20px; border-bottom: 4px solid #0f62fe; padding-top: 12px; padding-bottom: 4px; margin-bottom: 16px;">
+  <p style="line-height: 20px;">
+    <strong>Important: You are not looking at the latest product documentation.  Make sure you are reading the documentation that matches the version of the software that you are using. Switch to product version </strong>
+    <a href="/docs/blockchain-sw-213?topic=blockchain-sw-213-release-notes-saas-20">2.1.3</a>,
+    <a href="/docs/blockchain-sw-25?topic=blockchain-sw-25-release-notes-saas-20">2.5 </a>,
+    <a href="/docs/blockchain-sw-251?topic=blockchain-sw-251-release-notes-saas-20">2.5.1 (latest)</a>
+    </p>
+</div>
 
 Use these release notes that are grouped by date to learn about the latest changes to {{site.data.keyword.blockchainfull}} Platform v2.1
 {:shortdesc}

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2020
-lastupdated: "2020-02-17"
+lastupdated: "2020-11-02"
 
 keywords: APIs, build a network, authentication, service credentials, API key, API endpoint, IAM access token, Fabric CA client, import a network, generate certificates
 
@@ -23,6 +23,15 @@ subcollection: blockchain-sw
 
 # Using the {{site.data.keyword.blockchainfull_notm}} Platform APIs
 {: #ibp-v2-apis}
+
+<div style="background-color: #6fdc8c; padding-left: 20px; padding-right: 20px; border-bottom: 4px solid #0f62fe; padding-top: 12px; padding-bottom: 4px; margin-bottom: 16px;">
+  <p style="line-height: 20px;">
+    <strong>Important: You are not looking at the latest product documentation.  Make sure you are reading the documentation that matches the version of the software that you are using. Switch to product version </strong>
+    <a href="/docs/blockchain-sw-213?topic=blockchain-sw-213-ibp-v2-apis">2.1.3</a>,
+    <a href="/docs/blockchain-sw-25?topic=blockchain-sw-25-ibp-v2-apis">2.5 </a>,
+    <a href="/docs/blockchain-sw-251?topic=blockchain-sw-251-ibp-v2-apis">2.5.1 (latest)</a>    
+    </p>
+</div>
 
 The {{site.data.keyword.blockchainfull}} Platform exposes RESTful APIs for you to create, import, edit, and delete your blockchain components, as well as to manage logging, notifications, and console settings. You can use the APIs, and the corresponding SDKs, to develop applications that interact with your blockchain network.
 {: shortdesc}
@@ -457,7 +466,7 @@ A **CA admin** identity was automatically registered for you when you created yo
   ```
   {:codeblock}
 
-  The `enroll` command generates a complete set of certificates, which is known as a Membership Service Provider (MSP) folder, that is located inside the directory where you set to `$HOME` path for your Fabric CA client. For example, `$HOME/fabric-ca-client/ca-admin`. For more information about MSPs and what the MSP folder contains, see [Membership Service Providers](/docs/blockchain?topic=blockchain-managing-certificates#managing-certificates-msp).
+  The `enroll` command generates a complete set of certificates, which is known as a Membership Service Provider (MSP) folder, that is located inside the directory where you set to `$HOME` path for your Fabric CA client. For example, `$HOME/fabric-ca-client/ca-admin`. For more information about MSPs and what the MSP folder contains, see [Membership Service Providers](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-organizations#ibp-console-organizations-manage).
 
   If the `enroll` command fails, see the [Troubleshooting topic](#ibp-v2-apis-config-troubleshooting) for possible causes.
 
@@ -1019,4 +1028,3 @@ If you want to use the {{site.data.keyword.blockchainfull_notm}} Platform consol
 - **Private Key:** Upload your admins private key. If you followed the instructions above, you can find this key in the `$HOME/fabric-ca-client/peer-admin/msp/keystore/` folder.
 
 After you import your admin identity, you can associate this identity with the components that you have created. You can then use the console to operate your network.
-

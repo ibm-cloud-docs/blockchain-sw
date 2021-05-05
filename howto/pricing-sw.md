@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2020
-lastupdated: "2020-02-07"
+lastupdated: "2020-11-02"
 
 keywords: pricing model, VPC, CPU, vCPU, virtual core, cost, scalability, estimation, optimize your cost
 
@@ -22,7 +22,16 @@ subcollection: blockchain-sw
 # Pricing
 {: #ibp-sw-pricing}
 
-This guide helps you understand the pricing model for {{site.data.keyword.blockchainfull}} Platform v2.1.2, and how much you will pay when you develop and grow your blockchain network of peers, ordering service, and Certificate Authorities components, which are based on Hyperledger Fabric v1.4.4.
+<div style="background-color: #6fdc8c; padding-left: 20px; padding-right: 20px; border-bottom: 4px solid #0f62fe; padding-top: 12px; padding-bottom: 4px; margin-bottom: 16px;">
+  <p style="line-height: 20px;">
+    <strong>Important: You are not looking at the latest product documentation.  Make sure you are reading the documentation that matches the version of the software that you are using. Switch to product version </strong>
+    <a href="/docs/blockchain-sw-213?topic=blockchain-sw-213-ibp-sw-pricing">2.1.3</a>,
+    <a href="/docs/blockchain-sw-25?topic=blockchain-sw-25-ibp-sw-pricing">2.5 </a>,
+    <a href="/docs/blockchain-sw-251?topic=blockchain-sw-251-ibp-sw-pricing">2.5.1 (latest)</a>
+    </p>
+</div>
+
+This guide helps you understand the pricing model for {{site.data.keyword.blockchainfull}} Platform v2.1.2, and how much you will pay when you develop and grow your blockchain network of peers, ordering service, and Certificate Authorities (CAs) components, which are based on Hyperledger Fabric v1.4.4.
 {:shortdesc}
 
 ## License
@@ -33,9 +42,10 @@ This guide helps you understand the pricing model for {{site.data.keyword.blockc
 ## Pricing
 {: #ibp-software-pricing-pricing}
 
-The pricing of {{site.data.keyword.blockchainfull_notm}} Platform v2.1.2 is based on the number of Virtual Processor Cores (VPCs) used. A VPC, or vCPU, can be either a virtual core that is assigned to a virtual server, or a physical processor core in a non-partitioned server. You must obtain a licensed entitlement for each VPC made available to the {{site.data.keyword.blockchainfull_notm}} Platform. The number of vCPU or CPUs that are required can vary depending on your infrastructure, network design and performance requirements.
+The pricing of {{site.data.keyword.blockchainfull_notm}} Platform v2.1.2 is based on the number of Virtual Processor Cores (VPCs) used. A VPC, or vCPU, can be either a virtual core that is assigned to a virtual server, or a physical processor core in a non-partitioned server. You must obtain a licensed entitlement for each VPC made available to the {{site.data.keyword.blockchainfull_notm}} Platform. The number of vCPU or CPUs that are required can vary depending on your infrastructure, network design and performance requirements. You are only charged for the VPCs used by your CA, peer, and ordering nodes. Specifically, for the peer, you are only charged for the VPCs used by the peer container itself. You are not charged for the VPCs used by the CouchDB, Smart contract, log collector, and gRPC proxy containers. Similarly, for an ordering service node, you are not charged for the gRPC proxy container.
 
-If you are using the Red Hat OpenShift Container Platform, you can read more about  VPCs (CPUs) in that platform, see  [Allocating Node Resources](https://docs.openshift.com/container-platform/4.2/admin_guide/allocating_node_resources.html){: external}.
+
+If you are using the Red Hat OpenShift Container Platform, you can read more about  VPCs (CPUs) in that platform, see  [Allocating Node Resources](https://docs.openshift.com/container-platform/4.2/nodes/nodes/nodes-nodes-resources-configuring.html){: external}.
 Note that 1 `core` in OpenShift is equivalent to 1 vCPU in {{site.data.keyword.blockchainfull_notm}} Platform.
 
 The {{site.data.keyword.blockchainfull_notm}} Platform v2.1.2 offering also includes the ability to download and run just the peer, orderer, CA, and smart contract container images without the console. This is an advanced option for customers who are experienced with the Hyperledger Fabric processes for deploying and running the nodes and includes limited support for those images.

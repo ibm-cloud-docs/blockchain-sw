@@ -2,7 +2,8 @@
 
 copyright:
   years: 2018, 2020
-lastupdated: "2020-02-07"
+lastupdated: "2020-11-02"
+
 
 keywords: OpenShift, IBM Blockchain Platform console, deploy, resource requirements, storage, parameters
 
@@ -21,6 +22,15 @@ subcollection: blockchain-sw
 
 # Removing your deployment
 {: #Removing-ocp}
+
+<div style="background-color: #6fdc8c; padding-left: 20px; padding-right: 20px; border-bottom: 4px solid #0f62fe; padding-top: 12px; padding-bottom: 4px; margin-bottom: 16px;">
+  <p style="line-height: 20px;">
+    <strong>Important: You are not looking at the latest product documentation.  Make sure you are reading the documentation that matches the version of the software that you are using. Switch to product version </strong>
+    <a href="/docs/blockchain-sw-213?topic=blockchain-sw-213-Removing-ocp">2.1.3</a>,
+    <a href="/docs/blockchain-sw-25?topic=blockchain-sw-25-Removing-ocp">2.5 </a>,
+    <a href="/docs/blockchain-sw-251?topic=blockchain-sw-251-Removing-ocp">2.5.1 (latest)</a>
+    </p>
+</div>
 
 The {{site.data.keyword.blockchainfull}} Platform operator automatically restarts your blockchain nodes or your console if they stop or crash. As a result, you cannot manually remove your blockchain components by manually deleting their pods. Use the following steps to remove the {{site.data.keyword.blockchainfull_notm}} Platform from your OpenShift cluster. You must follow these steps for each OpenShift project that you create.
 

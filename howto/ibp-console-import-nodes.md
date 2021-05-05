@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2020
-lastupdated: "2020-02-07"
+lastupdated: "2020-11-02"
 
 keywords: import nodes, another console, import a CA, import a peer, import admin identities, import an ordering service node
 
@@ -21,6 +21,15 @@ subcollection: blockchain-sw
 
 # Importing nodes
 {: #ibp-console-import-nodes}
+
+<div style="background-color: #6fdc8c; padding-left: 20px; padding-right: 20px; border-bottom: 4px solid #0f62fe; padding-top: 12px; padding-bottom: 4px; margin-bottom: 16px;">
+  <p style="line-height: 20px;">
+    <strong>Important: You are not looking at the latest product documentation.  Make sure you are reading the documentation that matches the version of the software that you are using. Switch to product version </strong>
+    <a href="/docs/blockchain-sw-213?topic=blockchain-sw-213-ibp-console-import-nodes">2.1.3</a>,
+    <a href="/docs/blockchain-sw-25?topic=blockchain-sw-25-ibp-console-import-nodes">2.5 </a>,
+    <a href="/docs/blockchain-sw-251?topic=blockchain-sw-251-ibp-console-import-nodes">2.5.1 (latest)</a>
+    </p>
+</div>
 
 The console includes the option to import nodes that were created in another {{site.data.keyword.blockchainfull}} Platform console.
 {:shortdesc}
@@ -222,7 +231,7 @@ After you have imported the ordering service into the console, you can add new o
 ## Importing nodes from a locally deployed network
 {: #ibp-console-import-icp}
 
-You can import nodes that were created through {{site.data.keyword.cloud_notm}}, Red Hat OpenShift, {{site.data.keyword.cloud_notm}} Private, and Kubernetes v1.14 - v1.16 container platform on x86_64 into blockchain consoles that have been deployed on other clusters or on {{site.data.keyword.cloud_notm}}. However, you need to ensure that the port used by the gRPC URL of your nodes is exposed from outside the cluster. If you are deploying your network behind a firewall, you need to enable a passthru, for example by using white listing, to allow the console outside the cluster to communicate with your nodes.
+You can import nodes that were created through {{site.data.keyword.cloud_notm}}, Red Hat OpenShift, {{site.data.keyword.cloud_notm}} Private, and Kubernetes v1.14 - v1.16 container platform on x86_64 into blockchain consoles that have been deployed on other clusters or on {{site.data.keyword.cloud_notm}}. However, you need to ensure that the port used by the gRPC URL of your nodes is exposed from outside the cluster. If you are deploying your network behind a firewall, you need to enable a passthru, for example by using an allow list, that enables the console outside the cluster to communicate with your nodes.
 
 As an example, you can find the JSON file of a peer below. To communicate with the peer from another console, you need to ensure that the `grpcwp_url` port, port 32403 in this example, is open to external traffic.
 
@@ -238,4 +247,3 @@ As an example, you can find the JSON file of a peer below. To communicate with t
 }
 ```
 {: codeblock}
-

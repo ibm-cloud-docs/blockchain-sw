@@ -2,7 +2,8 @@
 
 copyright:
   years: 2018, 2020
-lastupdated: "2020-02-26"
+lastupdated: "2020-11-02"
+
 
 keywords: OpenShift, IBM Blockchain Platform console, deploy, resource requirements, storage, parameters
 
@@ -17,10 +18,23 @@ subcollection: blockchain-sw
 {:note: .note}
 {:important: .important}
 {:tip: .tip}
+{:deprecated: .deprecated}
 {:pre: .pre}
 
 # Deploying {{site.data.keyword.blockchainfull_notm}} Platform v2.1.2 behind a firewall
 {: #deploy-ocp-firewall}
+
+<div style="background-color: #6fdc8c; padding-left: 20px; padding-right: 20px; border-bottom: 4px solid #0f62fe; padding-top: 12px; padding-bottom: 4px; margin-bottom: 16px;">
+  <p style="line-height: 20px;">
+    <strong>Important: You are not looking at the latest product documentation.  Make sure you are reading the documentation that matches the version of the software that you are using. Switch to product version </strong>
+    <a href="/docs/blockchain-sw-213?topic=blockchain-sw-213-deploy-ocp-firewall">2.1.3</a>,
+    <a href="/docs/blockchain-sw-25?topic=blockchain-sw-25-deploy-ocp-firewall">2.5 </a>,
+    <a href="/docs/blockchain-sw-251?topic=blockchain-sw-251-deploy-ocp-firewall">2.5.1 (latest)</a>
+    </p>
+</div>
+
+Deployment of the {{site.data.keyword.blockchainfull_notm}} Platform v2.1.0, v2.1.1, and v2.1.2 is now deprecated. It is strongly recommended that you deploy or upgrade to [v2.1.3](/docs/blockchain-sw-213?topic=blockchain-sw-213-deploy-ocp-firewall) or [2.5](/docs/blockchain-sw-25?topic=blockchain-sw-25-deploy-ocp-firewall) instead.
+{:deprecated}
 
 You can use these instructions to deploy {{site.data.keyword.blockchainfull}} Platform v2.1.2 behind a firewall without internet connectivity. If you are deploying the platform on a cluster with access to the external internet, use the main instructions for [Deploying {{site.data.keyword.blockchainfull_notm}} Platform v2.1.2](/docs/blockchain-sw/howto?topic=blockchain-sw-deploy-ocp#deploy-ocp).
 {:shortdesc}
@@ -29,7 +43,7 @@ You can deploy the {{site.data.keyword.blockchainfull_notm}} Platform v2.1.2 ont
 
 ## Need to Know
 
-- If you are deploying the {{site.data.keyword.blockchainfull_notm}} Platform behind a firewall, without access to the public internet, your JavaScript or TypeScript chaincode will not be able to download external depenencies when the chaincode is instantiated. You need point to a local NPM registry for your chaincode to access the required dependencies. This problem does not occur if you are using GO chaincode.
+- If you are deploying the {{site.data.keyword.blockchainfull_notm}} Platform behind a firewall, without access to the public internet, your JavaScript or TypeScript smart contract will not be able to download external dependencies when it is instantiated. You need point to a local NPM registry for your smart contract to access the required dependencies. See [Building Node.js Contracts with limited internet access](https://hyperledgendary.github.io/docs/goodpractice/nodejs_building_limited_access.html){: external}. This problem does not occur if you are using smart contracts that are written in Go.
 
 - After you deploy your peer and ordering nodes, you need to expose the ports of your nodes for your network to be able to respond to requests from applications or nodes outside your firewall. For more information about the ports that you need to expose, see [Internet Ports](/docs/blockchain-sw?topic=blockchain-sw-ibp-security#ibp-security-ibp-ports) in the security guide.
 
@@ -61,7 +75,7 @@ The {{site.data.keyword.blockchainfull_notm}} Platform console has been successf
 ## Storage
 {: #deploy-ocp-storage-firewall}
 
-{{site.data.keyword.blockchainfull_notm}} Platform requires persistent storage for each CA, peer, and ordering node that you deploy, in addition to the storage required by the {{site.data.keyword.blockchainfull_notm}} console. The {{site.data.keyword.blockchainfull_notm}} Platform console uses [dynamic provisioning](https://docs.openshift.com/container-platform/4.2/install_config/persistent_storage/dynamically_provisioning_pvs.html#basic-spec-definition){: external} to allocate storage for each blockchain node that you deploy by using a pre-defined storage class. You have the opportunity to choose your persistent storage from the available storage options for the OpenShift Container Platform.
+{{site.data.keyword.blockchainfull_notm}} Platform requires persistent storage for each CA, peer, and ordering node that you deploy, in addition to the storage required by the {{site.data.keyword.blockchainfull_notm}} console. The {{site.data.keyword.blockchainfull_notm}} Platform console uses [dynamic provisioning](https://docs.openshift.com/container-platform/4.2/storage/dynamic-provisioning.html){: external} to allocate storage for each blockchain node that you deploy by using a pre-defined storage class. You have the opportunity to choose your persistent storage from the available storage options for the OpenShift Container Platform.
 
 Before you deploy the {{site.data.keyword.blockchainfull_notm}} Platform console, you must create a storage class with enough backing storage for the {{site.data.keyword.blockchainfull_notm}} console and the nodes that you create. You can set this storage class to the default storage class of your Kubernetes cluster or create a new class that is used by the {{site.data.keyword.blockchainfull_notm}} Platform console. If you are using a multizone cluster in OpenShift Container Platform, then you must configure the default storage class for each zone. After you create the storage class, run the command `kubectl patch storageclass` to set the storage class of the multizone region to be the default storage class.
 
@@ -82,7 +96,7 @@ When you purchase the {{site.data.keyword.blockchainfull_notm}} Platform from PP
 
 1. The {{site.data.keyword.blockchainfull_notm}} Platform can be installed only on the [OpenShift Container Platform 3.11, 4.1, or 4.2](https://docs.openshift.com/container-platform/3.11/welcome/index.html){: external}.
 
-2. You need to install and connect to your cluster by using [OpenShift Container Platform CLI](https://docs.openshift.com/container-platform/4.2/cli_reference/get_started_cli.html#installing-the-cli){: external} to deploy the platform.
+2. You need to install and connect to your cluster by using [OpenShift Container Platform CLI](https://docs.openshift.com/container-platform/4.2/cli_reference/openshift_cli/getting-started-cli.html){: external} to deploy the platform.
 
 ## Pull the {{site.data.keyword.blockchainfull_notm}} Platform images
 
@@ -575,6 +589,7 @@ When the operator is running on your namespace, you can apply a custom resource 
 Save the custom resource definition below as `ibp-console.yaml` on your local system. If you changed the name of the entitlement key secret, then you need to edit the field of `name: docker-key-secret`.
 
 
+
 ```yaml
 apiVersion: ibp.com/v1alpha1
 kind: IBPConsole
@@ -595,7 +610,6 @@ spec:
       size: 10Gi
 ```
 {:codeblock}
-
 
 
 You need to specify the external endpoint information of the console in the `ibp-console.yaml` file:
@@ -630,59 +644,59 @@ Replace `<PROJECT_NAME>` with the name of your project. Before you install the c
 You can edit the `ibp-console.yaml` file to allocate more resources to your console or use zones for high availability in a multizone cluster. To take advantage of these deployment options, you can use the console resource definition with the `resources:` and `clusterdata:` sections added:
 
 
+
 ```yaml
 apiVersion: ibp.com/v1alpha1
 kind: IBPConsole
 metadata:
   name: ibpconsole
-  spec:
-    license: accept
-    serviceAccountName: default
-    proxyIP:
-    email: "<EMAIL>"
-    password: "<PASSWORD>"
-    registryURL: <LOCAL_REGISTRY>
-    imagePullSecret: docker-key-secret
-    networkinfo:
-        domain: <DOMAIN>
-    storage:
-      console:
-        class: default
-        size: 10Gi
-    clusterdata:
-      zones:
-    resources:
-      console:
-        requests:
-          cpu: 500m
-          memory: 1000Mi
-        limits:
-          cpu: 500m
-          memory: 1000Mi
-      configtxlator:
-        limits:
-          cpu: 25m
-          memory: 50Mi
-        requests:
-          cpu: 25m
-          memory: 50Mi
-      couchdb:
-        limits:
-          cpu: 500m
-          memory: 1000Mi
-        requests:
-          cpu: 500m
-          memory: 1000Mi
-      deployer:
-        limits:
-          cpu: 100m
-          memory: 200Mi
-        requests:
-          cpu: 100m
-          memory: 200Mi
+spec:
+  license: accept
+  serviceAccountName: default
+  proxyIP:
+  email: "<EMAIL>"
+  password: "<PASSWORD>"
+  registryURL: <LOCAL_REGISTRY>
+  imagePullSecret: docker-key-secret
+  networkinfo:
+      domain: <DOMAIN>
+  storage:
+    console:
+      class: default
+      size: 10Gi
+  clusterdata:
+    zones:
+  resources:
+    console:
+      requests:
+        cpu: 500m
+        memory: 1000Mi
+      limits:
+        cpu: 500m
+        memory: 1000Mi
+    configtxlator:
+      limits:
+        cpu: 25m
+        memory: 50Mi
+      requests:
+        cpu: 25m
+        memory: 50Mi
+    couchdb:
+      limits:
+        cpu: 500m
+        memory: 1000Mi
+      requests:
+        cpu: 500m
+        memory: 1000Mi
+    deployer:
+      limits:
+        cpu: 100m
+        memory: 200Mi
+      requests:
+        cpu: 100m
+        memory: 200Mi
 ```
 {:codeblock}
-
 
 
 - You can use the `resources:` section to allocate more resources to your console. The values in the example file are the default values allocated to each container. Allocating more resources to your console allows you to operate a larger number of nodes or channels. You can allocate more resources to a currently running console by editing the resource file and applying it to your cluster. The console will restart and return to its previous state, allowing you to operate all of your exiting nodes and channels.
@@ -714,6 +728,9 @@ Unlike the resource allocation, you cannot add zones to a running network. If yo
 
 The {{site.data.keyword.blockchainfull_notm}} Platform console uses TLS certificates to secure the communication between the console and your blockchain nodes and between the console and your browser. You have the option of creating your own TLS certificates and providing them to the console by using creating a Kubernetes secret. If you skip this step, the console creates its own self-signed TLS certificates during deployment.
 
+This step needs to be performed before the console is deployed.
+{: important}
+
 You can use a Certificate Authority or tool to create the TLS certificates for the console. The TLS certificate needs to include the hostname of the console and the proxy in the subject name or the alternative domain names. The console and proxy hostname are in the following format:
 
 **Console hostname:** ``<PROJECT_NAME>-ibpconsole-console.<DOMAIN>``  
@@ -734,7 +751,7 @@ tlsSecretName: console-tls-secret
 ```
 {:codeblock}
 
-When you finish editing the file, you can apply it to your cluster to provide new TLS certificates to a deployed console. After the console restarts, the UI returns to its previous state, allowing you to operate all of your exiting nodes and channels.
+When you finish editing the file, you can apply it to your cluster in order to secure communications with your own TLS certificates:
 ```
 kubectl apply -f ibp-console.yaml -n <PROJECT_NAME>
 ```

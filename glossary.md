@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-02-07"
+lastupdated: "2020-11-02"
 
 keywords: IBM Blockchain, IBM Blockchain Platform, terms, Fabric, Raft, CouchDB, consortium
 
@@ -19,6 +19,15 @@ subcollection: blockchain-sw
 
 # Glossary
 {: #glossary}
+
+<div style="background-color: #6fdc8c; padding-left: 20px; padding-right: 20px; border-bottom: 4px solid #0f62fe; padding-top: 12px; padding-bottom: 4px; margin-bottom: 16px;">
+  <p style="line-height: 20px;">
+    <strong>Important: You are not looking at the latest product documentation.  Make sure you are reading the documentation that matches the version of the software that you are using. Switch to product version </strong>
+    <a href="/docs/blockchain-sw-213?topic=blockchain-sw-213-glossary">2.1.3</a>,
+    <a href="/docs/blockchain-sw-25?topic=blockchain-sw-25-glossary">2.5 </a>,
+    <a href="/docs/blockchain-sw-251?topic=blockchain-sw-251-glossary">2.5.1 (latest)</a>
+    </p>
+</div>
 
 This topic defines {{site.data.keyword.blockchainfull}} Platform-specific terms that appear in this documentation. For a deeper understanding of terms, and for a glossary of terms that relate to Hyperledger Fabric concepts, refer to the [Hyperledger Fabric glossary](https://hyperledger-fabric.readthedocs.io/en/release-1.4/glossary.html){: external}.
 {:shortdesc}
@@ -208,4 +217,3 @@ A user is a participant in a blockchain network that has indirect access to the 
 ## World state
 {: #glossary-world-state}
 See [Current state](/docs/blockchain-sw?topic=blockchain-sw-glossary#glossary-current-state).
-

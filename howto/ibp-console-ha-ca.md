@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2020
-lastupdated: "2020-02-07"
+lastupdated: "2020-11-02"
 
 keywords: high availability, CA, PostgreSQL, replica sets
 
@@ -21,6 +21,15 @@ subcollection: blockchain-sw
 
 # Building a high availability Certificate Authority (CA)
 {: #ibp-console-build-ha-ca}
+
+<div style="background-color: #6fdc8c; padding-left: 20px; padding-right: 20px; border-bottom: 4px solid #0f62fe; padding-top: 12px; padding-bottom: 4px; margin-bottom: 16px;">
+  <p style="line-height: 20px;">
+    <strong>Important: You are not looking at the latest product documentation.  Make sure you are reading the documentation that matches the version of the software that you are using. Switch to product version </strong>
+    <a href="/docs/blockchain-sw-213?topic=blockchain-sw-213-ibp-console-build-ha-ca">2.1.3</a>,
+    <a href="/docs/blockchain-sw-25?topic=blockchain-sw-25-ibp-console-build-ha-ca">2.5 </a>,
+    <a href="/docs/blockchain-sw-251?topic=blockchain-sw-251-ibp-console-build-ha-ca">2.5.1 (latest)</a>
+    </p>
+</div>
 
 Because redundancy is required to achieve high availability (HA) networks, you can use the {{site.data.keyword.blockchainfull}} Platform console to configure a CA for high availability.
 {:shortdesc}
@@ -52,8 +61,8 @@ When a Kubernetes pod becomes unavailable, Kubernetes immediately attempts to re
 {: #ibp-console-build-ha-ca-before}
 
 You need to configure an instance of a PostgreSQL database. There are two options available in {{site.data.keyword.cloud_notm}}:
-  - [Databases for PostgreSQL](https://cloud.ibm.com/catalog/services/databases-for-postgresql){: external}. See the [Getting Started tutorial](/docs/services/databases-for-postgresql?topic=databases-for-postgresql-getting-started){:external} for information on provisioning an instance of the service.
-  - [Hyper Protect DBaaS for PostgreSQL](https://cloud.ibm.com/catalog/services/hyper-protect-dbaas-for-postgresql){: external}. See the tutorial on [Getting started with IBM Cloud Hyper Protect DBaaS for PostgreSQL](/docs/services/hyper-protect-dbaas-for-postgresql?topic=hyper-protect-dbaas-for-postgresql-gettingstarted) for setup instructions.  
+  - [Databases for PostgreSQL](https://cloud.ibm.com/catalog/services/databases-for-postgresql){: external}. See the [Getting Started tutorial](/docs/databases-for-postgresql?topic=databases-for-postgresql-getting-started){:external} for information on provisioning an instance of the service.
+  - [Hyper Protect DBaaS for PostgreSQL](https://cloud.ibm.com/catalog/services/hyper-protect-dbaas-for-postgresql){: external}. See the tutorial on [Getting started with IBM Cloud Hyper Protect DBaaS for PostgreSQL](/docs/hyper-protect-dbaas-for-postgresql?topic=hyper-protect-dbaas-for-postgresql-gettingstarted) for setup instructions.  
 
 Use of a third-party PostgreSQL database is also supported.  If the third-party database is configured to use TLS, you will need to provide at least one server certificate. If SSL client authentication (mutual TLS) is enabled, you also need to provide a client certificate and a client key in .pem format.  More information on how to provide this information is provided in the steps that follow.
 
@@ -160,10 +169,9 @@ Create a new CA by using the {{site.data.keyword.blockchainfull_notm}} Platform 
 1. Navigate to the **Nodes** tab on the left and click **Add Certificate Authority**.
 2. Make sure that the option to **Create** a Certificate Authority is selected. Then click **Next**.
 3. Give your CA a **display name** and enter your CA admin credentials by specifying a **CA administrator enroll ID and secret**.
-4. Click the **Database and replica sets selection** checkbox under **Advanced deployment options** and click **Next**. 
+4. Click the **Database and replica sets selection** checkbox under **Advanced deployment options** and click **Next**.
 5. To use replica sets, select `PostgreSQL` as the CA database.
 6. Click **Add file** and browse to the JSON file you created with the database connection information.
 7. Choose the number of replica sets you need. Two replica sets ensure that if one CA replica becomes unavailable, the other is always immediately ready to process requests. Three replica sets provide even greater redundancy. If two of the three replica sets are unavailable, the third is ready to process requests. Because each additional replica set requires additional CPU and memory, you need to ensure you have adequate resources available to accommodate the number you choose. This value can be updated later as well.
 8. You have the opportunity to configure resource allocation for the node. The resources that you specify here are used for each replica set.  If you want to learn more about how to allocate resources in {{site.data.keyword.cloud_notm}} for your node, see this topic on [Resource allocation](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-govern-components#ibp-console-govern-components-allocate-resources).
 9. Review the Summary page, then click **Add certificate authority**.
-

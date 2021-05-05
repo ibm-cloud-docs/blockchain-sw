@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2020
-lastupdated: "2020-02-07"
+lastupdated: "2020-11-02"
 
 keywords: IBM Blockchain Platform, Data residency, world state, channels
 
@@ -21,6 +21,16 @@ subcollection: blockchain-sw
 
 # Data residency
 {: #console-icp-about-data-residency}
+
+<div style="background-color: #6fdc8c; padding-left: 20px; padding-right: 20px; border-bottom: 4px solid #0f62fe; padding-top: 12px; padding-bottom: 4px; margin-bottom: 16px;">
+  <p style="line-height: 20px;">
+    <strong>Important: You are not looking at the latest product documentation.  Make sure you are reading the documentation that matches the version of the software that you are using. Switch to product version </strong>
+    <a href="/docs/blockchain-sw-213?topic=blockchain-sw-213-console-icp-about-data-residency">2.1.3</a>,
+    <a href="/docs/blockchain-sw-25?topic=blockchain-sw-25-console-icp-about-data-residency">2.5 </a>,
+    <a href="/docs/blockchain-sw-251?topic=blockchain-sw-251-console-icp-about-data-residency">2.5.1 (latest)</a>
+    </p>
+</div>
+
 
 Because blockchain networks are oblivious to the type of data that is processed, extra steps must sometimes be taken to keep certain kinds of data secure. The most common requirement on data residency is associated with laws within certain countries, which mandate that all data that is processed and stored in an IT system must remain within a specific country’s borders. Similarly, some companies in highly regulated industries, such as government, healthcare, and financial services, require that data must be stored entirely behind their firewall.
 {:shortdesc}
@@ -119,4 +129,3 @@ Therefore, to preserve data residency, the end user's browser and the Kubernetes
 For a deeper understanding of the flow of data on the {{site.data.keyword.blockchainfull_notm}} Platform network, refer to the [Fabric documentation on transaction flow](https://hyperledger-fabric.readthedocs.io/en/release-1.4/txflow.html){: external}.
 
 You can get more information about Private data collections and Zero Knowledge Proof in the white paper about [Private and confidential transactions with Hyperledger Fabric](https://developer.ibm.com/tutorials/cl-blockchain-private-confidential-transactions-hyperledger-fabric-zero-knowledge-proof/){: external}.
-

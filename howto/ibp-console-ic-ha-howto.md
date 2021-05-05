@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2020
-lastupdated: "2020-02-07"
+lastupdated: "2020-11-02"
 
 keywords: HA, highly availability, multiregion
 
@@ -21,6 +21,15 @@ subcollection: blockchain-sw
 
 # Setting up multiregion High Availability (HA) deployments for peers
 {: #ibp-console-hadr-mr}
+
+<div style="background-color: #6fdc8c; padding-left: 20px; padding-right: 20px; border-bottom: 4px solid #0f62fe; padding-top: 12px; padding-bottom: 4px; margin-bottom: 16px;">
+  <p style="line-height: 20px;">
+    <strong>Important: You are not looking at the latest product documentation.  Make sure you are reading the documentation that matches the version of the software that you are using. Switch to product version </strong>
+    <a href="/docs/blockchain-sw-213?topic=blockchain-sw-213-ibp-console-hadr-mr">2.1.3</a>,
+    <a href="/docs/blockchain-sw-25?topic=blockchain-sw-25-ibp-console-hadr-mr">2.5 </a>,
+    <a href="/docs/blockchain-sw-251?topic=blockchain-sw-251-ibp-console-hadr-mr">2.5.1 (latest)</a>
+    </p>
+</div>
 
 Multiregion HA configuration provides the highest degree of HA coverage that is possible. Deploying peers across multiple geographic regions ensures that if any one region becomes unavailable, the peers in other regions can continue to transact. Note that multiregion HA support for CAs and the ordering service is not currently available.
 
@@ -101,4 +110,3 @@ Your network is now configured such that a failure in any single region will not
 To maximize your HA even further, consider the following additional options:
 - Export the peers that you created in clusters two and three and import them into the console in cluster one. Then, everything can be managed from a single cluster.
 - However, cluster one can fail. Therefore, to further account for a cluster failure, you can import all your peers into each of the three consoles. Then if a cluster containing any one console fails, everything can still be managed from the consoles in the other two clusters.
-

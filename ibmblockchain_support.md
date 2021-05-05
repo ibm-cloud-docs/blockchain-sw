@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-02-07"
+lastupdated: "2020-11-02"
 
 keywords: IBM Blockchain Platform, support case, Hyperledger Fabric Community, Cloud tickets, Rocket Chat, dWAnswers
 
@@ -21,6 +21,15 @@ subcollection: blockchain-sw
 
 # Getting support
 {: #blockchain-support}
+
+<div style="background-color: #6fdc8c; padding-left: 20px; padding-right: 20px; border-bottom: 4px solid #0f62fe; padding-top: 12px; padding-bottom: 4px; margin-bottom: 16px;">
+  <p style="line-height: 20px;">
+    <strong>Important: You are not looking at the latest product documentation.  Make sure you are reading the documentation that matches the version of the software that you are using. Switch to product version </strong>
+    <a href="/docs/blockchain-sw-213?topic=blockchain-sw-213-blockchain-support">2.1.3</a>,
+    <a href="/docs/blockchain-sw-25?topic=blockchain-sw-25-blockchain-support">2.5 </a>,
+    <a href="/docs/blockchain-sw-251?topic=blockchain-sw-251-blockchain-support">2.5.1 (latest)</a>
+    </p>
+</div>
 
 {{site.data.keyword.blockchainfull}} Platform v2.1.2 provides several avenues for troubleshooting problems and getting support.
 {:shortdesc}
@@ -45,6 +54,6 @@ It is recommended to start with [free digital support resources](/docs/blockchai
 ## Submitting support cases
 {: #blockchain-support-cases}
 
-For issues that are related to {{site.data.keyword.blockchainfull_notm}} Platform v2.1.2, you can submit a support case from the [mysupport](https://www.ibm.com/support/pages/support-ibm-blockchain-platform-v21x){: external} page.  
+For issues that are related to {{site.data.keyword.blockchainfull_notm}} Platform v2.1.2, you can submit a support case from the [mysupport](https://www.ibm.com/support/pages/node/1072956){: external} page.  
 
 If you need help with Hyperledger Fabric, or your applications, ensure you make use of the community resources above or engage [{{site.data.keyword.blockchainfull_notm}} Services](https://www.ibm.com/blockchain/services){: external}.
