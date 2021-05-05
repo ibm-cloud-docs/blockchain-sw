@@ -584,7 +584,7 @@ Nodes that are deployed by using the {{site.data.keyword.blockchainfull_notm}} i
 ## Upgrading to new versions
 {: #blockchain-images-upgrade}
 
-You can upgrade your deployment to the latest version of the {{site.data.keyword.blockchainfull_notm}} images. The latest images normally contain security or stability improvements, or use a higher version Hyperledger Fabric, allowing you to take advantage of the latest Fabric features. To upgrade your network, you need to back up the ledger and MSP data for each node and then manually upgrade the node binaries. For more information about upgrading a network that you deployed using the {{site.data.keyword.blockchainfull_notm}} images, see [Upgrading Your Network Components](https://hyperledger-fabric.readthedocs.io/en/release-1.4/upgrading_your_network_tutorial.html){: external} in the Hyperleder Fabric documentation.
+You can upgrade your deployment to the latest version of the {{site.data.keyword.blockchainfull_notm}} images. The latest images normally contain security or stability improvements, or use a higher version Hyperledger Fabric, allowing you to take advantage of the latest Fabric features. To upgrade your network, you need to back up the ledger and MSP data for each node and then manually upgrade the node binaries. For more information about upgrading a network that you deployed using the {{site.data.keyword.blockchainfull_notm}} images, see [Upgrading Your Network Components](https://hyperledger-fabric.readthedocs.io/en/release-1.4/upgrading_your_network_tutorial.html){: external} in the Hyperledger Fabric documentation.
 
 ## Getting support
 

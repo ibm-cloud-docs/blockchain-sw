@@ -79,7 +79,7 @@ On the other hand, {{site.data.keyword.blockchainfull_notm}} will not provide de
 {: faq}
 
 Yes. The {{site.data.keyword.blockchainfull_notm}} Platform can be purchased and deployed in three ways on OpenShift:
-- [{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}}](https://cloud.ibm.com/catalog/services/blockchain-platform){: external} is deployed and runs on [IBM Cloud](https://cloud.ibm.com/kubernetes/catalog/openshiftcluster){: external}.
+- [{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}}](https://cloud.ibm.com/catalog/services/blockchain-platform){: external} is deployed and runs on [IBM Cloud](https://cloud.ibm.com/kubernetes/catalog/about?platformType=openshift){: external}.
 - {{site.data.keyword.blockchainfull_notm}} Platform is also available as a software offering that can be deployed on Red Hat OpenShift and can run in all environments where OpenShift Container Platform (OCP) is supported. Read more about running OpenShift Container Platform [here](/docs/blockchain-sw?topic=blockchain-sw-console-ocp-about).
 - Finally, experienced Hyperledger Fabric customers also have the option to download and use the peer, CA, orderer, and smart contract container [images](/docs/blockchain-sw?topic=blockchain-sw-blockchain-images).
 

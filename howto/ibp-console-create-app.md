@@ -69,7 +69,7 @@ The application developer can use two programming models to interact with the ne
 
 Starting with Fabric v1.4, users can take advantage of a simplified application and smart contract programming model. The new model reduces the number of steps and amount of code that is required to submit a transaction. This model is only supported for applications that are written in **Node.js**. If you want to take advantage of the new model, you can use this tutorial to complete the following actions on an {{site.data.keyword.blockchainfull_notm}} Platform network:
 
-Client applications can leverage the capabilities of the Go SDK, but currently only the high-level programming model in the [gateway package](https://godoc.org/github.com/hyperledger/fabric-sdk-go/pkg/gateway) is supported. Direct usage of the rest of the Go SDK is not yet supported.
+Client applications can leverage the capabilities of the Go SDK, but currently only the high-level programming model in the [gateway package](https://pkg.go.dev/github.com/hyperledger/fabric-sdk-go/pkg/gateway) is supported. Direct usage of the rest of the Go SDK is not yet supported.
 {: note}
 
 If you want to take advantage of the High-Level Fabric contract-APIs, you can use this tutorial to complete the following actions on an {{site.data.keyword.blockchainfull_notm}} Platform network:

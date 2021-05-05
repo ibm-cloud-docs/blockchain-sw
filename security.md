@@ -143,7 +143,7 @@ The best place to start is to learn about the security features of the underlyin
 
 
 
-With {{site.data.keyword.cloud_notm}} Private, **Pod Security Policies** provide a way to control the security level of the pods and containers in your cluster. The Pod Security Policy that is applied to the namespace on a cluster is the default security setting for any new pod that is created in that namespace. If you are using {{site.data.keyword.cloud_notm}} Private, review the [Security guide](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.2.0/user_management/admin.html){: external} for best practices.
+With {{site.data.keyword.cloud_notm}} Private, **Pod Security Policies** provide a way to control the security level of the pods and containers in your cluster. The Pod Security Policy that is applied to the namespace on a cluster is the default security setting for any new pod that is created in that namespace. If you are using {{site.data.keyword.cloud_notm}} Private, review the [Security guide](/docs/en/cloud-private/3.2.0?topic=guide-security/){: external} for best practices.
 
 
 For OpenShift Container Platform security considerations, you should review the [Red Hat Container Security Guide Service](https://access.redhat.com/documentation/en-us/openshift_container_platform/3.11/html-single/container_security_guide/index){: external}. You will need to use [security context constraints](https://access.redhat.com/documentation/en-us/openshift_container_platform/3.11/html-single/architecture/index#security-context-constraints){: external} (SCCs) to define a set of conditions that a pod must run with in order to be accepted into the system. Details are included in the {{site.data.keyword.blockchainfull_notm}} Platform deployment instructions.  
@@ -199,7 +199,7 @@ Customers are responsible for encrypting their own storage and the encryption mu
 
 
 - For more information about encryption on {{site.data.keyword.cloud_notm}} Private:
-[Encrypting volumes that are used by IBM Cloud Private](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/installing/fips_encrypt_volumes.html){: external}
+[Encrypting volumes that are used by IBM Cloud Private](https://www.ibm.com/docs/en/cloud-private/3.1.2?topic=private-encrypting-volumes-used-by-cloud){: external}
 - For more information on securing your persistent storage on OpenShift, see this topic on [Volume Security](https://docs.openshift.com/container-platform/3.11/install_config/persistent_storage/pod_security_context.html){: external}.
 
 
@@ -218,7 +218,7 @@ In order to be GDPR compliant, it is recommended that you store PII data off cha
 
 Because {{site.data.keyword.blockchainfull_notm}} Platform is based on Hyperledger Fabric, you can leverage the secure features included in a Fabric network.  
 
-- **TLS v1.2 communications** [TLS](https://www.ibm.com/support/knowledgecenter/en/SSFKSJ_7.1.0/com.ibm.mq.doc/sy10660_.htm){: external} is embedded in the trust model of Hyperledger Fabric. By default, server-side TLS is enabled for all communications using TLS certificates. TLS is used to encrypt the communication between your nodes and between your nodes and your applications. TLS prevents man-in-the-middle and session hijacking attacks. All {{site.data.keyword.blockchainfull_notm}} Platform components use TLS to communicate with each other.
+- **TLS v1.2 communications** TLS is embedded in the trust model of Hyperledger Fabric. By default, server-side TLS is enabled for all communications using TLS certificates. TLS is used to encrypt the communication between your nodes and between your nodes and your applications. TLS prevents man-in-the-middle and session hijacking attacks. All {{site.data.keyword.blockchainfull_notm}} Platform components use TLS to communicate with each other.
 
 - **Transaction integrity:** Fabric uses the cryptographic ECDSA standard to guarantee transaction integrity. With ECDSA, the transaction originator, such as a client application, signs their message using their private key, and the recipient, such as a peer, uses the originator’s public key to verify the authenticity of the message. If a transaction is tampered with on its way to the recipient, the signature verification fails.
 

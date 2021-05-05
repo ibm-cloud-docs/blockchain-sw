@@ -7,7 +7,7 @@ IBM Blockchain Platform v2.1.2
 	{: .navgroup id="learn"}
 	index.md
 	console-ocp-about.md
-	[What is blockchain?](https://www.ibm.com/blockchain/what-is-blockchain)
+	[What is blockchain?](https://www.ibm.com/topics/what-is-blockchain)
 	whats_new.md
 	howto/pricing-sw.md
 	blockchain_component_overview.md
