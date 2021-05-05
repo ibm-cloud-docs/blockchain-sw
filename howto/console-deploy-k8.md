@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2020
-lastupdated: "2020-03-03"
+lastupdated: "2020-11-02"
 
 keywords: IBM Blockchain Platform console, deploy, resource requirements, storage, parameters
 
@@ -17,10 +17,23 @@ subcollection: blockchain-sw
 {:note: .note}
 {:important: .important}
 {:tip: .tip}
+{:deprecated: .deprecated}
 {:pre: .pre}
 
 # Deploying {{site.data.keyword.blockchainfull_notm}} Platform v2.1.2
 {: #deploy-k8}
+
+<div style="background-color: #6fdc8c; padding-left: 20px; padding-right: 20px; border-bottom: 4px solid #0f62fe; padding-top: 12px; padding-bottom: 4px; margin-bottom: 16px;">
+  <p style="line-height: 20px;">
+    <strong>Important: You are not looking at the latest product documentation.  Make sure you are reading the documentation that matches the version of the software that you are using. Switch to product version </strong>
+    <a href="/docs/blockchain-sw-213?topic=blockchain-sw-213-deploy-k8">2.1.3</a>,
+    <a href="/docs/blockchain-sw-25?topic=blockchain-sw-25-deploy-k8">2.5 </a>,
+    <a href="/docs/blockchain-sw-251?topic=blockchain-sw-251-deploy-k8">2.5.1 (latest)</a>
+    </p>
+</div>
+
+Deployment of the {{site.data.keyword.blockchainfull_notm}} Platform v2.1.0, v2.1.1, and v2.1.2 is now deprecated. It is strongly recommended that you deploy or upgrade to [v2.1.3](/docs/blockchain-sw-213?topic=blockchain-sw-213-deploy-k8) or [2.5](/docs/blockchain-sw-25?topic=blockchain-sw-25-deploy-k8) instead.
+{:deprecated}
 
 You can use the following instructions to deploy the {{site.data.keyword.blockchainfull}} Platform v2.1.2 on any x86_64 Kubernetes cluster running at v1.14 - v1.16. Use these instructions if you are using distributions such as Rancher or {{site.data.keyword.cloud_notm}} Private. The {{site.data.keyword.blockchainfull_notm}} Platform uses a [Kubernetes Operator](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/){: external} to install the {{site.data.keyword.blockchainfull_notm}} Platform console on your cluster and manage the deployment and your blockchain nodes. When the {{site.data.keyword.blockchainfull_notm}} Platform console is running on your cluster, you can use the console to create blockchain nodes and operate a multicloud blockchain network.
 {:shortdesc}
@@ -73,7 +86,7 @@ When you purchase the {{site.data.keyword.blockchainfull_notm}} Platform from PP
 
 1. The {{site.data.keyword.blockchainfull_notm}} Platform can be installed only on the [Supported Platforms](/docs/blockchain-sw?topic=blockchain-sw-console-ocp-about#console-ocp-about-prerequisites).
 
-2. You need to install and connect to your cluster by using the [kubectl CLI](https://kubernetes.io/docs/tasks/tools/install-kubectl){: external} to deploy the platform. If you are using {{site.data.keyword.cloud_notm}} Private, install the [{{site.data.keyword.cloud_notm}} Private CLI 3.2.1](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.2.1/manage_cluster/install_cli.html){: external}. The {{site.data.keyword.cloud_notm}} Private CLI includes the kubectl CLI.
+2. You need to install and connect to your cluster by using the [kubectl CLI](https://kubernetes.io/docs/tasks/tools/install-kubectl){: external} to deploy the platform. If you are using {{site.data.keyword.cloud_notm}} Private, install the [{{site.data.keyword.cloud_notm}} Private CLI 3.2.1](/docs/en/cloud-private/3.2.x?topic=cloudctl-installing-cloud-private-cli/){: external}. The {{site.data.keyword.cloud_notm}} Private CLI includes the kubectl CLI.
 
 3. If you are not running the platform on Red Hat OpenShift Container Platform, Red Hat Open Kubernetes Distribution, or {{site.data.keyword.cloud_notm}} Private then you need to setup the nginx ingress controller and it needs to be running in [SSL passthrough mode](https://kubernetes.github.io/ingress-nginx/user-guide/tls/#ssl-passthrough){: external}.
 
@@ -429,6 +442,9 @@ spec:
 
 - Replace `<CLUSTER_TYPE>` with `IKS` if you are deploying the platform on open source Kubernetes or Rancher.
 - Replace `<CLUSTER_TYPE>` with `ICP` if you are deploying the platform on {{site.data.keyword.cloud_notm}} Private.
+- If you are using {{site.data.keyword.cloud_notm}} Private on LinuxONE (s390x), you need to make the following additional customizations:
+   1. In the `spec.affinity` section, change `amd64` to `s390x`.
+   2. In the `spec.containers` section, replace `amd64` in the operator `images` tag with `s390x`.
 - If you changed the name of the Docker key secret, then you need to edit the field of `name: docker-key-secret`.
 
 Then, use the kubectl CLI to add the custom resource to your namespace.
@@ -503,10 +519,21 @@ spec:
 {:codeblock}
 
 You need to provide the following values to this file:
-- Replace `<DOMAIN>` with the Proxy IP address your cluster. You  can retrieve the value your Proxy IP address from the {{site.data.keyword.cloud_notm}} Private console. **Note:** You need to be a [Cluster administrator](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.2.0/user_management/assign_role.html){: external} to access your proxy IP. Log in to the {{site.data.keyword.cloud_notm}} Private cluster. In the left navigation panel, click **Platform** and then **Nodes** to view the nodes that are defined in the cluster. Click the node with the role `proxy` and then copy the value of the `Host IP` from the table.
+- Replace `<DOMAIN>` with the Proxy IP address your cluster. You  can retrieve the value your Proxy IP address from the {{site.data.keyword.cloud_notm}} Private console. **Note:** You need to be a [Cluster administrator](/docs/en/cloud-private/3.2.0?topic=private-role-based-access-control/){: external} to access your proxy IP. Log in to the {{site.data.keyword.cloud_notm}} Private cluster. In the left navigation panel, click **Platform** and then **Nodes** to view the nodes that are defined in the cluster. Click the node with the role `proxy` and then copy the value of the `Host IP` from the table.
 - Replace `<CONSOLE_PORT>` with a number between 30000 and 32767. This port is used to access the Console UI from your browser.
 - Replace `<PROXY_PORT>` with a number between 30000 and 32767. Select a different port than the one you selected for your console port. This port is used by the console to communicate with your blockchain nodes.
 
+
+If you are deploying on {{site.data.keyword.cloud_notm}} Private on LinuxONE (s390x), you need to replace the `arch:` field in the in the `spec:` section:
+```yaml
+arch:
+- amd64
+```
+with:
+```yaml
+arch:
+- s390x
+```
 
 
 For all platforms, you need to provide the user name and password that is used to access the console for the first time:
@@ -537,53 +564,53 @@ apiVersion: ibp.com/v1alpha1
 kind: IBPConsole
 metadata:
   name: ibpconsole
-  spec:
-    arch:
-    - amd64
-    license: accept
-    serviceAccountName: default
-    proxyIP:
-    email: "<EMAIL>"
-    password: "<PASSWORD>"
-    registryURL: cp.icr.io/cp
-    imagePullSecret: "docker-key-secret"
-    networkinfo:
-        domain: <DOMAIN>
-    storage:
-      console:
-        class: default
-        size: 10Gi
-    clusterdata:
-      zones:
-    resources:
-      console:
-        requests:
-          cpu: 500m
-          memory: 1000Mi
-        limits:
-          cpu: 500m
-          memory: 1000Mi
-      configtxlator:
-        limits:
-          cpu: 25m
-          memory: 50Mi
-        requests:
-          cpu: 25m
-          memory: 50Mi
-      couchdb:
-        limits:
-          cpu: 500m
-          memory: 1000Mi
-        requests:
-          cpu: 500m
-          memory: 1000Mi
-      deployer:
-        limits:
-          cpu: 100m
-          memory: 200Mi
-        requests:
-          cpu: 100m
-          memory: 200Mi
+spec:
+  arch:
+  - amd64
+  license: accept
+  serviceAccountName: default
+  proxyIP:
+  email: "<EMAIL>"
+  password: "<PASSWORD>"
+  registryURL: cp.icr.io/cp
+  imagePullSecret: "docker-key-secret"
+  networkinfo:
+      domain: <DOMAIN>
+  storage:
+    console:
+      class: default
+      size: 10Gi
+  clusterdata:
+    zones:
+  resources:
+    console:
+      requests:
+        cpu: 500m
+        memory: 1000Mi
+      limits:
+        cpu: 500m
+        memory: 1000Mi
+    configtxlator:
+      limits:
+        cpu: 25m
+        memory: 50Mi
+      requests:
+        cpu: 25m
+        memory: 50Mi
+    couchdb:
+      limits:
+        cpu: 500m
+        memory: 1000Mi
+      requests:
+        cpu: 500m
+        memory: 1000Mi
+    deployer:
+      limits:
+        cpu: 100m
+        memory: 200Mi
+      requests:
+        cpu: 100m
+        memory: 200Mi
 ```
 {:codeblock}
 
@@ -616,6 +643,9 @@ Unlike the resource allocation, you cannot add zones to a running network. If yo
 
 The {{site.data.keyword.blockchainfull_notm}} Platform console uses TLS certificates to secure the communication between the console and your blockchain nodes and between the console and your browser. You have the option of creating your own TLS certificates and providing them to the console by using creating a Kubernetes secret. If you skip this step, the console creates its own self-signed TLS certificates during deployment.
 
+This step needs to be performed before the console is deployed.
+{: important}
+
 You can use a Certificate Authority or tool to create the TLS certificates for the console. The TLS certificate needs to include the hostname of the console and the proxy in the subject name or the alternative domain names. The console and proxy hostname are in the following format:
 
 **Console hostname:** ``<NAMESPACE>-ibpconsole-console.<DOMAIN>``  
@@ -636,34 +666,34 @@ apiVersion: ibp.com/v1alpha1
 kind: IBPConsole
 metadata:
   name: ibpconsole
-  spec:
-    arch:
-    - amd64
-    license: accept
-    serviceAccountName: default
-    proxyIP:
-    email: "<EMAIL>"
-    password: "<PASSWORD>"
-    registryURL: cp.icr.io/cp
-    imagePullSecret: "docker-key-secret"
-    networkinfo:
-        domain: <DOMAIN>
-        consolePort: <CONSOLE_PORT>
-        proxyPort: <PROXY_PORT>
-    storage:
-      console:
-        class: default
-        size: 10Gi
-    tlsSecretName: "console-tls-secret"
-    clusterdata:
-      zones:
-        - dal10
-        - dal12
-        - dal13
+spec:
+  arch:
+  - amd64
+  license: accept
+  serviceAccountName: default
+  proxyIP:
+  email: "<EMAIL>"
+  password: "<PASSWORD>"
+  registryURL: cp.icr.io/cp
+  imagePullSecret: "docker-key-secret"
+  networkinfo:
+      domain: <DOMAIN>
+      consolePort: <CONSOLE_PORT>
+      proxyPort: <PROXY_PORT>
+  storage:
+    console:
+      class: default
+      size: 10Gi
+  tlsSecretName: "console-tls-secret"
+  clusterdata:
+    zones:
+      - dal10
+      - dal12
+      - dal13
 ```
 {:codeblock}
 
-When you finish editing the file, you can apply it to your cluster to provide new TLS certificates to a deployed console. After the console restarts, the UI returns to its previous state, allowing you to operate all of your exiting nodes and channels.
+When you finish editing the file, you can apply it to your cluster in order to secure communications with your own TLS certificates:
 ```
 kubectl apply -f ibp-console.yaml -n <NAMESPACE>
 ```

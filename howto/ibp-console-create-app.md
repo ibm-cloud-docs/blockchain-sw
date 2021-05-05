@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2020
-lastupdated: "2020-02-07"
+lastupdated: "2020-11-02"
 
 keywords: client application, Commercial Paper, SDK, wallet, generate a certificate, generate a private key, fabric gateway, APIs, smart contract
 
@@ -22,6 +22,15 @@ subcollection: blockchain-sw
 
 # Creating applications
 {: #ibp-console-app}
+
+<div style="background-color: #6fdc8c; padding-left: 20px; padding-right: 20px; border-bottom: 4px solid #0f62fe; padding-top: 12px; padding-bottom: 4px; margin-bottom: 16px;">
+  <p style="line-height: 20px;">
+    <strong>Important: You are not looking at the latest product documentation.  Make sure you are reading the documentation that matches the version of the software that you are using. Switch to product version </strong>
+    <a href="/docs/blockchain-sw-213?topic=blockchain-sw-213-ibp-console-app">2.1.3</a>,
+    <a href="/docs/blockchain-sw-25?topic=blockchain-sw-25-ibp-console-app">2.5 </a>,
+    <a href="/docs/blockchain-sw-251?topic=blockchain-sw-251-ibp-console-app">2.5.1 (latest)</a>
+    </p>
+</div>
 
 After you install smart contracts and deploy your nodes, you can use client applications to transact with other members of your network. Applications can invoke the business logic that is contained in smart contracts to create, transfer, or update assets on the blockchain ledger. Use this tutorial to learn how to use client applications to interact with networks that you manage from {{site.data.keyword.blockchainfull}} Platform console.
 {:shortdesc}
@@ -55,17 +64,35 @@ The connection profile that you downloaded from the {{site.data.keyword.blockcha
 
 The application developer can use two programming models to interact with the network:
 
-**High-Level Fabric SDK APIs**
+### High-Level Fabric contract APIs
+{: #ibp-console-app-high-level}
 
 Starting with Fabric v1.4, users can take advantage of a simplified application and smart contract programming model. The new model reduces the number of steps and amount of code that is required to submit a transaction. This model is only supported for applications that are written in **Node.js**. If you want to take advantage of the new model, you can use this tutorial to complete the following actions on an {{site.data.keyword.blockchainfull_notm}} Platform network:
 
-- [Generate certificates for your application](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-app#ibp-console-app-enroll) by using the SDK.
-- [Invoke a smart contract from the SDK](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-app#ibp-console-app-invoke).
-- Learn about application development by deploying the [commercial paper tutorial](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-app#ibp-console-app-commercial-paper) to the nodes managed from your console. This tutorial provides more background on how to use Fabric Wallets and Gateways.
+Client applications can leverage the capabilities of the Go SDK, but currently only the high-level programming model in the [gateway package](https://pkg.go.dev/github.com/hyperledger/fabric-sdk-go/pkg/gateway) is supported. Direct usage of the rest of the Go SDK is not yet supported.
+{: note}
 
-**Low-Level Fabric SDK APIs**
+If you want to take advantage of the High-Level Fabric contract-APIs, you can use this tutorial to complete the following actions on an {{site.data.keyword.blockchainfull_notm}} Platform network:
 
-If you want to continue to use your existing smart contract and application code, or use the other Fabric SDK languages that are provided by the Hyperledger community, you can use the [low-level Fabric SDK APIs](/docs/blockchain-sw?topic=blockchain-sw-ibp-console-app#ibp-console-app-low-level) to connect to your network.
+- [Generate certificates for your application](#ibp-console-app-enroll) by using the SDK.
+- [Invoke a smart contract from the SDK](#ibp-console-app-invoke).
+- Learn about application development by deploying the [commercial paper tutorial](#ibp-console-app-commercial-paper) to the nodes managed from your console. This tutorial provides more background on how to use Fabric Wallets and Gateways.
+
+### Low-Level Fabric SDK APIs**
+{: #ibp-console-app-low-level}
+
+If you want to continue to use your existing smart contract and application code, or use the other Fabric SDK languages that are provided by the Hyperledger community, you can use the [low-level Fabric SDK APIs](#ibp-console-app-low-level) to connect to your network.
+
+### Network considerations
+{: #ibp-console-app-networking}
+
+Regardless of whether you choose to use the high-Level Fabric contract APIs, or the  low-Level Fabric SDK APIs, both require network access to the following components:
+
+- The CA for your organization. (You should never need to access the CA for another organization).
+- All organizations peers (where all organizations are the organizations required for endorsing transactions).
+- All ordering service nodes for all channels that you are transacting on.
+
+You must ensure that the hostnames of these components are resolvable by DNS lookup (or `/etc/hosts` if you cannot correctly configure DNS). You must also ensure that all of the network ports for these components are accessible to the systems that are running your applications that are using the Hyperledger Fabric SDKs.
 
 ## Registering an application identity
 {: #ibp-console-app-identities}
@@ -552,4 +579,3 @@ If you are using low level SDK APIs to connect to your network, there are additi
 {: #console-app-couchdb}
 
 If you use CouchDB as your state database, you can perform JSON data queries from your smart contracts against the channel's state data. It is strongly recommended that you create indexes for your JSON queries and use them in your smart contracts. Indexes allow your applications to retrieve data efficiently when your network adds additional blocks of transactions and entries in the world state. To learn how to use indexes with your smart contracts and your applications, see [Best practices when using CouchDB](/docs/blockchain-sw?topic=blockchain-sw-best-practices-app#best-practices-app-couchdb-indices).
-

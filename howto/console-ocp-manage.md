@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2020
-lastupdated: "2020-02-07"
+lastupdated: "2020-11-02"
 
 keywords: IBM Blockchain Platform, administrate, add user, remove user, password, APIs, authentication, view logs
 
@@ -24,8 +24,14 @@ subcollection: blockchain-sw
 # Administering your console
 {: #console-icp-manage}
 
-
-
+<div style="background-color: #6fdc8c; padding-left: 20px; padding-right: 20px; border-bottom: 4px solid #0f62fe; padding-top: 12px; padding-bottom: 4px; margin-bottom: 16px;">
+  <p style="line-height: 20px;">
+    <strong>Important: You are not looking at the latest product documentation.  Make sure you are reading the documentation that matches the version of the software that you are using. Switch to product version </strong>
+    <a href="/docs/blockchain-sw-213?topic=blockchain-sw-213-console-icp-manage">2.1.3</a>,
+    <a href="/docs/blockchain-sw-25?topic=blockchain-sw-25-console-icp-manage">2.5 </a>,
+    <a href="/docs/blockchain-sw-251?topic=blockchain-sw-251-console-icp-manage">2.5.1 (latest)</a>
+    </p>
+</div>
 
 After you install the console on your cluster, you can use the console to add or remove console users and access APIs that allow you to operate your network and govern your console. You can also access and customize the logs of your console.
 {:shortdesc}
@@ -102,10 +108,10 @@ You can view only the console logs if you are logged in as a console administrat
 
 
 
-Component logs can be viewed from the command line by using the [kubectl CLI commands](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.2.0/manage_cluster/install_kubectl.html){: external} or through [Kibana](https://www.elastic.co/products/kibana){: external} which is included in the OpenShift Container Platform.
+Component logs can be viewed from the command line by using the [kubectl CLI commands](/docs/en/cloud-private/3.2.0?topic=guide-installing-kubernetes-cli-kubectl/){: external} or through [Kibana](https://www.elastic.co/kibana){: external} which is included in the OpenShift Container Platform.
 
 
-- Use the `kubectl logs` command to view the container logs inside the pod. Follow the instructions to [Install the kubectl cli](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.2.0/manage_cluster/install_kubectl.html){: external} if you have not already done so. If you are unsure of your pod name, run the following command to view your list of pods.
+- Use the `kubectl logs` command to view the container logs inside the pod. Follow the instructions to [Install the kubectl cli](/docs/en/cloud-private/3.2.0?topic=guide-installing-kubernetes-cli-kubectl/){: external} if you have not already done so. If you are unsure of your pod name, run the following command to view your list of pods.
 
   ```
   kubectl get pods
@@ -123,12 +129,12 @@ Component logs can be viewed from the command line by using the [kubectl CLI com
   Replace `<node>` with `ca`, `peer`, or `orderer` to view the logs for your node.  
   Replace `<node>` with  `chaincode-logs` to view the logs for your smart contracts.
 
-  
+
   You can also run the command `kubectl logs -f <pod_name>` to get a list of all of the containers that are running inside a pod. The response to the command is an error message similar to the following:
   ```
   Error from server (BadRequest): a container name must be specified for pod peer1org1-7b4b6687dc-7n4fz, choose one of: [dind peer proxy chaincode-logs couchdb] or one of the init containers: [init]
   ```
-  
+
 
   For more information about the `kubectl logs` command, see [Kubernetes documentation](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs){: external}.
 
@@ -155,6 +161,3 @@ kubectl  logs -f <peer_ped> -c chaincode-logs
 
 
 Replace `<peer_pod>` with the name of the peer pod where the chaincode is running. Use the command `kubectl get po` to get the list of running pods.
-
-
-
