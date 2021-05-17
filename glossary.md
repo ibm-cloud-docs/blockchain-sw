@@ -124,7 +124,7 @@ The process of starting and initializing a chaincode container on a specific cha
 
 ## Kafka
 {: #glossary-kafka}
-A consensus plugin implementation for Hyperledger Fabric that results in a cluster of ordering service nodes in the blockchain network. Kafka implementations and Raft implementations are intended for production networks. However, only Raft ordering service clusters are natively supported and can be created using the {{site.data.keyword.blockchainfull_notm}} Platform.
+A consensus plug-in implementation for Hyperledger Fabric that results in a cluster of ordering service nodes in the blockchain network. Kafka implementations and Raft implementations are intended for production networks. However, only Raft ordering service clusters are natively supported and can be created using the {{site.data.keyword.blockchainfull_notm}} Platform.
 
 ## Ledger
 {: #glossary-ledger}
