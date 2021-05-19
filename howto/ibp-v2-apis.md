@@ -964,6 +964,7 @@ LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUNuRENDQWtPZ0F3SUJBZ0lVTXF5VDhUdnlwY3lY
 Copy this string to the `"admincerts"` field under the component section in the configuration file.
 
 ### CSR (Certificate Signing Request) hosts
+{: #csr}
 
 You have the option of providing a custom domain to your component using the `"csr"` section of the components file.
 
