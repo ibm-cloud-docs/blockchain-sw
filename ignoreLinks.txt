@@ -1,1 +1,2 @@
-https://9.30.94.174:30167
+https://9.30.94.174:30167,
+https://peer0.org1.example.com:9443
