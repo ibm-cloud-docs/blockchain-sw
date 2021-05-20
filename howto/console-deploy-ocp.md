@@ -641,7 +641,7 @@ spec:
 Unlike the resource allocation, you cannot add zones to a running network. If you have already deployed a console and used it to create nodes on your cluster, you will lose your previous work. After the console restarts, you need to deploy new nodes.    
 {: Important}
 
-### Use your own TLS Certificates (Optional)
+### Use your own TLS Certificates (Optional) 
 {: #console-deploy-ocp-use-your-own-tls-certificates-optional}
 
 The {{site.data.keyword.blockchainfull_notm}} Platform console uses TLS certificates to secure the communication between the console and your blockchain nodes and between the console and your browser. You have the option of creating your own TLS certificates and providing them to the console by using creating a Kubernetes secret. If you skip this step, the console creates its own self-signed TLS certificates during deployment.
