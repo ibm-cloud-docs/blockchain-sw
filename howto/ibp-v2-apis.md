@@ -884,7 +884,7 @@ Open the CA in your console and click **Settings**, then the **Export** button t
 **If your are using the APIs:**
 You can call [`GET /ak/api/v1/components`](/apidocs/blockchain#get-all-components) to get the connection information of your CA. If you created the CA using the `Create a Fabric CA` API, you can also find the necessary information in the response body.
 
-- The `"cahost"` and `"caport"` values are visible in the `ca_url` field in the response body or CA JSON file that you exported.  For example, if your `ca_url` is https://9.30.94.174:30167, the value of the `"cahost"` would be `9.30.94.174` and the `"caport"` would be `30167`.
+- The `"cahost"` and `"caport"` values are visible in the `ca_url` field in the response body or CA JSON file that you exported.  For example, if your `ca_url` is `https://9.30.94.174:30167`, the value of the `"cahost"` would be `9.30.94.174` and the `"caport"` would be `30167`.
 - The `"caname"` is the name of the CA that was specified when you deployed the CA. This is the value of the `ca_name` field in the response body or the exported JSON file.
 - The `"cacert"` is the base64-encoded TLS certificate of your CA. This is the value of the `pem` field in the response body or the exported JSON file.
 
