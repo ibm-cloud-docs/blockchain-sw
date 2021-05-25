@@ -145,7 +145,7 @@ The console has been working successfully, but after I upgraded my Mac OS to Cat
 There are three ways to resolve this problem:
 {: tsResolve}
 1.  Use a different [supported browser](/docs/blockchain-sw?topic=blockchain-sw-deploy-ocp#deploy-ocp-browsers) with Catalina.
-2. Use your own [TLS certificates when deploying on OpenShift Contain Platform](/docs/blockchain-sw?topic=blockchain-sw-deploy-ocp#use-your-own-tls-certificates-optional-) or [TLS certificates when deploying on Kubernetes or {{site.data.keyword.cloud_notm}} Private](/docs/blockchain-sw?topic=blockchain-sw-deploy-k8#use-your-own-tls-certificates-optional-).
+2. Use your own [TLS certificates when deploying on OpenShift Contain Platform](/docs/blockchain-sw?topic=blockchain-sw-deploy-ocp#console-deploy-ocp-use-your-own-tls-certificates-optional) or [TLS certificates when deploying on Kubernetes or {{site.data.keyword.cloud_notm}} Private](/docs/blockchain-sw?topic=blockchain-sw-deploy-k8#deploy-k8-tls).
 3. Run the following commands to generate a new key and certificate pair for the console that will fix the problem.
    1. Run the following command to get the pod that corresponds to the ibp console:
       ```
